@@ -24,7 +24,7 @@ website:
     icon: info-circle
     dismissable: false
     content: |
-      This site is currently under development
+      The first lecture begins on **22nd September @3pm**
     type: danger
     position: below-navbar
 
@@ -34,25 +34,12 @@ website:
     logo: ./assets/figures/favicon.png
 
     right:
-      - text: Schedule
-        href: schedule.qmd
-      - text: Content
-        href: content\index.qmd
-
-  sidebar:
-    title: Content
-    style: docked
-    search: false
-    background: light
-    contents:
-      - section: Overview
-        contents: content\index.qmd
-      - section: Foundations
-        contents:
-          - text: The foundations of data
-            file: content\content_01.qmd
-          - text: Numerical data
-            file: content\content_02.qmd
+      - text: Overview
+        href: |
+          https://c-monaghan.github.io/ST201/slides/output/slides_0.html#/title-slide
+        target: _blank
+      - text: Week 1
+        href: content\content_01.qmd
 
   page-footer:
     left: |
@@ -68,7 +55,7 @@ format:
   html:
     theme:
       - litera
-      - html/styles.scss
+      - html/custom.scss
     toc: true
     toc-location: right
     toc-title: On this page

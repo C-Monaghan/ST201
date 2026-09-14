@@ -1,10 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
-    <loc>https://c-monaghan.github.io/ST201/syllabus.html</loc>
-    <lastmod>2026-08-31T10:51:25.741Z</lastmod>
-  </url>
-  <url>
     <loc>https://c-monaghan.github.io/ST201/index.html</loc>
     <lastmod>2026-09-14T14:38:01.365Z</lastmod>
   </url>
@@ -14,14 +10,10 @@
   </url>
   <url>
     <loc>https://c-monaghan.github.io/ST201/content/content_01.html</loc>
-    <lastmod>2026-09-09T18:46:46.946Z</lastmod>
+    <lastmod>2026-09-14T16:12:39.318Z</lastmod>
   </url>
   <url>
     <loc>https://c-monaghan.github.io/ST201/content/index.html</loc>
     <lastmod>2026-09-09T18:13:06.704Z</lastmod>
-  </url>
-  <url>
-    <loc>https://c-monaghan.github.io/ST201/schedule.html</loc>
-    <lastmod>2026-09-14T14:53:55.631Z</lastmod>
   </url>
 </urlset>

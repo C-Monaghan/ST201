@@ -1,12 +1,5 @@
 [
   {
-    "objectID": "syllabus.html",
-    "href": "syllabus.html",
-    "title": "Syllabus",
-    "section": "",
-    "text": "Instructor\n\n Cormac Monaghan\n cormac.monaghan@mu.ie\n 312 Eolas Building, Maynooth University, W23 A3HY\n Bluesky\n\n\n\nCourse details\n\n Tuesday & Thursday\n September - December 2026\n Tuesdays 3pm & Thursdays 12pm\n Physics Hall\n\n\n\nContacting me\nE-mail is the best way to get in contact with me. I usually try to respond to all e-mails within 24 hours (really), but also remember that life can be busy and chaotic for everyone (including me!), so if I don’t respond right away, don’t worry!"
-  },
-  {
     "objectID": "index.html",
     "href": "index.html",
     "title": "\n            Data Analysis\n        ",
@@ -18,66 +11,34 @@
     "href": "content/content_01.html",
     "title": "The Foundations of Data",
     "section": "",
-    "text": "Understand the structure of data\nUnderstand the different types of data\nKnow how to visualise different types of data",
-    "crumbs": [
-      "Content",
-      "Foundations",
-      "The foundations of data"
-    ]
+    "text": "Understand the structure of data\nUnderstand the different types of data\nKnow how to visualise different types of data"
   },
   {
     "objectID": "content/content_01.html#learning-objectives",
     "href": "content/content_01.html#learning-objectives",
     "title": "The Foundations of Data",
     "section": "",
-    "text": "Understand the structure of data\nUnderstand the different types of data\nKnow how to visualise different types of data",
-    "crumbs": [
-      "Content",
-      "Foundations",
-      "The foundations of data"
-    ]
+    "text": "Understand the structure of data\nUnderstand the different types of data\nKnow how to visualise different types of data"
   },
   {
     "objectID": "content/content_01.html#readings",
     "href": "content/content_01.html#readings",
     "title": "The Foundations of Data",
     "section": "Readings",
-    "text": "Readings\n\nSuggested readings\n\n Chapter 1 and Chapter 2 of Introduction to Statistics and Data Analysis\n Chapters 1 and 2 of OpenIntro Statistics. This is a slightly more advanced reading, but I would highly recommend!",
-    "crumbs": [
-      "Content",
-      "Foundations",
-      "The foundations of data"
-    ]
+    "text": "Readings\n\nSuggested readings\n\n Chapter 1 and Chapter 2 of Introduction to Statistics and Data Analysis\n Chapters 1 and 2 of OpenIntro Statistics. This is a slightly more advanced reading, but I would highly recommend!"
   },
   {
     "objectID": "content/content_01.html#slides",
     "href": "content/content_01.html#slides",
     "title": "The Foundations of Data",
     "section": "Slides",
-    "text": "Slides\n\n  \n    \n       Open slides in New Window",
-    "crumbs": [
-      "Content",
-      "Foundations",
-      "The foundations of data"
-    ]
+    "text": "Slides\n\n  \n    \n       Open slides in New Window"
   },
   {
     "objectID": "content/index.html",
     "href": "content/index.html",
     "title": "Overview",
     "section": "",
-    "text": "All lecture slides for each week will be available here.\nOn each class session tab you’ll buttons for opening the presentation in a new tab or for downloading a PDF of the slides in case you want to print them or store them on your computer\n\n View all slides in new window  Download PDF of all slides\n\nThe slides are also embedded on each page. You can click in the slides and navigate through them with ← and →. If you type ? (or shift + /) while viewing the slides you can see a list of slide-specific commands (like f for fullscreen or p for presenter mode if you want to see my notes).",
-    "crumbs": [
-      "Content",
-      "Overview",
-      "Overview"
-    ]
-  },
-  {
-    "objectID": "schedule.html",
-    "href": "schedule.html",
-    "title": "Schedule",
-    "section": "",
-    "text": "Title\nContent\nAssignment\n\n\n\n\nSeptember 22 + September 24\nFoundations of data"
+    "text": "All lecture slides for each week will be available here.\nOn each class session tab you’ll buttons for opening the presentation in a new tab or for downloading a PDF of the slides in case you want to print them or store them on your computer\n\n View all slides in new window  Download PDF of all slides\n\nThe slides are also embedded on each page. You can click in the slides and navigate through them with ← and →. If you type ? (or shift + /) while viewing the slides you can see a list of slide-specific commands (like f for fullscreen or p for presenter mode if you want to see my notes)."
   }
 ]

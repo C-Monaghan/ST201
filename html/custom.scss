@@ -1,0 +1,408 @@
+// Fonts -----------------------------------------------------------------------
+
+@import url('https://fonts.googleapis.com/css2?family=Barlow:ital,wght@0,400;0,500;0,600;0,700;1,400;1,700&family=Fira+Sans+Condensed:wght@400;500;600;700&display=swap');
+
+/*-- scss:defaults --*/
+// Base colours ----------------------------------------------------------------
+$white:     #FFFFFF !default;
+
+$gray-100:  #F3EFE3 !default;
+$gray-200:  #E7E3D8 !default;
+$gray-300:  #D0CCC0 !default;
+$gray-400:  #AAA9A2 !default;
+$gray-500:  #8A8D87 !default;
+$gray-600:  #686D6D !default;
+$gray-700:  #4B5558 !default;
+$gray-800:  #30383C !default;
+$gray-900:  #17232B !default;
+
+$black:     #0E1418 !default;
+
+
+// Custom colours --------------------------------------------------------------
+// Skyrim inspired colour theme
+$espresso: #2B160C !default;
+$ivy: #0F2A22 !default;
+$teal: #153638 !default;
+$moss: #3F5A46 !default;
+$smoke: #6F7F6C !default;
+$rust: #A13E1E !default;
+$burgundy: #831B1A !default;
+$ochre: #AE8452 !default;
+$gold: #C2A46B !default;
+
+// Bootstrap colours -----------------------------------------------------------
+
+$primary:       $teal !default;
+$secondary:     $smoke !default;
+$success:       $moss !default;
+$info:          $ochre !default;
+$warning:       $gold !default;
+$danger:        $burgundy !default;
+$light:         $gray-100 !default;
+$dark:          $gray-900 !default;
+
+// Typography ------------------------------------------------------------------
+
+$font-family-sans-serif: "Fira Sans Condensed", sans-serif !default;
+$font-family-serif:      "Barlow", sans-serif !default;
+
+$font-size-base: 1.15rem !default;
+
+$headings-font-weight: 700 !default;
+
+$h1-font-size: $font-size-base * 2.35;
+$h2-font-size: $font-size-base * 1.8;
+$h3-font-size: $font-size-base * 1.45;
+$h4-font-size: $font-size-base * 1.1;
+$h5-font-size: $font-size-base;
+$h6-font-size: $font-size-base * 0.8;
+
+$toc-font-size: 0.95rem;
+$sidebar-font-size: 1.1rem;
+$sidebar-font-size-section: 0.95rem;
+$footer-font-size: 0.95rem;
+
+$link-color: $teal;
+$link-hover-color: $rust;
+
+// Code -------------------------------------------------------------------------
+
+$code-bg: $gray-200 !default;
+$code-color: $gray-900 !default;
+
+$monokai-bg: #242B2F;
+
+/*-- scss:rules --*/
+
+// Link behaviour --------------------------------------------------------------
+a {
+  color: $teal;
+  text-decoration-thickness: 0.08em;
+  text-underline-offset: 0.15em;
+  transition:
+    color 0.15s ease,
+    text-decoration-color 0.15s ease;
+}
+
+a:hover {
+  color: $rust;
+}
+
+a:focus-visible {
+  outline: 2px solid $gold;
+  outline-offset: 3px;
+  border-radius: 2px;
+}
+
+
+// Headings --------------------------------------------------------------------
+h1, h2, h3, h4, h5, h6 {
+  font-family: $font-family-sans-serif;
+  letter-spacing: -0.01em;
+  color: $gray-900;
+}
+
+h2 {
+  border-bottom: 2px solid $gray-300;
+  padding-bottom: 0.25em;
+}
+
+// Lists and tables ------------------------------------------------------------
+ul, ol,
+.table {
+  font-family: $font-family-serif;
+}
+
+.table {
+  border-color: $gray-300;
+}
+
+// Callouts --------------------------------------------------------------------
+.callout.callout-style-default .callout-body,
+.callout.callout-style-default > div.callout-header {
+  font-size: 1.1rem;
+}
+
+.callout-icon-container {
+  padding-top: 0 !important;
+}
+
+// Home page -------------------------------------------------------------------
+.title-block {
+  margin: 1.5rem 0 2rem;
+  padding-bottom: 1.25rem;
+  border-bottom: 3px solid $teal;
+}
+
+.course-title {
+  margin: 0;
+  padding-bottom: 0.25em;
+  color: $gray-900;
+  font-size: clamp(2.5rem, 6vw, 4rem);
+  line-height: 0.95;
+}
+
+.course-subtitle {
+  margin-top: 0.75rem;
+  color: $gray-700;
+  font-size: 1.5rem;
+  line-height: 1.25;
+}
+
+.course-meta {
+  margin-top: 0.5rem;
+  color: $gray-600;
+  font-size: 1.05rem;
+}
+
+.course-details h3 {
+  margin-top: 0;
+  color: $teal;
+}
+
+// List details in the details page
+.course-details ul {
+  list-style-type: none;
+  margin-left: var(--fa-li-margin, 1.5em);
+  padding-left: 0;
+}
+
+.course-details ul > li {
+  position: relative;
+}
+
+.contact-policy p {
+  font-size: 1rem;
+  line-height: 1.5;
+}
+
+.course-details-smaller li {
+  font-size: 1rem;
+}
+
+.course-details-smaller h3 {
+  font-size: 1.4rem;
+}
+
+// Nav bar ---------------------------------------------------------------------
+// Navbar background
+.navbar {
+  background-color: $ivy !important;
+}
+
+// Website name (on the far left)
+.navbar-brand {
+  font-family: $font-family-sans-serif;
+  font-weight: 700;
+  font-size: 1.35rem;
+  letter-spacing: -0.01em;
+  color: $white !important;
+
+  transition: color 0.15s ease;
+
+  &:hover {
+    color: $gold !important;
+  }
+}
+
+// Links in nav bar ------------------------------------------------------------
+.navbar-nav .nav-link {
+  position: relative;
+
+  padding: 0.75rem 0.9rem;
+
+  font-family: $font-family-sans-serif;
+  font-size: 1.05rem;
+  font-weight: 600;
+
+  color: rgba(255, 255, 255, 0.85) !important;
+
+  transition:
+    color 0.15s ease,
+    background-color 0.15s ease;
+
+  &:hover {
+    color: $gold !important;
+    background-color: rgba(0, 0, 0, 0.08);
+  }
+
+  &.active {
+    color: $gold !important;
+    font-weight: 700;
+  }
+}
+
+// Active page indicator -------------------------------------------------------
+.navbar-nav .nav-link.active::after {
+  content: "";
+
+  position: absolute;
+  left: 0.9rem;
+  right: 0.9rem;
+  bottom: 0.25rem;
+
+  height: 3px;
+
+  background-color: $gold;
+}
+
+// Mobile nav bar --------------------------------------------------------------
+@media (max-width: 991.98px) {
+
+  .navbar-nav {
+    padding-top: 0.5rem;
+    padding-bottom: 0.5rem;
+  }
+
+  .navbar-nav .nav-link {
+    padding: 0.65rem 0.75rem;
+  }
+
+  .navbar-nav .nav-link.active {
+    background-color: rgba(194, 164, 107, 0.12);
+    border-left: 3px solid $gold;
+  }
+
+  .navbar-nav .nav-link.active::after {
+    display: none;
+  }
+}
+
+// Sidebar ---------------------------------------------------------------------
+#toc-title {
+  font-weight: 700;
+  color: $gray-900;
+}
+
+.sidebar nav[role="doc-toc"] > ul li a {
+
+  &.active {
+    border-left: 2px solid $teal;
+    color: $teal !important;
+  }
+}
+
+// Footer ----------------------------------------------------------------------
+.nav-footer-left {
+  text-align: left;
+  flex-grow: 3;
+}
+
+.nav-footer-right {
+  text-align: right;
+}
+
+.nav-footer-center {
+  display: none;
+}
+
+// Embedded slides -------------------------------------------------------------
+.slides-container {
+  margin: 20px 0;
+}
+
+// Slide controls --------------------------------------------------------------
+.slide-options {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+
+  margin-bottom: 1rem;
+}
+
+// Open slides button ----------------------------------------------------------
+.slide-options .btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+
+  padding: 0.55rem 0.9rem;
+
+  font-family: $font-family-sans-serif;
+  font-size: 0.95rem;
+  font-weight: 600;
+
+  color: $white;
+  background-color: $teal;
+  border: 2px solid $teal;
+  border-radius: 3px;
+
+  text-decoration: none;
+
+  transition:
+    background-color 0.15s ease,
+    border-color 0.15s ease,
+    color 0.15s ease,
+    transform 0.15s ease,
+    box-shadow 0.15s ease;
+
+  &:hover {
+    color: $gray-900;
+    background-color: $gold;
+    border-color: $gold;
+
+    transform: translateY(-1px);
+
+    box-shadow: 0 3px 8px rgba(23, 35, 43, 0.15);
+  }
+
+  &:focus-visible {
+    outline: 2px solid $gold;
+    outline-offset: 3px;
+  }
+
+  &:active {
+    transform: translateY(0);
+    box-shadow: none;
+  }
+}
+
+// Button icon -----------------------------------------------------------------
+.slide-options .btn i {
+  font-size: 0.85em;
+}
+
+// Embedded slide frame --------------------------------------------------------
+.slide-frame {
+  display: block;
+
+  width: 100%;
+
+  border: 2px solid $gray-300 !important;
+  border-radius: 3px;
+
+  background-color: $white;
+
+  box-shadow:
+    0 2px 5px rgba(23, 35, 43, 0.08);
+
+  transition:
+    border-color 0.15s ease,
+    box-shadow 0.15s ease;
+
+  &:hover {
+    border-color: $smoke !important;
+
+    box-shadow:
+      0 4px 12px rgba(23, 35, 43, 0.12);
+  }
+}
+
+// Responsive ------------------------------------------------------------------
+@media (max-width: 768px) {
+
+  .slides-container {
+    margin: 1.5rem -0.5rem 2rem;
+    padding: 0.75rem;
+  }
+
+  .slide-options {
+    justify-content: stretch;
+  }
+
+  .slide-options .btn {
+    width: 100%;
+    justify-content: center;
+  }
+}
