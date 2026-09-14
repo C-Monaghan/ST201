@@ -1,0 +1,16 @@
+project:
+  output-dir: output/
+
+  preview:
+    port: 6532
+    browser: true
+    watch-inputs: true
+    navigate: true
+
+author:
+  - name: Cormac Monaghan
+    email: cormac.monaghan@mu.ie
+    affiliations: Department of Mathematics and Statistics, Maynooth University
+
+format:
+  clean-revealjs: default

@@ -1,0 +1,7 @@
+_drafts/
+data/
+output/
+
+# Quarto stuff
+/.quarto/
+**/*.quarto_ipynb

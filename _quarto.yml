@@ -1,0 +1,75 @@
+project:
+  type: website
+  output-dir: docs
+
+  render:
+    - "*.qmd"
+    - "!slides/"
+    - "!assignments/"
+    - "!_drafts/"
+
+  resources:
+    - "slides/output/"
+
+website:
+  title: "ST201: Data Analysis"
+  favicon: ./assets/favicon.png
+
+  site-url: https://c-monaghan.github.io/ST201
+  repo-url: https://github.com/C-Monaghan/ST201
+
+  page-navigation: true
+
+  announcement:
+    icon: info-circle
+    dismissable: false
+    content: |
+      This site is currently under development
+    type: danger
+    position: below-navbar
+
+  navbar:
+    pinned: true
+    title: Data Analysis
+    logo: ./assets/figures/favicon.png
+
+    right:
+      - text: Schedule
+        href: schedule.qmd
+      - text: Content
+        href: content\index.qmd
+
+  sidebar:
+    title: Content
+    style: docked
+    search: false
+    background: light
+    contents:
+      - section: Overview
+        contents: content\index.qmd
+      - section: Foundations
+        contents:
+          - text: The foundations of data
+            file: content\content_01.qmd
+          - text: Numerical data
+            file: content\content_02.qmd
+
+  page-footer:
+    left: |
+      Content {{< fa brands creative-commons >}} {{< var meta.copyright_year >}} by [{{< var author.name >}}]({{< var author.url >}}) <br>
+      All content licensed under a {{< fa brands creative-commons >}}
+      {{< fa brands creative-commons-by >}} {{< fa brands creative-commons-nc >}}
+      [Creative Commons Attribution-NonCommercial 4.0 International license (CC BY-NC 4.0)](https://creativecommons.org/licenses/by-nc/4.0/)
+    right: |
+      Made with {{< fa brands r-project >}}, [Quarto](https://quarto.org/), and {{< fa heart title='love' aria-hidden='true' >}}<br>
+      [View the source at {{< fa brands github >}} GitHub]({{< var meta.project_source >}})
+
+format:
+  html:
+    theme:
+      - litera
+      - html/styles.scss
+    toc: true
+    toc-location: right
+    toc-title: On this page
+    smooth-scroll: true

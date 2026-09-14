@@ -1,0 +1,24 @@
+author:
+  name: Cormac Monaghan
+  email: cormac.monaghan@mu.ie
+  url: https://c-monaghan.github.io/
+  bluesky: https://bsky.app/profile/c-monaghan.bsky.social
+  github: C-Monaghan
+  university: Maynooth University
+  department: Hamilton Institute
+  office: 312 Eolas Building, Maynooth University, W23 A3HY
+
+course:
+  number: "ST201"
+  semester: "Autumn/Winter 2026"
+  days: "Tuesday & Thursday"
+  time: "Tuesdays 3pm & Thursdays 12pm"
+  location: "Physics Hall"
+  dates: "September - December 2026"
+  github: https://github.com/C-Monaghan/ST201
+  url: https://c-monaghan.github.io/ST201
+  copyright_year: 2026
+
+meta:
+  copyright_year: 2026
+  project_source: https://github.com/C-Monaghan/ST201

@@ -1,0 +1,169 @@
+---
+title: Welcome to ST201 - Data Analysis
+subtitle: Module Overview
+filters:
+  - code-window
+---
+
+```{r}
+#| label: setup
+
+knitr::opts_chunk$set(
+  fig.align = "center",
+  fig.retina = 3,
+  fig.width = 12,
+  fig.height = 8,
+  out.width = "100%",
+  collapse = TRUE
+)
+```
+
+## ST201 - Data Analysis {style="font-size: 85%;"}
+
+### Module information
+
+{{< fa university >}} **Office**: Logic House Room 113 (**eventually 223!**)
+
+{{< fa envelope >}} **Email**: <a href='mailto:cormac.monaghan@mumail.ie'>cormac.monaghan@mumail.ie</a>
+
+{{< fa person-chalkboard >}} **Lectures**
+
+- Tuesdays @3pm in Physics Hall
+- Thursdays @12pm in Physics Hall
+
+{{< fa chalkboard-user >}} **Tutorials**
+
+- Tutorials run **every two weeks**, starting on Week 4 (**12th Oct**).
+  There will be **4 in total**.
+- Make sure you **sign up** to one the times on Moodle
+
+## ST201 - Data Analysis {style="font-size: 85%;"}
+
+### Module information
+
+{{< fa scroll >}} **Assessment**
+
+- 4 Assignments worth 15%
+- 1 Midterm worth 10% (**10th November @3pm**)
+- Final Exam worth 75% (**7th January @10am**)
+
+{{< fa book >}} **Textbook**
+
+[Introduction to Statistical and Data Analysis](www.academia.edu/42933729/Introduction_to_Statistics_and_Data_Analysis_With_Exercises_Solutions_and_Applications_in_R#title) by Christian Heimann & Michael Schomaker Shalabh
+
+[Long list of **free** data science textbooks](https://github.com/LearnDataSci/free-data-science-learning/blob/master/free-data-science-books.md)
+
+## ST201 - Data Analysis
+
+### ~~Office~~ Student Hours
+
+**Student hours** are set times dedicated to all of you. Most professors call
+these *"office hours"* - which I always found too formal and scary!
+
+::: {.callout-warning title="Why student hours?"}
+Students often think that *"office hours"* are times when [professors should be
+left alone](https://www.chronicle.com/article/can-this-man-change-how-elite-colleges-treat-low-income-students/) - **which is the total opposite**.
+I'm hoping that by calling them student hours, it might alleviate this
+misunderstanding.
+:::
+
+This means that during these times I'll be waiting for you to talk to me
+(either in-person or online) where you can ask whatever questions you may have.
+
+You can [schedule a meeting with me here](https://calendly.com/cormac-monaghan-mu).
+This can be either an **online** or **in-person** meeting. If you choose an online
+meeting a confirmation email with a Teams link will be sent to your email.
+
+## ST201 - Data Analysis
+
+### Lecture format
+
+- All the **slides** will be uploaded to **Moodle** after the class.
+- Some lectures will focus on slides and class materials, while others will
+  involve **R coding sessions using RStudio**.
+- Just like the slides, all the R code will be provided to help you along
+  with your learning.
+
+
+::: {.callout-note title="If you have questions"}
+**Please stop me at any point** to ask a question or ask me to clarify something.
+Alternatively, if you're a shy person (like me!) you can come up and ask me at
+the end of class!
+:::
+
+## ST201 - Data Analysis
+
+### What we will cover
+
+This modules aims to introduce you to the **fundamentals of data analysis using R.**
+This course will cover (but is not limited to) the following topics:
+
+- Numerical and graphical data summaries
+- Measures of central tendency
+- Association of two or more variables
+- Correlation
+- Regression
+
+## ST201 - Data Analysis {style="font-size: 90%;"}
+
+### Generative AI and LLMs
+
+AI is a thing and it's not going anywhere. However, the connection between
+**AI** and **learning** is **fragile**, especially when **you are a beginner**
+<br> [(see this post for more details)](https://stats.andrewheiss.com/pinky-lychee/)
+
+> “Using ChatGPT to complete assignments is like bringing a forklift into the
+> weight room; you will never improve your cognitive fitness that way.”
+> [(Chiang 2024)](https://www.newyorker.com/culture/the-weekend-essay/why-ai-isnt-going-to-make-art)
+
+
+::: {.fragment}
+That being said, I have two rules when it comes to AI
+
+1. **Whatever you submit must be written by you**
+2. **You are responsible for checking everything that AI generates**
+:::
+
+## ST201 - Data Analysis {style="font-size: 90%;"}
+
+### What does this mean in practice
+
+```{.r filename="analysis.R"}
+# I have a dataset named "penguins" and I want to calculate the number of
+# different penguin types on each island. However, I can't remember the exact
+# function - so I asked Gemini
+
+# Gemini gave me two ways of doing. One using the `table()` function and another
+# using the `count()` function from the `dplyr` package.
+#
+# I decided to use the `table()` function as I recall seeing it used in the
+# lectures before
+
+table(penguins$species, penguins$island)
+```
+
+This is a very comment heavy piece of code and it's not something you will often
+see in real life. However, **for your own learning** I would recommend writing
+comments like this when you decide to get help from AI <br>
+**Future you will thank you when you go back to revise**.
+
+## Does anyone like cats?
+
+
+::::: {.columns}
+
+:::: {.fragment .fade-up}
+
+::: {.column}
+
+- This is my cat
+- His name is Bigsy
+- His favourite things are sleeping, eating, and hiding mice in the house
+
+:::
+
+::: {.column width="40%"}
+![](assets/bigsy.jpg)
+:::
+::::
+:::::
