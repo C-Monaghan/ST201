@@ -1,0 +1,91 @@
+---
+title: Welcome to ST201
+page-layout: full
+---
+
+```{r}
+#| label: setup
+#| include: false
+
+# Functions --------------------------------------------------------------------
+purrr::map(list.files(here::here("R"), full.names = TRUE), source)
+
+# Class timetable --------------------------------------------------------------
+timetable <- tibble::tribble(
+  ~Time                   , ~Location      , ~`Class Details`           ,
+  "Tuesday (3pm - 4pm)"   , "Physics Hall" , "Standard format (slides)" ,
+  "Thursday (12pm - 1pm)" , "Physics Hall" , "Practical class (R code)"
+)
+```
+
+## Module overview
+
+Welcome to second year and welcome to ST201!
+
+We will be covering lots of things data related. This will range from the different types of data, how to summarise and visualise data, perform hypothesis tests, and interpret simple
+linear regression models
+
+### Learning outcomes
+
+On successful completion of the module, you should be able to
+
+- Calculate probabilities in R.
+- Analyse one and two samples using standard parametric methods.
+- Display data using graphical methods.
+- Fit, interpret and predict from simple linear regression models.
+
+### Assessment
+
+This module is 100% continuous assessment which is broken down into three parts
+
+- 4 assignments in the form of a **Moodle quiz** (worth 15%)
+- 1 mid-term exam, which will be held on **November 10th @3pm** (worth 10%)
+- 1 final exam, which will be held on **January 7th @10am** (worth 75%)
+
+::: {.callout-important title="Details for Erasmus students"}
+If you are an Erasmus student here for **Semester 1 only**
+(September - December), you will not be here for the final exam. With that in
+mind, your assignments and mid-term will be worth more marks.
+
+If you are here for the full academic year (semester 1 **AND** semester 2), then
+your grades will follow the same breakdown as listed above.
+:::
+
+### Timetable
+
+```{r}
+#| label: timetable
+#| echo: false
+#| results: asis
+timetable |>
+  kableExtra::kbl(
+    escape = FALSE,
+    align = "llc",
+    table.attr = 'class="schedule-table"'
+  ) |>
+  kableExtra::kable_styling() |>
+  kableExtra::column_spec(
+    1,
+    width = "40%",
+    extra_css = "padding-right: 20px;"
+  ) |>
+  kableExtra::column_spec(2:3, width = "30%")
+```
+
+### Tutorials
+
+- There will be 4 tutorials for this module, **one every two weeks**.
+- These tutorials will start the **week of the 12th October (week 4)**.
+- A sign up sheet will be available for Moodle to pick a time slot. To allow
+  adequate time for the department to organise everything, **please ensure you
+  fill out this sheet before 30th September**
+
+## Slides
+
+```{r}
+#| label: add-slides
+#| echo: false
+#| results: asis
+
+add_slides(slide_id = "/slides/output/slides_0.html")
+```

@@ -1,6 +1,10 @@
 // Fonts -----------------------------------------------------------------------
 
-@import url('https://fonts.googleapis.com/css2?family=Barlow:ital,wght@0,400;0,500;0,600;0,700;1,400;1,700&family=Fira+Sans+Condensed:wght@400;500;600;700&display=swap');
+// Valley Sans (for headings)
+@import url('https://fonts.googleapis.com/css2?family=Valley+Sans:ital,wght@0,100..900;1,100..900&display=swap');
+
+// Source Sans 3 (for the body)
+@import url('https://fonts.googleapis.com/css2?family=Source+Sans+3:ital,wght@0,200..900;1,200..900&display=swap');
 
 /*-- scss:defaults --*/
 // Base colours ----------------------------------------------------------------
@@ -44,8 +48,9 @@ $dark:          $gray-900 !default;
 
 // Typography ------------------------------------------------------------------
 
-$font-family-sans-serif: "Fira Sans Condensed", sans-serif !default;
-$font-family-serif:      "Barlow", sans-serif !default;
+$font-family-sans-serif: "Source Sans 3", sans-serif !default;
+$font-family-serif: "Source Sans 3", sans-serif !default;
+$font-family-heading: "Valley Sans", serif !default;
 
 $font-size-base: 1.15rem !default;
 
@@ -98,7 +103,7 @@ a:focus-visible {
 
 // Headings --------------------------------------------------------------------
 h1, h2, h3, h4, h5, h6 {
-  font-family: $font-family-sans-serif;
+  font-family: $font-family-heading;
   letter-spacing: -0.01em;
   color: $gray-900;
 }
