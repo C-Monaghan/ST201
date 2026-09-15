@@ -41,6 +41,9 @@ website:
       - text: Assignments
         menu:
           - text: Assignment 1
+          - text: Assignment 2
+          - text: Assignment 3
+          - text: Assignment 4
 
   page-footer:
     left: |
