@@ -36,7 +36,6 @@ website:
     right:
       - text: Overview
         href: content\content_00.qmd
-        target: _blank
       - text: Week 1
         href: content\content_01.qmd
 
