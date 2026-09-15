@@ -5,7 +5,7 @@ project:
   render:
     - "*.qmd"
     - "!slides/"
-    - "!assignments/"
+    # - "!assignments/"
     - "!_drafts/"
 
   resources:
@@ -38,6 +38,9 @@ website:
         href: content\content_00.qmd
       - text: Week 1
         href: content\content_01.qmd
+      - text: Assignments
+        menu:
+          - text: Assignment 1
 
   page-footer:
     left: |
