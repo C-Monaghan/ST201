@@ -1,10 +1,6 @@
 // Fonts -----------------------------------------------------------------------
-
-// Valley Sans (for headings)
-@import url('https://fonts.googleapis.com/css2?family=Valley+Sans:ital,wght@0,100..900;1,100..900&display=swap');
-
-// Source Sans 3 (for the body)
-@import url('https://fonts.googleapis.com/css2?family=Source+Sans+3:ital,wght@0,200..900;1,200..900&display=swap');
+// Valley Sans and Source Sans
+@import url('https://fonts.googleapis.com/css2?family=Valley+Sans:ital,wght@0,100..900;1,100..900&family=Source+Sans+3:ital,wght@0,200..900;1,200..900&display=swap');
 
 /*-- scss:defaults --*/
 // Base colours ----------------------------------------------------------------
@@ -22,7 +18,6 @@ $gray-900:  #17232B !default;
 
 $black:     #0E1418 !default;
 
-
 // Custom colours --------------------------------------------------------------
 // Skyrim inspired colour theme
 $espresso: #2B160C !default;
@@ -36,7 +31,6 @@ $ochre: #AE8452 !default;
 $gold: #C2A46B !default;
 
 // Bootstrap colours -----------------------------------------------------------
-
 $primary:       $teal !default;
 $secondary:     $smoke !default;
 $success:       $moss !default;
@@ -47,7 +41,6 @@ $light:         $gray-100 !default;
 $dark:          $gray-900 !default;
 
 // Typography ------------------------------------------------------------------
-
 $font-family-sans-serif: "Source Sans 3", sans-serif !default;
 $font-family-serif: "Source Sans 3", sans-serif !default;
 $font-family-heading: "Valley Sans", serif !default;
@@ -72,7 +65,6 @@ $link-color: $teal;
 $link-hover-color: $rust;
 
 // Code -------------------------------------------------------------------------
-
 $code-bg: $gray-200 !default;
 $code-color: $gray-900 !default;
 
