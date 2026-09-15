@@ -82,9 +82,35 @@ timetable |>
 
 ## Slides
 
+All the slides for this module are created using [Quarto](https://quarto.org/).
+In fact, this entire module website is built using Quarto. Personally, I love
+Quarto. I do just about everything with it! If you every get a chance, do check
+it out (ok ... mini rant over!)
+
+---
+
+There are many **little hidden things** you can do with these slides.
+
+You can click in the slides and navigate through them with <kbd>←</kbd> and
+<kbd>→</kbd>.
+
+If you type <kbd>?</kbd> (or <kbd>shift</kbd> + <kbd>/</kbd>) while viewing the
+slides you can see a list of slide-specific commands (such as like <kbd>f</kbd> for
+fullscreen mode or additionally <kbd>s</kbd> for presenter mode if you want
+to see my notes).
+
+Finally, if you want to make a PDF of these slides you can press <kbd>e</kbd>,
+followed by <kbd>ctrl</kbd> + <kbd>p</kbd>.
+
+::: {.callout-caution}
+## Slides will be available on Tuesday 22nd September
+:::
+
+
 ```{r}
 #| label: add-slides
 #| echo: false
+#| eval: false
 #| results: asis
 
 add_slides(slide_id = "/slides/output/slides_0.html")
