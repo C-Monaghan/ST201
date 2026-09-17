@@ -1,6 +1,8 @@
 # Draft folder
 _drafts/
 
+assignments/
+
 # Quarto stuff
 /.quarto/
 **/*.quarto_ipynb
