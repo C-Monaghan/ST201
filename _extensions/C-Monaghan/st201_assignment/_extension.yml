@@ -1,0 +1,46 @@
+title: ST201 Assignment
+author: Cormac Monaghan
+version: 0.1.0
+quarto-required: ">=1.10.18"
+
+contributes:
+  formats:
+
+    html:
+      toc: true
+      toc-location: right
+      number-sections: false
+      smooth-scroll: true
+      anchor-sections: true
+      theme:
+        - litera
+        - ../html/custom.scss
+        - html/style.scss
+      template-partials:
+        - html/title-block.html
+
+    typst:
+      mainfont: New Computer Modern
+      mathfont: New Computer Modern Math
+      codefont: IBM Plex Mono
+
+      fontsize: 10.5pt
+      linestretch: 1.15
+
+      papersize: a4
+
+      margin:
+        x: 2.5cm
+        y: 2.2cm
+
+      page-numbering: "1"
+
+      toc: false
+      number-sections: false
+
+      linkcolor: "#356B70"
+      filecolor: "#356B70"
+
+      template-partials:
+        - typ/typst-template.typ
+        - typ/typst-show.typ
