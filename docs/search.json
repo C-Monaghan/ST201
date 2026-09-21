@@ -27,6 +27,7 @@
     "section": "",
     "text": "Each class has a set of required readings that should be completed in your own time. For the most part, these readings will mirror what we have covered in the lectures. However, there will be times that I find a cool resource that I believe may be helpful for some of you.\nAll the slides for this module are special HTML files made using both Quarto and Clean Revealjs theme by Grant McDermott. Personally, this is my favourite theme to use for presentations, although I have made a couple of minor tweaks to it myself",
     "crumbs": [
+      "Content",
       "Overview",
       "Lecture overview"
     ]
@@ -38,7 +39,7 @@
     "section": "",
     "text": "Understand the structure of data\nUnderstand the different types of data\nKnow how to visualise different types of data",
     "crumbs": [
-      "Overview",
+      "Content",
       "Week 1",
       "The Foundations of Data"
     ]
@@ -50,7 +51,7 @@
     "section": "",
     "text": "Understand the structure of data\nUnderstand the different types of data\nKnow how to visualise different types of data",
     "crumbs": [
-      "Overview",
+      "Content",
       "Week 1",
       "The Foundations of Data"
     ]
@@ -62,7 +63,7 @@
     "section": "Readings",
     "text": "Readings\n\nSuggested readings\n\n Chapter 1 and Chapter 2 of Introduction to Statistics and Data Analysis\n Chapters 1 and 2 of OpenIntro Statistics. This is a slightly more advanced reading, but I would highly recommend!",
     "crumbs": [
-      "Overview",
+      "Content",
       "Week 1",
       "The Foundations of Data"
     ]
@@ -74,7 +75,7 @@
     "section": "Slides",
     "text": "Slides\n\n\n\n\n\n\nCautionAvailable on Tuesday 22nd September",
     "crumbs": [
-      "Overview",
+      "Content",
       "Week 1",
       "The Foundations of Data"
     ]

@@ -50,7 +50,7 @@ website:
             # href: assignments\assignment_04.qmd
 
   sidebar:
-    pinned: true
+    title: Content
     style: docked
     search: false
     background: light
