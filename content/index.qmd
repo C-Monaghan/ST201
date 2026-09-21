@@ -1,0 +1,13 @@
+---
+title: Lecture overview
+---
+
+Each class has a set of required readings that should be **completed in your own
+time**. For the most part, these readings will mirror what we have covered in
+the lectures. However, there will be times that I find a cool resource that
+I believe may be helpful for some of you.
+
+All the slides for this module are special HTML files made using both
+[Quarto](https://quarto.org/) and [Clean Revealjs theme](https://github.com/grantmcdermott/quarto-revealjs-clean) by [Grant McDermott](https://github.com/grantmcdermott).
+Personally, this is my favourite theme to use for presentations, although I
+have made a couple of minor tweaks to it myself

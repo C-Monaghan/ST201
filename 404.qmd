@@ -2,4 +2,4 @@
 title: "This content isn't available just yet"
 ---
 
-![](./assets/figures/bigsy.jpg)
+![](./assets/bigsy.jpg)

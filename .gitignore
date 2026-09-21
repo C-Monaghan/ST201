@@ -6,3 +6,5 @@ assignments/
 # Quarto stuff
 /.quarto/
 **/*.quarto_ipynb
+
+/.luarc.json

@@ -5,7 +5,7 @@ project:
   render:
     - "*.qmd"
     - "!slides/"
-    # - "!assignments/"
+    - "!assignments/"
     - "!_drafts/"
 
   resources:
@@ -35,9 +35,9 @@ website:
 
     right:
       - text: Overview
-        href: content\content_00.qmd
-      - text: Week 1
-        href: content\content_01.qmd
+        href: overview\index.qmd
+      - text: Content
+        href: content\index.qmd
       - text: Assignments
         menu:
           - text: Assignment 1
@@ -48,6 +48,20 @@ website:
             # href: assignments\assignment_03.qmd
           - text: Assignment 4
             # href: assignments\assignment_04.qmd
+
+  sidebar:
+    pinned: true
+    style: docked
+    search: false
+    background: light
+    contents:
+      - section: Overview
+        contents:
+          - content\index.qmd
+      - section: Week 1
+        contents:
+          - text: The Foundations of Data
+            href: content\content_01.qmd
 
   page-footer:
     left: |
