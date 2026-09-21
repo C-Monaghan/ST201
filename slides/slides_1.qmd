@@ -3,9 +3,6 @@ title: The Foundations of Data
 subtitle: ST201 - Data analysis
 filters:
   - code-window
-extensions:
-  code-window:
-    auto-filename: false
 ---
 
 ```{r}
@@ -24,6 +21,7 @@ student_data <- readRDS(here::here("data/student_performance.RDS"))
 
 ## What can we learn from data
 
+::: {.fragment .fade-up}
 Imagine we want to understand **student performance**.
 
 We collect information about students':
@@ -33,14 +31,15 @@ We collect information about students':
 - Attendance
 - Satisfaction
 - Grades
+:::
 
-::: {.fragment}
+::: {.fragment .fade-up .center}
 **We need to understand what we have collected.**
 :::
 
----
+## Student performance data {style="font-size: 90%;"}
 
-## Meet the data
+<br>
 
 ```{r}
 #| label: tbl-1
@@ -67,34 +66,31 @@ student_data |>
 ```
 
 
-:::: {.fragment}
-::: {style="text-align:center; font-size:40px;"}
+::: {.fragment .fade-up .center}
 What does **each row** of the above data represent?
 :::
-::::
 
-:::: {.fragment}
-::: {style="text-align:center; font-weight:bold; font-size:40px;"}
+::: {.fragment .fade-up .center}
 **One student**
 :::
-::::
 
-::: {.fragment}
-> We call this one observation an **"observational unit"**.
+:::: {.fragment .fade-up}
+::: {.callout-note}
+## We call this one observation an **"observational unit"**.
 :::
+::::
 
 ## Observational units
 
 The **observational unit** is the thing we are collecting information about.
 
-
-::: {.fragment}
+::: {.fragment .fade-up}
 In our dataset
 
 > **One row = one student**
 :::
 
-::: {.fragment}
+::: {.fragment .fade-up}
 But observational units could also be:
 
 - One **patient**
@@ -102,11 +98,16 @@ But observational units could also be:
 - One **experiment**
 :::
 
+::: {.notes}
+- Observational units are basically the **thing we are interested in**
+:::
+
 ## Variables describe observations
 
 Each **row** in our dataset represents a **student**
 
-Each **column** describes something about that student (this is called a **variable**).
+Each **column** describes something about that student
+(this is called a **variable**).
 
 <br>
 
@@ -136,57 +137,59 @@ student_data |>
 
 <br>
 
-:::: {.fragment}
-
+:::: {.fragment .fade-up}
 ::: {.callout-important}
 ## However, not all variables are treated the same
 
-Variables can be split into two categories: **categorical variables** and
-**numerical variables**.
+Variables can be split into two categories: [categorical variables]{.alert} and
+[numerical variables]{.alert}.
 :::
-
 ::::
 
-## Categorical variables
+:::{.notes}
+- Categorical variables **describe something**
+- Numerical variables **quantify something**
+:::
 
-Categorical variables tell is **which category an observation belongs to**.
+## Categorical versus numerical variables {style="font-size: 70%;"}
 
-- **Programme:** Statistics / Psychology / Biology / Computer Science
-- **Passed:** Yes / No
+::::: {.columns}
+:::: {.column}
+Categorical variables tell us **which group an observation belongs to**.
 
+![](assets/categorical-data.jpg)
 
-:::: {.fragment}
-::: {.callout-tip icon="false"}
+::: {.callout-tip}
 ## Useful way to remember
 
 Ask yourself, *"which group does this observation belong to"*?
 :::
 ::::
 
-## Numerical variables
+:::: {.column}
 
-Numerical variables represent **quantities**.
+:::: {.fragment .fade-left}
+Numerical variables represent **quantities** and provide us with a
+**quantitative observation**.
 
-- **Age:** 18, 19, 20, 21...
-- **Hours of study:** 2.5, 5.5, 8.0...
-- **Grade:** 62, 71, 73, 90...
+![](assets/numerical-data.png)
 
-
-:::: {.fragment}
-::: {.callout-tip icon="false"}
+::: {.callout-tip}
 ## Useful way to remember
 
 Ask yourself, *"how many or much much"*?
 :::
 ::::
 
+::::
+:::::
+
 ## Exercise: Categorical or numerical
 
-::: {.columns}
+::::: {.columns}
+:::: {.column}
 
-::: {.column}
-
-Classify each variable:
+**Classify each variable**:
 
 1. Programme
 2. Age
@@ -196,14 +199,13 @@ Classify each variable:
 6. Grade
 7. Assignments completed
 
-:::
+::::
 
-::: {.column}
+:::: {.column}
 
+**Variable classification**:
 
-::: {.fragment}
-Variable classification:
-
+::: {.incremental}
 1. Categorical
 2. Numerical
 3. Categorical
@@ -211,11 +213,10 @@ Variable classification:
 5. Categorical
 6. Numerical
 7. Numerical
-
 :::
 
-:::
-:::
+::::
+:::::
 
 ## Categorical data
 
@@ -223,8 +224,7 @@ Variable classification:
 
 Some categorical variables are **nominal**, while others are **ordinal**
 
-
-::: {.fragment}
+::: {.fragment .fade-up}
 **Nominal variables**
 
 Nominal variables are **purely descriptive**.
@@ -233,9 +233,7 @@ Nominal variables are **purely descriptive**.
 
 :::
 
-
-::: {.fragment}
-
+::: {.fragment .fade-up}
 **Ordinal variables**
 
 Ordinal variables can be put into a **meaningful order**.
@@ -244,15 +242,13 @@ Ordinal variables can be put into a **meaningful order**.
 
 :::
 
-
-
 ## Numerical data
 
 ### A further breakdown
 
 Some numerical variables are **discrete**, while others are **continuous**.
 
-::: {.fragment}
+::: {.fragment .fade-up}
 **Discrete variables**
 
 These are countable values with **fixed values**
@@ -263,7 +259,7 @@ $$
 
 :::
 
-::: {.fragment}
+::: {.fragment .fade-up}
 **Continuous variables**
 
 These are variables with **no fixed interval**
@@ -280,7 +276,7 @@ $$
 
 ::: {.column}
 
-Classify each variable:
+**Classify each variable:**
 
 1. Programme
 2. Age
@@ -294,10 +290,9 @@ Classify each variable:
 
 ::: {.column}
 
+**Variable classification:**
 
-::: {.fragment}
-Variable classification:
-
+::: {.incremental}
 1. Categorical - **Nominal**
 2. Numerical - [Continuous]{.alert}
 3. Categorical - **Ordinal**
@@ -305,7 +300,6 @@ Variable classification:
 5. Categorical - [Binary]{.alert}
 6. Numerical - **Continuous**
 7. Numerical - **Discrete**
-
 :::
 
 :::
@@ -402,6 +396,10 @@ barplot(module_table)
 table(student_data$programme) |> barplot()
 ```
 
+::: {.notes}
+- Sometimes, tables are boring and we'd rather represent our data using a graph
+:::
+
 ## Representing numerical variables
 
 Let's consider the frequency of individual grades each student got
@@ -428,6 +426,10 @@ There are **84 individual unique grades** in this dataset.
 table(student_data$grade) |> barplot()
 ```
 
+::: {.notes}
+- Wow, this looks horrible!!
+:::
+
 ## Representing numerical variables
 
 ### Histograms
@@ -440,6 +442,10 @@ hist(student_data$grade)
 #| label: numerical-histogram
 hist(student_data$grade)
 ```
+
+::: {.notes}
+- Histograms collapse the values into groups (we call these bins)
+:::
 
 ## Representing numerical variables
 
@@ -457,6 +463,10 @@ From the above 10 grades we can see that
 - 20% are equal to or below 60
 - 50% are equal to or below 75
 - 100% are equal to or below 100
+
+::: {.notes}
+- ECDFs tell us the proportion of values within a certain interval
+:::
 
 ## Representing numerical variables
 
@@ -482,13 +492,23 @@ plot.ecdf(student_data$grade)
 plot.ecdf(student_data$grade)
 ```
 
-## Wrapping up
+## Wrapping up {style="font-size: 85%;"}
 
 - **Variables describe observations** in data.
 - Variables can be either **categorical** or **numerical**.
 - Categorical variables can be either **nominal** or **ordinal**.
 - Numerical variables can be either **discrete** or **continuous**.
 - Categorical and numerical variables are **represented in different ways**.
+
+:::: {.columns}
+::: {.column}
+![](assets/categorical-data.jpg)
+:::
+
+::: {.column}
+![](assets/numerical-data.png)
+:::
+::::
 
 ## Further reading
 
