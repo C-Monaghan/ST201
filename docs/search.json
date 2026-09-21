@@ -1,58 +1,89 @@
 [
   {
-    "objectID": "index.html",
-    "href": "index.html",
-    "title": "\n            Data Analysis\n        ",
-    "section": "",
-    "text": "Learning the fundamental principles of data and data  analysis using R\n        \n        \n            ST201 - Data analysis  Department of Mathematics and Statistics  Maynooth University\n        \n    \n    \n      \n        \n        \n        \n      \n    \n\n\n\n\n\n\nInstructor\n\n Cormac Monaghan\n cormac.monaghan@mu.ie\n Room 133 Logic House\n Bluesky\n\n\n\nCourse details\n\n Tuesday & Thursday\n September - December 2026\n Tuesdays 3pm & Thursdays 12pm\n Physics Hall\n\n\n\nContacting me\nE-mail is the best way to get in contact with me. I usually try to respond to all e-mails within 24 hours (really), but also remember that life can be busy and chaotic for everyone (including me!), so if I don’t respond right away, don’t worry!"
-  },
-  {
-    "objectID": "content/content_00.html",
-    "href": "content/content_00.html",
+    "objectID": "overview/index.html",
+    "href": "overview/index.html",
     "title": "Welcome to ST201",
     "section": "",
     "text": "Welcome to second year and welcome to ST201!\nWe will be covering lots of things data related. This will range from the different types of data, how to summarise and visualise data, perform hypothesis tests, and interpret simple linear regression models\n\n\nOn successful completion of the module, you should be able to\n\nCalculate probabilities in R.\nAnalyse one and two samples using standard parametric methods.\nDisplay data using graphical methods.\nFit, interpret and predict from simple linear regression models.\n\n\n\n\nThis module is 100% continuous assessment which is broken down into three parts\n\n4 assignments in the form of a Moodle quiz (worth 15%)\n1 mid-term exam, which will be held on November 10th @3pm (worth 10%)\n1 final exam, which will be held on January 7th @10am (worth 75%)\n\n\n\n\n\n\n\nImportantDetails for Erasmus students\n\n\n\nIf you are an Erasmus student here for Semester 1 only (September - December), you will not be here for the final exam. With that in mind, your assignments and mid-term will be worth more marks.\nIf you are here for the full academic year (semester 1 AND semester 2), then your grades will follow the same breakdown as listed above.\n\n\n\n\n\n\n\n\nTime\nLocation\nClass Details\n\n\n\n\nTuesday (3pm - 4pm)\nPhysics Hall\nStandard format (slides)\n\n\nThursday (12pm - 1pm)\nPhysics Hall\nPractical class (R code)\n\n\n\n\n\n\n\nThere will be 4 tutorials for this module, one every two weeks.\nThese tutorials will start the week of the 12th October (week 4).\nA sign up sheet will be available for Moodle to pick a time slot. To allow adequate time for the department to organise everything, please ensure you fill out this sheet before 30th September"
   },
   {
-    "objectID": "content/content_00.html#module-overview",
-    "href": "content/content_00.html#module-overview",
+    "objectID": "overview/index.html#module-overview",
+    "href": "overview/index.html#module-overview",
     "title": "Welcome to ST201",
     "section": "",
     "text": "Welcome to second year and welcome to ST201!\nWe will be covering lots of things data related. This will range from the different types of data, how to summarise and visualise data, perform hypothesis tests, and interpret simple linear regression models\n\n\nOn successful completion of the module, you should be able to\n\nCalculate probabilities in R.\nAnalyse one and two samples using standard parametric methods.\nDisplay data using graphical methods.\nFit, interpret and predict from simple linear regression models.\n\n\n\n\nThis module is 100% continuous assessment which is broken down into three parts\n\n4 assignments in the form of a Moodle quiz (worth 15%)\n1 mid-term exam, which will be held on November 10th @3pm (worth 10%)\n1 final exam, which will be held on January 7th @10am (worth 75%)\n\n\n\n\n\n\n\nImportantDetails for Erasmus students\n\n\n\nIf you are an Erasmus student here for Semester 1 only (September - December), you will not be here for the final exam. With that in mind, your assignments and mid-term will be worth more marks.\nIf you are here for the full academic year (semester 1 AND semester 2), then your grades will follow the same breakdown as listed above.\n\n\n\n\n\n\n\n\nTime\nLocation\nClass Details\n\n\n\n\nTuesday (3pm - 4pm)\nPhysics Hall\nStandard format (slides)\n\n\nThursday (12pm - 1pm)\nPhysics Hall\nPractical class (R code)\n\n\n\n\n\n\n\nThere will be 4 tutorials for this module, one every two weeks.\nThese tutorials will start the week of the 12th October (week 4).\nA sign up sheet will be available for Moodle to pick a time slot. To allow adequate time for the department to organise everything, please ensure you fill out this sheet before 30th September"
   },
   {
-    "objectID": "content/content_00.html#slides",
-    "href": "content/content_00.html#slides",
+    "objectID": "overview/index.html#slides",
+    "href": "overview/index.html#slides",
     "title": "Welcome to ST201",
     "section": "Slides",
     "text": "Slides\nAll the slides for this module are created using Quarto. In fact, this entire module website is built using Quarto. Personally, I love Quarto. I do just about everything with it! If you every get a chance, do check it out (ok … mini rant over!)\n\nThere are many little hidden things you can do with these slides.\nYou can click in the slides and navigate through them with ← and →.\nIf you type ? (or shift + /) while viewing the slides you can see a list of slide-specific commands (such as like f for fullscreen mode or additionally s for presenter mode if you want to see my notes).\nFinally, if you want to make a PDF of these slides you can press e, followed by ctrl + p.\n\n\n\n\n\n\nCautionSlides will be available on Tuesday 22nd September"
+  },
+  {
+    "objectID": "content/index.html",
+    "href": "content/index.html",
+    "title": "Lecture overview",
+    "section": "",
+    "text": "Each class has a set of required readings that should be completed in your own time. For the most part, these readings will mirror what we have covered in the lectures. However, there will be times that I find a cool resource that I believe may be helpful for some of you.\nAll the slides for this module are special HTML files made using both Quarto and Clean Revealjs theme by Grant McDermott. Personally, this is my favourite theme to use for presentations, although I have made a couple of minor tweaks to it myself",
+    "crumbs": [
+      "Overview",
+      "Lecture overview"
+    ]
   },
   {
     "objectID": "content/content_01.html",
     "href": "content/content_01.html",
     "title": "The Foundations of Data",
     "section": "",
-    "text": "Understand the structure of data\nUnderstand the different types of data\nKnow how to visualise different types of data"
+    "text": "Understand the structure of data\nUnderstand the different types of data\nKnow how to visualise different types of data",
+    "crumbs": [
+      "Overview",
+      "Week 1",
+      "The Foundations of Data"
+    ]
   },
   {
     "objectID": "content/content_01.html#learning-objectives",
     "href": "content/content_01.html#learning-objectives",
     "title": "The Foundations of Data",
     "section": "",
-    "text": "Understand the structure of data\nUnderstand the different types of data\nKnow how to visualise different types of data"
+    "text": "Understand the structure of data\nUnderstand the different types of data\nKnow how to visualise different types of data",
+    "crumbs": [
+      "Overview",
+      "Week 1",
+      "The Foundations of Data"
+    ]
   },
   {
     "objectID": "content/content_01.html#readings",
     "href": "content/content_01.html#readings",
     "title": "The Foundations of Data",
     "section": "Readings",
-    "text": "Readings\n\nSuggested readings\n\n Chapter 1 and Chapter 2 of Introduction to Statistics and Data Analysis\n Chapters 1 and 2 of OpenIntro Statistics. This is a slightly more advanced reading, but I would highly recommend!"
+    "text": "Readings\n\nSuggested readings\n\n Chapter 1 and Chapter 2 of Introduction to Statistics and Data Analysis\n Chapters 1 and 2 of OpenIntro Statistics. This is a slightly more advanced reading, but I would highly recommend!",
+    "crumbs": [
+      "Overview",
+      "Week 1",
+      "The Foundations of Data"
+    ]
   },
   {
     "objectID": "content/content_01.html#slides",
     "href": "content/content_01.html#slides",
     "title": "The Foundations of Data",
     "section": "Slides",
-    "text": "Slides\n\n\n\n\n\n\nCautionAvailable on Tuesday 22nd September"
+    "text": "Slides\n\n\n\n\n\n\nCautionAvailable on Tuesday 22nd September",
+    "crumbs": [
+      "Overview",
+      "Week 1",
+      "The Foundations of Data"
+    ]
+  },
+  {
+    "objectID": "index.html",
+    "href": "index.html",
+    "title": "\n            Data Analysis\n        ",
+    "section": "",
+    "text": "Learning the fundamental principles of data and data  analysis using R\n        \n        \n            ST201 - Data analysis  Department of Mathematics and Statistics  Maynooth University\n        \n    \n    \n      \n        \n        \n        \n      \n    \n\n\n\n\n\n\nInstructor\n\n Cormac Monaghan\n cormac.monaghan@mu.ie\n Room 133 Logic House\n Bluesky\n\n\n\nCourse details\n\n Tuesday & Thursday\n September - December 2026\n Tuesdays 3pm & Thursdays 12pm\n Physics Hall\n\n\n\nContacting me\nE-mail is the best way to get in contact with me. I usually try to respond to all e-mails within 24 hours (really), but also remember that life can be busy and chaotic for everyone (including me!), so if I don’t respond right away, don’t worry!"
   }
 ]

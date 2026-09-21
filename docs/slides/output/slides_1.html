@@ -288,6 +288,7 @@ Cormac Monaghan
 </section>
 <section id="what-can-we-learn-from-data" class="slide level2">
 <h2>What can we learn from data</h2>
+<div class="fragment fade-up">
 <p>Imagine we want to understand <strong>student performance</strong>.</p>
 <p>We collect information about students’:</p>
 <ul>
@@ -297,12 +298,14 @@ Cormac Monaghan
 <li>Satisfaction</li>
 <li>Grades</li>
 </ul>
-<div class="fragment">
+</div>
+<div class="fragment fade-up center">
 <p><strong>We need to understand what we have collected.</strong></p>
 </div>
 </section>
-<section id="meet-the-data" class="slide level2">
-<h2>Meet the data</h2>
+<section id="student-performance-data" class="slide level2" style="font-size: 90%;">
+<h2>Student performance data</h2>
+<p><br></p>
 <div class="cell" data-layout-align="center">
 <div id="tbl-1" class="cell quarto-float quarto-figure quarto-figure-center" data-layout-align="center">
 <figure class="quarto-float quarto-float-tbl">
@@ -317,22 +320,22 @@ Table&nbsp;1: Student performance data
 
     <script>
       // Create table-specific functions using external factory
-      const tableFns_yj38fzqh9anq6qo3wh6t = TinyTable.createTableFunctions("tinytable_yj38fzqh9anq6qo3wh6t");
+      const tableFns_zfz2d6mic6ven0ec5ckr = TinyTable.createTableFunctions("tinytable_zfz2d6mic6ven0ec5ckr");
       // tinytable span after
       window.addEventListener('load', function () {
           var cellsToStyle = [
             // tinytable style arrays after
-          { positions: [ { i: '5', j: 2 }, { i: '5', j: 3 }, { i: '5', j: 4 }, { i: '5', j: 5 }, { i: '5', j: 6 }, { i: '5', j: 7 } ], css_id: 'tinytable_css_312k5dyrdpxqmy93sbna',}, 
-          { positions: [ { i: '1', j: 2 }, { i: '2', j: 2 }, { i: '3', j: 2 }, { i: '4', j: 2 }, { i: '1', j: 3 }, { i: '2', j: 3 }, { i: '3', j: 3 }, { i: '4', j: 3 }, { i: '1', j: 4 }, { i: '2', j: 4 }, { i: '3', j: 4 }, { i: '4', j: 4 }, { i: '1', j: 5 }, { i: '2', j: 5 }, { i: '3', j: 5 }, { i: '4', j: 5 }, { i: '1', j: 6 }, { i: '2', j: 6 }, { i: '3', j: 6 }, { i: '4', j: 6 }, { i: '1', j: 7 }, { i: '2', j: 7 }, { i: '3', j: 7 }, { i: '4', j: 7 } ], css_id: 'tinytable_css_6vog87a48ubeiol3vqem',}, 
-          { positions: [ { i: '0', j: 2 }, { i: '0', j: 3 }, { i: '0', j: 4 }, { i: '0', j: 5 }, { i: '0', j: 6 }, { i: '0', j: 7 } ], css_id: 'tinytable_css_10kdqn7ii8jutcj7pk3x',}, 
-          { positions: [ { i: '5', j: 1 }, { i: '5', j: 8 } ], css_id: 'tinytable_css_zwz4ta8ibip6evkpgoyl',}, 
-          { positions: [ { i: '0', j: 1 }, { i: '0', j: 8 } ], css_id: 'tinytable_css_8pk9rayd5xw6q12uzj8i',}, 
+          { positions: [ { i: '5', j: 2 }, { i: '5', j: 3 }, { i: '5', j: 4 }, { i: '5', j: 5 }, { i: '5', j: 6 }, { i: '5', j: 7 } ], css_id: 'tinytable_css_62f54iiw1g1fgz1rhxb9',}, 
+          { positions: [ { i: '1', j: 2 }, { i: '2', j: 2 }, { i: '3', j: 2 }, { i: '4', j: 2 }, { i: '1', j: 3 }, { i: '2', j: 3 }, { i: '3', j: 3 }, { i: '4', j: 3 }, { i: '1', j: 4 }, { i: '2', j: 4 }, { i: '3', j: 4 }, { i: '4', j: 4 }, { i: '1', j: 5 }, { i: '2', j: 5 }, { i: '3', j: 5 }, { i: '4', j: 5 }, { i: '1', j: 6 }, { i: '2', j: 6 }, { i: '3', j: 6 }, { i: '4', j: 6 }, { i: '1', j: 7 }, { i: '2', j: 7 }, { i: '3', j: 7 }, { i: '4', j: 7 } ], css_id: 'tinytable_css_veqs26fpwe8k6znmb7cs',}, 
+          { positions: [ { i: '0', j: 2 }, { i: '0', j: 3 }, { i: '0', j: 4 }, { i: '0', j: 5 }, { i: '0', j: 6 }, { i: '0', j: 7 } ], css_id: 'tinytable_css_s92qmn606gww8z00s4vz',}, 
+          { positions: [ { i: '5', j: 1 }, { i: '5', j: 8 } ], css_id: 'tinytable_css_towhb32wojz4js5tsb8v',}, 
+          { positions: [ { i: '0', j: 1 }, { i: '0', j: 8 } ], css_id: 'tinytable_css_ovwb8w2qyux42d7toeqh',}, 
           ];
 
           // Loop over the arrays to style the cells
           cellsToStyle.forEach(function (group) {
               group.positions.forEach(function (cell) {
-                  tableFns_yj38fzqh9anq6qo3wh6t.styleCell(cell.i, cell.j, group.css_id);
+                  tableFns_zfz2d6mic6ven0ec5ckr.styleCell(cell.i, cell.j, group.css_id);
               });
           });
       });
@@ -341,14 +344,14 @@ Table&nbsp;1: Student performance data
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/vincentarelbundock/tinytable@main/inst/tinytable.css">
     <style>
     /* tinytable css entries after */
-    #tinytable_yj38fzqh9anq6qo3wh6t td.tinytable_css_312k5dyrdpxqmy93sbna, #tinytable_yj38fzqh9anq6qo3wh6t th.tinytable_css_312k5dyrdpxqmy93sbna {  position: relative; --border-bottom: 1; --border-left: 0; --border-right: 0; --border-top: 0; --line-color-bottom: var(--tt-line-color); --line-color-left: var(--tt-line-color); --line-color-right: var(--tt-line-color); --line-color-top: var(--tt-line-color); --line-width-bottom: 0.08em; --line-width-left: 0.1em; --line-width-right: 0.1em; --line-width-top: 0.1em; --trim-bottom-left: 0%; --trim-bottom-right: 0%; --trim-left-bottom: 0%; --trim-left-top: 0%; --trim-right-bottom: 0%; --trim-right-top: 0%; --trim-top-left: 0%; --trim-top-right: 0%; ; text-align: center }
-    #tinytable_yj38fzqh9anq6qo3wh6t td.tinytable_css_6vog87a48ubeiol3vqem, #tinytable_yj38fzqh9anq6qo3wh6t th.tinytable_css_6vog87a48ubeiol3vqem { text-align: center }
-    #tinytable_yj38fzqh9anq6qo3wh6t td.tinytable_css_10kdqn7ii8jutcj7pk3x, #tinytable_yj38fzqh9anq6qo3wh6t th.tinytable_css_10kdqn7ii8jutcj7pk3x {  position: relative; --border-bottom: 1; --border-left: 0; --border-right: 0; --border-top: 1; --line-color-bottom: var(--tt-line-color); --line-color-left: var(--tt-line-color); --line-color-right: var(--tt-line-color); --line-color-top: var(--tt-line-color); --line-width-bottom: 0.05em; --line-width-left: 0.1em; --line-width-right: 0.1em; --line-width-top: 0.08em; --trim-bottom-left: 0%; --trim-bottom-right: 0%; --trim-left-bottom: 0%; --trim-left-top: 0%; --trim-right-bottom: 0%; --trim-right-top: 0%; --trim-top-left: 0%; --trim-top-right: 0%; ; font-weight: bold; text-align: center }
-    #tinytable_yj38fzqh9anq6qo3wh6t td.tinytable_css_zwz4ta8ibip6evkpgoyl, #tinytable_yj38fzqh9anq6qo3wh6t th.tinytable_css_zwz4ta8ibip6evkpgoyl {  position: relative; --border-bottom: 1; --border-left: 0; --border-right: 0; --border-top: 0; --line-color-bottom: var(--tt-line-color); --line-color-left: var(--tt-line-color); --line-color-right: var(--tt-line-color); --line-color-top: var(--tt-line-color); --line-width-bottom: 0.08em; --line-width-left: 0.1em; --line-width-right: 0.1em; --line-width-top: 0.1em; --trim-bottom-left: 0%; --trim-bottom-right: 0%; --trim-left-bottom: 0%; --trim-left-top: 0%; --trim-right-bottom: 0%; --trim-right-top: 0%; --trim-top-left: 0%; --trim-top-right: 0%;  }
-    #tinytable_yj38fzqh9anq6qo3wh6t td.tinytable_css_8pk9rayd5xw6q12uzj8i, #tinytable_yj38fzqh9anq6qo3wh6t th.tinytable_css_8pk9rayd5xw6q12uzj8i {  position: relative; --border-bottom: 1; --border-left: 0; --border-right: 0; --border-top: 1; --line-color-bottom: var(--tt-line-color); --line-color-left: var(--tt-line-color); --line-color-right: var(--tt-line-color); --line-color-top: var(--tt-line-color); --line-width-bottom: 0.05em; --line-width-left: 0.1em; --line-width-right: 0.1em; --line-width-top: 0.08em; --trim-bottom-left: 0%; --trim-bottom-right: 0%; --trim-left-bottom: 0%; --trim-left-top: 0%; --trim-right-bottom: 0%; --trim-right-top: 0%; --trim-top-left: 0%; --trim-top-right: 0%; ; font-weight: bold }
+    #tinytable_zfz2d6mic6ven0ec5ckr td.tinytable_css_62f54iiw1g1fgz1rhxb9, #tinytable_zfz2d6mic6ven0ec5ckr th.tinytable_css_62f54iiw1g1fgz1rhxb9 {  position: relative; --border-bottom: 1; --border-left: 0; --border-right: 0; --border-top: 0; --line-color-bottom: var(--tt-line-color); --line-color-left: var(--tt-line-color); --line-color-right: var(--tt-line-color); --line-color-top: var(--tt-line-color); --line-width-bottom: 0.08em; --line-width-left: 0.1em; --line-width-right: 0.1em; --line-width-top: 0.1em; --trim-bottom-left: 0%; --trim-bottom-right: 0%; --trim-left-bottom: 0%; --trim-left-top: 0%; --trim-right-bottom: 0%; --trim-right-top: 0%; --trim-top-left: 0%; --trim-top-right: 0%; ; text-align: center }
+    #tinytable_zfz2d6mic6ven0ec5ckr td.tinytable_css_veqs26fpwe8k6znmb7cs, #tinytable_zfz2d6mic6ven0ec5ckr th.tinytable_css_veqs26fpwe8k6znmb7cs { text-align: center }
+    #tinytable_zfz2d6mic6ven0ec5ckr td.tinytable_css_s92qmn606gww8z00s4vz, #tinytable_zfz2d6mic6ven0ec5ckr th.tinytable_css_s92qmn606gww8z00s4vz {  position: relative; --border-bottom: 1; --border-left: 0; --border-right: 0; --border-top: 1; --line-color-bottom: var(--tt-line-color); --line-color-left: var(--tt-line-color); --line-color-right: var(--tt-line-color); --line-color-top: var(--tt-line-color); --line-width-bottom: 0.05em; --line-width-left: 0.1em; --line-width-right: 0.1em; --line-width-top: 0.08em; --trim-bottom-left: 0%; --trim-bottom-right: 0%; --trim-left-bottom: 0%; --trim-left-top: 0%; --trim-right-bottom: 0%; --trim-right-top: 0%; --trim-top-left: 0%; --trim-top-right: 0%; ; font-weight: bold; text-align: center }
+    #tinytable_zfz2d6mic6ven0ec5ckr td.tinytable_css_towhb32wojz4js5tsb8v, #tinytable_zfz2d6mic6ven0ec5ckr th.tinytable_css_towhb32wojz4js5tsb8v {  position: relative; --border-bottom: 1; --border-left: 0; --border-right: 0; --border-top: 0; --line-color-bottom: var(--tt-line-color); --line-color-left: var(--tt-line-color); --line-color-right: var(--tt-line-color); --line-color-top: var(--tt-line-color); --line-width-bottom: 0.08em; --line-width-left: 0.1em; --line-width-right: 0.1em; --line-width-top: 0.1em; --trim-bottom-left: 0%; --trim-bottom-right: 0%; --trim-left-bottom: 0%; --trim-left-top: 0%; --trim-right-bottom: 0%; --trim-right-top: 0%; --trim-top-left: 0%; --trim-top-right: 0%;  }
+    #tinytable_zfz2d6mic6ven0ec5ckr td.tinytable_css_ovwb8w2qyux42d7toeqh, #tinytable_zfz2d6mic6ven0ec5ckr th.tinytable_css_ovwb8w2qyux42d7toeqh {  position: relative; --border-bottom: 1; --border-left: 0; --border-right: 0; --border-top: 1; --line-color-bottom: var(--tt-line-color); --line-color-left: var(--tt-line-color); --line-color-right: var(--tt-line-color); --line-color-top: var(--tt-line-color); --line-width-bottom: 0.05em; --line-width-left: 0.1em; --line-width-right: 0.1em; --line-width-top: 0.08em; --trim-bottom-left: 0%; --trim-bottom-right: 0%; --trim-left-bottom: 0%; --trim-left-top: 0%; --trim-right-bottom: 0%; --trim-right-top: 0%; --trim-top-left: 0%; --trim-top-right: 0%; ; font-weight: bold }
     </style>
     <div class="container">
-      <table class="tinytable" id="tinytable_yj38fzqh9anq6qo3wh6t" style="width: auto; margin-left: auto; margin-right: auto;" data-quarto-disable-processing="true">
+      <table class="tinytable" id="tinytable_zfz2d6mic6ven0ec5ckr" style="width: auto; margin-left: auto; margin-right: auto;" data-quarto-disable-processing="true">
         
         <thead>
               <tr>
@@ -423,32 +426,38 @@ Table&nbsp;1: Student performance data
 </figure>
 </div>
 </div>
-<div class="fragment">
-<div style="text-align:center; font-size:40px;">
+<div class="fragment fade-up center">
 <p>What does <strong>each row</strong> of the above data represent?</p>
 </div>
-</div>
-<div class="fragment">
-<div style="text-align:center; font-weight:bold; font-size:40px;">
+<div class="fragment fade-up center">
 <p><strong>One student</strong></p>
 </div>
+<div class="fragment fade-up">
+<div class="callout callout-note callout-titled callout-style-default">
+<div class="callout-body">
+<div class="callout-title">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
 </div>
-<div class="fragment">
-<blockquote>
-<p>We call this one observation an <strong>“observational unit”</strong>.</p>
-</blockquote>
+<p><strong>We call this one observation an <strong>“observational unit”</strong>.</strong></p>
+</div>
+<div class="callout-content">
+
+</div>
+</div>
+</div>
 </div>
 </section>
 <section id="observational-units" class="slide level2">
 <h2>Observational units</h2>
 <p>The <strong>observational unit</strong> is the thing we are collecting information about.</p>
-<div class="fragment">
+<div class="fragment fade-up">
 <p>In our dataset</p>
 <blockquote>
 <p><strong>One row = one student</strong></p>
 </blockquote>
 </div>
-<div class="fragment">
+<div class="fragment fade-up">
 <p>But observational units could also be:</p>
 <ul>
 <li>One <strong>patient</strong></li>
@@ -456,6 +465,21 @@ Table&nbsp;1: Student performance data
 <li>One <strong>experiment</strong></li>
 </ul>
 </div>
+<aside class="notes">
+<ul>
+<li>Observational units are basically the <strong>thing we are interested in</strong></li>
+</ul>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
 </section>
 <section id="variables-describe-observations" class="slide level2">
 <h2>Variables describe observations</h2>
@@ -476,21 +500,21 @@ Table&nbsp;2: A single students performance
 
     <script>
       // Create table-specific functions using external factory
-      const tableFns_82975wmqel4wotl8a3kd = TinyTable.createTableFunctions("tinytable_82975wmqel4wotl8a3kd");
+      const tableFns_bmqb6bzrbhzm2r8qcw7s = TinyTable.createTableFunctions("tinytable_bmqb6bzrbhzm2r8qcw7s");
       // tinytable span after
       window.addEventListener('load', function () {
           var cellsToStyle = [
             // tinytable style arrays after
-          { positions: [ { i: '1', j: 2 }, { i: '1', j: 3 }, { i: '1', j: 4 }, { i: '1', j: 5 }, { i: '1', j: 6 }, { i: '1', j: 7 } ], css_id: 'tinytable_css_nogrgjzirw0591l3eisl',}, 
-          { positions: [ { i: '0', j: 2 }, { i: '0', j: 3 }, { i: '0', j: 4 }, { i: '0', j: 5 }, { i: '0', j: 6 }, { i: '0', j: 7 } ], css_id: 'tinytable_css_zac9kfd1p7p46dic85pi',}, 
-          { positions: [ { i: '1', j: 1 }, { i: '1', j: 8 } ], css_id: 'tinytable_css_gr19lzpdgwoegig1bjo0',}, 
-          { positions: [ { i: '0', j: 1 }, { i: '0', j: 8 } ], css_id: 'tinytable_css_hjmur5fnugu6vhbt32tz',}, 
+          { positions: [ { i: '1', j: 2 }, { i: '1', j: 3 }, { i: '1', j: 4 }, { i: '1', j: 5 }, { i: '1', j: 6 }, { i: '1', j: 7 } ], css_id: 'tinytable_css_ohg67mlhdvzs9ye4uopw',}, 
+          { positions: [ { i: '0', j: 2 }, { i: '0', j: 3 }, { i: '0', j: 4 }, { i: '0', j: 5 }, { i: '0', j: 6 }, { i: '0', j: 7 } ], css_id: 'tinytable_css_wxbc3fe3dp779k5d2tbh',}, 
+          { positions: [ { i: '1', j: 1 }, { i: '1', j: 8 } ], css_id: 'tinytable_css_tpktk7odxrqyv4gn6j5n',}, 
+          { positions: [ { i: '0', j: 1 }, { i: '0', j: 8 } ], css_id: 'tinytable_css_zcxmcv1j1gr3w9qdmk34',}, 
           ];
 
           // Loop over the arrays to style the cells
           cellsToStyle.forEach(function (group) {
               group.positions.forEach(function (cell) {
-                  tableFns_82975wmqel4wotl8a3kd.styleCell(cell.i, cell.j, group.css_id);
+                  tableFns_bmqb6bzrbhzm2r8qcw7s.styleCell(cell.i, cell.j, group.css_id);
               });
           });
       });
@@ -499,13 +523,13 @@ Table&nbsp;2: A single students performance
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/vincentarelbundock/tinytable@main/inst/tinytable.css">
     <style>
     /* tinytable css entries after */
-    #tinytable_82975wmqel4wotl8a3kd td.tinytable_css_nogrgjzirw0591l3eisl, #tinytable_82975wmqel4wotl8a3kd th.tinytable_css_nogrgjzirw0591l3eisl {  position: relative; --border-bottom: 1; --border-left: 0; --border-right: 0; --border-top: 0; --line-color-bottom: var(--tt-line-color); --line-color-left: var(--tt-line-color); --line-color-right: var(--tt-line-color); --line-color-top: var(--tt-line-color); --line-width-bottom: 0.08em; --line-width-left: 0.1em; --line-width-right: 0.1em; --line-width-top: 0.1em; --trim-bottom-left: 0%; --trim-bottom-right: 0%; --trim-left-bottom: 0%; --trim-left-top: 0%; --trim-right-bottom: 0%; --trim-right-top: 0%; --trim-top-left: 0%; --trim-top-right: 0%; ; text-align: center }
-    #tinytable_82975wmqel4wotl8a3kd td.tinytable_css_zac9kfd1p7p46dic85pi, #tinytable_82975wmqel4wotl8a3kd th.tinytable_css_zac9kfd1p7p46dic85pi {  position: relative; --border-bottom: 1; --border-left: 0; --border-right: 0; --border-top: 1; --line-color-bottom: var(--tt-line-color); --line-color-left: var(--tt-line-color); --line-color-right: var(--tt-line-color); --line-color-top: var(--tt-line-color); --line-width-bottom: 0.05em; --line-width-left: 0.1em; --line-width-right: 0.1em; --line-width-top: 0.08em; --trim-bottom-left: 0%; --trim-bottom-right: 0%; --trim-left-bottom: 0%; --trim-left-top: 0%; --trim-right-bottom: 0%; --trim-right-top: 0%; --trim-top-left: 0%; --trim-top-right: 0%; ; font-weight: bold; text-align: center }
-    #tinytable_82975wmqel4wotl8a3kd td.tinytable_css_gr19lzpdgwoegig1bjo0, #tinytable_82975wmqel4wotl8a3kd th.tinytable_css_gr19lzpdgwoegig1bjo0 {  position: relative; --border-bottom: 1; --border-left: 0; --border-right: 0; --border-top: 0; --line-color-bottom: var(--tt-line-color); --line-color-left: var(--tt-line-color); --line-color-right: var(--tt-line-color); --line-color-top: var(--tt-line-color); --line-width-bottom: 0.08em; --line-width-left: 0.1em; --line-width-right: 0.1em; --line-width-top: 0.1em; --trim-bottom-left: 0%; --trim-bottom-right: 0%; --trim-left-bottom: 0%; --trim-left-top: 0%; --trim-right-bottom: 0%; --trim-right-top: 0%; --trim-top-left: 0%; --trim-top-right: 0%;  }
-    #tinytable_82975wmqel4wotl8a3kd td.tinytable_css_hjmur5fnugu6vhbt32tz, #tinytable_82975wmqel4wotl8a3kd th.tinytable_css_hjmur5fnugu6vhbt32tz {  position: relative; --border-bottom: 1; --border-left: 0; --border-right: 0; --border-top: 1; --line-color-bottom: var(--tt-line-color); --line-color-left: var(--tt-line-color); --line-color-right: var(--tt-line-color); --line-color-top: var(--tt-line-color); --line-width-bottom: 0.05em; --line-width-left: 0.1em; --line-width-right: 0.1em; --line-width-top: 0.08em; --trim-bottom-left: 0%; --trim-bottom-right: 0%; --trim-left-bottom: 0%; --trim-left-top: 0%; --trim-right-bottom: 0%; --trim-right-top: 0%; --trim-top-left: 0%; --trim-top-right: 0%; ; font-weight: bold }
+    #tinytable_bmqb6bzrbhzm2r8qcw7s td.tinytable_css_ohg67mlhdvzs9ye4uopw, #tinytable_bmqb6bzrbhzm2r8qcw7s th.tinytable_css_ohg67mlhdvzs9ye4uopw {  position: relative; --border-bottom: 1; --border-left: 0; --border-right: 0; --border-top: 0; --line-color-bottom: var(--tt-line-color); --line-color-left: var(--tt-line-color); --line-color-right: var(--tt-line-color); --line-color-top: var(--tt-line-color); --line-width-bottom: 0.08em; --line-width-left: 0.1em; --line-width-right: 0.1em; --line-width-top: 0.1em; --trim-bottom-left: 0%; --trim-bottom-right: 0%; --trim-left-bottom: 0%; --trim-left-top: 0%; --trim-right-bottom: 0%; --trim-right-top: 0%; --trim-top-left: 0%; --trim-top-right: 0%; ; text-align: center }
+    #tinytable_bmqb6bzrbhzm2r8qcw7s td.tinytable_css_wxbc3fe3dp779k5d2tbh, #tinytable_bmqb6bzrbhzm2r8qcw7s th.tinytable_css_wxbc3fe3dp779k5d2tbh {  position: relative; --border-bottom: 1; --border-left: 0; --border-right: 0; --border-top: 1; --line-color-bottom: var(--tt-line-color); --line-color-left: var(--tt-line-color); --line-color-right: var(--tt-line-color); --line-color-top: var(--tt-line-color); --line-width-bottom: 0.05em; --line-width-left: 0.1em; --line-width-right: 0.1em; --line-width-top: 0.08em; --trim-bottom-left: 0%; --trim-bottom-right: 0%; --trim-left-bottom: 0%; --trim-left-top: 0%; --trim-right-bottom: 0%; --trim-right-top: 0%; --trim-top-left: 0%; --trim-top-right: 0%; ; font-weight: bold; text-align: center }
+    #tinytable_bmqb6bzrbhzm2r8qcw7s td.tinytable_css_tpktk7odxrqyv4gn6j5n, #tinytable_bmqb6bzrbhzm2r8qcw7s th.tinytable_css_tpktk7odxrqyv4gn6j5n {  position: relative; --border-bottom: 1; --border-left: 0; --border-right: 0; --border-top: 0; --line-color-bottom: var(--tt-line-color); --line-color-left: var(--tt-line-color); --line-color-right: var(--tt-line-color); --line-color-top: var(--tt-line-color); --line-width-bottom: 0.08em; --line-width-left: 0.1em; --line-width-right: 0.1em; --line-width-top: 0.1em; --trim-bottom-left: 0%; --trim-bottom-right: 0%; --trim-left-bottom: 0%; --trim-left-top: 0%; --trim-right-bottom: 0%; --trim-right-top: 0%; --trim-top-left: 0%; --trim-top-right: 0%;  }
+    #tinytable_bmqb6bzrbhzm2r8qcw7s td.tinytable_css_zcxmcv1j1gr3w9qdmk34, #tinytable_bmqb6bzrbhzm2r8qcw7s th.tinytable_css_zcxmcv1j1gr3w9qdmk34 {  position: relative; --border-bottom: 1; --border-left: 0; --border-right: 0; --border-top: 1; --line-color-bottom: var(--tt-line-color); --line-color-left: var(--tt-line-color); --line-color-right: var(--tt-line-color); --line-color-top: var(--tt-line-color); --line-width-bottom: 0.05em; --line-width-left: 0.1em; --line-width-right: 0.1em; --line-width-top: 0.08em; --trim-bottom-left: 0%; --trim-bottom-right: 0%; --trim-left-bottom: 0%; --trim-left-top: 0%; --trim-right-bottom: 0%; --trim-right-top: 0%; --trim-top-left: 0%; --trim-top-right: 0%; ; font-weight: bold }
     </style>
     <div class="container">
-      <table class="tinytable" id="tinytable_82975wmqel4wotl8a3kd" style="width: auto; margin-left: auto; margin-right: auto;" data-quarto-disable-processing="true">
+      <table class="tinytable" id="tinytable_bmqb6bzrbhzm2r8qcw7s" style="width: auto; margin-left: auto; margin-right: auto;" data-quarto-disable-processing="true">
         
         <thead>
               <tr>
@@ -541,7 +565,7 @@ Table&nbsp;2: A single students performance
 </div>
 </div>
 <p><br></p>
-<div class="fragment">
+<div class="fragment fade-up">
 <div class="callout callout-important callout-titled callout-style-default">
 <div class="callout-body">
 <div class="callout-title">
@@ -551,23 +575,40 @@ Table&nbsp;2: A single students performance
 <p><strong>However, not all variables are treated the same</strong></p>
 </div>
 <div class="callout-content">
-<p>Variables can be split into two categories: <strong>categorical variables</strong> and <strong>numerical variables</strong>.</p>
+<p>Variables can be split into two categories: <span class="alert">categorical variables</span> and <span class="alert">numerical variables</span>.</p>
 </div>
 </div>
 </div>
 </div>
-</section>
-<section id="categorical-variables" class="slide level2">
-<h2>Categorical variables</h2>
-<p>Categorical variables tell is <strong>which category an observation belongs to</strong>.</p>
+<aside class="notes">
 <ul>
-<li><strong>Programme:</strong> Statistics / Psychology / Biology / Computer Science</li>
-<li><strong>Passed:</strong> Yes / No</li>
+<li>Categorical variables <strong>describe something</strong></li>
+<li>Numerical variables <strong>quantify something</strong></li>
 </ul>
-<div class="fragment">
-<div class="callout callout-tip no-icon callout-titled callout-style-default">
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
+</section>
+<section id="categorical-versus-numerical-variables" class="slide level2" style="font-size: 70%;">
+<h2>Categorical versus numerical variables</h2>
+<div class="columns">
+<div class="column">
+<p>Categorical variables tell us <strong>which group an observation belongs to</strong>.</p>
+<p><img data-src="assets/categorical-data.jpg"></p>
+<div class="callout callout-tip callout-titled callout-style-default">
 <div class="callout-body">
 <div class="callout-title">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
 <p><strong>Useful way to remember</strong></p>
 </div>
 <div class="callout-content">
@@ -575,20 +616,16 @@ Table&nbsp;2: A single students performance
 </div>
 </div>
 </div>
-</div>
-</section>
-<section id="numerical-variables" class="slide level2">
-<h2>Numerical variables</h2>
-<p>Numerical variables represent <strong>quantities</strong>.</p>
-<ul>
-<li><strong>Age:</strong> 18, 19, 20, 21…</li>
-<li><strong>Hours of study:</strong> 2.5, 5.5, 8.0…</li>
-<li><strong>Grade:</strong> 62, 71, 73, 90…</li>
-</ul>
-<div class="fragment">
-<div class="callout callout-tip no-icon callout-titled callout-style-default">
+</div><div class="column">
+<div class="fragment fade-left">
+<p>Numerical variables represent <strong>quantities</strong> and provide us with a <strong>quantitative observation</strong>.</p>
+<p><img data-src="assets/numerical-data.png"></p>
+<div class="callout callout-tip callout-titled callout-style-default">
 <div class="callout-body">
 <div class="callout-title">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
 <p><strong>Useful way to remember</strong></p>
 </div>
 <div class="callout-content">
@@ -597,12 +634,13 @@ Table&nbsp;2: A single students performance
 </div>
 </div>
 </div>
+</div></div>
 </section>
 <section id="exercise-categorical-or-numerical" class="slide level2">
 <h2>Exercise: Categorical or numerical</h2>
 <div class="columns">
 <div class="column">
-<p>Classify each variable:</p>
+<p><strong>Classify each variable</strong>:</p>
 <ol type="1">
 <li>Programme</li>
 <li>Age</li>
@@ -613,32 +651,30 @@ Table&nbsp;2: A single students performance
 <li>Assignments completed</li>
 </ol>
 </div><div class="column">
-<div class="fragment">
-<p>Variable classification:</p>
+<p><strong>Variable classification</strong>:</p>
 <ol type="1">
-<li>Categorical</li>
-<li>Numerical</li>
-<li>Categorical</li>
-<li>Numerical</li>
-<li>Categorical</li>
-<li>Numerical</li>
-<li>Numerical</li>
+<li class="fragment">Categorical</li>
+<li class="fragment">Numerical</li>
+<li class="fragment">Categorical</li>
+<li class="fragment">Numerical</li>
+<li class="fragment">Categorical</li>
+<li class="fragment">Numerical</li>
+<li class="fragment">Numerical</li>
 </ol>
-</div>
 </div></div>
 </section>
 <section id="categorical-data" class="slide level2">
 <h2>Categorical data</h2>
 <h3 id="a-further-breakdown">A further breakdown</h3>
 <p>Some categorical variables are <strong>nominal</strong>, while others are <strong>ordinal</strong></p>
-<div class="fragment">
+<div class="fragment fade-up">
 <p><strong>Nominal variables</strong></p>
 <p>Nominal variables are <strong>purely descriptive</strong>.</p>
 <ul>
 <li><strong>Programme:</strong> Statistics / Psychology / Biology / Computer Science</li>
 </ul>
 </div>
-<div class="fragment">
+<div class="fragment fade-up">
 <p><strong>Ordinal variables</strong></p>
 <p>Ordinal variables can be put into a <strong>meaningful order</strong>.</p>
 <ul>
@@ -650,14 +686,14 @@ Table&nbsp;2: A single students performance
 <h2>Numerical data</h2>
 <h3 id="a-further-breakdown-1">A further breakdown</h3>
 <p>Some numerical variables are <strong>discrete</strong>, while others are <strong>continuous</strong>.</p>
-<div class="fragment">
+<div class="fragment fade-up">
 <p><strong>Discrete variables</strong></p>
 <p>These are countable values with <strong>fixed values</strong></p>
 <p><span class="math display">\[
 0, 1, 2, 3, 4, 5, \dots, 10
 \]</span></p>
 </div>
-<div class="fragment">
+<div class="fragment fade-up">
 <p><strong>Continuous variables</strong></p>
 <p>These are variables with <strong>no fixed interval</strong></p>
 <p><span class="math display">\[
@@ -669,7 +705,7 @@ Table&nbsp;2: A single students performance
 <h2>Exercise: Categorical or numerical</h2>
 <div class="columns">
 <div class="column">
-<p>Classify each variable:</p>
+<p><strong>Classify each variable:</strong></p>
 <ol type="1">
 <li>Programme</li>
 <li>Age</li>
@@ -680,18 +716,16 @@ Table&nbsp;2: A single students performance
 <li>Assignments completed</li>
 </ol>
 </div><div class="column">
-<div class="fragment">
-<p>Variable classification:</p>
+<p><strong>Variable classification:</strong></p>
 <ol type="1">
-<li>Categorical - <strong>Nominal</strong></li>
-<li>Numerical - <span class="alert">Continuous</span></li>
-<li>Categorical - <strong>Ordinal</strong></li>
-<li>Numerical - <strong>Continuous</strong></li>
-<li>Categorical - <span class="alert">Binary</span></li>
-<li>Numerical - <strong>Continuous</strong></li>
-<li>Numerical - <strong>Discrete</strong></li>
+<li class="fragment">Categorical - <strong>Nominal</strong></li>
+<li class="fragment">Numerical - <span class="alert">Continuous</span></li>
+<li class="fragment">Categorical - <strong>Ordinal</strong></li>
+<li class="fragment">Numerical - <strong>Continuous</strong></li>
+<li class="fragment">Categorical - <span class="alert">Binary</span></li>
+<li class="fragment">Numerical - <strong>Continuous</strong></li>
+<li class="fragment">Numerical - <strong>Discrete</strong></li>
 </ol>
-</div>
 </div></div>
 </section>
 <section class="slide level2">
@@ -738,22 +772,22 @@ Table&nbsp;2: A single students performance
 
     <script>
       // Create table-specific functions using external factory
-      const tableFns_ggtm67bfprvaybe5vode = TinyTable.createTableFunctions("tinytable_ggtm67bfprvaybe5vode");
+      const tableFns_u62qteo9rksn0b9k7670 = TinyTable.createTableFunctions("tinytable_u62qteo9rksn0b9k7670");
       // tinytable span after
       window.addEventListener('load', function () {
           var cellsToStyle = [
             // tinytable style arrays after
-          { positions: [ { i: '4', j: 2 } ], css_id: 'tinytable_css_mp7dgl6msypuuhxquplf',}, 
-          { positions: [ { i: '1', j: 2 }, { i: '2', j: 2 }, { i: '3', j: 2 } ], css_id: 'tinytable_css_5snfvcb72l14gil59c2c',}, 
-          { positions: [ { i: '0', j: 2 } ], css_id: 'tinytable_css_gjz27rzfmhild4qvkba2',}, 
-          { positions: [ { i: '4', j: 1 } ], css_id: 'tinytable_css_rw8vzt9rxf2si5afaqg6',}, 
-          { positions: [ { i: '0', j: 1 } ], css_id: 'tinytable_css_q7ajyu7wyxd90qz07m1n',}, 
+          { positions: [ { i: '4', j: 2 } ], css_id: 'tinytable_css_338csbrtjsdx4gxqg2rx',}, 
+          { positions: [ { i: '1', j: 2 }, { i: '2', j: 2 }, { i: '3', j: 2 } ], css_id: 'tinytable_css_gwz25efz38ub36rgbzgr',}, 
+          { positions: [ { i: '0', j: 2 } ], css_id: 'tinytable_css_srxhd3vdj4a85z2d49zq',}, 
+          { positions: [ { i: '4', j: 1 } ], css_id: 'tinytable_css_mrhmlzmvu6h2b13289fx',}, 
+          { positions: [ { i: '0', j: 1 } ], css_id: 'tinytable_css_lbxnu5s5mei180foawbs',}, 
           ];
 
           // Loop over the arrays to style the cells
           cellsToStyle.forEach(function (group) {
               group.positions.forEach(function (cell) {
-                  tableFns_ggtm67bfprvaybe5vode.styleCell(cell.i, cell.j, group.css_id);
+                  tableFns_u62qteo9rksn0b9k7670.styleCell(cell.i, cell.j, group.css_id);
               });
           });
       });
@@ -762,14 +796,14 @@ Table&nbsp;2: A single students performance
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/vincentarelbundock/tinytable@main/inst/tinytable.css">
     <style>
     /* tinytable css entries after */
-    #tinytable_ggtm67bfprvaybe5vode td.tinytable_css_mp7dgl6msypuuhxquplf, #tinytable_ggtm67bfprvaybe5vode th.tinytable_css_mp7dgl6msypuuhxquplf {  position: relative; --border-bottom: 1; --border-left: 0; --border-right: 0; --border-top: 0; --line-color-bottom: var(--tt-line-color); --line-color-left: var(--tt-line-color); --line-color-right: var(--tt-line-color); --line-color-top: var(--tt-line-color); --line-width-bottom: 0.08em; --line-width-left: 0.1em; --line-width-right: 0.1em; --line-width-top: 0.1em; --trim-bottom-left: 0%; --trim-bottom-right: 0%; --trim-left-bottom: 0%; --trim-left-top: 0%; --trim-right-bottom: 0%; --trim-right-top: 0%; --trim-top-left: 0%; --trim-top-right: 0%; ; text-align: center }
-    #tinytable_ggtm67bfprvaybe5vode td.tinytable_css_5snfvcb72l14gil59c2c, #tinytable_ggtm67bfprvaybe5vode th.tinytable_css_5snfvcb72l14gil59c2c { text-align: center }
-    #tinytable_ggtm67bfprvaybe5vode td.tinytable_css_gjz27rzfmhild4qvkba2, #tinytable_ggtm67bfprvaybe5vode th.tinytable_css_gjz27rzfmhild4qvkba2 {  position: relative; --border-bottom: 1; --border-left: 0; --border-right: 0; --border-top: 1; --line-color-bottom: var(--tt-line-color); --line-color-left: var(--tt-line-color); --line-color-right: var(--tt-line-color); --line-color-top: var(--tt-line-color); --line-width-bottom: 0.05em; --line-width-left: 0.1em; --line-width-right: 0.1em; --line-width-top: 0.08em; --trim-bottom-left: 0%; --trim-bottom-right: 0%; --trim-left-bottom: 0%; --trim-left-top: 0%; --trim-right-bottom: 0%; --trim-right-top: 0%; --trim-top-left: 0%; --trim-top-right: 0%; ; font-weight: bold; text-align: center }
-    #tinytable_ggtm67bfprvaybe5vode td.tinytable_css_rw8vzt9rxf2si5afaqg6, #tinytable_ggtm67bfprvaybe5vode th.tinytable_css_rw8vzt9rxf2si5afaqg6 {  position: relative; --border-bottom: 1; --border-left: 0; --border-right: 0; --border-top: 0; --line-color-bottom: var(--tt-line-color); --line-color-left: var(--tt-line-color); --line-color-right: var(--tt-line-color); --line-color-top: var(--tt-line-color); --line-width-bottom: 0.08em; --line-width-left: 0.1em; --line-width-right: 0.1em; --line-width-top: 0.1em; --trim-bottom-left: 0%; --trim-bottom-right: 0%; --trim-left-bottom: 0%; --trim-left-top: 0%; --trim-right-bottom: 0%; --trim-right-top: 0%; --trim-top-left: 0%; --trim-top-right: 0%;  }
-    #tinytable_ggtm67bfprvaybe5vode td.tinytable_css_q7ajyu7wyxd90qz07m1n, #tinytable_ggtm67bfprvaybe5vode th.tinytable_css_q7ajyu7wyxd90qz07m1n {  position: relative; --border-bottom: 1; --border-left: 0; --border-right: 0; --border-top: 1; --line-color-bottom: var(--tt-line-color); --line-color-left: var(--tt-line-color); --line-color-right: var(--tt-line-color); --line-color-top: var(--tt-line-color); --line-width-bottom: 0.05em; --line-width-left: 0.1em; --line-width-right: 0.1em; --line-width-top: 0.08em; --trim-bottom-left: 0%; --trim-bottom-right: 0%; --trim-left-bottom: 0%; --trim-left-top: 0%; --trim-right-bottom: 0%; --trim-right-top: 0%; --trim-top-left: 0%; --trim-top-right: 0%; ; font-weight: bold }
+    #tinytable_u62qteo9rksn0b9k7670 td.tinytable_css_338csbrtjsdx4gxqg2rx, #tinytable_u62qteo9rksn0b9k7670 th.tinytable_css_338csbrtjsdx4gxqg2rx {  position: relative; --border-bottom: 1; --border-left: 0; --border-right: 0; --border-top: 0; --line-color-bottom: var(--tt-line-color); --line-color-left: var(--tt-line-color); --line-color-right: var(--tt-line-color); --line-color-top: var(--tt-line-color); --line-width-bottom: 0.08em; --line-width-left: 0.1em; --line-width-right: 0.1em; --line-width-top: 0.1em; --trim-bottom-left: 0%; --trim-bottom-right: 0%; --trim-left-bottom: 0%; --trim-left-top: 0%; --trim-right-bottom: 0%; --trim-right-top: 0%; --trim-top-left: 0%; --trim-top-right: 0%; ; text-align: center }
+    #tinytable_u62qteo9rksn0b9k7670 td.tinytable_css_gwz25efz38ub36rgbzgr, #tinytable_u62qteo9rksn0b9k7670 th.tinytable_css_gwz25efz38ub36rgbzgr { text-align: center }
+    #tinytable_u62qteo9rksn0b9k7670 td.tinytable_css_srxhd3vdj4a85z2d49zq, #tinytable_u62qteo9rksn0b9k7670 th.tinytable_css_srxhd3vdj4a85z2d49zq {  position: relative; --border-bottom: 1; --border-left: 0; --border-right: 0; --border-top: 1; --line-color-bottom: var(--tt-line-color); --line-color-left: var(--tt-line-color); --line-color-right: var(--tt-line-color); --line-color-top: var(--tt-line-color); --line-width-bottom: 0.05em; --line-width-left: 0.1em; --line-width-right: 0.1em; --line-width-top: 0.08em; --trim-bottom-left: 0%; --trim-bottom-right: 0%; --trim-left-bottom: 0%; --trim-left-top: 0%; --trim-right-bottom: 0%; --trim-right-top: 0%; --trim-top-left: 0%; --trim-top-right: 0%; ; font-weight: bold; text-align: center }
+    #tinytable_u62qteo9rksn0b9k7670 td.tinytable_css_mrhmlzmvu6h2b13289fx, #tinytable_u62qteo9rksn0b9k7670 th.tinytable_css_mrhmlzmvu6h2b13289fx {  position: relative; --border-bottom: 1; --border-left: 0; --border-right: 0; --border-top: 0; --line-color-bottom: var(--tt-line-color); --line-color-left: var(--tt-line-color); --line-color-right: var(--tt-line-color); --line-color-top: var(--tt-line-color); --line-width-bottom: 0.08em; --line-width-left: 0.1em; --line-width-right: 0.1em; --line-width-top: 0.1em; --trim-bottom-left: 0%; --trim-bottom-right: 0%; --trim-left-bottom: 0%; --trim-left-top: 0%; --trim-right-bottom: 0%; --trim-right-top: 0%; --trim-top-left: 0%; --trim-top-right: 0%;  }
+    #tinytable_u62qteo9rksn0b9k7670 td.tinytable_css_lbxnu5s5mei180foawbs, #tinytable_u62qteo9rksn0b9k7670 th.tinytable_css_lbxnu5s5mei180foawbs {  position: relative; --border-bottom: 1; --border-left: 0; --border-right: 0; --border-top: 1; --line-color-bottom: var(--tt-line-color); --line-color-left: var(--tt-line-color); --line-color-right: var(--tt-line-color); --line-color-top: var(--tt-line-color); --line-width-bottom: 0.05em; --line-width-left: 0.1em; --line-width-right: 0.1em; --line-width-top: 0.08em; --trim-bottom-left: 0%; --trim-bottom-right: 0%; --trim-left-bottom: 0%; --trim-left-top: 0%; --trim-right-bottom: 0%; --trim-right-top: 0%; --trim-top-left: 0%; --trim-top-right: 0%; ; font-weight: bold }
     </style>
     <div class="container">
-      <table class="tinytable" id="tinytable_ggtm67bfprvaybe5vode" style="width: auto; margin-left: auto; margin-right: auto;" data-quarto-disable-processing="true">
+      <table class="tinytable" id="tinytable_u62qteo9rksn0b9k7670" style="width: auto; margin-left: auto; margin-right: auto;" data-quarto-disable-processing="true">
         
         <thead>
               <tr>
@@ -822,22 +856,22 @@ Table&nbsp;2: A single students performance
 
     <script>
       // Create table-specific functions using external factory
-      const tableFns_leqowe0q185h38f0nud6 = TinyTable.createTableFunctions("tinytable_leqowe0q185h38f0nud6");
+      const tableFns_iwgg5gv6l1kc59tyekfe = TinyTable.createTableFunctions("tinytable_iwgg5gv6l1kc59tyekfe");
       // tinytable span after
       window.addEventListener('load', function () {
           var cellsToStyle = [
             // tinytable style arrays after
-          { positions: [ { i: '4', j: 2 } ], css_id: 'tinytable_css_yuq2xqs6apamtzfoqa2j',}, 
-          { positions: [ { i: '1', j: 2 }, { i: '2', j: 2 }, { i: '3', j: 2 } ], css_id: 'tinytable_css_x808too2e9srqfggmm0i',}, 
-          { positions: [ { i: '0', j: 2 } ], css_id: 'tinytable_css_3wco3c6tmm51q302di8q',}, 
-          { positions: [ { i: '4', j: 1 } ], css_id: 'tinytable_css_pdecauwch8pzgf2enlxs',}, 
-          { positions: [ { i: '0', j: 1 } ], css_id: 'tinytable_css_amzq5di17hn1a4cgjjr0',}, 
+          { positions: [ { i: '4', j: 2 } ], css_id: 'tinytable_css_e0j2krxnc08dy24wryi0',}, 
+          { positions: [ { i: '1', j: 2 }, { i: '2', j: 2 }, { i: '3', j: 2 } ], css_id: 'tinytable_css_7webwky4d8319iwgf0gy',}, 
+          { positions: [ { i: '0', j: 2 } ], css_id: 'tinytable_css_8j8yjm9zd5c9gcvvsj4o',}, 
+          { positions: [ { i: '4', j: 1 } ], css_id: 'tinytable_css_2lfh8be489rho5pq30em',}, 
+          { positions: [ { i: '0', j: 1 } ], css_id: 'tinytable_css_7lf17g9pbyn81f3qpfng',}, 
           ];
 
           // Loop over the arrays to style the cells
           cellsToStyle.forEach(function (group) {
               group.positions.forEach(function (cell) {
-                  tableFns_leqowe0q185h38f0nud6.styleCell(cell.i, cell.j, group.css_id);
+                  tableFns_iwgg5gv6l1kc59tyekfe.styleCell(cell.i, cell.j, group.css_id);
               });
           });
       });
@@ -846,14 +880,14 @@ Table&nbsp;2: A single students performance
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/vincentarelbundock/tinytable@main/inst/tinytable.css">
     <style>
     /* tinytable css entries after */
-    #tinytable_leqowe0q185h38f0nud6 td.tinytable_css_yuq2xqs6apamtzfoqa2j, #tinytable_leqowe0q185h38f0nud6 th.tinytable_css_yuq2xqs6apamtzfoqa2j {  position: relative; --border-bottom: 1; --border-left: 0; --border-right: 0; --border-top: 0; --line-color-bottom: var(--tt-line-color); --line-color-left: var(--tt-line-color); --line-color-right: var(--tt-line-color); --line-color-top: var(--tt-line-color); --line-width-bottom: 0.08em; --line-width-left: 0.1em; --line-width-right: 0.1em; --line-width-top: 0.1em; --trim-bottom-left: 0%; --trim-bottom-right: 0%; --trim-left-bottom: 0%; --trim-left-top: 0%; --trim-right-bottom: 0%; --trim-right-top: 0%; --trim-top-left: 0%; --trim-top-right: 0%; ; text-align: center }
-    #tinytable_leqowe0q185h38f0nud6 td.tinytable_css_x808too2e9srqfggmm0i, #tinytable_leqowe0q185h38f0nud6 th.tinytable_css_x808too2e9srqfggmm0i { text-align: center }
-    #tinytable_leqowe0q185h38f0nud6 td.tinytable_css_3wco3c6tmm51q302di8q, #tinytable_leqowe0q185h38f0nud6 th.tinytable_css_3wco3c6tmm51q302di8q {  position: relative; --border-bottom: 1; --border-left: 0; --border-right: 0; --border-top: 1; --line-color-bottom: var(--tt-line-color); --line-color-left: var(--tt-line-color); --line-color-right: var(--tt-line-color); --line-color-top: var(--tt-line-color); --line-width-bottom: 0.05em; --line-width-left: 0.1em; --line-width-right: 0.1em; --line-width-top: 0.08em; --trim-bottom-left: 0%; --trim-bottom-right: 0%; --trim-left-bottom: 0%; --trim-left-top: 0%; --trim-right-bottom: 0%; --trim-right-top: 0%; --trim-top-left: 0%; --trim-top-right: 0%; ; font-weight: bold; text-align: center }
-    #tinytable_leqowe0q185h38f0nud6 td.tinytable_css_pdecauwch8pzgf2enlxs, #tinytable_leqowe0q185h38f0nud6 th.tinytable_css_pdecauwch8pzgf2enlxs {  position: relative; --border-bottom: 1; --border-left: 0; --border-right: 0; --border-top: 0; --line-color-bottom: var(--tt-line-color); --line-color-left: var(--tt-line-color); --line-color-right: var(--tt-line-color); --line-color-top: var(--tt-line-color); --line-width-bottom: 0.08em; --line-width-left: 0.1em; --line-width-right: 0.1em; --line-width-top: 0.1em; --trim-bottom-left: 0%; --trim-bottom-right: 0%; --trim-left-bottom: 0%; --trim-left-top: 0%; --trim-right-bottom: 0%; --trim-right-top: 0%; --trim-top-left: 0%; --trim-top-right: 0%;  }
-    #tinytable_leqowe0q185h38f0nud6 td.tinytable_css_amzq5di17hn1a4cgjjr0, #tinytable_leqowe0q185h38f0nud6 th.tinytable_css_amzq5di17hn1a4cgjjr0 {  position: relative; --border-bottom: 1; --border-left: 0; --border-right: 0; --border-top: 1; --line-color-bottom: var(--tt-line-color); --line-color-left: var(--tt-line-color); --line-color-right: var(--tt-line-color); --line-color-top: var(--tt-line-color); --line-width-bottom: 0.05em; --line-width-left: 0.1em; --line-width-right: 0.1em; --line-width-top: 0.08em; --trim-bottom-left: 0%; --trim-bottom-right: 0%; --trim-left-bottom: 0%; --trim-left-top: 0%; --trim-right-bottom: 0%; --trim-right-top: 0%; --trim-top-left: 0%; --trim-top-right: 0%; ; font-weight: bold }
+    #tinytable_iwgg5gv6l1kc59tyekfe td.tinytable_css_e0j2krxnc08dy24wryi0, #tinytable_iwgg5gv6l1kc59tyekfe th.tinytable_css_e0j2krxnc08dy24wryi0 {  position: relative; --border-bottom: 1; --border-left: 0; --border-right: 0; --border-top: 0; --line-color-bottom: var(--tt-line-color); --line-color-left: var(--tt-line-color); --line-color-right: var(--tt-line-color); --line-color-top: var(--tt-line-color); --line-width-bottom: 0.08em; --line-width-left: 0.1em; --line-width-right: 0.1em; --line-width-top: 0.1em; --trim-bottom-left: 0%; --trim-bottom-right: 0%; --trim-left-bottom: 0%; --trim-left-top: 0%; --trim-right-bottom: 0%; --trim-right-top: 0%; --trim-top-left: 0%; --trim-top-right: 0%; ; text-align: center }
+    #tinytable_iwgg5gv6l1kc59tyekfe td.tinytable_css_7webwky4d8319iwgf0gy, #tinytable_iwgg5gv6l1kc59tyekfe th.tinytable_css_7webwky4d8319iwgf0gy { text-align: center }
+    #tinytable_iwgg5gv6l1kc59tyekfe td.tinytable_css_8j8yjm9zd5c9gcvvsj4o, #tinytable_iwgg5gv6l1kc59tyekfe th.tinytable_css_8j8yjm9zd5c9gcvvsj4o {  position: relative; --border-bottom: 1; --border-left: 0; --border-right: 0; --border-top: 1; --line-color-bottom: var(--tt-line-color); --line-color-left: var(--tt-line-color); --line-color-right: var(--tt-line-color); --line-color-top: var(--tt-line-color); --line-width-bottom: 0.05em; --line-width-left: 0.1em; --line-width-right: 0.1em; --line-width-top: 0.08em; --trim-bottom-left: 0%; --trim-bottom-right: 0%; --trim-left-bottom: 0%; --trim-left-top: 0%; --trim-right-bottom: 0%; --trim-right-top: 0%; --trim-top-left: 0%; --trim-top-right: 0%; ; font-weight: bold; text-align: center }
+    #tinytable_iwgg5gv6l1kc59tyekfe td.tinytable_css_2lfh8be489rho5pq30em, #tinytable_iwgg5gv6l1kc59tyekfe th.tinytable_css_2lfh8be489rho5pq30em {  position: relative; --border-bottom: 1; --border-left: 0; --border-right: 0; --border-top: 0; --line-color-bottom: var(--tt-line-color); --line-color-left: var(--tt-line-color); --line-color-right: var(--tt-line-color); --line-color-top: var(--tt-line-color); --line-width-bottom: 0.08em; --line-width-left: 0.1em; --line-width-right: 0.1em; --line-width-top: 0.1em; --trim-bottom-left: 0%; --trim-bottom-right: 0%; --trim-left-bottom: 0%; --trim-left-top: 0%; --trim-right-bottom: 0%; --trim-right-top: 0%; --trim-top-left: 0%; --trim-top-right: 0%;  }
+    #tinytable_iwgg5gv6l1kc59tyekfe td.tinytable_css_7lf17g9pbyn81f3qpfng, #tinytable_iwgg5gv6l1kc59tyekfe th.tinytable_css_7lf17g9pbyn81f3qpfng {  position: relative; --border-bottom: 1; --border-left: 0; --border-right: 0; --border-top: 1; --line-color-bottom: var(--tt-line-color); --line-color-left: var(--tt-line-color); --line-color-right: var(--tt-line-color); --line-color-top: var(--tt-line-color); --line-width-bottom: 0.05em; --line-width-left: 0.1em; --line-width-right: 0.1em; --line-width-top: 0.08em; --trim-bottom-left: 0%; --trim-bottom-right: 0%; --trim-left-bottom: 0%; --trim-left-top: 0%; --trim-right-bottom: 0%; --trim-right-top: 0%; --trim-top-left: 0%; --trim-top-right: 0%; ; font-weight: bold }
     </style>
     <div class="container">
-      <table class="tinytable" id="tinytable_leqowe0q185h38f0nud6" style="width: auto; margin-left: auto; margin-right: auto;" data-quarto-disable-processing="true">
+      <table class="tinytable" id="tinytable_iwgg5gv6l1kc59tyekfe" style="width: auto; margin-left: auto; margin-right: auto;" data-quarto-disable-processing="true">
         
         <thead>
               <tr>
@@ -898,7 +932,22 @@ Table&nbsp;2: A single students performance
 <span id="cb3-2"><a href="" aria-label="2"></a><span class="fu">barplot</span>(module_table)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 
-<img data-src="slides_1_files/figure-revealjs/categorical-barchart-1.png" class="quarto-figure quarto-figure-center r-stretch" width="960"></section>
+<img data-src="slides_1_files/figure-revealjs/categorical-barchart-1.png" class="quarto-figure quarto-figure-center r-stretch" width="960"><aside class="notes">
+<ul>
+<li>Sometimes, tables are boring and we’d rather represent our data using a graph</li>
+</ul>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
+</section>
 <section id="representing-numerical-variables" class="slide level2">
 <h2>Representing numerical variables</h2>
 <p>Let’s consider the frequency of individual grades each student got</p>
@@ -937,7 +986,22 @@ Table&nbsp;2: A single students performance
 <section id="lets-try-it" class="slide level2">
 <h2>Let’s try it!</h2>
 
-<img data-src="slides_1_files/figure-revealjs/numerical-barplot-1.png" class="quarto-figure quarto-figure-center r-stretch" width="960"></section>
+<img data-src="slides_1_files/figure-revealjs/numerical-barplot-1.png" class="quarto-figure quarto-figure-center r-stretch" width="960"><aside class="notes">
+<ul>
+<li>Wow, this looks horrible!!</li>
+</ul>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
+</section>
 <section id="representing-numerical-variables-1" class="slide level2">
 <h2>Representing numerical variables</h2>
 <h3 id="histograms">Histograms</h3>
@@ -948,7 +1012,22 @@ Table&nbsp;2: A single students performance
 <div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb5" data-filename="histogram.R"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="" aria-label="1"></a><span class="fu">hist</span>(student_data<span class="sc">$</span>grade)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 
-<img data-src="slides_1_files/figure-revealjs/numerical-histogram-1.png" class="quarto-figure quarto-figure-center r-stretch" width="960"></section>
+<img data-src="slides_1_files/figure-revealjs/numerical-histogram-1.png" class="quarto-figure quarto-figure-center r-stretch" width="960"><aside class="notes">
+<ul>
+<li>Histograms collapse the values into groups (we call these bins)</li>
+</ul>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
+</section>
 <section id="representing-numerical-variables-2" class="slide level2">
 <h2>Representing numerical variables</h2>
 <h3 id="empirical-cumulative-distribution-functions">Empirical cumulative distribution functions</h3>
@@ -962,6 +1041,21 @@ Table&nbsp;2: A single students performance
 <li>50% are equal to or below 75</li>
 <li>100% are equal to or below 100</li>
 </ul>
+<aside class="notes">
+<ul>
+<li>ECDFs tell us the proportion of values within a certain interval</li>
+</ul>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
 </section>
 <section id="representing-numerical-variables-3" class="slide level2">
 <h2>Representing numerical variables</h2>
@@ -979,7 +1073,7 @@ Table&nbsp;2: A single students performance
 </div>
 
 <img data-src="slides_1_files/figure-revealjs/big-ecdf-1.png" class="quarto-figure quarto-figure-center r-stretch" width="960"></section>
-<section id="wrapping-up" class="slide level2">
+<section id="wrapping-up" class="slide level2" style="font-size: 85%;">
 <h2>Wrapping up</h2>
 <ul>
 <li><strong>Variables describe observations</strong> in data.</li>
@@ -988,6 +1082,12 @@ Table&nbsp;2: A single students performance
 <li>Numerical variables can be either <strong>discrete</strong> or <strong>continuous</strong>.</li>
 <li>Categorical and numerical variables are <strong>represented in different ways</strong>.</li>
 </ul>
+<div class="columns">
+<div class="column">
+<p><img data-src="assets/categorical-data.jpg"></p>
+</div><div class="column">
+<p><img data-src="assets/numerical-data.png"></p>
+</div></div>
 </section>
 <section id="further-reading" class="slide level2">
 <h2>Further reading</h2>
