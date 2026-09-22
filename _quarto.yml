@@ -36,6 +36,8 @@ website:
     right:
       - text: Overview
         href: overview\index.qmd
+      - text: Schedule
+        href: schedule\index.qmd
       - text: Content
         href: content\index.qmd
       - text: Assignments

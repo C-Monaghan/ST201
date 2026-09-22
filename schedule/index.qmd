@@ -1,0 +1,68 @@
+---
+title: Schedule
+sidebar: false
+toc: false
+page-layout: full
+---
+
+Here's your roadmap for the semester!
+
+- {{< fa person-chalkboard >}} This will be a standard lecture format class
+  with some in class participation. **This will usually be the Tuesday class**.
+- {{< fa laptop-code >}} This will be active coding workshop where we will
+  work through a dataset (both as a class and in groups) to incorporate what we
+  previously learned. **This will usually be the Thursday class**.
+- {{< fa chalkboard-user >}} This will be an in-person tutorial where you will
+  go through a previously assigned practice worksheet with a tutor.
+- {{< fa pen-ruler >}} This will be a graded Moodle quiz that will take up a
+  part of your continuous assessment.
+
+```{r}
+#| label: set-up
+#| include: false
+
+# Functions --------------------------------------------------------------------
+source(here::here("R/build_schedule_table.R"))
+
+# Packages ---------------------------------------------------------------------
+library(dplyr)
+library(tinytable)
+
+# Class schedule
+schedule <- readxl::read_xlsx(
+  here::here("schedule/excel/schedule.xlsx")
+) |>
+  build_schedule_table()
+```
+
+```{r}
+#| label: show-table
+#| echo: false
+#| results: asis
+schedule |>
+  knitr::kable(
+    format = "html",
+    escape = FALSE,
+    col.names = c(
+      "Date",
+      "Topic",
+      "Slides",
+      "Coding",
+      "Tutorial",
+      "Assignment"
+    ),
+    table.attr = 'class="schedule-table"'
+  ) |>
+  kableExtra::kable_styling() |>
+  kableExtra::column_spec(
+    1,
+    width = "20%",
+    extra_css = "padding-right: 20px;"
+  ) |>
+  kableExtra::column_spec(2, width = "48%") |>
+  kableExtra::column_spec(3:6, width = "8%")
+
+glue::glue(
+  '<i class="schedule-icon schedule-icon--inactive fa-solid fa-laptop-code fa-lg"></i>'
+)
+```
