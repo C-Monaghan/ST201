@@ -24,7 +24,7 @@ knitr::opts_chunk$set(
 
 {{< fa university >}} **Office**: Logic House Room 223
 
-{{< fa envelope >}} **Email**: <a href='mailto:cormac.monaghan@mumail.ie'>cormac.monaghan@mumail.ie</a>
+{{< fa envelope >}} **Email**: <a href='mailto:cormac.monaghan@mu.ie'>cormac.monaghan@mu.ie</a>
 
 {{< fa person-chalkboard >}} **Lectures**
 
