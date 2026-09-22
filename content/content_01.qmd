@@ -1,6 +1,5 @@
 ---
 title: The Foundations of Data
-page-layout: full
 ---
 
 ```{r}
@@ -27,14 +26,10 @@ Statistics. This is a slightly more advanced reading, but
 
 ## Slides
 
-::: {.callout-caution}
-## Available on Tuesday 22nd September
-:::
-
 ```{r}
 #| label: add-slides
 #| echo: false
-#| eval: false
+#| eval: true
 #| results: asis
 
 add_slides(slide_id = "/slides/output/slides_1.html")

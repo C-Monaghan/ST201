@@ -18,7 +18,7 @@
     "href": "overview/index.html#slides",
     "title": "Welcome to ST201",
     "section": "Slides",
-    "text": "Slides\nAll the slides for this module are created using Quarto. In fact, this entire module website is built using Quarto. Personally, I love Quarto. I do just about everything with it! If you every get a chance, do check it out (ok … mini rant over!)\n\nThere are many little hidden things you can do with these slides.\nYou can click in the slides and navigate through them with ← and →.\nIf you type ? (or shift + /) while viewing the slides you can see a list of slide-specific commands (such as like f for fullscreen mode or additionally s for presenter mode if you want to see my notes).\nFinally, if you want to make a PDF of these slides you can press e, followed by ctrl + p.\n\n\n\n\n\n\nCautionSlides will be available on Tuesday 22nd September"
+    "text": "Slides\nAll the slides for this module are created using Quarto. In fact, this entire module website is built using Quarto. Personally, I love Quarto. I do just about everything with it! If you every get a chance, do check it out (ok … mini rant over!)\n\nThere are many little hidden things you can do with these slides.\nYou can click in the slides and navigate through them with ← and →.\nIf you type ? (or shift + /) while viewing the slides you can see a list of slide-specific commands (such as like f for fullscreen mode or additionally s for presenter mode if you want to see my notes).\nFinally, if you want to make a PDF of these slides you can press e, followed by ctrl + p.\n\n  \n    \n       Open slides in New Window"
   },
   {
     "objectID": "content/index.html",
@@ -73,7 +73,7 @@
     "href": "content/content_01.html#slides",
     "title": "The Foundations of Data",
     "section": "Slides",
-    "text": "Slides\n\n\n\n\n\n\nCautionAvailable on Tuesday 22nd September",
+    "text": "Slides\n\n  \n    \n       Open slides in New Window",
     "crumbs": [
       "Content",
       "Week 1",

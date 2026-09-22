@@ -102,15 +102,10 @@ to see my notes).
 Finally, if you want to make a PDF of these slides you can press <kbd>e</kbd>,
 followed by <kbd>ctrl</kbd> + <kbd>p</kbd>.
 
-::: {.callout-caution}
-## Slides will be available on Tuesday 22nd September
-:::
-
-
 ```{r}
 #| label: add-slides
 #| echo: false
-#| eval: false
+#| eval: true
 #| results: asis
 
 add_slides(slide_id = "/slides/output/slides_0.html")
