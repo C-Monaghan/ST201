@@ -24,7 +24,7 @@ website:
     icon: info-circle
     dismissable: false
     content: |
-      The first lecture begins on **22nd September @3pm**
+      Please sign up to tutorials before **30th September**
     type: danger
     position: below-navbar
 

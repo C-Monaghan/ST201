@@ -22,5 +22,17 @@ build_schedule_table <- function(schedule) {
         '<i class="schedule-icon schedule-icon--inactive fa-solid fa-pen-ruler fa-lg"></i>'
       )
     ) |>
-    select(-Classification)
+      mutate(
+    flag = ifelse(Topic %in% c("Mid term exam", "Final exam"), TRUE, FALSE),
+    content_flag = ifelse(
+      flag == TRUE,
+      '<span class="schedule-flag"><i class="fas fa-star"></i>&ensp;',
+      ""
+    ),
+    Topic = ifelse(flag == TRUE,
+      glue::glue('<span class="schedule-title">{content_flag}{Topic}</span></span>'),
+      Topic
+    )
+  ) |>
+    select(-c(Classification, flag, content_flag))
 }

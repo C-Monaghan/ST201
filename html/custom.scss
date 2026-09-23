@@ -183,6 +183,16 @@ ul, ol,
 }
 
 // Schedule page ---------------------------------------------------------------
+.schedule-title {
+  font-weight: 700;
+  color: $orange;
+}
+
+.schedule-flag {
+  font-weight: 700;
+  color: $burgundy;
+}
+
 .schedule-icon {
   opacity: 1;
 }
@@ -200,11 +210,6 @@ ul, ol,
 .schedule-table td:nth-child(3),
 .schedule-table td:nth-child(4) {
   text-align: center;
-}
-
-.schedule-flag {
-  font-weight: 700;
-  color: $burgundy;
 }
 
 // Nav bar ---------------------------------------------------------------------
