@@ -22,7 +22,7 @@
     "crumbs": [
       "Content",
       "Week 1",
-      "The Foundations of Data"
+      "The foundations of data"
     ]
   },
   {
@@ -34,7 +34,7 @@
     "crumbs": [
       "Content",
       "Week 1",
-      "The Foundations of Data"
+      "The foundations of data"
     ]
   },
   {
@@ -46,7 +46,7 @@
     "crumbs": [
       "Content",
       "Week 1",
-      "The Foundations of Data"
+      "The foundations of data"
     ]
   },
   {
@@ -58,7 +58,7 @@
     "crumbs": [
       "Content",
       "Week 1",
-      "The Foundations of Data"
+      "The foundations of data"
     ]
   },
   {
@@ -100,5 +100,53 @@
     "title": "Schedule",
     "section": "Class schedule",
     "text": "Class schedule\n\n\n\n\nDate\n\n\nTopic\n\n\nSlides\n\n\nCoding\n\n\nTutorial\n\n\nAssignment\n\n\n\n\n\n\nWeek 1\n\n\nFoundations of Data\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nWeek 2\n\n\nNumerical data\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nWeek 3\n\n\nCategorical data analysis (i)\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nWeek 4\n\n\nCategorical data analysis (ii)\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nWeek 4\n\n\nTutorial 1\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nWeek 4\n\n\nMoodle Quiz 1    (due Oct 16th @4pm)\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nWeek 5\n\n\nCategorical data analysis (iii)\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n \n\n\nStudy week\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nWeek 6\n\n\nDiscrete probability distributions\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nWeek 6\n\n\nTutorial 2\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nWeek 6\n\n\nMoodle Quiz 2    (due Nov 6th @4pm)\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nTuesday Nov 10\n\n\n Mid term exam\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nWeek 8\n\n\nContinous probability distributions\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nWeek 8\n\n\nTutorial 3\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nWeek 8\n\n\nMoodle Quiz 3    (due Nov 20th @4pm)\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nWeek 9\n\n\nSingle sample data\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nWeek 10\n\n\nInference for means\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nWeek 10\n\n\nTutorial 4\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nWeek 10\n\n\nMoodle Quiz 4    (due Dec 4th @4pm)\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nWeek 11\n\n\nRegression\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nWeek 12\n\n\nRevision\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nThursday Jan 7th\n\n\n Final exam"
+  },
+  {
+    "objectID": "content/content_02.html",
+    "href": "content/content_02.html",
+    "title": "Numerical data",
+    "section": "",
+    "text": "Understand how to summarise numerical data\nMeans, medians, ranges, variability, and standard deviations\nLearn how to interpret box plots",
+    "crumbs": [
+      "Content",
+      "Week 2",
+      "Numerical data"
+    ]
+  },
+  {
+    "objectID": "content/content_02.html#learning-objectives",
+    "href": "content/content_02.html#learning-objectives",
+    "title": "Numerical data",
+    "section": "",
+    "text": "Understand how to summarise numerical data\nMeans, medians, ranges, variability, and standard deviations\nLearn how to interpret box plots",
+    "crumbs": [
+      "Content",
+      "Week 2",
+      "Numerical data"
+    ]
+  },
+  {
+    "objectID": "content/content_02.html#readings",
+    "href": "content/content_02.html#readings",
+    "title": "Numerical data",
+    "section": "Readings",
+    "text": "Readings\n\nSuggested readings\n\n Chapter 3 of Introduction to Statistics and Data Analysis\n Descriptive statistics in R\n Beginner’s Guide to R : Easy Ways to do basic data analysis",
+    "crumbs": [
+      "Content",
+      "Week 2",
+      "Numerical data"
+    ]
+  },
+  {
+    "objectID": "content/content_02.html#slides",
+    "href": "content/content_02.html#slides",
+    "title": "Numerical data",
+    "section": "Slides",
+    "text": "Slides\n\n\n\n\n\n\nCautionSlides will be available on Tuesday 29th September",
+    "crumbs": [
+      "Content",
+      "Week 2",
+      "Numerical data"
+    ]
   }
 ]

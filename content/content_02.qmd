@@ -1,0 +1,39 @@
+---
+title: Numerical data
+---
+
+```{r}
+#| label: setup
+#| include: false
+
+purrr::map(list.files(here::here("R"), full.names = TRUE), source)
+```
+
+## Learning objectives
+
+- Understand how to summarise numerical data
+- Means, medians, ranges, variability, and standard deviations
+- Learn how to interpret box plots
+
+## Readings
+
+### Suggested readings
+
+- {{< fa book >}} [Chapter 3](https://www.academia.edu/42933729/Introduction_to_Statistics_and_Data_Analysis_With_Exercises_Solutions_and_Applications_in_R#outer_page_47) of Introduction to Statistics and Data Analysis
+- {{< fa link >}} [Descriptive statistics in R](https://statsandr.com/blog/descriptive-statistics-in-r/)
+- {{< fa brands youtube >}} [Beginner's Guide to R : Easy Ways to do basic data analysis](https://www.youtube.com/watch?v=cVRkVhQeoKM)
+
+## Slides
+
+::: {.callout-caution}
+## Slides will be available on Tuesday 29th September
+:::
+
+```{r}
+#| label: add-slides
+#| echo: false
+#| eval: false
+#| results: asis
+
+add_slides(slide_id = "/slides/output/slides_2.html")
+```

@@ -260,6 +260,25 @@ ul, ol,
   }
 }
 
+// Sidebar ---------------------------------------------------------------------
+// Adjust spacing between sidebar items
+.sidebar-navigation .sidebar-section .sidebar-item,
+.sidebar-navigation .sidebar-item{
+  line-height: 0.75;
+  padding-bottom: 0.15rem;
+}
+
+// Style the toggle arrow used to expand/collapse sidebar sections
+.sidebar-item .sidebar-item-toggle .bi {
+  font-size: 0.5rem;
+  text-align: center;
+}
+
+// Make the sidebar content bold when it is clicked on
+.sidebar-item-container .active {
+  font-weight: 600;
+}
+
 // Active page indicator -------------------------------------------------------
 .navbar-nav .nav-link.active::after {
   content: "";

@@ -62,8 +62,12 @@ website:
           - content\index.qmd
       - section: Week 1
         contents:
-          - text: The Foundations of Data
+          - text: The foundations of data
             href: content\content_01.qmd
+      - section: Week 2
+        contents:
+          - text: Numerical data
+            href: content\content_02.qmd
 
   page-footer:
     left: |
