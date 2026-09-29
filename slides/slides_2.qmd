@@ -22,7 +22,6 @@ library(tinytable)
 student_data <- readRDS(here::here("data/student_performance.RDS"))
 ```
 
-
 ## Recap
 
 Last week, we covered:
@@ -31,8 +30,18 @@ Last week, we covered:
 - **Subtypes** of categorical and numerical variables.
 - **Ways to represent** these types of variables.
 
+<br>
+
+:::: {.fragment .fade-up}
 ::: {.callout-important}
 ## Check in: Was there anything that was confusing or not clear from last week?
+:::
+::::
+
+:::{.notes}
+- Categorical variables describe, while numerical variables quantify
+- Nominal & ordinal versus discrete and continuous
+- Tables, bar charts, histograms, and ecdf plots
 :::
 
 ## Numerical data {style="font-size: 95%;"}
@@ -40,7 +49,6 @@ Last week, we covered:
 This week, we're going to talk a little bit more about **numerical data**.
 
 We'll be answering three questions
-
 
 ::: {.fragment .fade-up}
 
@@ -66,6 +74,11 @@ We'll be answering three questions
 
 - Scatterplots · Correlation
 
+:::
+
+:::{.notes}
+- We'll be looking at three common questions that people have about numerical
+  data
 :::
 
 ## Numerical data {style="font-size: 90%;"}
@@ -126,6 +139,37 @@ student_data |>
   tinytable::tt() |>
   tinytable::style_tt(i = 0, bold = TRUE) |>
   tinytable::style_tt(j = 2:7, align = "c") |>
+  tinytable::style_tt(i = 1:5, j = c(4, 5, 8), color = "#0047AB", bold = TRUE)
+```
+
+## Numerical data {style="font-size: 90%;"}
+
+We'll be working with the same dataset as last week.
+
+<br>
+
+```{r}
+#| label: tbl-3
+#| tbl-cap: "Student performance data"
+
+# Output data as a nice table --------------------------------------------------
+student_data |>
+  dplyr::select(
+    ID = student_id,
+    programme,
+    year,
+    `Hours of study` = study_hours,
+    `Assignments` = assignments_completed,
+    satisfaction,
+    passed,
+    grade
+  ) |>
+  dplyr::rename_with(function(x) stringr::str_to_sentence(x)) |>
+  dplyr::rename(ID = Id) |>
+  dplyr::slice_head(n = 5) |>
+  tinytable::tt() |>
+  tinytable::style_tt(i = 0, bold = TRUE) |>
+  tinytable::style_tt(j = 2:7, align = "c") |>
   tinytable::style_tt(i = 1:5, j = 8, color = "#FF5733", bold = TRUE)
 ```
 
@@ -160,9 +204,9 @@ A distribution describes **how the values of a variable are spread out**.
 #| label: distributions-figure
 
 tibble::tibble(
-  normal = rnorm(n = 100, mean = 0, sd = 1),
-  gamma = rgamma(n = 100, shape = 0.75),
-  uniform = runif(n = 100, min = 0, max = 1)
+  normal = rnorm(n = 1000, mean = 0, sd = 1),
+  gamma = rgamma(n = 1000, shape = 0.75),
+  uniform = runif(n = 1000, min = 0, max = 1)
 ) |>
   tidyr::pivot_longer(
     cols = dplyr::everything(),
