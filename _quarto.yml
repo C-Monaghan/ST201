@@ -8,6 +8,9 @@ project:
     - "!assignments/"
     - "!_drafts/"
 
+  preview:
+    port: 4444
+
   resources:
     - "slides/output/"
 

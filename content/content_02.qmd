@@ -25,14 +25,10 @@ purrr::map(list.files(here::here("R"), full.names = TRUE), source)
 
 ## Slides
 
-::: {.callout-caution}
-## Slides will be available on Tuesday 29th September
-:::
-
 ```{r}
 #| label: add-slides
 #| echo: false
-#| eval: false
+#| eval: true
 #| results: asis
 
 add_slides(slide_id = "/slides/output/slides_2.html")
