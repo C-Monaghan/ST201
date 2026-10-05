@@ -21,47 +21,91 @@
     "text": "Learning the fundamental principles of data and data  analysis using R\n        \n        \n            ST201 - Data analysis  Department of Mathematics and Statistics  Maynooth University\n        \n    \n    \n      \n        \n        \n        \n      \n    \n\n\n\n\n\n\nInstructor\n\n Cormac Monaghan\n cormac.monaghan@mu.ie\n Room 223 Logic House\n Bluesky\n\n\n\nCourse details\n\n Tuesday & Thursday\n September - December 2026\n Tuesdays 3pm & Thursdays 12pm\n Physics Hall\n\n\n\nContacting me\nE-mail is the best way to get in contact with me. I usually try to respond to all e-mails within 24 hours (really), but also remember that life can be busy and chaotic for everyone (including me!), so if I don’t respond right away, don’t worry!"
   },
   {
-    "objectID": "content/content_02.html",
-    "href": "content/content_02.html",
-    "title": "Numerical data",
+    "objectID": "content/content_05.html",
+    "href": "content/content_05.html",
+    "title": "Categorical data analysis (III)",
     "section": "",
-    "text": "Understand how to summarise numerical data\nMeans, medians, ranges, variability, and standard deviations\nLearn how to interpret box plots",
+    "text": "How to perform a categorical data analysis when we introduce a third variable\nLearn what Simpsons paradox is\nLearn the difference between odds and odds ratios",
     "crumbs": [
       "Content",
-      "Numerical data"
+      "Categorical data analysis III"
     ]
   },
   {
-    "objectID": "content/content_02.html#learning-objectives",
-    "href": "content/content_02.html#learning-objectives",
-    "title": "Numerical data",
+    "objectID": "content/content_05.html#learning-objectives",
+    "href": "content/content_05.html#learning-objectives",
+    "title": "Categorical data analysis (III)",
     "section": "",
-    "text": "Understand how to summarise numerical data\nMeans, medians, ranges, variability, and standard deviations\nLearn how to interpret box plots",
+    "text": "How to perform a categorical data analysis when we introduce a third variable\nLearn what Simpsons paradox is\nLearn the difference between odds and odds ratios",
     "crumbs": [
       "Content",
-      "Numerical data"
+      "Categorical data analysis III"
     ]
   },
   {
-    "objectID": "content/content_02.html#readings",
-    "href": "content/content_02.html#readings",
-    "title": "Numerical data",
+    "objectID": "content/content_05.html#readings",
+    "href": "content/content_05.html#readings",
+    "title": "Categorical data analysis (III)",
     "section": "Readings",
-    "text": "Readings\n\nSuggested readings\n\n Chapter 3 of Introduction to Statistics and Data Analysis\n Descriptive statistics in R\n Beginner’s Guide to R : Easy Ways to do basic data analysis",
+    "text": "Readings\n\nSuggested readings\n\n Chapter 4 of Introduction to Statistics and Data Analysis",
     "crumbs": [
       "Content",
-      "Numerical data"
+      "Categorical data analysis III"
     ]
   },
   {
-    "objectID": "content/content_02.html#slides",
-    "href": "content/content_02.html#slides",
-    "title": "Numerical data",
+    "objectID": "content/content_05.html#slides",
+    "href": "content/content_05.html#slides",
+    "title": "Categorical data analysis (III)",
     "section": "Slides",
-    "text": "Slides\n\n  \n    \n       Open slides in New Window",
+    "text": "Slides\n\n\n\n\n\n\nCautionSlides will be available on Tuesday 20th October",
     "crumbs": [
       "Content",
-      "Numerical data"
+      "Categorical data analysis III"
+    ]
+  },
+  {
+    "objectID": "content/content_03.html",
+    "href": "content/content_03.html",
+    "title": "Categorical data analysis (I)",
+    "section": "",
+    "text": "Understand how to analyse categorical data\nLearn about observed versus expected counts\nUnderstand what the \\(\\chi^2\\) distribution is\nLearn how to perform a basic hypothesis test",
+    "crumbs": [
+      "Content",
+      "Categorical data analysis I"
+    ]
+  },
+  {
+    "objectID": "content/content_03.html#learning-objectives",
+    "href": "content/content_03.html#learning-objectives",
+    "title": "Categorical data analysis (I)",
+    "section": "",
+    "text": "Understand how to analyse categorical data\nLearn about observed versus expected counts\nUnderstand what the \\(\\chi^2\\) distribution is\nLearn how to perform a basic hypothesis test",
+    "crumbs": [
+      "Content",
+      "Categorical data analysis I"
+    ]
+  },
+  {
+    "objectID": "content/content_03.html#readings",
+    "href": "content/content_03.html#readings",
+    "title": "Categorical data analysis (I)",
+    "section": "Readings",
+    "text": "Readings\n\nSuggested readings\n\n Chapter 4 of Introduction to Statistics and Data Analysis\n Chapter 12 of Learning Statistics with R\n Statistical Tests for Categorical Data using R",
+    "crumbs": [
+      "Content",
+      "Categorical data analysis I"
+    ]
+  },
+  {
+    "objectID": "content/content_03.html#slides",
+    "href": "content/content_03.html#slides",
+    "title": "Categorical data analysis (I)",
+    "section": "Slides",
+    "text": "Slides\n\n\n\n\n\n\nCautionSlides will be available on Tuesday 6th October",
+    "crumbs": [
+      "Content",
+      "Categorical data analysis I"
     ]
   },
   {
@@ -109,79 +153,159 @@
     ]
   },
   {
-    "objectID": "content/index.html",
-    "href": "content/index.html",
-    "title": "Lecture overview",
+    "objectID": "assignments/assignment_01.html",
+    "href": "assignments/assignment_01.html",
+    "title": "\n    Practice Questions Sheet 1\n  ",
     "section": "",
-    "text": "Each class has a set of required readings that should be completed in your own time. For the most part, these readings will mirror what we have covered in the lectures. However, there will be times that I find a cool resource that I believe may be helpful for some of you.\nAll the slides for this module are special HTML files made using both Quarto and Clean Revealjs theme by Grant McDermott. Personally, this is my favourite theme to use for presentations, although I have made a couple of minor tweaks to it myself",
+    "text": "ST201 · DATA ANALYSIS\n  \n\n  \n\n    \n    ST201 - Data Analysis\n  \n  \n    \n    Lecturer: Cormac Monaghan\n  \n  \n    \n    This tutorial introduces some basic ways of describing and visualising data in R. Please attempt all questions before your tutorial You should work through the questions in a new R script.\n    For questions asking you to interpret a result, aim for one or two clear sentences. You should use the context of the pizza delivery data when explaining your answers."
+  },
+  {
+    "objectID": "assignments/assignment_01.html#exercise-1",
+    "href": "assignments/assignment_01.html#exercise-1",
+    "title": "\n    Practice Questions Sheet 1\n  ",
+    "section": "Exercise 1",
+    "text": "Exercise 1\n\nHow many observations are in the dataset?\nHow many variables are in the dataset?\nWhich variables are categorical and which are numerical?"
+  },
+  {
+    "objectID": "assignments/assignment_01.html#exercise-2",
+    "href": "assignments/assignment_01.html#exercise-2",
+    "title": "\n    Practice Questions Sheet 1\n  ",
+    "section": "Exercise 2",
+    "text": "Exercise 2\n\nWhat is the value of the 275th observation of distance?\nWhat does this value represent in the context of the dataset?\nWhat is the distance for the 1,000th observation?"
+  },
+  {
+    "objectID": "assignments/assignment_01.html#exercise-3",
+    "href": "assignments/assignment_01.html#exercise-3",
+    "title": "\n    Practice Questions Sheet 1\n  ",
+    "section": "Exercise 3",
+    "text": "Exercise 3\n\nWhat is the mean delivery distance?\nModify the above code and calculate the median delivery distance?\nWrite one or two short sentences comparing the mean and median and then in the context of the data, compare the two values (are they similar, or noticeably different)"
+  },
+  {
+    "objectID": "assignments/assignment_01.html#exercise-4",
+    "href": "assignments/assignment_01.html#exercise-4",
+    "title": "\n    Practice Questions Sheet 1\n  ",
+    "section": "Exercise 4",
+    "text": "Exercise 4\n\nModify the above code to correctly calculate the 25th percentile\nFollowing this, calculate the 75th percentile\nProvide a short interpretation of these two quantiles, in the context of the pizza deliveries"
+  },
+  {
+    "objectID": "assignments/assignment_01.html#exercise-5",
+    "href": "assignments/assignment_01.html#exercise-5",
+    "title": "\n    Practice Questions Sheet 1\n  ",
+    "section": "Exercise 5",
+    "text": "Exercise 5\n\nCalculate the variance of the distance variable\nNow, calculate the standard deviation of the distance variable\nIn general terms, what is the difference between the term variance and the term standard deviation\nWhat is the range of the distance variable"
+  },
+  {
+    "objectID": "assignments/assignment_01.html#exercise-6",
+    "href": "assignments/assignment_01.html#exercise-6",
+    "title": "\n    Practice Questions Sheet 1\n  ",
+    "section": "Exercise 6",
+    "text": "Exercise 6\n\nWrite R code to produce the above plot (remember to add in the y label)\nProvide a short overview of what the boxplot is telling us (what is the median of the tip variable, what is the range, are there any outliers, et.)\nModify the R code you just wrote to produce a histogram of the tip variable"
+  },
+  {
+    "objectID": "assignments/assignment_01.html#exercise-7",
+    "href": "assignments/assignment_01.html#exercise-7",
+    "title": "\n    Practice Questions Sheet 1\n  ",
+    "section": "Exercise 7",
+    "text": "Exercise 7\n\nUsing the new dataset, calculate the mean order_amount for Saturday deliveries.\nCreate a dataset containing Monday deliveries only.\nCalculate the mean order_amount for Monday deliveries.\nWhich day has the larger mean order amount?\n\n\n\n\n\n\n\n\nNoteBonus question\n\n\n\n\n\nCreating a bunch of new datasets with different delivery days can be quite inefficient and tedious.\nImagine doing it 7 times and running seven different analyses!\nInstead, a neat thing we can do is compare all the deliveries at once\nCopy and paste the below code which outputs Figure 3\n\nboxplot(tip ~ day, data = pizza, ylab = \"Tip amount\")\n\n\n\n\n\n\n\nFigure 3: Overview of pizza tips across all delivery days\n\n\n\n\n\nThe ~ tells R to “Plot tips separately for each value of day”.\n\nWhich day appears to have the lowest variation in tips?\nAre there any potential outliers?"
+  },
+  {
+    "objectID": "assignments/assignment_02.html",
+    "href": "assignments/assignment_02.html",
+    "title": "\n    Practice Questions Sheet 2\n  ",
+    "section": "",
+    "text": "ST201 · DATA ANALYSIS\n  \n\n  \n\n    \n    ST201 - Data Analysis\n  \n  \n    \n    Lecturer: Cormac Monaghan\n  \n  \n    \n    This tutorial introduces contingency tables and ways to analyse and visualise categorical data. Please attempt all questions before your tutorial You should work through the questions in a new R script.\n    For questions asking you to interpret a result, aim for one or two clear sentences. You should use the context of the insurance data when explaining your answers."
+  },
+  {
+    "objectID": "assignments/assignment_02.html#exercise-1",
+    "href": "assignments/assignment_02.html#exercise-1",
+    "title": "\n    Practice Questions Sheet 2\n  ",
+    "section": "Exercise 1",
+    "text": "Exercise 1\n\nHow many observations are in the dataset\nWhat are the two categorical variables?\nHow many categories does each variable contain?\nWhat is the observational unit in this dataset?"
+  },
+  {
+    "objectID": "assignments/assignment_02.html#exercise-2",
+    "href": "assignments/assignment_02.html#exercise-2",
+    "title": "\n    Practice Questions Sheet 2\n  ",
+    "section": "Exercise 2",
+    "text": "Exercise 2\n\nCreate a contingency table (similar to the above) of the insurance data.\n\n\n\n\n\n\n\nTipHint\n\n\n\n\n\nYou can use either the table() or xtabs() function\n\n\n\n\nUse the addmargins() function to add the marginal frequencies to the table.\nHow many customers\n\nown petrol cars?\nown diesel cars?\nown motorbikes?\nare satisfied with their insurance?\nare unsatisfied with their insurance?\n\nWhich vehicle type has the largest number of customers in the sample?"
+  },
+  {
+    "objectID": "assignments/assignment_02.html#exercise-3",
+    "href": "assignments/assignment_02.html#exercise-3",
+    "title": "\n    Practice Questions Sheet 2\n  ",
+    "section": "Exercise 3",
+    "text": "Exercise 3\n\nTurn the contingency table you made in exercise 2 into a proportions table.\nAgain, use the addmargins() function to add the marginal proportions to the table.\nWhat proportion of customers were satisfied with their insurance?\nWhat proportion of customers owned a petrol car?\nExplain the difference between the proportion in the cell\n\n“petrol car and satisfied” and “marginal proportion satisfied”"
+  },
+  {
+    "objectID": "assignments/assignment_02.html#exercise-4",
+    "href": "assignments/assignment_02.html#exercise-4",
+    "title": "\n    Practice Questions Sheet 2\n  ",
+    "section": "Exercise 4",
+    "text": "Exercise 4\n\nUpdate the proportion table from exercise 3 to now show the conditional proportions.\n\n\n\n\n\n\n\nTipHint\n\n\n\n\n\n\n# What goes in the blank?\nprop.table(insurance_table, ___ = 1)\n\n\n\n\n\nWhat proportion of petrol-car customers were satisfied?\nWhat proportion of diesel-car customers were satisfied?\nWhat proportion of motorbike customers were satisfied?\nWhich vehicle type has the highest proportion of satisfied customers?\nBased on these conditional proportions, describe the relationship between vehicle type and satisfaction."
+  },
+  {
+    "objectID": "assignments/assignment_02.html#exercise-5",
+    "href": "assignments/assignment_02.html#exercise-5",
+    "title": "\n    Practice Questions Sheet 2\n  ",
+    "section": "Exercise 5",
+    "text": "Exercise 5\n\nInstead of a stacked bar plot, modify the above code to create a side-by-side bar plot. You may also modify the ylim argument to improve the resulting figure\nProduce a stacked bar plot in which each bar represents 100% of the customers in that vehicle group.\n\n\n\n\n\n\n\nTipHint\n\n\n\n\n\nYou will need to use the conditional proportions from Exercise 4."
+  },
+  {
+    "objectID": "assignments/assignment_02.html#exercise-6",
+    "href": "assignments/assignment_02.html#exercise-6",
+    "title": "\n    Practice Questions Sheet 2\n  ",
+    "section": "Exercise 6",
+    "text": "Exercise 6\n\nCalculate the odds of satisfaction for\n\npetrol-car customers\ndiesel-car customers\nmotorbike customers\n\nCalculate the odds ratio comparing petrol-car customers with diesel-car customers\nInterpret the odds ratio in the context of this study"
+  },
+  {
+    "objectID": "assignments/assignment_02.html#exercise-7",
+    "href": "assignments/assignment_02.html#exercise-7",
+    "title": "\n    Practice Questions Sheet 2\n  ",
+    "section": "Exercise 7",
+    "text": "Exercise 7\n\nState what your null and alternative hypotheses are.\nWrite R code to perform a \\(\\chi^2\\) test\n\nWhat is the value of the chi-squared test statistic?\nWhat are the degrees of freedom?\nWhat is the p-value?\nUsing a 5% significance level, what decision would you make about the null hypothesis?\nWrite a conclusion for the test in the context of insurance satisfaction."
+  },
+  {
+    "objectID": "content/content_02.html",
+    "href": "content/content_02.html",
+    "title": "Numerical data",
+    "section": "",
+    "text": "Understand how to summarise numerical data\nMeans, medians, ranges, variability, and standard deviations\nLearn how to interpret box plots",
     "crumbs": [
       "Content",
-      "Lecture overview"
+      "Numerical data"
     ]
   },
   {
-    "objectID": "overview/index.html",
-    "href": "overview/index.html",
-    "title": "Welcome to ST201",
+    "objectID": "content/content_02.html#learning-objectives",
+    "href": "content/content_02.html#learning-objectives",
+    "title": "Numerical data",
     "section": "",
-    "text": "Welcome to second year and welcome to ST201!\nWe will be covering lots of things data related. This will range from the different types of data, how to summarise and visualise data, perform hypothesis tests, and interpret simple linear regression models\n\n\nOn successful completion of the module, you should be able to\n\nCalculate probabilities in R.\nAnalyse one and two samples using standard parametric methods.\nDisplay data using graphical methods.\nFit, interpret and predict from simple linear regression models.\n\n\n\n\nThis module is 100% continuous assessment which is broken down into three parts\n\n4 assignments in the form of a Moodle quiz (worth 15%)\n1 mid-term exam, which will be held on November 10th @3pm (worth 10%)\n1 final exam, which will be held on January 7th @10am (worth 75%)\n\n\n\n\n\n\n\nImportantDetails for Erasmus students\n\n\n\nIf you are an Erasmus student here for Semester 1 only (September - December), you will not be here for the final exam. With that in mind, your assignments and mid-term will be worth more marks.\nIf you are here for the full academic year (semester 1 AND semester 2), then your grades will follow the same breakdown as listed above.\n\n\n\n\n\n\n\n\nTime\nLocation\nClass Details\n\n\n\n\nTuesday (3pm - 4pm)\nPhysics Hall\nStandard format (slides)\n\n\nThursday (12pm - 1pm)\nPhysics Hall\nPractical class (R code)\n\n\n\n\n\n\n\nThere will be 4 tutorials for this module, one every two weeks.\nThese tutorials will start the week of the 12th October (week 4).\nA sign up sheet will be available for Moodle to pick a time slot. To allow adequate time for the department to organise everything, please ensure you fill out this sheet before 30th September"
-  },
-  {
-    "objectID": "overview/index.html#module-overview",
-    "href": "overview/index.html#module-overview",
-    "title": "Welcome to ST201",
-    "section": "",
-    "text": "Welcome to second year and welcome to ST201!\nWe will be covering lots of things data related. This will range from the different types of data, how to summarise and visualise data, perform hypothesis tests, and interpret simple linear regression models\n\n\nOn successful completion of the module, you should be able to\n\nCalculate probabilities in R.\nAnalyse one and two samples using standard parametric methods.\nDisplay data using graphical methods.\nFit, interpret and predict from simple linear regression models.\n\n\n\n\nThis module is 100% continuous assessment which is broken down into three parts\n\n4 assignments in the form of a Moodle quiz (worth 15%)\n1 mid-term exam, which will be held on November 10th @3pm (worth 10%)\n1 final exam, which will be held on January 7th @10am (worth 75%)\n\n\n\n\n\n\n\nImportantDetails for Erasmus students\n\n\n\nIf you are an Erasmus student here for Semester 1 only (September - December), you will not be here for the final exam. With that in mind, your assignments and mid-term will be worth more marks.\nIf you are here for the full academic year (semester 1 AND semester 2), then your grades will follow the same breakdown as listed above.\n\n\n\n\n\n\n\n\nTime\nLocation\nClass Details\n\n\n\n\nTuesday (3pm - 4pm)\nPhysics Hall\nStandard format (slides)\n\n\nThursday (12pm - 1pm)\nPhysics Hall\nPractical class (R code)\n\n\n\n\n\n\n\nThere will be 4 tutorials for this module, one every two weeks.\nThese tutorials will start the week of the 12th October (week 4).\nA sign up sheet will be available for Moodle to pick a time slot. To allow adequate time for the department to organise everything, please ensure you fill out this sheet before 30th September"
-  },
-  {
-    "objectID": "overview/index.html#slides",
-    "href": "overview/index.html#slides",
-    "title": "Welcome to ST201",
-    "section": "Slides",
-    "text": "Slides\nAll the slides for this module are created using Quarto. In fact, this entire module website is built using Quarto. Personally, I love Quarto. I do just about everything with it! If you every get a chance, do check it out (ok … mini rant over!)\n\nThere are many little hidden things you can do with these slides.\nYou can click in the slides and navigate through them with ← and →.\nIf you type ? (or shift + /) while viewing the slides you can see a list of slide-specific commands (such as like f for fullscreen mode or additionally s for presenter mode if you want to see my notes).\nFinally, if you want to make a PDF of these slides you can press e, followed by ctrl + p.\n\n  \n    \n       Open slides in New Window"
-  },
-  {
-    "objectID": "content/content_03.html",
-    "href": "content/content_03.html",
-    "title": "Categorical data analysis (I)",
-    "section": "",
-    "text": "Understand how to analyse categorical data\nLearn about observed versus expected counts\nUnderstand what the \\(\\chi^2\\) distribution is\nLearn how to perform a basic hypothesis test",
+    "text": "Understand how to summarise numerical data\nMeans, medians, ranges, variability, and standard deviations\nLearn how to interpret box plots",
     "crumbs": [
       "Content",
-      "Categorical data analysis I"
+      "Numerical data"
     ]
   },
   {
-    "objectID": "content/content_03.html#learning-objectives",
-    "href": "content/content_03.html#learning-objectives",
-    "title": "Categorical data analysis (I)",
-    "section": "",
-    "text": "Understand how to analyse categorical data\nLearn about observed versus expected counts\nUnderstand what the \\(\\chi^2\\) distribution is\nLearn how to perform a basic hypothesis test",
-    "crumbs": [
-      "Content",
-      "Categorical data analysis I"
-    ]
-  },
-  {
-    "objectID": "content/content_03.html#readings",
-    "href": "content/content_03.html#readings",
-    "title": "Categorical data analysis (I)",
+    "objectID": "content/content_02.html#readings",
+    "href": "content/content_02.html#readings",
+    "title": "Numerical data",
     "section": "Readings",
-    "text": "Readings\n\nSuggested readings\n\n Chapter 4 of Introduction to Statistics and Data Analysis\n Chapter 12 of Learning Statistics with R\n Statistical Tests for Categorical Data using R",
+    "text": "Readings\n\nSuggested readings\n\n Chapter 3 of Introduction to Statistics and Data Analysis\n Descriptive statistics in R\n Beginner’s Guide to R : Easy Ways to do basic data analysis",
     "crumbs": [
       "Content",
-      "Categorical data analysis I"
+      "Numerical data"
     ]
   },
   {
-    "objectID": "content/content_03.html#slides",
-    "href": "content/content_03.html#slides",
-    "title": "Categorical data analysis (I)",
+    "objectID": "content/content_02.html#slides",
+    "href": "content/content_02.html#slides",
+    "title": "Numerical data",
     "section": "Slides",
-    "text": "Slides\n\n\n\n\n\n\nCautionSlides will be available on Tuesday 6th October",
+    "text": "Slides\n\n  \n    \n       Open slides in New Window",
     "crumbs": [
       "Content",
-      "Categorical data analysis I"
+      "Numerical data"
     ]
   },
   {
@@ -229,47 +353,35 @@
     ]
   },
   {
-    "objectID": "content/content_05.html",
-    "href": "content/content_05.html",
-    "title": "Categorical data analysis (III)",
+    "objectID": "content/index.html",
+    "href": "content/index.html",
+    "title": "Lecture overview",
     "section": "",
-    "text": "How to perform a categorical data analysis when we introduce a third variable\nLearn what Simpsons paradox is\nLearn the difference between odds and odds ratios",
+    "text": "Each class has a set of required readings that should be completed in your own time. For the most part, these readings will mirror what we have covered in the lectures. However, there will be times that I find a cool resource that I believe may be helpful for some of you.\nAll the slides for this module are special HTML files made using both Quarto and Clean Revealjs theme by Grant McDermott. Personally, this is my favourite theme to use for presentations, although I have made a couple of minor tweaks to it myself",
     "crumbs": [
       "Content",
-      "Categorical data analysis III"
+      "Lecture overview"
     ]
   },
   {
-    "objectID": "content/content_05.html#learning-objectives",
-    "href": "content/content_05.html#learning-objectives",
-    "title": "Categorical data analysis (III)",
+    "objectID": "overview/index.html",
+    "href": "overview/index.html",
+    "title": "Welcome to ST201",
     "section": "",
-    "text": "How to perform a categorical data analysis when we introduce a third variable\nLearn what Simpsons paradox is\nLearn the difference between odds and odds ratios",
-    "crumbs": [
-      "Content",
-      "Categorical data analysis III"
-    ]
+    "text": "Welcome to second year and welcome to ST201!\nWe will be covering lots of things data related. This will range from the different types of data, how to summarise and visualise data, perform hypothesis tests, and interpret simple linear regression models\n\n\nOn successful completion of the module, you should be able to\n\nCalculate probabilities in R.\nAnalyse one and two samples using standard parametric methods.\nDisplay data using graphical methods.\nFit, interpret and predict from simple linear regression models.\n\n\n\n\nThis module is 100% continuous assessment which is broken down into three parts\n\n4 assignments in the form of a Moodle quiz (worth 15%)\n1 mid-term exam, which will be held on November 10th @3pm (worth 10%)\n1 final exam, which will be held on January 7th @10am (worth 75%)\n\n\n\n\n\n\n\nImportantDetails for Erasmus students\n\n\n\nIf you are an Erasmus student here for Semester 1 only (September - December), you will not be here for the final exam. With that in mind, your assignments and mid-term will be worth more marks.\nIf you are here for the full academic year (semester 1 AND semester 2), then your grades will follow the same breakdown as listed above.\n\n\n\n\n\n\n\n\nTime\nLocation\nClass Details\n\n\n\n\nTuesday (3pm - 4pm)\nPhysics Hall\nStandard format (slides)\n\n\nThursday (12pm - 1pm)\nPhysics Hall\nPractical class (R code)\n\n\n\n\n\n\n\nThere will be 4 tutorials for this module, one every two weeks.\nThese tutorials will start the week of the 12th October (week 4).\nA sign up sheet will be available for Moodle to pick a time slot. To allow adequate time for the department to organise everything, please ensure you fill out this sheet before 30th September"
   },
   {
-    "objectID": "content/content_05.html#readings",
-    "href": "content/content_05.html#readings",
-    "title": "Categorical data analysis (III)",
-    "section": "Readings",
-    "text": "Readings\n\nSuggested readings\n\n Chapter 4 of Introduction to Statistics and Data Analysis",
-    "crumbs": [
-      "Content",
-      "Categorical data analysis III"
-    ]
+    "objectID": "overview/index.html#module-overview",
+    "href": "overview/index.html#module-overview",
+    "title": "Welcome to ST201",
+    "section": "",
+    "text": "Welcome to second year and welcome to ST201!\nWe will be covering lots of things data related. This will range from the different types of data, how to summarise and visualise data, perform hypothesis tests, and interpret simple linear regression models\n\n\nOn successful completion of the module, you should be able to\n\nCalculate probabilities in R.\nAnalyse one and two samples using standard parametric methods.\nDisplay data using graphical methods.\nFit, interpret and predict from simple linear regression models.\n\n\n\n\nThis module is 100% continuous assessment which is broken down into three parts\n\n4 assignments in the form of a Moodle quiz (worth 15%)\n1 mid-term exam, which will be held on November 10th @3pm (worth 10%)\n1 final exam, which will be held on January 7th @10am (worth 75%)\n\n\n\n\n\n\n\nImportantDetails for Erasmus students\n\n\n\nIf you are an Erasmus student here for Semester 1 only (September - December), you will not be here for the final exam. With that in mind, your assignments and mid-term will be worth more marks.\nIf you are here for the full academic year (semester 1 AND semester 2), then your grades will follow the same breakdown as listed above.\n\n\n\n\n\n\n\n\nTime\nLocation\nClass Details\n\n\n\n\nTuesday (3pm - 4pm)\nPhysics Hall\nStandard format (slides)\n\n\nThursday (12pm - 1pm)\nPhysics Hall\nPractical class (R code)\n\n\n\n\n\n\n\nThere will be 4 tutorials for this module, one every two weeks.\nThese tutorials will start the week of the 12th October (week 4).\nA sign up sheet will be available for Moodle to pick a time slot. To allow adequate time for the department to organise everything, please ensure you fill out this sheet before 30th September"
   },
   {
-    "objectID": "content/content_05.html#slides",
-    "href": "content/content_05.html#slides",
-    "title": "Categorical data analysis (III)",
+    "objectID": "overview/index.html#slides",
+    "href": "overview/index.html#slides",
+    "title": "Welcome to ST201",
     "section": "Slides",
-    "text": "Slides\n\n\n\n\n\n\nCautionSlides will be available on Tuesday 20th October",
-    "crumbs": [
-      "Content",
-      "Categorical data analysis III"
-    ]
+    "text": "Slides\nAll the slides for this module are created using Quarto. In fact, this entire module website is built using Quarto. Personally, I love Quarto. I do just about everything with it! If you every get a chance, do check it out (ok … mini rant over!)\n\nThere are many little hidden things you can do with these slides.\nYou can click in the slides and navigate through them with ← and →.\nIf you type ? (or shift + /) while viewing the slides you can see a list of slide-specific commands (such as like f for fullscreen mode or additionally s for presenter mode if you want to see my notes).\nFinally, if you want to make a PDF of these slides you can press e, followed by ctrl + p.\n\n  \n    \n       Open slides in New Window"
   }
 ]

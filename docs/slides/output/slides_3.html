@@ -1,0 +1,1593 @@
+<!DOCTYPE html>
+<html lang="en"><head>
+<script src="slides_3_files/libs/clipboard/clipboard.min.js"></script>
+<script src="slides_3_files/libs/quarto-html/tabby.min.js"></script>
+<script src="slides_3_files/libs/quarto-html/popper.min.js"></script>
+<script src="slides_3_files/libs/quarto-html/tippy.umd.min.js"></script>
+<link href="slides_3_files/libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="slides_3_files/libs/quarto-html/light-border.css" rel="stylesheet">
+<link href="slides_3_files/libs/quarto-html/quarto-syntax-highlighting-64a204ab8560d761af7679ceaba22944.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<link href="slides_3_files/libs/quarto-contrib/code-window-0.1.0/style.css" rel="stylesheet">
+<script>document.addEventListener("DOMContentLoaded",function(){
+  var DEFAULT_COLLAPSE=null;
+  document.querySelectorAll("pre.cw-auto").forEach(function(pre){
+    var fn=pre.closest("[data-filename]");
+    if(!fn)return;
+    var name=fn.getAttribute("data-filename");
+    if(!name)return;
+    var scaffold=pre.closest(".code-copy-outer-scaffold")||pre.closest(".sourceCode");
+    if(!scaffold)return;
+    var w=document.createElement("div");
+    w.className="code-with-filename code-window-auto";
+    var tb=document.createElement("div");
+    tb.className="code-with-filename-file";
+    var tp=document.createElement("pre");
+    var ts=document.createElement("strong");
+    ts.textContent=name;
+    tp.appendChild(ts);tb.appendChild(tp);
+    scaffold.parentNode.insertBefore(w,scaffold);
+    w.appendChild(tb);w.appendChild(scaffold);
+    pre.classList.remove("cw-auto");
+  });
+  function findMarkerSource(el){
+    return el.querySelector('pre[class*="cw-style-"],pre[class*="cw-collapse-"],pre[data-code-window-lines-label]')
+      ||el.querySelector('[class*="cw-style-"],[class*="cw-collapse-"],[data-code-window-lines-label]');
+  }
+  document.querySelectorAll(".code-with-filename").forEach(function(el){
+    var marker=findMarkerSource(el);
+    var styleApplied=/\bcode-window-(macos|windows|default)\b/.test(el.className);
+    if(!styleApplied){
+      var sm=marker&&marker.className.match(/cw-style-(\w+)/);
+      if(sm){el.classList.add("code-window-"+sm[1]);marker.classList.remove(sm[0]);}
+      else{el.classList.add("code-window-macos");}
+    }
+    var collapse=null;
+    if(marker){
+      var cm=marker.className.match(/cw-collapse-(open|closed)/);
+      if(cm){collapse=cm[1];marker.classList.remove(cm[0]);}
+    }
+    if(collapse===null&&DEFAULT_COLLAPSE){collapse=DEFAULT_COLLAPSE;}
+    if(marker&&marker.hasAttribute("data-code-window-lines-label")){
+      var spec=marker.getAttribute("data-code-window-lines-label");
+      marker.removeAttribute("data-code-window-lines-label");
+      var titleBar=el.querySelector(".code-with-filename-file");
+      if(titleBar&&!titleBar.querySelector(".code-with-filename-lines")){
+        var chip=document.createElement("span");
+        chip.className="code-with-filename-lines";
+        chip.textContent="L"+spec;
+        titleBar.appendChild(chip);
+      }
+    }
+    if(collapse&&!el.classList.contains("code-window-collapsible")){
+      var titleBar=el.querySelector(".code-with-filename-file");
+      if(titleBar){
+        var details=document.createElement("details");
+        details.className=el.className+" code-window-collapsible";
+        if(collapse==="open"){details.open=true;}
+        var summaryEl=document.createElement("summary");
+        summaryEl.className="code-with-filename-file";
+        while(titleBar.firstChild){summaryEl.appendChild(titleBar.firstChild);}
+        titleBar.parentNode.removeChild(titleBar);
+        details.appendChild(summaryEl);
+        while(el.firstChild){details.appendChild(el.firstChild);}
+        el.parentNode.replaceChild(details,el);
+      }
+    }
+  });
+});</script><meta charset="utf-8">
+  <meta name="generator" content="quarto-1.10.18">
+
+  <meta name="author" content="Cormac Monaghan">
+  <title>Categorical data analysis (I)</title>
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui">
+  <link rel="stylesheet" href="slides_3_files/libs/revealjs/dist/reset.css">
+  <link rel="stylesheet" href="slides_3_files/libs/revealjs/dist/reveal.css">
+  <style>
+    /* Default styles provided by pandoc.
+    ** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
+    */
+    span.smallcaps{font-variant: small-caps;}
+    div.columns{display: flex; gap: 1.5em;}
+    div.column{flex: auto;}
+    @media screen {
+    div.columns{gap: min(4vw, 1.5em);}
+    div.column{overflow-x: auto;}
+    }
+    div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+    ul.task-list{list-style: none;}
+    ul.task-list li input[type="checkbox"] {
+      width: 0.8em;
+      margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+      vertical-align: middle;
+    }
+    /* CSS for syntax highlighting */
+    html { -webkit-text-size-adjust: 100%; }
+    pre > code.sourceCode { white-space: pre; position: relative; }
+    pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+    pre > code.sourceCode > span:empty { height: 1.2em; }
+    .sourceCode { overflow: visible; }
+    code.sourceCode > span { color: inherit; text-decoration: inherit; }
+    div.sourceCode { margin: 1em 0; }
+    pre.sourceCode { margin: 0; }
+    @media screen {
+    div.sourceCode { overflow: auto; }
+    }
+    @media print {
+    pre > code.sourceCode { white-space: pre-wrap; }
+    pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+    }
+    pre.numberSource code
+      { counter-reset: source-line 0; }
+    pre.numberSource code > span
+      { position: relative; left: -4em; counter-increment: source-line; }
+    pre.numberSource code > span > a:first-child::before
+      { content: counter(source-line);
+        position: relative; left: -1em; text-align: right; vertical-align: baseline;
+        border: none; display: inline-block;
+        -webkit-touch-callout: none; -webkit-user-select: none;
+        -khtml-user-select: none; -moz-user-select: none;
+        -ms-user-select: none; user-select: none;
+        padding: 0 4px; width: 4em;
+        color: #aaaaaa;
+      }
+    pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+    div.sourceCode
+      { color: #003b4f; background-color: #f1f3f5; }
+    @media screen {
+    pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+    }
+    code span { color: #003b4f; } /* Normal */
+    code span.al { color: #ad0000; } /* Alert */
+    code span.an { color: #5e5e5e; } /* Annotation */
+    code span.at { color: #657422; } /* Attribute */
+    code span.bn { color: #ad0000; } /* BaseN */
+    code span.bu { } /* BuiltIn */
+    code span.cf { color: #003b4f; font-weight: bold; } /* ControlFlow */
+    code span.ch { color: #20794d; } /* Char */
+    code span.cn { color: #8f5902; } /* Constant */
+    code span.co { color: #5e5e5e; } /* Comment */
+    code span.cv { color: #5e5e5e; font-style: italic; } /* CommentVar */
+    code span.do { color: #5e5e5e; font-style: italic; } /* Documentation */
+    code span.dt { color: #ad0000; } /* DataType */
+    code span.dv { color: #ad0000; } /* DecVal */
+    code span.er { color: #ad0000; } /* Error */
+    code span.ex { } /* Extension */
+    code span.fl { color: #ad0000; } /* Float */
+    code span.fu { color: #4758ab; } /* Function */
+    code span.im { color: #00769e; } /* Import */
+    code span.in { color: #5e5e5e; } /* Information */
+    code span.kw { color: #003b4f; font-weight: bold; } /* Keyword */
+    code span.op { color: #5e5e5e; } /* Operator */
+    code span.ot { color: #003b4f; } /* Other */
+    code span.pp { color: #ad0000; } /* Preprocessor */
+    code span.sc { color: #5e5e5e; } /* SpecialChar */
+    code span.ss { color: #20794d; } /* SpecialString */
+    code span.st { color: #20794d; } /* String */
+    code span.va { color: #111111; } /* Variable */
+    code span.vs { color: #20794d; } /* VerbatimString */
+    code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
+  </style>
+  <link rel="stylesheet" href="slides_3_files/libs/revealjs/dist/theme/quarto-0bd1083bdf8466ccf673bdd24851817d.css">
+  <link href="slides_3_files/libs/revealjs/plugin/quarto-line-highlight/line-highlight.css" rel="stylesheet">
+  <link href="slides_3_files/libs/revealjs/plugin/reveal-menu/menu.css" rel="stylesheet">
+  <link href="slides_3_files/libs/revealjs/plugin/reveal-menu/quarto-menu.css" rel="stylesheet">
+  <link href="slides_3_files/libs/revealjs/plugin/quarto-support/footer.css" rel="stylesheet">
+  <style type="text/css">
+    .reveal div.sourceCode {
+      margin: 0;
+      overflow: auto;
+    }
+    .reveal div.hanging-indent {
+      margin-left: 1em;
+      text-indent: -1em;
+    }
+    .reveal .slide:not(.center) {
+      height: 100%;
+    }
+    .reveal .slide.scrollable {
+      overflow-y: auto;
+    }
+    .reveal .footnotes {
+      height: 100%;
+      overflow-y: auto;
+    }
+    .reveal .slide .absolute {
+      position: absolute;
+      display: block;
+    }
+    .reveal .footnotes ol {
+      counter-reset: ol;
+      list-style-type: none; 
+      margin-left: 0;
+    }
+    .reveal .footnotes ol li:before {
+      counter-increment: ol;
+      content: counter(ol) ". "; 
+    }
+    .reveal .footnotes ol li > p:first-child {
+      display: inline-block;
+    }
+    .reveal .slide ul,
+    .reveal .slide ol {
+      margin-bottom: 0.5em;
+    }
+    .reveal .slide ul li,
+    .reveal .slide ol li {
+      margin-top: 0.4em;
+      margin-bottom: 0.2em;
+    }
+    .reveal .slide ul[role="tablist"] li {
+      margin-bottom: 0;
+    }
+    .reveal .slide ul li > *:first-child,
+    .reveal .slide ol li > *:first-child {
+      margin-block-start: 0;
+    }
+    .reveal .slide ul li > *:last-child,
+    .reveal .slide ol li > *:last-child {
+      margin-block-end: 0;
+    }
+    .reveal .slide .columns:nth-child(3) {
+      margin-block-start: 0.8em;
+    }
+    .reveal blockquote {
+      box-shadow: none;
+    }
+    .reveal .tippy-content>* {
+      margin-top: 0.2em;
+      margin-bottom: 0.7em;
+    }
+    .reveal .tippy-content>*:last-child {
+      margin-bottom: 0.2em;
+    }
+    .reveal .slide > img.stretch.quarto-figure-center,
+    .reveal .slide > img.r-stretch.quarto-figure-center {
+      display: block;
+      margin-left: auto;
+      margin-right: auto; 
+    }
+    .reveal .slide > img.stretch.quarto-figure-left,
+    .reveal .slide > img.r-stretch.quarto-figure-left  {
+      display: block;
+      margin-left: 0;
+      margin-right: auto; 
+    }
+    .reveal .slide > img.stretch.quarto-figure-right,
+    .reveal .slide > img.r-stretch.quarto-figure-right  {
+      display: block;
+      margin-left: auto;
+      margin-right: 0; 
+    }
+  </style>
+</head>
+<body class="quarto-light">
+<script src="mathjax-config.js"></script>
+  <div class="reveal">
+    <div class="slides">
+
+<section id="title-slide" class="quarto-title-block center">
+  <h1 class="title">Categorical data analysis (I)</h1>
+  <p class="subtitle">ST201 - Data analysis</p>
+
+<div class="quarto-title-authors">
+<div class="quarto-title-author">
+<div class="quarto-title-author-name">
+Cormac Monaghan
+</div>
+<div class="quarto-title-author-email">
+<a href="mailto:cormac.monaghan@mu.ie">cormac.monaghan@mu.ie</a>
+</div>
+        <p class="quarto-title-affiliation">
+            Department of Mathematics and Statistics, Maynooth University
+          </p>
+    </div>
+</div>
+
+</section>
+<section id="recap" class="slide level2">
+<h2>Recap</h2>
+<p>Last week we covered</p>
+<ul>
+<li>Means and medians</li>
+<li>Quantiles</li>
+<li>Range, IQR, variance, and standard deviations</li>
+<li>Histograms and boxplots</li>
+<li>Scatter plots (briefly)</li>
+</ul>
+<div class="callout callout-important callout-titled callout-style-default">
+<div class="callout-body">
+<div class="callout-title">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<p><strong>Check in: Was there anything that was confusing or not clear from last week?</strong></p>
+</div>
+<div class="callout-content">
+
+</div>
+</div>
+</div>
+</section>
+<section id="association-of-two-categorical-variables" class="slide level2">
+<h2>Association of two categorical variables</h2>
+<p>Imagine we surveyed <strong>100 airline passengers</strong>.</p>
+<p>We recorded:</p>
+<ul>
+<li><strong>Travel class</strong>: Business or Economy</li>
+<li><strong>Satisfaction</strong>: Very poor <span class="math inline">\(\longrightarrow\)</span> Very good</li>
+</ul>
+<div title="Research question">
+<div class="callout callout-note callout-titled callout-style-default">
+<div class="callout-body">
+<div class="callout-title">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<p><strong>Research question</strong></p>
+</div>
+<div class="callout-content">
+<p>Is satisfaction related to travel class?</p>
+</div>
+</div>
+</div>
+</div>
+</section>
+<section id="airline-satisfaction-data" class="slide level2">
+<h2>Airline satisfaction data</h2>
+<div class="cell" data-layout-align="center">
+<div class="cell-output-display">
+<!-- preamble start -->
+
+    <script src="https://cdn.jsdelivr.net/gh/vincentarelbundock/tinytable@main/inst/tinytable.js"></script>
+
+    <script>
+      // Create table-specific functions using external factory
+      const tableFns_bcqhdticzgjg378tfvc3 = TinyTable.createTableFunctions("tinytable_bcqhdticzgjg378tfvc3");
+      // tinytable span after
+      window.addEventListener('load', function () {
+          var cellsToStyle = [
+            // tinytable style arrays after
+          { positions: [ { i: '6', j: 1 }, { i: '6', j: 2 } ], css_id: 'tinytable_css_cgeysjr4hvw5grm0nyoc',}, 
+          { positions: [ { i: '1', j: 1 }, { i: '2', j: 1 }, { i: '3', j: 1 }, { i: '4', j: 1 }, { i: '5', j: 1 }, { i: '1', j: 2 }, { i: '2', j: 2 }, { i: '3', j: 2 }, { i: '4', j: 2 }, { i: '5', j: 2 } ], css_id: 'tinytable_css_r5cjw44da9xwssg9q346',}, 
+          { positions: [ { i: '0', j: 1 }, { i: '0', j: 2 } ], css_id: 'tinytable_css_cec8b35z4lcjzm9ibhcu',}, 
+          ];
+
+          // Loop over the arrays to style the cells
+          cellsToStyle.forEach(function (group) {
+              group.positions.forEach(function (cell) {
+                  tableFns_bcqhdticzgjg378tfvc3.styleCell(cell.i, cell.j, group.css_id);
+              });
+          });
+      });
+    </script>
+
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/vincentarelbundock/tinytable@main/inst/tinytable.css">
+    <style>
+    /* tinytable css entries after */
+    #tinytable_bcqhdticzgjg378tfvc3 td.tinytable_css_cgeysjr4hvw5grm0nyoc, #tinytable_bcqhdticzgjg378tfvc3 th.tinytable_css_cgeysjr4hvw5grm0nyoc {  position: relative; --border-bottom: 1; --border-left: 0; --border-right: 0; --border-top: 0; --line-color-bottom: var(--tt-line-color); --line-color-left: var(--tt-line-color); --line-color-right: var(--tt-line-color); --line-color-top: var(--tt-line-color); --line-width-bottom: 0.08em; --line-width-left: 0.1em; --line-width-right: 0.1em; --line-width-top: 0.1em; --trim-bottom-left: 0%; --trim-bottom-right: 0%; --trim-left-bottom: 0%; --trim-left-top: 0%; --trim-right-bottom: 0%; --trim-right-top: 0%; --trim-top-left: 0%; --trim-top-right: 0%; ; text-align: center }
+    #tinytable_bcqhdticzgjg378tfvc3 td.tinytable_css_r5cjw44da9xwssg9q346, #tinytable_bcqhdticzgjg378tfvc3 th.tinytable_css_r5cjw44da9xwssg9q346 { text-align: center }
+    #tinytable_bcqhdticzgjg378tfvc3 td.tinytable_css_cec8b35z4lcjzm9ibhcu, #tinytable_bcqhdticzgjg378tfvc3 th.tinytable_css_cec8b35z4lcjzm9ibhcu {  position: relative; --border-bottom: 1; --border-left: 0; --border-right: 0; --border-top: 1; --line-color-bottom: var(--tt-line-color); --line-color-left: var(--tt-line-color); --line-color-right: var(--tt-line-color); --line-color-top: var(--tt-line-color); --line-width-bottom: 0.05em; --line-width-left: 0.1em; --line-width-right: 0.1em; --line-width-top: 0.08em; --trim-bottom-left: 0%; --trim-bottom-right: 0%; --trim-left-bottom: 0%; --trim-left-top: 0%; --trim-right-bottom: 0%; --trim-right-top: 0%; --trim-top-left: 0%; --trim-top-right: 0%; ; font-weight: bold; text-align: center }
+    </style>
+    <div class="container">
+      <table class="tinytable" id="tinytable_bcqhdticzgjg378tfvc3" style="width: auto; margin-left: auto; margin-right: auto;" data-quarto-disable-processing="true">
+        
+        <thead>
+              <tr>
+                <th scope="col" data-row="0" data-col="1">Class</th>
+                <th scope="col" data-row="0" data-col="2">Satisfaction</th>
+              </tr>
+        </thead>
+        
+        <tbody>
+                <tr>
+                  <td data-row="1" data-col="1">E</td>
+                  <td data-row="1" data-col="2">Fair</td>
+                </tr>
+                <tr>
+                  <td data-row="2" data-col="1">E</td>
+                  <td data-row="2" data-col="2">Good</td>
+                </tr>
+                <tr>
+                  <td data-row="3" data-col="1">E</td>
+                  <td data-row="3" data-col="2">Poor</td>
+                </tr>
+                <tr>
+                  <td data-row="4" data-col="1">E</td>
+                  <td data-row="4" data-col="2">Poor</td>
+                </tr>
+                <tr>
+                  <td data-row="5" data-col="1">E</td>
+                  <td data-row="5" data-col="2">Fair</td>
+                </tr>
+                <tr>
+                  <td data-row="6" data-col="1">E</td>
+                  <td data-row="6" data-col="2">Poor</td>
+                </tr>
+        </tbody>
+      </table>
+    </div>
+<!-- hack to avoid NA insertion in last line -->
+</div>
+</div>
+<p>Unlike our data from last week, both of these variables are <strong>categorical</strong>.</p>
+<p><br></p>
+<div class="callout callout-important callout-titled callout-style-default">
+<div class="callout-body">
+<div class="callout-title">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<p><strong>How would we analyse such data?</strong></p>
+</div>
+<div class="callout-content">
+
+</div>
+</div>
+</div>
+</section>
+<section id="contingency-tables" class="slide level2">
+<h2>Contingency tables</h2>
+<p>A contingency table shows the <strong>frequency</strong> of observations for <strong>every combination of categorical variables</strong>.</p>
+<div class="code-with-filename">
+<div class="code-with-filename-file">
+<pre><strong>contingency.r</strong></pre>
+</div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb1" data-filename="contingency.r"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="" aria-label="1"></a><span class="fu">table</span>(airlines)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+<div class="cell" data-layout-align="center">
+<div class="cell-output-display">
+<!-- preamble start -->
+
+    <script src="https://cdn.jsdelivr.net/gh/vincentarelbundock/tinytable@main/inst/tinytable.js"></script>
+
+    <script>
+      // Create table-specific functions using external factory
+      const tableFns_4hoq35e3kt5jgv1pn0xe = TinyTable.createTableFunctions("tinytable_4hoq35e3kt5jgv1pn0xe");
+      // tinytable span after
+      window.addEventListener('load', function () {
+          var cellsToStyle = [
+            // tinytable style arrays after
+          { positions: [ { i: '2', j: 2 }, { i: '2', j: 3 }, { i: '2', j: 4 }, { i: '2', j: 5 } ], css_id: 'tinytable_css_cs26uco35rvhsjytd5ll',}, 
+          { positions: [ { i: '1', j: 2 }, { i: '1', j: 3 }, { i: '1', j: 4 }, { i: '1', j: 5 } ], css_id: 'tinytable_css_4l4ed143ktq50yxk224l',}, 
+          { positions: [ { i: '0', j: 2 }, { i: '0', j: 3 }, { i: '0', j: 4 }, { i: '0', j: 5 } ], css_id: 'tinytable_css_p4ld11io7z6g1ur4n5ha',}, 
+          { positions: [ { i: '2', j: 1 } ], css_id: 'tinytable_css_iz5i3tzfqtbz9f1treo2',}, 
+          { positions: [ { i: '0', j: 1 } ], css_id: 'tinytable_css_2ieyrmwp3at7lbjh461m',}, 
+          ];
+
+          // Loop over the arrays to style the cells
+          cellsToStyle.forEach(function (group) {
+              group.positions.forEach(function (cell) {
+                  tableFns_4hoq35e3kt5jgv1pn0xe.styleCell(cell.i, cell.j, group.css_id);
+              });
+          });
+      });
+    </script>
+
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/vincentarelbundock/tinytable@main/inst/tinytable.css">
+    <style>
+    /* tinytable css entries after */
+    #tinytable_4hoq35e3kt5jgv1pn0xe td.tinytable_css_cs26uco35rvhsjytd5ll, #tinytable_4hoq35e3kt5jgv1pn0xe th.tinytable_css_cs26uco35rvhsjytd5ll {  position: relative; --border-bottom: 1; --border-left: 0; --border-right: 0; --border-top: 0; --line-color-bottom: var(--tt-line-color); --line-color-left: var(--tt-line-color); --line-color-right: var(--tt-line-color); --line-color-top: var(--tt-line-color); --line-width-bottom: 0.08em; --line-width-left: 0.1em; --line-width-right: 0.1em; --line-width-top: 0.1em; --trim-bottom-left: 0%; --trim-bottom-right: 0%; --trim-left-bottom: 0%; --trim-left-top: 0%; --trim-right-bottom: 0%; --trim-right-top: 0%; --trim-top-left: 0%; --trim-top-right: 0%; ; text-align: center }
+    #tinytable_4hoq35e3kt5jgv1pn0xe td.tinytable_css_4l4ed143ktq50yxk224l, #tinytable_4hoq35e3kt5jgv1pn0xe th.tinytable_css_4l4ed143ktq50yxk224l { text-align: center }
+    #tinytable_4hoq35e3kt5jgv1pn0xe td.tinytable_css_p4ld11io7z6g1ur4n5ha, #tinytable_4hoq35e3kt5jgv1pn0xe th.tinytable_css_p4ld11io7z6g1ur4n5ha {  position: relative; --border-bottom: 1; --border-left: 0; --border-right: 0; --border-top: 1; --line-color-bottom: var(--tt-line-color); --line-color-left: var(--tt-line-color); --line-color-right: var(--tt-line-color); --line-color-top: var(--tt-line-color); --line-width-bottom: 0.05em; --line-width-left: 0.1em; --line-width-right: 0.1em; --line-width-top: 0.08em; --trim-bottom-left: 0%; --trim-bottom-right: 0%; --trim-left-bottom: 0%; --trim-left-top: 0%; --trim-right-bottom: 0%; --trim-right-top: 0%; --trim-top-left: 0%; --trim-top-right: 0%; ; font-weight: bold; text-align: center }
+    #tinytable_4hoq35e3kt5jgv1pn0xe td.tinytable_css_iz5i3tzfqtbz9f1treo2, #tinytable_4hoq35e3kt5jgv1pn0xe th.tinytable_css_iz5i3tzfqtbz9f1treo2 {  position: relative; --border-bottom: 1; --border-left: 0; --border-right: 0; --border-top: 0; --line-color-bottom: var(--tt-line-color); --line-color-left: var(--tt-line-color); --line-color-right: var(--tt-line-color); --line-color-top: var(--tt-line-color); --line-width-bottom: 0.08em; --line-width-left: 0.1em; --line-width-right: 0.1em; --line-width-top: 0.1em; --trim-bottom-left: 0%; --trim-bottom-right: 0%; --trim-left-bottom: 0%; --trim-left-top: 0%; --trim-right-bottom: 0%; --trim-right-top: 0%; --trim-top-left: 0%; --trim-top-right: 0%;  }
+    #tinytable_4hoq35e3kt5jgv1pn0xe td.tinytable_css_2ieyrmwp3at7lbjh461m, #tinytable_4hoq35e3kt5jgv1pn0xe th.tinytable_css_2ieyrmwp3at7lbjh461m {  position: relative; --border-bottom: 1; --border-left: 0; --border-right: 0; --border-top: 1; --line-color-bottom: var(--tt-line-color); --line-color-left: var(--tt-line-color); --line-color-right: var(--tt-line-color); --line-color-top: var(--tt-line-color); --line-width-bottom: 0.05em; --line-width-left: 0.1em; --line-width-right: 0.1em; --line-width-top: 0.08em; --trim-bottom-left: 0%; --trim-bottom-right: 0%; --trim-left-bottom: 0%; --trim-left-top: 0%; --trim-right-bottom: 0%; --trim-right-top: 0%; --trim-top-left: 0%; --trim-top-right: 0%; ; font-weight: bold }
+    </style>
+    <div class="container">
+      <table class="tinytable" id="tinytable_4hoq35e3kt5jgv1pn0xe" style="width: auto; margin-left: auto; margin-right: auto;" data-quarto-disable-processing="true">
+        
+        <thead>
+              <tr>
+                <th scope="col" data-row="0" data-col="1">Class</th>
+                <th scope="col" data-row="0" data-col="2">Poor</th>
+                <th scope="col" data-row="0" data-col="3">Fair</th>
+                <th scope="col" data-row="0" data-col="4">Good</th>
+                <th scope="col" data-row="0" data-col="5">Very Good</th>
+              </tr>
+        </thead>
+        
+        <tbody>
+                <tr>
+                  <td data-row="1" data-col="1">B</td>
+                  <td data-row="1" data-col="2">3</td>
+                  <td data-row="1" data-col="3">5</td>
+                  <td data-row="1" data-col="4">14</td>
+                  <td data-row="1" data-col="5">28</td>
+                </tr>
+                <tr>
+                  <td data-row="2" data-col="1">E</td>
+                  <td data-row="2" data-col="2">21</td>
+                  <td data-row="2" data-col="3">17</td>
+                  <td data-row="2" data-col="4">10</td>
+                  <td data-row="2" data-col="5">2</td>
+                </tr>
+        </tbody>
+      </table>
+    </div>
+<!-- hack to avoid NA insertion in last line -->
+</div>
+</div>
+</section>
+<section id="marginal-distributions" class="slide level2">
+<h2>Marginal distributions</h2>
+<div class="callout callout-note no-icon callout-titled callout-style-default">
+<div class="callout-body">
+<div class="callout-title">
+<p><strong>Marginal distributions tell us:</strong></p>
+</div>
+<div class="callout-content">
+<p>How common is each category, ignoring the other category?</p>
+</div>
+</div>
+</div>
+<div class="code-with-filename">
+<div class="code-with-filename-file">
+<pre><strong>marginal.R</strong></pre>
+</div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb2" data-filename="marginal.R"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="" aria-label="1"></a><span class="fu">addmargins</span>(<span class="fu">table</span>(airlines))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+<div class="cell" data-layout-align="center">
+<div class="cell-output-display">
+<!-- preamble start -->
+
+    <script src="https://cdn.jsdelivr.net/gh/vincentarelbundock/tinytable@main/inst/tinytable.js"></script>
+
+    <script>
+      // Create table-specific functions using external factory
+      const tableFns_p49hqyxwc3ul841nje77 = TinyTable.createTableFunctions("tinytable_p49hqyxwc3ul841nje77");
+      // tinytable span after
+      window.addEventListener('load', function () {
+          var cellsToStyle = [
+            // tinytable style arrays after
+          { positions: [ { i: '3', j: 5 } ], css_id: 'tinytable_css_1e9t2z2p6t5y1q21rm5m',}, 
+          { positions: [ { i: '2', j: 5 } ], css_id: 'tinytable_css_eit8rmep8lgf3rs6l2sp',}, 
+          { positions: [ { i: '1', j: 5 } ], css_id: 'tinytable_css_5hwjrigjyzsamyrm3062',}, 
+          { positions: [ { i: '0', j: 5 } ], css_id: 'tinytable_css_7ru1ys4r3a60j73801gf',}, 
+          { positions: [ { i: '3', j: 2 }, { i: '3', j: 3 }, { i: '3', j: 4 } ], css_id: 'tinytable_css_x00zvjl51frse9up2rx1',}, 
+          { positions: [ { i: '2', j: 2 }, { i: '2', j: 3 }, { i: '2', j: 4 } ], css_id: 'tinytable_css_ljphwwcrolw284yncxfa',}, 
+          { positions: [ { i: '1', j: 2 }, { i: '1', j: 3 }, { i: '1', j: 4 } ], css_id: 'tinytable_css_sao6yf75nwwscyagek2a',}, 
+          { positions: [ { i: '0', j: 2 }, { i: '0', j: 3 }, { i: '0', j: 4 } ], css_id: 'tinytable_css_islkuokjq07vjn9uflt9',}, 
+          { positions: [ { i: '3', j: 1 }, { i: '3', j: 6 } ], css_id: 'tinytable_css_5krq583frdamtr6o3qqs',}, 
+          { positions: [ { i: '2', j: 1 }, { i: '2', j: 6 } ], css_id: 'tinytable_css_nzt1shh7eny90haxlvoq',}, 
+          { positions: [ { i: '0', j: 1 }, { i: '0', j: 6 } ], css_id: 'tinytable_css_c73u62r0d5aus3mpybq6',}, 
+          ];
+
+          // Loop over the arrays to style the cells
+          cellsToStyle.forEach(function (group) {
+              group.positions.forEach(function (cell) {
+                  tableFns_p49hqyxwc3ul841nje77.styleCell(cell.i, cell.j, group.css_id);
+              });
+          });
+      });
+    </script>
+
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/vincentarelbundock/tinytable@main/inst/tinytable.css">
+    <style>
+    /* tinytable css entries after */
+    #tinytable_p49hqyxwc3ul841nje77 td.tinytable_css_1e9t2z2p6t5y1q21rm5m, #tinytable_p49hqyxwc3ul841nje77 th.tinytable_css_1e9t2z2p6t5y1q21rm5m {  position: relative; --border-bottom: 1; --border-left: 0; --border-right: 1; --border-top: 0; --line-color-bottom: var(--tt-line-color); --line-color-left: var(--tt-line-color); --line-color-right: var(--tt-line-color); --line-color-top: var(--tt-line-color); --line-width-bottom: 0.08em; --line-width-left: 0.1em; --line-width-right: 0.1em; --line-width-top: 0.1em; --trim-bottom-left: 0%; --trim-bottom-right: 0%; --trim-left-bottom: 0%; --trim-left-top: 0%; --trim-right-bottom: 0%; --trim-right-top: 0%; --trim-top-left: 0%; --trim-top-right: 0%; ; text-align: center }
+    #tinytable_p49hqyxwc3ul841nje77 td.tinytable_css_eit8rmep8lgf3rs6l2sp, #tinytable_p49hqyxwc3ul841nje77 th.tinytable_css_eit8rmep8lgf3rs6l2sp {  position: relative; --border-bottom: 1; --border-left: 0; --border-right: 1; --border-top: 0; --line-color-bottom: var(--tt-line-color); --line-color-left: var(--tt-line-color); --line-color-right: var(--tt-line-color); --line-color-top: var(--tt-line-color); --line-width-bottom: 0.1em; --line-width-left: 0.1em; --line-width-right: 0.1em; --line-width-top: 0.1em; --trim-bottom-left: 0%; --trim-bottom-right: 0%; --trim-left-bottom: 0%; --trim-left-top: 0%; --trim-right-bottom: 0%; --trim-right-top: 0%; --trim-top-left: 0%; --trim-top-right: 0%; ; text-align: center }
+    #tinytable_p49hqyxwc3ul841nje77 td.tinytable_css_5hwjrigjyzsamyrm3062, #tinytable_p49hqyxwc3ul841nje77 th.tinytable_css_5hwjrigjyzsamyrm3062 {  position: relative; --border-bottom: 0; --border-left: 0; --border-right: 1; --border-top: 0; --line-color-bottom: var(--tt-line-color); --line-color-left: var(--tt-line-color); --line-color-right: var(--tt-line-color); --line-color-top: var(--tt-line-color); --line-width-bottom: 0.1em; --line-width-left: 0.1em; --line-width-right: 0.1em; --line-width-top: 0.1em; --trim-bottom-left: 0%; --trim-bottom-right: 0%; --trim-left-bottom: 0%; --trim-left-top: 0%; --trim-right-bottom: 0%; --trim-right-top: 0%; --trim-top-left: 0%; --trim-top-right: 0%; ; text-align: center }
+    #tinytable_p49hqyxwc3ul841nje77 td.tinytable_css_7ru1ys4r3a60j73801gf, #tinytable_p49hqyxwc3ul841nje77 th.tinytable_css_7ru1ys4r3a60j73801gf {  position: relative; --border-bottom: 1; --border-left: 0; --border-right: 1; --border-top: 1; --line-color-bottom: var(--tt-line-color); --line-color-left: var(--tt-line-color); --line-color-right: var(--tt-line-color); --line-color-top: var(--tt-line-color); --line-width-bottom: 0.05em; --line-width-left: 0.1em; --line-width-right: 0.1em; --line-width-top: 0.08em; --trim-bottom-left: 0%; --trim-bottom-right: 0%; --trim-left-bottom: 0%; --trim-left-top: 0%; --trim-right-bottom: 0%; --trim-right-top: 0%; --trim-top-left: 0%; --trim-top-right: 0%; ; font-weight: bold; text-align: center }
+    #tinytable_p49hqyxwc3ul841nje77 td.tinytable_css_x00zvjl51frse9up2rx1, #tinytable_p49hqyxwc3ul841nje77 th.tinytable_css_x00zvjl51frse9up2rx1 {  position: relative; --border-bottom: 1; --border-left: 0; --border-right: 0; --border-top: 0; --line-color-bottom: var(--tt-line-color); --line-color-left: var(--tt-line-color); --line-color-right: var(--tt-line-color); --line-color-top: var(--tt-line-color); --line-width-bottom: 0.08em; --line-width-left: 0.1em; --line-width-right: 0.1em; --line-width-top: 0.1em; --trim-bottom-left: 0%; --trim-bottom-right: 0%; --trim-left-bottom: 0%; --trim-left-top: 0%; --trim-right-bottom: 0%; --trim-right-top: 0%; --trim-top-left: 0%; --trim-top-right: 0%; ; text-align: center }
+    #tinytable_p49hqyxwc3ul841nje77 td.tinytable_css_ljphwwcrolw284yncxfa, #tinytable_p49hqyxwc3ul841nje77 th.tinytable_css_ljphwwcrolw284yncxfa {  position: relative; --border-bottom: 1; --border-left: 0; --border-right: 0; --border-top: 0; --line-color-bottom: var(--tt-line-color); --line-color-left: var(--tt-line-color); --line-color-right: var(--tt-line-color); --line-color-top: var(--tt-line-color); --line-width-bottom: 0.1em; --line-width-left: 0.1em; --line-width-right: 0.1em; --line-width-top: 0.1em; --trim-bottom-left: 0%; --trim-bottom-right: 0%; --trim-left-bottom: 0%; --trim-left-top: 0%; --trim-right-bottom: 0%; --trim-right-top: 0%; --trim-top-left: 0%; --trim-top-right: 0%; ; text-align: center }
+    #tinytable_p49hqyxwc3ul841nje77 td.tinytable_css_sao6yf75nwwscyagek2a, #tinytable_p49hqyxwc3ul841nje77 th.tinytable_css_sao6yf75nwwscyagek2a { text-align: center }
+    #tinytable_p49hqyxwc3ul841nje77 td.tinytable_css_islkuokjq07vjn9uflt9, #tinytable_p49hqyxwc3ul841nje77 th.tinytable_css_islkuokjq07vjn9uflt9 {  position: relative; --border-bottom: 1; --border-left: 0; --border-right: 0; --border-top: 1; --line-color-bottom: var(--tt-line-color); --line-color-left: var(--tt-line-color); --line-color-right: var(--tt-line-color); --line-color-top: var(--tt-line-color); --line-width-bottom: 0.05em; --line-width-left: 0.1em; --line-width-right: 0.1em; --line-width-top: 0.08em; --trim-bottom-left: 0%; --trim-bottom-right: 0%; --trim-left-bottom: 0%; --trim-left-top: 0%; --trim-right-bottom: 0%; --trim-right-top: 0%; --trim-top-left: 0%; --trim-top-right: 0%; ; font-weight: bold; text-align: center }
+    #tinytable_p49hqyxwc3ul841nje77 td.tinytable_css_5krq583frdamtr6o3qqs, #tinytable_p49hqyxwc3ul841nje77 th.tinytable_css_5krq583frdamtr6o3qqs {  position: relative; --border-bottom: 1; --border-left: 0; --border-right: 0; --border-top: 0; --line-color-bottom: var(--tt-line-color); --line-color-left: var(--tt-line-color); --line-color-right: var(--tt-line-color); --line-color-top: var(--tt-line-color); --line-width-bottom: 0.08em; --line-width-left: 0.1em; --line-width-right: 0.1em; --line-width-top: 0.1em; --trim-bottom-left: 0%; --trim-bottom-right: 0%; --trim-left-bottom: 0%; --trim-left-top: 0%; --trim-right-bottom: 0%; --trim-right-top: 0%; --trim-top-left: 0%; --trim-top-right: 0%;  }
+    #tinytable_p49hqyxwc3ul841nje77 td.tinytable_css_nzt1shh7eny90haxlvoq, #tinytable_p49hqyxwc3ul841nje77 th.tinytable_css_nzt1shh7eny90haxlvoq {  position: relative; --border-bottom: 1; --border-left: 0; --border-right: 0; --border-top: 0; --line-color-bottom: var(--tt-line-color); --line-color-left: var(--tt-line-color); --line-color-right: var(--tt-line-color); --line-color-top: var(--tt-line-color); --line-width-bottom: 0.1em; --line-width-left: 0.1em; --line-width-right: 0.1em; --line-width-top: 0.1em; --trim-bottom-left: 0%; --trim-bottom-right: 0%; --trim-left-bottom: 0%; --trim-left-top: 0%; --trim-right-bottom: 0%; --trim-right-top: 0%; --trim-top-left: 0%; --trim-top-right: 0%;  }
+    #tinytable_p49hqyxwc3ul841nje77 td.tinytable_css_c73u62r0d5aus3mpybq6, #tinytable_p49hqyxwc3ul841nje77 th.tinytable_css_c73u62r0d5aus3mpybq6 {  position: relative; --border-bottom: 1; --border-left: 0; --border-right: 0; --border-top: 1; --line-color-bottom: var(--tt-line-color); --line-color-left: var(--tt-line-color); --line-color-right: var(--tt-line-color); --line-color-top: var(--tt-line-color); --line-width-bottom: 0.05em; --line-width-left: 0.1em; --line-width-right: 0.1em; --line-width-top: 0.08em; --trim-bottom-left: 0%; --trim-bottom-right: 0%; --trim-left-bottom: 0%; --trim-left-top: 0%; --trim-right-bottom: 0%; --trim-right-top: 0%; --trim-top-left: 0%; --trim-top-right: 0%; ; font-weight: bold }
+    </style>
+    <div class="container">
+      <table class="tinytable" id="tinytable_p49hqyxwc3ul841nje77" style="width: auto; margin-left: auto; margin-right: auto;" data-quarto-disable-processing="true">
+        
+        <thead>
+              <tr>
+                <th scope="col" data-row="0" data-col="1">Class</th>
+                <th scope="col" data-row="0" data-col="2">Poor</th>
+                <th scope="col" data-row="0" data-col="3">Fair</th>
+                <th scope="col" data-row="0" data-col="4">Good</th>
+                <th scope="col" data-row="0" data-col="5">Very Good</th>
+                <th scope="col" data-row="0" data-col="6">Sum</th>
+              </tr>
+        </thead>
+        
+        <tbody>
+                <tr>
+                  <td data-row="1" data-col="1">B</td>
+                  <td data-row="1" data-col="2">3</td>
+                  <td data-row="1" data-col="3">5</td>
+                  <td data-row="1" data-col="4">14</td>
+                  <td data-row="1" data-col="5">28</td>
+                  <td data-row="1" data-col="6">50</td>
+                </tr>
+                <tr>
+                  <td data-row="2" data-col="1">E</td>
+                  <td data-row="2" data-col="2">21</td>
+                  <td data-row="2" data-col="3">17</td>
+                  <td data-row="2" data-col="4">10</td>
+                  <td data-row="2" data-col="5">2</td>
+                  <td data-row="2" data-col="6">50</td>
+                </tr>
+                <tr>
+                  <td data-row="3" data-col="1">Sum</td>
+                  <td data-row="3" data-col="2">23</td>
+                  <td data-row="3" data-col="3">22</td>
+                  <td data-row="3" data-col="4">24</td>
+                  <td data-row="3" data-col="5">30</td>
+                  <td data-row="3" data-col="6">100</td>
+                </tr>
+        </tbody>
+      </table>
+    </div>
+<!-- hack to avoid NA insertion in last line -->
+</div>
+</div>
+</section>
+<section id="conditional-distributions" class="slide level2" style="font-size: 95%;">
+<h2>Conditional distributions</h2>
+<div class="callout callout-note no-icon callout-titled callout-style-default">
+<div class="callout-body">
+<div class="callout-title">
+<p><strong>On the other hand</strong></p>
+</div>
+<div class="callout-content">
+<p>Conditional distributions tell us what proportion of each class gave each satisfaction rating?</p>
+</div>
+</div>
+</div>
+<ul>
+<li>Out of all the people in <strong>Class B</strong>, how many people were <strong>very satisfied</strong>?</li>
+<li>Out of all the people in <strong>Class E</strong>, how many people were <strong>fairly satisfied</strong>?</li>
+</ul>
+<div class="callout callout-tip no-icon callout-titled callout-style-default">
+<div class="callout-body">
+<div class="callout-title">
+<p><strong>Essentially, we are ignoring the other group</strong></p>
+</div>
+<div class="callout-content">
+
+</div>
+</div>
+</div>
+<p><br></p>
+<div class="fragment fade-up">
+<div class="cell" data-layout-align="center">
+<div class="cell-output-display">
+<!-- preamble start -->
+
+    <script src="https://cdn.jsdelivr.net/gh/vincentarelbundock/tinytable@main/inst/tinytable.js"></script>
+
+    <script>
+      // Create table-specific functions using external factory
+      const tableFns_afcucit1ls0k78c2drjn = TinyTable.createTableFunctions("tinytable_afcucit1ls0k78c2drjn");
+      // tinytable span after
+      window.addEventListener('load', function () {
+          var cellsToStyle = [
+            // tinytable style arrays after
+          { positions: [ { i: '2', j: 2 }, { i: '2', j: 3 }, { i: '2', j: 4 }, { i: '2', j: 5 } ], css_id: 'tinytable_css_sw9iy93b1nmnwk9npzku',}, 
+          { positions: [ { i: '1', j: 2 }, { i: '1', j: 3 }, { i: '1', j: 4 }, { i: '1', j: 5 } ], css_id: 'tinytable_css_usjllxmdjqg83uhzwwt0',}, 
+          { positions: [ { i: '0', j: 2 }, { i: '0', j: 3 }, { i: '0', j: 4 }, { i: '0', j: 5 } ], css_id: 'tinytable_css_4uz2o045pccms8lcsg6b',}, 
+          { positions: [ { i: '2', j: 1 } ], css_id: 'tinytable_css_sjpbz95st4ihdb7ikx79',}, 
+          { positions: [ { i: '0', j: 1 } ], css_id: 'tinytable_css_yslvfyuvjyht9vcqczfq',}, 
+          ];
+
+          // Loop over the arrays to style the cells
+          cellsToStyle.forEach(function (group) {
+              group.positions.forEach(function (cell) {
+                  tableFns_afcucit1ls0k78c2drjn.styleCell(cell.i, cell.j, group.css_id);
+              });
+          });
+      });
+    </script>
+
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/vincentarelbundock/tinytable@main/inst/tinytable.css">
+    <style>
+    /* tinytable css entries after */
+    #tinytable_afcucit1ls0k78c2drjn td.tinytable_css_sw9iy93b1nmnwk9npzku, #tinytable_afcucit1ls0k78c2drjn th.tinytable_css_sw9iy93b1nmnwk9npzku {  position: relative; --border-bottom: 1; --border-left: 0; --border-right: 0; --border-top: 0; --line-color-bottom: var(--tt-line-color); --line-color-left: var(--tt-line-color); --line-color-right: var(--tt-line-color); --line-color-top: var(--tt-line-color); --line-width-bottom: 0.08em; --line-width-left: 0.1em; --line-width-right: 0.1em; --line-width-top: 0.1em; --trim-bottom-left: 0%; --trim-bottom-right: 0%; --trim-left-bottom: 0%; --trim-left-top: 0%; --trim-right-bottom: 0%; --trim-right-top: 0%; --trim-top-left: 0%; --trim-top-right: 0%; ; text-align: center }
+    #tinytable_afcucit1ls0k78c2drjn td.tinytable_css_usjllxmdjqg83uhzwwt0, #tinytable_afcucit1ls0k78c2drjn th.tinytable_css_usjllxmdjqg83uhzwwt0 { text-align: center }
+    #tinytable_afcucit1ls0k78c2drjn td.tinytable_css_4uz2o045pccms8lcsg6b, #tinytable_afcucit1ls0k78c2drjn th.tinytable_css_4uz2o045pccms8lcsg6b {  position: relative; --border-bottom: 1; --border-left: 0; --border-right: 0; --border-top: 1; --line-color-bottom: var(--tt-line-color); --line-color-left: var(--tt-line-color); --line-color-right: var(--tt-line-color); --line-color-top: var(--tt-line-color); --line-width-bottom: 0.05em; --line-width-left: 0.1em; --line-width-right: 0.1em; --line-width-top: 0.08em; --trim-bottom-left: 0%; --trim-bottom-right: 0%; --trim-left-bottom: 0%; --trim-left-top: 0%; --trim-right-bottom: 0%; --trim-right-top: 0%; --trim-top-left: 0%; --trim-top-right: 0%; ; font-weight: bold; text-align: center }
+    #tinytable_afcucit1ls0k78c2drjn td.tinytable_css_sjpbz95st4ihdb7ikx79, #tinytable_afcucit1ls0k78c2drjn th.tinytable_css_sjpbz95st4ihdb7ikx79 {  position: relative; --border-bottom: 1; --border-left: 0; --border-right: 0; --border-top: 0; --line-color-bottom: var(--tt-line-color); --line-color-left: var(--tt-line-color); --line-color-right: var(--tt-line-color); --line-color-top: var(--tt-line-color); --line-width-bottom: 0.08em; --line-width-left: 0.1em; --line-width-right: 0.1em; --line-width-top: 0.1em; --trim-bottom-left: 0%; --trim-bottom-right: 0%; --trim-left-bottom: 0%; --trim-left-top: 0%; --trim-right-bottom: 0%; --trim-right-top: 0%; --trim-top-left: 0%; --trim-top-right: 0%;  }
+    #tinytable_afcucit1ls0k78c2drjn td.tinytable_css_yslvfyuvjyht9vcqczfq, #tinytable_afcucit1ls0k78c2drjn th.tinytable_css_yslvfyuvjyht9vcqczfq {  position: relative; --border-bottom: 1; --border-left: 0; --border-right: 0; --border-top: 1; --line-color-bottom: var(--tt-line-color); --line-color-left: var(--tt-line-color); --line-color-right: var(--tt-line-color); --line-color-top: var(--tt-line-color); --line-width-bottom: 0.05em; --line-width-left: 0.1em; --line-width-right: 0.1em; --line-width-top: 0.08em; --trim-bottom-left: 0%; --trim-bottom-right: 0%; --trim-left-bottom: 0%; --trim-left-top: 0%; --trim-right-bottom: 0%; --trim-right-top: 0%; --trim-top-left: 0%; --trim-top-right: 0%; ; font-weight: bold }
+    </style>
+    <div class="container">
+      <table class="tinytable" id="tinytable_afcucit1ls0k78c2drjn" style="width: auto; margin-left: auto; margin-right: auto;" data-quarto-disable-processing="true">
+        
+        <thead>
+              <tr>
+                <th scope="col" data-row="0" data-col="1">Class</th>
+                <th scope="col" data-row="0" data-col="2">Poor</th>
+                <th scope="col" data-row="0" data-col="3">Fair</th>
+                <th scope="col" data-row="0" data-col="4">Good</th>
+                <th scope="col" data-row="0" data-col="5">Very Good</th>
+              </tr>
+        </thead>
+        
+        <tbody>
+                <tr>
+                  <td data-row="1" data-col="1">B</td>
+                  <td data-row="1" data-col="2">0.06</td>
+                  <td data-row="1" data-col="3">0.10</td>
+                  <td data-row="1" data-col="4">0.28</td>
+                  <td data-row="1" data-col="5">0.56</td>
+                </tr>
+                <tr>
+                  <td data-row="2" data-col="1">E</td>
+                  <td data-row="2" data-col="2">0.42</td>
+                  <td data-row="2" data-col="3">0.34</td>
+                  <td data-row="2" data-col="4">0.20</td>
+                  <td data-row="2" data-col="5">0.04</td>
+                </tr>
+        </tbody>
+      </table>
+    </div>
+<!-- hack to avoid NA insertion in last line -->
+</div>
+</div>
+</div>
+</section>
+<section id="conditional-distributions-1" class="slide level2">
+<h2>Conditional distributions</h2>
+<div class="code-with-filename">
+<div class="code-with-filename-file">
+<pre><strong>conditional.r</strong></pre>
+</div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb3" data-filename="conditional.r"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="" aria-label="1"></a><span class="co"># There are two ways to achieve this</span></span>
+<span id="cb3-2"><a href="" aria-label="2"></a></span>
+<span id="cb3-3"><a href="" aria-label="3"></a><span class="co"># METHOD 1 - CALCULATING MANUALLY ----------------------------------------------</span></span>
+<span id="cb3-4"><a href="" aria-label="4"></a>tab <span class="ot">&lt;-</span> <span class="fu">table</span>(airlines)</span>
+<span id="cb3-5"><a href="" aria-label="5"></a></span>
+<span id="cb3-6"><a href="" aria-label="6"></a><span class="co"># The probability of satisfaction conditional on Business class</span></span>
+<span id="cb3-7"><a href="" aria-label="7"></a><span class="co"># The first row divided by the sum of the first row</span></span>
+<span id="cb3-8"><a href="" aria-label="8"></a>cond_prob_B <span class="ot">&lt;-</span> tab[<span class="dv">1</span>, ] <span class="sc">/</span> <span class="fu">sum</span>(tab[<span class="dv">1</span>, ])</span>
+<span id="cb3-9"><a href="" aria-label="9"></a></span>
+<span id="cb3-10"><a href="" aria-label="10"></a><span class="co"># The probability of satisfaction conditional on Economy class</span></span>
+<span id="cb3-11"><a href="" aria-label="11"></a><span class="co"># The second row divided by the sum of the second row</span></span>
+<span id="cb3-12"><a href="" aria-label="12"></a>cond_prob_E <span class="ot">&lt;-</span> tab[<span class="dv">2</span>, ] <span class="sc">/</span> <span class="fu">sum</span>(tab[<span class="dv">2</span>, ])</span>
+<span id="cb3-13"><a href="" aria-label="13"></a></span>
+<span id="cb3-14"><a href="" aria-label="14"></a><span class="co"># METHOD 2 - LET R DO IT FOR YOU -----------------------------------------------</span></span>
+<span id="cb3-15"><a href="" aria-label="15"></a>tab <span class="ot">&lt;-</span> <span class="fu">table</span>(airlines)</span>
+<span id="cb3-16"><a href="" aria-label="16"></a><span class="fu">prop.table</span>(tab, <span class="at">margin =</span> <span class="dv">1</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+</section>
+<section id="visualising-conditional-distributions" class="slide level2">
+<h2>Visualising conditional distributions</h2>
+
+<img data-src="slides_3_files/figure-revealjs/bar-plots-1.png" class="quarto-figure quarto-figure-center r-stretch" width="960"><div class="callout callout-important no-icon callout-titled callout-style-default">
+<div class="callout-body">
+<div class="callout-title">
+<p><strong>Which plot does a better job of answering the research question</strong></p>
+</div>
+<div class="callout-content">
+<p>Does satisfaction differs between classes?</p>
+</div>
+</div>
+</div>
+</section>
+<section id="visualising-conditional-distributions-1" class="slide level2">
+<h2>Visualising conditional distributions</h2>
+<div class="code-with-filename">
+<div class="code-with-filename-file">
+<pre><strong>barplots.R</strong></pre>
+</div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb4" data-filename="barplots.R"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="" aria-label="1"></a><span class="co"># How to make the bar plots (colours are omitted as I used a slightly different method)</span></span>
+<span id="cb4-2"><a href="" aria-label="2"></a></span>
+<span id="cb4-3"><a href="" aria-label="3"></a>tab <span class="ot">&lt;-</span> <span class="fu">table</span>(airline) <span class="co"># Make a contingency table</span></span>
+<span id="cb4-4"><a href="" aria-label="4"></a></span>
+<span id="cb4-5"><a href="" aria-label="5"></a><span class="co"># STACKED BARPLOT</span></span>
+<span id="cb4-6"><a href="" aria-label="6"></a><span class="fu">barplot</span>(</span>
+<span id="cb4-7"><a href="" aria-label="7"></a>  <span class="fu">t</span>(tab),</span>
+<span id="cb4-8"><a href="" aria-label="8"></a>  <span class="at">legend =</span> <span class="cn">TRUE</span>,</span>
+<span id="cb4-9"><a href="" aria-label="9"></a>  <span class="at">args.legend =</span> <span class="fu">list</span>(<span class="at">x =</span> <span class="st">"top"</span>, <span class="at">ncol =</span> <span class="dv">2</span>),</span>
+<span id="cb4-10"><a href="" aria-label="10"></a>  <span class="at">ylim =</span> <span class="fu">c</span>(<span class="dv">0</span>,<span class="dv">95</span>)</span>
+<span id="cb4-11"><a href="" aria-label="11"></a>)</span>
+<span id="cb4-12"><a href="" aria-label="12"></a></span>
+<span id="cb4-13"><a href="" aria-label="13"></a><span class="co"># GROUPED BARPLOT</span></span>
+<span id="cb4-14"><a href="" aria-label="14"></a><span class="fu">barplot</span>(</span>
+<span id="cb4-15"><a href="" aria-label="15"></a>  <span class="fu">t</span>(tab),</span>
+<span id="cb4-16"><a href="" aria-label="16"></a>  <span class="at">beside =</span> <span class="cn">TRUE</span>, <span class="co"># This argument is the key difference</span></span>
+<span id="cb4-17"><a href="" aria-label="17"></a>  <span class="at">legend =</span> <span class="cn">TRUE</span>,</span>
+<span id="cb4-18"><a href="" aria-label="18"></a>  <span class="at">args.legend =</span> <span class="fu">list</span>(<span class="at">x =</span> <span class="st">"topleft"</span>, <span class="at">ncol =</span> <span class="dv">1</span>),</span>
+<span id="cb4-19"><a href="" aria-label="19"></a>  <span class="at">ylim =</span> <span class="fu">c</span>(<span class="dv">0</span>,<span class="dv">40</span>)</span>
+<span id="cb4-20"><a href="" aria-label="20"></a>  )</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+</section>
+<section class="slide level2">
+
+<div class="callout callout-important no-icon callout-titled callout-style-default">
+<div class="callout-body">
+<div class="callout-title">
+<p><strong>What would we see if class didn’t matter?</strong></p>
+</div>
+<div class="callout-content">
+<p><span class="center">Let’s say that 15% of all passengers report “Poor” satisfaction.</span></p>
+<p><br></p>
+<p>If <strong>travel class</strong> has <span class="alert">nothing</span> to do with <strong>satisfaction</strong>, what percentage of <strong>Business passengers</strong> should we expect to report <strong>poor satisfaction</strong>?</p>
+<div class="fragment fade-up">
+<p>15%</p>
+</div>
+<p><br></p>
+<div class="fragment fade-up">
+<p>And what about in <strong>Economy class</strong>?</p>
+</div>
+<div class="fragment fade-up">
+<p>15%</p>
+</div>
+</div>
+</div>
+</div>
+<div class="fragment fade-up">
+<div class="callout callout-tip no-icon callout-titled callout-style-default">
+<div class="callout-body">
+<div class="callout-title">
+<p><strong>Independence</strong></p>
+</div>
+<div class="callout-content">
+<p>Two categorical variables are independent when knowing the category of one variable gives us no information about the category of the other.</p>
+<p>If <strong>Class</strong> and <strong>Satisfaction</strong> were independent, the <strong>distribution</strong> of satisfaction should <span class="alert">be the same</span> in Business and Economy.</p>
+</div>
+</div>
+</div>
+</div>
+</section>
+<section id="expected-counts" class="slide level2">
+<h2>Expected counts</h2>
+<div class="cell" data-layout-align="center">
+<div class="cell-output-display">
+<!-- preamble start -->
+
+    <script src="https://cdn.jsdelivr.net/gh/vincentarelbundock/tinytable@main/inst/tinytable.js"></script>
+
+    <script>
+      // Create table-specific functions using external factory
+      const tableFns_k7hxihse7p5qif78wefb = TinyTable.createTableFunctions("tinytable_k7hxihse7p5qif78wefb");
+      // tinytable span after
+      window.addEventListener('load', function () {
+          var cellsToStyle = [
+            // tinytable style arrays after
+          { positions: [ { i: '2', j: 2 }, { i: '2', j: 3 }, { i: '2', j: 4 }, { i: '2', j: 5 } ], css_id: 'tinytable_css_qr27wggt3xxkm2e2jhd8',}, 
+          { positions: [ { i: '1', j: 2 }, { i: '1', j: 3 }, { i: '1', j: 4 }, { i: '1', j: 5 } ], css_id: 'tinytable_css_rnejkphuhyxszgywv81i',}, 
+          { positions: [ { i: '0', j: 2 }, { i: '0', j: 3 }, { i: '0', j: 4 }, { i: '0', j: 5 } ], css_id: 'tinytable_css_fm440wtj4oklelkty1he',}, 
+          { positions: [ { i: '2', j: 1 } ], css_id: 'tinytable_css_agazmebrzrf30b1ur33m',}, 
+          { positions: [ { i: '0', j: 1 } ], css_id: 'tinytable_css_1v95cjgkl1sxs3ujnmds',}, 
+          ];
+
+          // Loop over the arrays to style the cells
+          cellsToStyle.forEach(function (group) {
+              group.positions.forEach(function (cell) {
+                  tableFns_k7hxihse7p5qif78wefb.styleCell(cell.i, cell.j, group.css_id);
+              });
+          });
+      });
+    </script>
+
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/vincentarelbundock/tinytable@main/inst/tinytable.css">
+    <style>
+    /* tinytable css entries after */
+    #tinytable_k7hxihse7p5qif78wefb td.tinytable_css_qr27wggt3xxkm2e2jhd8, #tinytable_k7hxihse7p5qif78wefb th.tinytable_css_qr27wggt3xxkm2e2jhd8 {  position: relative; --border-bottom: 1; --border-left: 0; --border-right: 0; --border-top: 0; --line-color-bottom: var(--tt-line-color); --line-color-left: var(--tt-line-color); --line-color-right: var(--tt-line-color); --line-color-top: var(--tt-line-color); --line-width-bottom: 0.08em; --line-width-left: 0.1em; --line-width-right: 0.1em; --line-width-top: 0.1em; --trim-bottom-left: 0%; --trim-bottom-right: 0%; --trim-left-bottom: 0%; --trim-left-top: 0%; --trim-right-bottom: 0%; --trim-right-top: 0%; --trim-top-left: 0%; --trim-top-right: 0%; ; text-align: center }
+    #tinytable_k7hxihse7p5qif78wefb td.tinytable_css_rnejkphuhyxszgywv81i, #tinytable_k7hxihse7p5qif78wefb th.tinytable_css_rnejkphuhyxszgywv81i { text-align: center }
+    #tinytable_k7hxihse7p5qif78wefb td.tinytable_css_fm440wtj4oklelkty1he, #tinytable_k7hxihse7p5qif78wefb th.tinytable_css_fm440wtj4oklelkty1he {  position: relative; --border-bottom: 1; --border-left: 0; --border-right: 0; --border-top: 1; --line-color-bottom: var(--tt-line-color); --line-color-left: var(--tt-line-color); --line-color-right: var(--tt-line-color); --line-color-top: var(--tt-line-color); --line-width-bottom: 0.05em; --line-width-left: 0.1em; --line-width-right: 0.1em; --line-width-top: 0.08em; --trim-bottom-left: 0%; --trim-bottom-right: 0%; --trim-left-bottom: 0%; --trim-left-top: 0%; --trim-right-bottom: 0%; --trim-right-top: 0%; --trim-top-left: 0%; --trim-top-right: 0%; ; font-weight: bold; text-align: center }
+    #tinytable_k7hxihse7p5qif78wefb td.tinytable_css_agazmebrzrf30b1ur33m, #tinytable_k7hxihse7p5qif78wefb th.tinytable_css_agazmebrzrf30b1ur33m {  position: relative; --border-bottom: 1; --border-left: 0; --border-right: 0; --border-top: 0; --line-color-bottom: var(--tt-line-color); --line-color-left: var(--tt-line-color); --line-color-right: var(--tt-line-color); --line-color-top: var(--tt-line-color); --line-width-bottom: 0.08em; --line-width-left: 0.1em; --line-width-right: 0.1em; --line-width-top: 0.1em; --trim-bottom-left: 0%; --trim-bottom-right: 0%; --trim-left-bottom: 0%; --trim-left-top: 0%; --trim-right-bottom: 0%; --trim-right-top: 0%; --trim-top-left: 0%; --trim-top-right: 0%;  }
+    #tinytable_k7hxihse7p5qif78wefb td.tinytable_css_1v95cjgkl1sxs3ujnmds, #tinytable_k7hxihse7p5qif78wefb th.tinytable_css_1v95cjgkl1sxs3ujnmds {  position: relative; --border-bottom: 1; --border-left: 0; --border-right: 0; --border-top: 1; --line-color-bottom: var(--tt-line-color); --line-color-left: var(--tt-line-color); --line-color-right: var(--tt-line-color); --line-color-top: var(--tt-line-color); --line-width-bottom: 0.05em; --line-width-left: 0.1em; --line-width-right: 0.1em; --line-width-top: 0.08em; --trim-bottom-left: 0%; --trim-bottom-right: 0%; --trim-left-bottom: 0%; --trim-left-top: 0%; --trim-right-bottom: 0%; --trim-right-top: 0%; --trim-top-left: 0%; --trim-top-right: 0%; ; font-weight: bold }
+    </style>
+    <div class="container">
+      <table class="tinytable" id="tinytable_k7hxihse7p5qif78wefb" style="width: auto; margin-left: auto; margin-right: auto;" data-quarto-disable-processing="true">
+        
+        <thead>
+              <tr>
+                <th scope="col" data-row="0" data-col="1">Class</th>
+                <th scope="col" data-row="0" data-col="2">Poor</th>
+                <th scope="col" data-row="0" data-col="3">Fair</th>
+                <th scope="col" data-row="0" data-col="4">Good</th>
+                <th scope="col" data-row="0" data-col="5">Very Good</th>
+              </tr>
+        </thead>
+        
+        <tbody>
+                <tr>
+                  <td data-row="1" data-col="1">B</td>
+                  <td data-row="1" data-col="2">3</td>
+                  <td data-row="1" data-col="3">5</td>
+                  <td data-row="1" data-col="4">14</td>
+                  <td data-row="1" data-col="5">28</td>
+                </tr>
+                <tr>
+                  <td data-row="2" data-col="1">E</td>
+                  <td data-row="2" data-col="2">21</td>
+                  <td data-row="2" data-col="3">17</td>
+                  <td data-row="2" data-col="4">10</td>
+                  <td data-row="2" data-col="5">2</td>
+                </tr>
+        </tbody>
+      </table>
+    </div>
+<!-- hack to avoid NA insertion in last line -->
+</div>
+</div>
+<p><br></p>
+<div class="callout callout-note no-icon callout-titled callout-style-default">
+<div class="callout-body">
+<div class="callout-title">
+<p><strong>What would out airline data look like if class had no effect on satisfaction</strong></p>
+</div>
+<div class="callout-content">
+<p><span class="math display">\[
+E_{ij} = \frac{(\text{Row}_i \; \text{total}) \times \text{(Column}_j \; \text{total)}}{\text{Grand total}}
+\]</span></p>
+</div>
+</div>
+</div>
+<p><br></p>
+<div class="fragment fade-up">
+<div class="cell" data-layout-align="center">
+<div class="cell-output-display">
+<!-- preamble start -->
+
+    <script src="https://cdn.jsdelivr.net/gh/vincentarelbundock/tinytable@main/inst/tinytable.js"></script>
+
+    <script>
+      // Create table-specific functions using external factory
+      const tableFns_o41j4emjycisd2r9es3n = TinyTable.createTableFunctions("tinytable_o41j4emjycisd2r9es3n");
+      // tinytable span after
+      window.addEventListener('load', function () {
+          var cellsToStyle = [
+            // tinytable style arrays after
+          { positions: [ { i: '2', j: 2 }, { i: '2', j: 3 }, { i: '2', j: 4 }, { i: '2', j: 5 } ], css_id: 'tinytable_css_2kk53u1xcwuu314won6a',}, 
+          { positions: [ { i: '1', j: 2 }, { i: '1', j: 3 }, { i: '1', j: 4 }, { i: '1', j: 5 } ], css_id: 'tinytable_css_4v2vzc88by6cms2lfwko',}, 
+          { positions: [ { i: '0', j: 2 }, { i: '0', j: 3 }, { i: '0', j: 4 }, { i: '0', j: 5 } ], css_id: 'tinytable_css_ryoevz3rt6vl8g3zqm42',}, 
+          { positions: [ { i: '2', j: 1 } ], css_id: 'tinytable_css_mueg5o3tc1u93m1aggpc',}, 
+          { positions: [ { i: '0', j: 1 } ], css_id: 'tinytable_css_p5mzuqjc6o5oe6nvtzah',}, 
+          ];
+
+          // Loop over the arrays to style the cells
+          cellsToStyle.forEach(function (group) {
+              group.positions.forEach(function (cell) {
+                  tableFns_o41j4emjycisd2r9es3n.styleCell(cell.i, cell.j, group.css_id);
+              });
+          });
+      });
+    </script>
+
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/vincentarelbundock/tinytable@main/inst/tinytable.css">
+    <style>
+    /* tinytable css entries after */
+    #tinytable_o41j4emjycisd2r9es3n td.tinytable_css_2kk53u1xcwuu314won6a, #tinytable_o41j4emjycisd2r9es3n th.tinytable_css_2kk53u1xcwuu314won6a {  position: relative; --border-bottom: 1; --border-left: 0; --border-right: 0; --border-top: 0; --line-color-bottom: var(--tt-line-color); --line-color-left: var(--tt-line-color); --line-color-right: var(--tt-line-color); --line-color-top: var(--tt-line-color); --line-width-bottom: 0.08em; --line-width-left: 0.1em; --line-width-right: 0.1em; --line-width-top: 0.1em; --trim-bottom-left: 0%; --trim-bottom-right: 0%; --trim-left-bottom: 0%; --trim-left-top: 0%; --trim-right-bottom: 0%; --trim-right-top: 0%; --trim-top-left: 0%; --trim-top-right: 0%; ; text-align: center }
+    #tinytable_o41j4emjycisd2r9es3n td.tinytable_css_4v2vzc88by6cms2lfwko, #tinytable_o41j4emjycisd2r9es3n th.tinytable_css_4v2vzc88by6cms2lfwko { text-align: center }
+    #tinytable_o41j4emjycisd2r9es3n td.tinytable_css_ryoevz3rt6vl8g3zqm42, #tinytable_o41j4emjycisd2r9es3n th.tinytable_css_ryoevz3rt6vl8g3zqm42 {  position: relative; --border-bottom: 1; --border-left: 0; --border-right: 0; --border-top: 1; --line-color-bottom: var(--tt-line-color); --line-color-left: var(--tt-line-color); --line-color-right: var(--tt-line-color); --line-color-top: var(--tt-line-color); --line-width-bottom: 0.05em; --line-width-left: 0.1em; --line-width-right: 0.1em; --line-width-top: 0.08em; --trim-bottom-left: 0%; --trim-bottom-right: 0%; --trim-left-bottom: 0%; --trim-left-top: 0%; --trim-right-bottom: 0%; --trim-right-top: 0%; --trim-top-left: 0%; --trim-top-right: 0%; ; font-weight: bold; text-align: center }
+    #tinytable_o41j4emjycisd2r9es3n td.tinytable_css_mueg5o3tc1u93m1aggpc, #tinytable_o41j4emjycisd2r9es3n th.tinytable_css_mueg5o3tc1u93m1aggpc {  position: relative; --border-bottom: 1; --border-left: 0; --border-right: 0; --border-top: 0; --line-color-bottom: var(--tt-line-color); --line-color-left: var(--tt-line-color); --line-color-right: var(--tt-line-color); --line-color-top: var(--tt-line-color); --line-width-bottom: 0.08em; --line-width-left: 0.1em; --line-width-right: 0.1em; --line-width-top: 0.1em; --trim-bottom-left: 0%; --trim-bottom-right: 0%; --trim-left-bottom: 0%; --trim-left-top: 0%; --trim-right-bottom: 0%; --trim-right-top: 0%; --trim-top-left: 0%; --trim-top-right: 0%;  }
+    #tinytable_o41j4emjycisd2r9es3n td.tinytable_css_p5mzuqjc6o5oe6nvtzah, #tinytable_o41j4emjycisd2r9es3n th.tinytable_css_p5mzuqjc6o5oe6nvtzah {  position: relative; --border-bottom: 1; --border-left: 0; --border-right: 0; --border-top: 1; --line-color-bottom: var(--tt-line-color); --line-color-left: var(--tt-line-color); --line-color-right: var(--tt-line-color); --line-color-top: var(--tt-line-color); --line-width-bottom: 0.05em; --line-width-left: 0.1em; --line-width-right: 0.1em; --line-width-top: 0.08em; --trim-bottom-left: 0%; --trim-bottom-right: 0%; --trim-left-bottom: 0%; --trim-left-top: 0%; --trim-right-bottom: 0%; --trim-right-top: 0%; --trim-top-left: 0%; --trim-top-right: 0%; ; font-weight: bold }
+    </style>
+    <div class="container">
+      <table class="tinytable" id="tinytable_o41j4emjycisd2r9es3n" style="width: auto; margin-left: auto; margin-right: auto;" data-quarto-disable-processing="true">
+        
+        <thead>
+              <tr>
+                <th scope="col" data-row="0" data-col="1">Class</th>
+                <th scope="col" data-row="0" data-col="2">Poor</th>
+                <th scope="col" data-row="0" data-col="3">Fair</th>
+                <th scope="col" data-row="0" data-col="4">Good</th>
+                <th scope="col" data-row="0" data-col="5">Very Good</th>
+              </tr>
+        </thead>
+        
+        <tbody>
+                <tr>
+                  <td data-row="1" data-col="1">B</td>
+                  <td data-row="1" data-col="2">12</td>
+                  <td data-row="1" data-col="3">11</td>
+                  <td data-row="1" data-col="4">12</td>
+                  <td data-row="1" data-col="5">15</td>
+                </tr>
+                <tr>
+                  <td data-row="2" data-col="1">E</td>
+                  <td data-row="2" data-col="2">12</td>
+                  <td data-row="2" data-col="3">11</td>
+                  <td data-row="2" data-col="4">12</td>
+                  <td data-row="2" data-col="5">15</td>
+                </tr>
+        </tbody>
+      </table>
+    </div>
+<!-- hack to avoid NA insertion in last line -->
+</div>
+</div>
+</div>
+</section>
+<section id="the-chi2-statistic" class="slide level2" style="font-size: 95%;">
+<h2>The <span class="math inline">\(\chi^2\)</span> statistic</h2>
+<h3 id="how-different-are-observed-counts-and-expected-counts">How different are observed counts and expected counts?</h3>
+<p>We need a single number that summarises how different our observed counts are from the counts we’d expect under independence.</p>
+<p><span class="math display">\[
+\chi^2 = \sum_i \sum_j \frac{(O_{ij} - E_{ij})^2}{E_{ij}}
+\]</span></p>
+<p>More simply, for every cell:</p>
+<ul>
+<li>Find the difference between observed and expected.</li>
+<li>Square it.</li>
+<li>Divide by the expected count.</li>
+<li>Add across all cells.</li>
+</ul>
+</section>
+<section id="the-chi2-distribution" class="slide level2" style="font-size: 80%;">
+<h2>The <span class="math inline">\(\chi^2\)</span> distribution</h2>
+<p>The <strong>chi-squared test statistic</strong> has a mathematical distribution called the <strong>Chi-squared distribution</strong>.</p>
+<ul>
+<li>The important specification to make in describing the chi-squared distribution is something called <strong>degrees of freedom</strong>.</li>
+<li>Different chi-squared distributions correspond to different degrees of freedom</li>
+</ul>
+
+<img data-src="slides_3_files/figure-revealjs/chi-plot-1.png" class="quarto-figure quarto-figure-center r-stretch" width="960"></section>
+<section id="degrees-of-freedom" class="slide level2">
+<h2>Degrees of freedom</h2>
+<p><span class="center">How many cells can we choose freely?</span></p>
+<p>Once you know the row <span class="math inline">\((R)\)</span> and column <span class="math inline">\((C)\)</span> totals, not every cell can vary independently.</p>
+<p><span class="math display">\[
+DF = (R - 1)(C - 1)
+\]</span></p>
+<div class="fragment">
+<p>Looking back at our airline example, we had <strong>2 rows and 4 columns</strong></p>
+<p><span class="math display">\[
+DF = (2 - 1)(4 - 1) = 3
+\]</span></p>
+</div>
+</section>
+<section id="hypothesis-testing" class="slide level2">
+<h2>Hypothesis testing</h2>
+<p>Once we have a research question, we can do a <strong>hypothesis test</strong>.</p>
+<div class="callout callout-note no-icon callout-titled callout-style-default">
+<div class="callout-body">
+<div class="callout-title">
+<p><strong>Is airline class associated with satisfaction?</strong></p>
+</div>
+<div class="callout-content">
+
+</div>
+</div>
+</div>
+<p><br></p>
+<div class="fragment fade-up">
+<div class="callout callout-tip no-icon callout-titled callout-style-default">
+<div class="callout-body">
+<div class="callout-title">
+<p><strong>Null hypothesis</strong></p>
+</div>
+<div class="callout-content">
+<p>Class and satisfaction <strong>are independent</strong>.</p>
+</div>
+</div>
+</div>
+</div>
+<div class="fragment fade-up">
+<div class="callout callout-tip no-icon callout-titled callout-style-default">
+<div class="callout-body">
+<div class="callout-title">
+<p><strong>Alternative hypothesis</strong></p>
+</div>
+<div class="callout-content">
+<p>Class and satisfaction <strong>are associated</strong>.</p>
+</div>
+</div>
+</div>
+</div>
+<p><br></p>
+<div class="fragment fade-up">
+<div class="callout callout-caution no-icon callout-titled callout-style-default">
+<div class="callout-body">
+<div class="callout-title">
+<p><strong>If the null hypothesis were true, how surprising would our observed table be?</strong></p>
+</div>
+<div class="callout-content">
+
+</div>
+</div>
+</div>
+</div>
+</section>
+<section class="slide level2">
+
+<div class="code-with-filename">
+<div class="code-with-filename-file">
+<pre><strong>chi-square.R</strong></pre>
+</div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb5" data-filename="chi-square.R"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="" aria-label="1"></a>tab <span class="ot">&lt;-</span> <span class="fu">table</span>(airlines)</span>
+<span id="cb5-2"><a href="" aria-label="2"></a><span class="fu">chisq.test</span>(tab)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+<div class="cell" data-layout-align="center">
+<div class="cell-output cell-output-stdout">
+<pre><code>
+    Pearson's Chi-squared test
+
+data:  tab
+X-squared = 43.245, df = 3, p-value = 2.183e-09</code></pre>
+</div>
+</div>
+
+<img data-src="slides_3_files/figure-revealjs/unnamed-chunk-1-1.png" class="quarto-figure quarto-figure-center r-stretch" width="960"></section>
+<section id="so-does-travel-class-matter" class="slide level2">
+<h2>So … Does travel class matter</h2>
+<p>We found evidence of an <strong>association</strong> between travel class and satisfaction.</p>
+<blockquote>
+<p>Satisfaction <strong>differs</strong> between Business and Economy passengers.</p>
+</blockquote>
+</section>
+<section id="wrapping-up" class="slide level2">
+<h2>Wrapping up</h2>
+<ul>
+<li>We learned how to represent categorical data using a <strong>contingency table</strong>.</li>
+<li>We learned the difference between <strong>marginal</strong> and <strong>conditional</strong> frequencies.</li>
+<li><strong>Expected</strong> versus <strong>observed</strong> counts</li>
+<li><span class="math inline">\(\chi^2\)</span> statistic</li>
+</ul>
+<div class="callout callout-tip no-icon callout-titled callout-style-default">
+<div class="callout-body">
+<div class="callout-title">
+<p><strong>Recommended reading</strong></p>
+</div>
+<div class="callout-content">
+<p>Chapters 4 and 5 of <a href="https://www.academia.edu/42933729/Introduction_to_Statistics_and_Data_Analysis_With_Exercises_Solutions_and_Applications_in_R#outer_page_77">Introduction to Statistical and Data Analysis</a> by Christian Heimann &amp; Michael Schomaker Shalabh</p>
+</div>
+</div>
+</div>
+
+</section>
+    </div>
+  <div class="quarto-auto-generated-content" style="display: none;">
+<div class="footer footer-default">
+
+</div>
+</div></div>
+
+  <script>window.backupDefine = window.define; window.define = undefined;</script>
+  <script src="slides_3_files/libs/revealjs/dist/reveal.js"></script>
+  <!-- reveal.js plugins -->
+  <script src="slides_3_files/libs/revealjs/plugin/quarto-line-highlight/line-highlight.js"></script>
+  <script src="slides_3_files/libs/revealjs/plugin/pdf-export/pdfexport.js"></script>
+  <script src="slides_3_files/libs/revealjs/plugin/reveal-menu/menu.js"></script>
+  <script src="slides_3_files/libs/revealjs/plugin/reveal-menu/quarto-menu.js"></script>
+  <script src="slides_3_files/libs/revealjs/plugin/quarto-support/support.js"></script>
+  
+
+  <script src="slides_3_files/libs/revealjs/plugin/notes/notes.js"></script>
+  <script src="slides_3_files/libs/revealjs/plugin/search/search.js"></script>
+  <script src="slides_3_files/libs/revealjs/plugin/zoom/zoom.js"></script>
+  <script src="slides_3_files/libs/revealjs/plugin/math/math.js"></script>
+  <script>window.define = window.backupDefine; window.backupDefine = undefined;</script>
+
+  <script>
+
+      // Full list of configuration options available at:
+      // https://revealjs.com/config/
+      Reveal.initialize({
+'controlsAuto': true,
+'previewLinksAuto': false,
+'pdfSeparateFragments': false,
+'autoAnimateEasing': "ease",
+'autoAnimateDuration': 1,
+'autoAnimateUnmatched': true,
+'jumpToSlide': true,
+'menu': {"side":"left","useTextContentForMissingTitles":true,"markers":false,"loadIcons":false,"custom":[{"title":"Tools","icon":"<i class=\"fas fa-gear\"></i>","content":"<ul class=\"slide-menu-items\">\n<li class=\"slide-tool-item active\" data-item=\"0\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.fullscreen(event)\"><kbd>f</kbd> Fullscreen</a></li>\n<li class=\"slide-tool-item\" data-item=\"1\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.speakerMode(event)\"><kbd>s</kbd> Speaker View</a></li>\n<li class=\"slide-tool-item\" data-item=\"2\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.overview(event)\"><kbd>o</kbd> Slide Overview</a></li>\n<li class=\"slide-tool-item\" data-item=\"3\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.togglePdfExport(event)\"><kbd>e</kbd> PDF Export Mode</a></li>\n<li class=\"slide-tool-item\" data-item=\"4\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.toggleScrollView(event)\"><kbd>r</kbd> Scroll View Mode</a></li>\n<li class=\"slide-tool-item\" data-item=\"5\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.keyboardHelp(event)\"><kbd>?</kbd> Keyboard Help</a></li>\n</ul>"}],"openButton":true},
+'smaller': false,
+ 
+        // Display controls in the bottom right corner
+        controls: false,
+
+        // Help the user learn the controls by providing hints, for example by
+        // bouncing the down arrow when they first encounter a vertical slide
+        controlsTutorial: false,
+
+        // Determines where controls appear, "edges" or "bottom-right"
+        controlsLayout: 'edges',
+
+        // Visibility rule for backwards navigation arrows; "faded", "hidden"
+        // or "visible"
+        controlsBackArrows: 'faded',
+
+        // Display a presentation progress bar
+        progress: true,
+
+        // Display the page number of the current slide
+        slideNumber: 'c/t',
+
+        // 'all', 'print', or 'speaker'
+        showSlideNumber: 'all',
+
+        // Add the current slide number to the URL hash so that reloading the
+        // page/copying the URL will return you to the same slide
+        hash: true,
+
+        // Start with 1 for the hash rather than 0
+        hashOneBasedIndex: false,
+
+        // Flags if we should monitor the hash and change slides accordingly
+        respondToHashChanges: true,
+
+        // Push each slide change to the browser history
+        history: true,
+
+        // Enable keyboard shortcuts for navigation
+        keyboard: true,
+
+        // Enable the slide overview mode
+        overview: true,
+
+        // Disables the default reveal.js slide layout (scaling and centering)
+        // so that you can use custom CSS layout
+        disableLayout: false,
+
+        // Vertical centering of slides
+        center: false,
+
+        // Enables touch navigation on devices with touch input
+        touch: true,
+
+        // Loop the presentation
+        loop: false,
+
+        // Change the presentation direction to be RTL
+        rtl: false,
+
+        // see https://revealjs.com/vertical-slides/#navigation-mode
+        navigationMode: 'linear',
+
+        // Randomizes the order of slides each time the presentation loads
+        shuffle: false,
+
+        // Turns fragments on and off globally
+        fragments: true,
+
+        // Flags whether to include the current fragment in the URL,
+        // so that reloading brings you to the same fragment position
+        fragmentInURL: false,
+
+        // Flags if the presentation is running in an embedded mode,
+        // i.e. contained within a limited portion of the screen
+        embedded: false,
+
+        // Flags if we should show a help overlay when the questionmark
+        // key is pressed
+        help: true,
+
+        // Flags if it should be possible to pause the presentation (blackout)
+        pause: true,
+
+        // Flags if speaker notes should be visible to all viewers
+        showNotes: false,
+
+        // Global override for autoplaying embedded media (null/true/false)
+        autoPlayMedia: null,
+
+        // Global override for preloading lazy-loaded iframes (null/true/false)
+        preloadIframes: null,
+
+        // Number of milliseconds between automatically proceeding to the
+        // next slide, disabled when set to 0, this value can be overwritten
+        // by using a data-autoslide attribute on your slides
+        autoSlide: 0,
+
+        // Stop auto-sliding after user input
+        autoSlideStoppable: true,
+
+        // Use this method for navigation when auto-sliding
+        autoSlideMethod: null,
+
+        // Specify the average time in seconds that you think you will spend
+        // presenting each slide. This is used to show a pacing timer in the
+        // speaker view
+        defaultTiming: null,
+
+        // Enable slide navigation via mouse wheel
+        mouseWheel: false,
+
+        // The display mode that will be used to show slides
+        display: 'block',
+
+        // Hide cursor if inactive
+        hideInactiveCursor: true,
+
+        // Time before the cursor is hidden (in ms)
+        hideCursorTime: 5000,
+
+        // Opens links in an iframe preview overlay
+        previewLinks: false,
+
+        // Transition style (none/fade/slide/convex/concave/zoom)
+        transition: 'none',
+
+        // Transition speed (default/fast/slow)
+        transitionSpeed: 'default',
+
+        // Transition style for full page slide backgrounds
+        // (none/fade/slide/convex/concave/zoom)
+        backgroundTransition: 'none',
+
+        // Number of slides away from the current that are visible
+        viewDistance: 3,
+
+        // Number of slides away from the current that are visible on mobile
+        // devices. It is advisable to set this to a lower number than
+        // viewDistance in order to save resources.
+        mobileViewDistance: 2,
+
+        // The "normal" size of the presentation, aspect ratio will be preserved
+        // when the presentation is scaled to fit different resolutions. Can be
+        // specified using percentage units.
+        width: 1050,
+
+        height: 700,
+
+        // Factor of the display size that should remain empty around the content
+        margin: 0.1,
+
+        math: {
+          mathjax: 'https://cdn.jsdelivr.net/npm/mathjax@4/tex-mml-chtml.js',
+          config: 'TeX-AMS_HTML-full',
+          tex2jax: {
+            inlineMath: [['\\(','\\)']],
+            displayMath: [['\\[','\\]']],
+            balanceBraces: true,
+            processEscapes: false,
+            processRefs: true,
+            processEnvironments: true,
+            preview: 'TeX',
+            skipTags: ['script','noscript','style','textarea','pre','code'],
+            ignoreClass: 'tex2jax_ignore',
+            processClass: 'tex2jax_process'
+          },
+        },
+
+        // reveal.js plugins
+        plugins: [QuartoLineHighlight, PdfExport, RevealMenu, QuartoSupport,
+
+          RevealMath,
+          RevealNotes,
+          RevealSearch,
+          RevealZoom
+        ]
+      });
+    </script>
+    
+
+    <script>
+
+      // htmlwidgets need to know to resize themselves when slides are shown/hidden.
+
+      // Fire the "slideenter" event (handled by htmlwidgets.js) when the current
+
+      // slide changes (different for each slide format).
+
+      (function () {
+
+        // dispatch for htmlwidgets
+
+        function fireSlideEnter() {
+
+          const event = window.document.createEvent("Event");
+
+          event.initEvent("slideenter", true, true);
+
+          window.document.dispatchEvent(event);
+
+        }
+
+    
+
+        function fireSlideChanged(previousSlide, currentSlide) {
+
+          fireSlideEnter();
+
+    
+
+          // dispatch for shiny
+
+          if (window.jQuery) {
+
+            if (previousSlide) {
+
+              window.jQuery(previousSlide).trigger("hidden");
+
+            }
+
+            if (currentSlide) {
+
+              window.jQuery(currentSlide).trigger("shown");
+
+            }
+
+          }
+
+        }
+
+    
+
+        // hookup for slidy
+
+        if (window.w3c_slidy) {
+
+          window.w3c_slidy.add_observer(function (slide_num) {
+
+            // slide_num starts at position 1
+
+            fireSlideChanged(null, w3c_slidy.slides[slide_num - 1]);
+
+          });
+
+        }
+
+    
+
+      })();
+
+    </script>
+
+    
+
+    <script id="quarto-html-after-body" type="application/javascript">
+      window.document.addEventListener("DOMContentLoaded", function (event) {
+        const tabsets =  window.document.querySelectorAll(".panel-tabset-tabby")
+        tabsets.forEach(function(tabset) {
+          const tabby = new Tabby('#' + tabset.id);
+        });
+        const isCodeAnnotation = (el) => {
+          for (const clz of el.classList) {
+            if (clz.startsWith('code-annotation-')) {                     
+              return true;
+            }
+          }
+          return false;
+        }
+        const onCopySuccess = function(e) {
+          // button target
+          const button = e.trigger;
+          // don't keep focus
+          button.blur();
+          // flash "checked"
+          button.classList.add('code-copy-button-checked');
+          var currentTitle = button.getAttribute("title");
+          button.setAttribute("title", "Copied!");
+          let tooltip;
+          if (window.bootstrap) {
+            button.setAttribute("data-bs-toggle", "tooltip");
+            button.setAttribute("data-bs-placement", "left");
+            button.setAttribute("data-bs-title", "Copied!");
+            tooltip = new bootstrap.Tooltip(button, 
+              { trigger: "manual", 
+                customClass: "code-copy-button-tooltip",
+                offset: [0, -8]});
+            tooltip.show();    
+          }
+          setTimeout(function() {
+            if (tooltip) {
+              tooltip.hide();
+              button.removeAttribute("data-bs-title");
+              button.removeAttribute("data-bs-toggle");
+              button.removeAttribute("data-bs-placement");
+            }
+            button.setAttribute("title", currentTitle);
+            button.classList.remove('code-copy-button-checked');
+          }, 1000);
+          // clear code selection
+          e.clearSelection();
+        }
+        const getTextToCopy = function(trigger) {
+          const outerScaffold = trigger.parentElement.cloneNode(true);
+          const codeEl = outerScaffold.querySelector('code');
+          for (const childEl of codeEl.children) {
+            if (isCodeAnnotation(childEl)) {
+              childEl.remove();
+            }
+          }
+          return codeEl.innerText;
+        }
+        const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+          text: getTextToCopy
+        });
+        clipboard.on('success', onCopySuccess);
+        if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+          const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+            text: getTextToCopy,
+            container: window.document.getElementById('quarto-embedded-source-code-modal')
+          });
+          clipboardModal.on('success', onCopySuccess);
+        }
+          var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+          var mailtoRegex = new RegExp(/^mailto:/);
+            var filterRegex = new RegExp('/' + window.location.host + '/');
+          var isInternal = (href) => {
+              return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+          }
+          // Inspect non-navigation links and adorn them if external
+         var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+          for (var i=0; i<links.length; i++) {
+            const link = links[i];
+            if (!isInternal(link.href)) {
+              // undo the damage that might have been done by quarto-nav.js in the case of
+              // links that we want to consider external
+              if (link.dataset.originalHref !== undefined) {
+                link.href = link.dataset.originalHref;
+              }
+            }
+          }
+        function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+          const config = {
+            allowHTML: true,
+            maxWidth: 500,
+            delay: 100,
+            arrow: false,
+            appendTo: function(el) {
+                return el.closest('section.slide') || el.parentElement;
+            },
+            interactive: true,
+            interactiveBorder: 10,
+            theme: 'light-border',
+            placement: 'bottom-start',
+          };
+          if (contentFn) {
+            config.content = contentFn;
+          }
+          if (onTriggerFn) {
+            config.onTrigger = onTriggerFn;
+          }
+          if (onUntriggerFn) {
+            config.onUntrigger = onUntriggerFn;
+          }
+            config['offset'] = [0,0];
+            config['maxWidth'] = 700;
+          window.tippy(el, config); 
+        }
+        const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+        for (var i=0; i<noterefs.length; i++) {
+          const ref = noterefs[i];
+          tippyHover(ref, function() {
+            // use id or data attribute instead here
+            let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+            try { href = new URL(href).hash; } catch {}
+            const id = href.replace(/^#\/?/, "");
+            const note = window.document.getElementById(id);
+            if (note) {
+              return note.innerHTML;
+            } else {
+              return "";
+            }
+          });
+        }
+        const findCites = (el) => {
+          const parentEl = el.parentElement;
+          if (parentEl) {
+            const cites = parentEl.dataset.cites;
+            if (cites) {
+              return {
+                el,
+                cites: cites.split(' ')
+              };
+            } else {
+              return findCites(el.parentElement)
+            }
+          } else {
+            return undefined;
+          }
+        };
+        var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+        for (var i=0; i<bibliorefs.length; i++) {
+          const ref = bibliorefs[i];
+          const citeInfo = findCites(ref);
+          if (citeInfo) {
+            tippyHover(citeInfo.el, function() {
+              var popup = window.document.createElement('div');
+              citeInfo.cites.forEach(function(cite) {
+                var citeDiv = window.document.createElement('div');
+                citeDiv.classList.add('hanging-indent');
+                citeDiv.classList.add('csl-entry');
+                var biblioDiv = window.document.getElementById('ref-' + cite);
+                if (biblioDiv) {
+                  citeDiv.innerHTML = biblioDiv.innerHTML;
+                }
+                popup.appendChild(citeDiv);
+              });
+              return popup.innerHTML;
+            });
+          }
+        }
+      });
+      </script>
+    
+
+</body></html>
