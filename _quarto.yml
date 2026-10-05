@@ -24,10 +24,10 @@ website:
   page-navigation: true
 
   announcement:
-    icon: info-circle
+    icon: pencil
     dismissable: false
     content: |
-      Please sign up to tutorials before **30th September**
+      **UPDATE:** See the assignment tab for your first practice assignment
     type: danger
     position: below-navbar
 
