@@ -1,8 +1,9 @@
 # Draft folder
 _drafts/
 
+# Do not upload any data
 data/
-assignments/
+
 
 # Quarto stuff
 /.quarto/

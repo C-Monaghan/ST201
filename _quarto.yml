@@ -5,7 +5,7 @@ project:
   render:
     - "*.qmd"
     - "!slides/"
-    - "!assignments/"
+    - "!assignments/solutions/"
     - "!_drafts/"
 
   preview:
@@ -46,7 +46,7 @@ website:
       - text: Assignments
         menu:
           - text: Assignment 1
-            # href: assignments\assignment_01.qmd
+            href: assignments\assignment_01.qmd
           - text: Assignment 2
             # href: assignments\assignment_02.qmd
           - text: Assignment 3
