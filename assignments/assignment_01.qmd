@@ -1,0 +1,369 @@
+---
+title: Practice Questions Sheet 1
+subtitle: ST201 - Data Analysis
+author: Cormac Monaghan
+description: |
+  This tutorial introduces some **basic ways of describing and visualising data**
+  in R. Please **attempt all questions** before your tutorial You should work
+  through the questions in a new R script.
+
+  For questions asking you to interpret a result, **aim for one or two clear
+  sentences**. You should use the context of the pizza delivery data when
+  explaining your answers.
+format:
+  st201_assignment-html: default
+  st201_assignment-typst: default
+---
+
+```{r}
+#| label: setup
+#| include: false
+
+# Computations & figures -------------------------------------------------------
+knitr::opts_chunk$set(
+  warning = FALSE,
+  message = FALSE,
+
+  fig.align = "center",
+  fig.retina = 3,
+  fig.width = 6,
+  fig.height = 4,
+  out.width = "100%",
+  collapse = TRUE
+)
+
+# Packages ---------------------------------------------------------------------
+library(tinytable)
+library(ggplot2)
+
+# The data ---------------------------------------------------------------------
+pizza <- readRDS(here::here("assignments/data/pizza_del.rds"))
+```
+
+:::: {.content-visible when-format="html"}
+::: {.callout-important}
+## Please complete this assignment before the tutorial on the week of 12th October
+:::
+
+::: {.callout-tip title="Getting help"}
+If you are unsure what a function does, remember that you can use R's help system:
+
+`?mean`
+
+You can also use the Help pane in RStudio.
+:::
+::::
+
+::: {.content-visible when-format="typst"}
+```{=typst}
+
+#block(width: 100%, stroke: rgb("#667477"), inset: 1.5em, outset: 0.25em)[
+  #text(size: 10pt, weight: "bold")[
+    Please complete this assignment before the tutorial on the week of 12th October
+]
+
+#v(1em)
+
+_If you cannot remember what a certain function does or a certain function's argument_
+
+#v(1em)
+
+If you are unsure what a function does, remember that you can use R's help system:
+
+#block[
+#Skylighting(([#CommentTok("# What does the mean function do?");],
+[#FunctionTok("?mean()")]));
+]
+
+You can also use the Help pane in RStudio.
+]
+```
+:::
+
+\newpage
+
+# Pizza delivery data
+
+We will use a dataset containing information about **1,301 pizza deliveries**.
+
+The dataset contains **four variables**:
+
+```{r}
+#| label: tbl-pizza
+#| tbl-cap: "Overview of the pizza dataset"
+#| echo: false
+
+pizza_overview <- dplyr::tribble(
+  ~Variable      , ~Description                                                         ,
+  "Day"          , "Day of the week on which the delivery was made"                     ,
+  "Distance"     , "Distance between the pizza restaurant and delivery location, in km" ,
+  "Order amount" , "Value of the pizza order"                                           ,
+  "Tip"          , "Tip left by the customer"
+)
+
+# Output as a table
+pizza_overview |>
+  tt() |>
+  style_tt(i = 0, bold = TRUE) |>
+  style_tt(j = 1:2, align = "l")
+```
+
+The dataset is available on the RStudio server in the ST201 data folder.
+
+You can load it by opening a new R script and running the following code:
+
+```{r}
+#| label: load-pizza
+#| eval: false
+
+# Load the pizza dataset
+pizza <- readRDS("Sharedfiles/ST201/data/pizza_del.rds")
+```
+
+Once you have loaded the data, you can look at the first few observations using:
+
+```{r}
+#| label: examine-pizza
+#| eval: false
+
+# Examine the first 6 rows of the pizza dataset
+head(pizza)
+```
+
+## Exercise 1
+
+- How many **observations** are in the dataset?
+- How many **variables** are in the dataset?
+- Which variables are **categorical** and which are **numerical**?
+
+\newpage
+
+# Individual observations
+
+Let's start by looking at the `distance` variable.
+
+Copy and run the below code
+
+```{r}
+#| label: pizza-distance
+#| eval: false
+
+pizza$distance[1:10]
+```
+
+This displays the first 10 observations of distance.
+
+::: {.callout-tip collapse="true"}
+## Remember that R uses square brackets `[]` to select observations.
+
+For example
+
+```{r}
+#| label: pizza-distance-1
+#| eval: false
+
+# The first observation
+pizza$distance[1]
+```
+
+selects the **first observation**, while
+
+```{r}
+#| label: pizza-distance-10
+#| eval: false
+
+# The tenth observation
+pizza$distance[10]
+```
+
+selects the **tenth observation**.
+:::
+
+## Exercise 2
+
+- What is the value of the **275th observation** of `distance`?
+- What does this **value represent** in the context of the dataset?
+- What is the distance for the **1,000th observation**?
+
+\newpage
+
+# Measuring the centre of the data
+
+Suppose the owner of the pizza restaurant wants to know the typical
+delivery distance.
+
+One way to describe the centre of a numerical variable is using the mean.
+
+In @fig-pizza-distance-mean, we can see the full distribution of the pizza
+delivery distance variable.
+
+```{r}
+#| label: fig-pizza-distance-mean
+#| fig-cap: "Histogram showing the distribution of pizza delivery distance (km)"
+#| echo: false
+
+# Little plot of our distance variable
+pizza |>
+  ggplot(aes(x = distance)) +
+  geom_histogram(fill = "#6F7F6C", colour = "black", alpha = 0.7) +
+  scale_x_continuous(label = scales::label_number(suffix = "km")) +
+  labs(x = "Pizza delivery distance (km)", y = "Count") +
+  theme_bw()
+```
+
+To start off, copy and run the below code
+
+```{r}
+#| label: mean-distance-pizza
+#| eval: false
+
+mean(pizza$distance)
+```
+
+## Exercise 3
+
+- What is the **mean** delivery distance?
+- Modify the above code and calculate the **median** delivery distance?
+- Write one or two short sentences comparing the mean and median and then in the
+  context of the data, compare the two values (are they similar, or
+  noticeably different)
+
+\newpage
+
+# Quantiles
+
+The mean and median tell us something about the centre of the data.
+
+We can also use **quantiles** to describe where observations fall within
+the distribution.
+
+Run the below code
+
+```{r}
+#| label: pizza-quantiles
+#| eval: false
+
+quantile(pizza$ditance, )
+```
+
+:::: {.content-visible when-format="html"}
+::: {.callout-warning}
+## Aha!! You should get an warning
+:::
+::::
+
+::: {.content-visible when-format="typst"}
+
+```{=typst}
+#align(center)[
+  #text(size: 10pt, weight: "bold")[Aha!! You should get an warning
+  ]]
+```
+:::
+
+## Exercise 4
+
+- Modify the above code to correctly calculate the 25th percentile
+- Following this, calculate the 75th percentile
+- Provide a short interpretation of these two quantiles, in the context of the
+  pizza deliveries
+
+\newpage
+
+# Measuring variance
+
+So far, we've been exploring the centre of `distance`. Let's zoom out a little
+and look at the spread of our variable
+
+## Exercise 5
+
+- Calculate the **variance** of the `distance` variable
+- Now, calculate the **standard deviation** of the `distance` variable
+- In general terms, what is the difference between the term *variance* and the
+  term *standard deviation*
+- What is the **range** of the `distance` variable
+
+\newpage
+
+# Visualising data
+
+@fig-pizza-tip-boxplot is a box plot of the pizza `tips` variable
+
+```{r}
+#| label: fig-pizza-tip-boxplot
+#| fig-cap: "Boxplot of pizza tips"
+#| echo: false
+
+boxplot(pizza$tip, ylab = "Tip amount")
+```
+
+## Exercise 6
+
+- Write `R` code to produce the above plot (remember to add in the **y label**)
+- Provide a short overview of what the boxplot is telling us (what is the
+  median of the `tip` variable, what is the range, are there any outliers, et.)
+- Modify the `R` code you just wrote to produce a histogram of the `tip`
+  variable
+
+\newpage
+
+# Comparing delivery days
+
+So far, we have been examining the data across all deliveries.
+
+However, we can actually split this data up a little and look at each separate
+day (with the use of the `day` variable).
+
+Suppose the restaurant owner wants to know whether customers spend different
+amounts on different days of the week.
+
+Run the below code
+
+```{r}
+#| label: pizza-saturday
+#| eval: false
+
+# Create a dataset only with pizza deliveries on a Saturday
+sat_pizza <- pizza[pizza$day == "Saturday", ]
+
+head(sat_del)
+```
+
+::: {.callout-tip}
+## This creates a new dataset containing Saturday deliveries only.
+:::
+
+## Exercise 7
+
+- Using the new dataset, calculate the mean `order_amount` for Saturday
+  deliveries.
+- Create a dataset containing **Monday** deliveries only.
+- Calculate the mean `order_amount` for Monday deliveries.
+- Which day has the larger mean order amount?
+
+\newpage
+
+::: {.callout-note collapse="true" title="Bonus question"}
+
+Creating a bunch of new datasets with different delivery days can be quite
+inefficient and tedious.
+
+*Imagine doing it 7 times and running seven different analyses!*
+
+Instead, a neat thing we can do is compare all the deliveries at once
+
+Copy and paste the below code which outputs @fig-pizza-boxplot-grouped
+
+```{r}
+#| label: fig-pizza-boxplot-grouped
+#| fig-cap: "Overview of pizza tips across all delivery days"
+
+boxplot(tip ~ day, data = pizza, ylab = "Tip amount")
+```
+
+The `~` tells `R` to "*Plot tips separately for each value of day*".
+
+- Which day appears to have the **lowest variation in tips**?
+- Are there any potential outliers?
+
+:::

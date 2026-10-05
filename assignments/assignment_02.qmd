@@ -1,0 +1,283 @@
+---
+title: Practice Questions Sheet 2
+subtitle: ST201 - Data Analysis
+author: Cormac Monaghan
+description: |
+  This tutorial introduces **contingency tables and ways to analyse and
+  visualise categorical data**. Please **attempt all questions** before your
+  tutorial You should work through the questions in a new R script.
+
+  For questions asking you to interpret a result, **aim for one or two clear
+  sentences**. You should use the context of the insurance data when
+  explaining your answers.
+page-layout: full
+format:
+  st201_assignment-html: default
+  st201_assignment-typst: default
+---
+
+```{r}
+#| label: setup
+#| include: false
+
+# Computations & figures -------------------------------------------------------
+knitr::opts_chunk$set(
+  warning = FALSE,
+  message = FALSE,
+
+  fig.align = "center",
+  fig.retina = 3,
+  fig.width = 6,
+  fig.height = 4,
+  out.width = "100%",
+  collapse = TRUE
+)
+
+# Packages ---------------------------------------------------------------------
+library(tinytable)
+library(ggplot2)
+
+# The data ---------------------------------------------------------------------
+insurance <- readRDS(here::here("assignments/data/insurance.rds"))
+
+# Contingency table
+insurance_table <- insurance |> table()
+```
+
+:::: {.content-visible when-format="html"}
+::: {.callout-important}
+## Please complete this assignment before the tutorial on the week of 2nd November
+:::
+::::
+
+:::{.content-visible when-format="typst"}
+```{=typst}
+
+#block(width: 100%, stroke: rgb("#667477"), inset: 1.5em, outset: 0.25em)[
+  #text(size: 10pt, weight: "bold")[
+    Please complete this assignment before the tutorial on the week of 2nd November
+]
+]
+```
+:::
+
+\newpage
+
+# Insurance data
+
+We will use a dataset containing information of 150 customers of an insurance
+company. Within this dataset, these people were asked asked about their
+satisfaction with their motor insurance.
+
+Each customer was classified according to:
+
+- `satisfaction`: satisfied or unsatisfied with their insurance cover
+- `vehicle`: What type of vehicle they own (petrol car, diesel car, or motorbike)
+
+The dataset is available on the RStudio server in the ST201 data folder.
+
+You can load it by opening a new R script and running the following code:
+
+```{r}
+#| label: load-insurance
+#| eval: false
+
+# Load the insurance dataset
+insurance <- readRDS("Sharedfiles/ST201/data/insurance.rds")
+```
+
+Once you have loaded the data, you can look at the first few observations using:
+
+```{r}
+#| label: examine-insurance
+#| eval: false
+
+# Examine the first 6 rows of the insurance dataset
+head(insurance)
+```
+
+## Exercise 1
+
+- How many **observations** are in the dataset
+- What are the two **categorical variables**?
+- **How many categories** does each variable contain?
+- What is the **observational unit** in this dataset?
+
+\newpage
+
+# Contingency tables
+
+A contingency table allows us to examine the relationship between two categorical variables.
+
+```{r}
+#| label: tbl-insurance
+#| tbl-cap: "Contingency table of the insurance dataset"
+#| echo: false
+insurance |>
+  dplyr::count(satisfaction, vehicle) |>
+  tidyr::pivot_wider(names_from = "vehicle", values_from = "n") |>
+  dplyr::rename_with(function(x) {
+    stringr::str_replace(x, "_", " ") |>
+      stringr::str_to_sentence()
+  }) |>
+  dplyr::mutate(Satisfaction = stringr::str_to_sentence(Satisfaction)) |>
+  tt() |>
+  style_tt(i = 0, bold = TRUE) |>
+  style_tt(j = 2:4, align = "c")
+```
+
+## Exercise 2
+
+- Create a contingency table (similar to the above) of the insurance data.
+
+::::{.content-visible when-format="html"}
+::: {.callout-tip title="Hint" collapse="true"}
+You can use either the `table()` or `xtabs()` function
+:::
+::::
+
+- Use the `addmargins()` function to add the marginal frequencies to the table.
+- How many customers
+  - own petrol cars?
+  - own diesel cars?
+  - own motorbikes?
+  - are satisfied with their insurance?
+  - are unsatisfied with their insurance?
+- Which vehicle type has the largest number of customers in the sample?
+
+\newpage
+
+# Proportions
+
+Frequencies can be useful. However, proportions can oftentimes make comparisons
+easier.
+
+## Exercise 3
+
+- Turn the contingency table you made in exercise 2 into a proportions table.
+- Again, use the `addmargins()` function to add the marginal proportions to the
+  table.
+- What proportion of customers were satisfied with their insurance?
+- What proportion of customers owned a petrol car?
+- Explain the difference between the proportion in the cell
+  - *"petrol car and satisfied"* and *"marginal proportion satisfied"*
+
+\newpage
+
+# Conditional distributions
+
+Suppose we want to compare satisfaction **within each vehicle type**.
+
+$$
+P(\text{satisfaction} \mid \text{vehicle type})
+$$
+
+## Exercise 4
+
+- Update the proportion table from exercise 3 to now show the conditional
+  proportions.
+
+:::: {.content-visible when-format="html"}
+::: {.callout-tip title="Hint" collapse="true"}
+
+```{r}
+#| label: conditional-hint
+#| echo: true
+#| eval: false
+
+# What goes in the blank?
+prop.table(insurance_table, ___ = 1)
+```
+
+:::
+::::
+
+- What proportion of petrol-car customers were satisfied?
+- What proportion of diesel-car customers were satisfied?
+- What proportion of motorbike customers were satisfied?
+- Which vehicle type has the highest proportion of satisfied customers?
+- Based on these conditional proportions, describe the relationship between
+  vehicle type and satisfaction.
+
+\newpage
+
+# Visualising categorical data
+
+A bar plot lets us compare the numbers of satisfied and unsatisfied customers
+across vehicle types.
+
+```{r}
+#| label: fig-barplot
+#| fig-cap: "Example of a barplot showing the relationship between insurance satisfaction and vehicle type"
+#| echo: true
+
+# args.legend: Changes the legend position
+# ylim: Changes the y-axis limits
+
+barplot(
+  insurance_table,
+  legend = TRUE,
+  args.legend = list(x = "topleft"),
+  ylim = c(0, 110)
+)
+```
+
+## Exercise 5
+
+- Instead of a stacked bar plot, modify the above code to create a side-by-side
+  bar plot. You may also modify the `ylim` argument to improve the resulting
+  figure
+- Produce a stacked bar plot in which each bar represents 100% of the customers
+  in that vehicle group.
+
+:::: {.content-visible when-format="html"}
+::: {.callout-tip title="Hint" collapse="true"}
+You will need to use the conditional proportions from Exercise 4.
+:::
+::::
+
+\newpage
+
+# Odds and odds ratios
+
+The odds of an outcome are defined as
+
+$$
+\text{odds} = \frac{P(\text{outcome})} {1 - P(\text{outcome})}
+$$
+
+Therefore, if 60% of a group are satisfied, then
+
+$$
+\frac{0.6}{1 - 0.6} = 1.5
+$$
+
+there are 1.5 satisfied customers for every 1 unsatisfied customer.
+
+## Exercise 6
+
+- Calculate the odds of satisfaction for
+  - petrol-car customers
+  - diesel-car customers
+  - motorbike customers
+- Calculate the odds ratio comparing petrol-car customers with diesel-car
+  customers
+- Interpret the odds ratio in the context of this study
+
+\newpage
+
+# $\chi^2$ test
+
+We now want to formally test whether vehicle type and satisfaction are
+independent. In order to do this, we will perform a Pearson's $\chi^2$ test.
+
+## Exercise 7
+
+- State what your null and alternative hypotheses are.
+- Write R code to perform a $\chi^2$ test
+  - What is the value of the chi-squared test statistic?
+  - What are the degrees of freedom?
+  - What is the p-value?
+  - Using a 5% significance level, what decision would you make about the
+    null hypothesis?
+  - Write a conclusion for the test in the context of insurance satisfaction.

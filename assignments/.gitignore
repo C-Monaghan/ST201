@@ -1,0 +1,7 @@
+# Do not upload these
+data/
+solutions/
+
+# Quarto stuff
+/.quarto/
+**/*.quarto_ipynb
