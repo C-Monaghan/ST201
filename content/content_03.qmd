@@ -1,0 +1,40 @@
+---
+title: Categorical data analysis (I)
+---
+
+```{r}
+#| label: setup
+#| include: false
+
+purrr::map(list.files(here::here("R"), full.names = TRUE), source)
+```
+
+## Learning objectives
+
+- Understand how to analyse categorical data
+- Learn about observed versus expected counts
+- Understand what the $\chi^2$ distribution is
+- Learn how to perform a basic hypothesis test
+
+## Readings
+
+### Suggested readings
+
+- {{< fa book >}} [Chapter 4](https://www.academia.edu/42933729/Introduction_to_Statistics_and_Data_Analysis_With_Exercises_Solutions_and_Applications_in_R#outer_page_77) of Introduction to Statistics and Data Analysis
+- {{< fa book >}} [Chapter 12](https://learningstatisticswithr.com/12-chisquare.html) of Learning Statistics with R
+- {{< fa brands youtube >}} [Statistical Tests for Categorical Data using R](https://www.youtube.com/watch?v=BV9iaJceoHo)
+
+## Slides
+
+::: {.callout-caution}
+## Slides will be available on Tuesday 6th October
+:::
+
+```{r}
+#| label: add-slides
+#| echo: false
+#| eval: false
+#| results: asis
+
+add_slides(slide_id = "/slides/output/slides_3.html")
+```

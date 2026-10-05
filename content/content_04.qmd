@@ -1,0 +1,39 @@
+---
+title: Categorical data analysis (II)
+---
+
+```{r}
+#| label: setup
+#| include: false
+
+purrr::map(list.files(here::here("R"), full.names = TRUE), source)
+```
+
+## Learning objectives
+
+- Understand how to further analyse a significant $\chi^2$ result
+- Learn about Pearson residuals and Cramér’s V
+- Understand what to do when our assumptions are violated
+
+## Readings
+
+### Suggested readings
+
+- {{< fa book >}} [Chapter 4](https://www.academia.edu/42933729/Introduction_to_Statistics_and_Data_Analysis_With_Exercises_Solutions_and_Applications_in_R#outer_page_77) of Introduction to Statistics and Data Analysis
+- {{< fa book >}} [Chapter 12](https://learningstatisticswithr.com/12-chisquare.html) of Learning Statistics with R
+- {{< fa brands youtube >}} [Statistical Tests for Categorical Data using R](https://www.youtube.com/watch?v=BV9iaJceoHo)
+
+## Slides
+
+::: {.callout-caution}
+## Slides will be available on Tuesday 13th October
+:::
+
+```{r}
+#| label: add-slides
+#| echo: false
+#| eval: false
+#| results: asis
+
+add_slides(slide_id = "/slides/output/slides_4.html")
+```

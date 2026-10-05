@@ -1,0 +1,37 @@
+---
+title: Categorical data analysis (III)
+---
+
+```{r}
+#| label: setup
+#| include: false
+
+purrr::map(list.files(here::here("R"), full.names = TRUE), source)
+```
+
+## Learning objectives
+
+- How to perform a categorical data analysis when we introduce a third variable
+- Learn what Simpsons paradox is
+- Learn the difference between odds and odds ratios
+
+## Readings
+
+### Suggested readings
+
+- {{< fa book >}} [Chapter 4](https://www.academia.edu/42933729/Introduction_to_Statistics_and_Data_Analysis_With_Exercises_Solutions_and_Applications_in_R#outer_page_77) of Introduction to Statistics and Data Analysis
+
+## Slides
+
+::: {.callout-caution}
+## Slides will be available on Tuesday 20th October
+:::
+
+```{r}
+#| label: add-slides
+#| echo: false
+#| eval: false
+#| results: asis
+
+add_slides(slide_id = "/slides/output/slides_5.html")
+```
