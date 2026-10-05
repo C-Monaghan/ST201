@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>Welcome to ST201 – ST201: Data Analysis</title>
+<title>Categorical data analysis (I) – ST201: Data Analysis</title>
 <style>
 /* Default styles provided by pandoc.
 ** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
@@ -35,6 +35,8 @@ ul.task-list li input[type="checkbox"] {
 <script src="../site_libs/quarto-search/fuse.min.js"></script>
 <script src="../site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="../">
+<link href="../content/content_04.html" rel="next">
+<link href="../content/content_02.html" rel="prev">
 <link href=".././assets/favicon.png" rel="icon" type="image/png">
 <script src="../site_libs/quarto-html/quarto.js" type="module"></script>
 <script src="../site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
@@ -45,7 +47,7 @@ ul.task-list li input[type="checkbox"] {
 <link href="../site_libs/quarto-html/quarto-syntax-highlighting-64a204ab8560d761af7679ceaba22944.css" rel="stylesheet" id="quarto-text-highlighting-styles">
 <script src="../site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="../site_libs/bootstrap/bootstrap-5893497cc3f187fc0d26f3821fce9a6d.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<link href="../site_libs/bootstrap/bootstrap-f5e06e09a423dfb733879ea19f5a4f5e.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
 <link href="../site_libs/quarto-contrib/fontawesome6-6.7.2/all.min.css" rel="stylesheet">
 <link href="../site_libs/quarto-contrib/fontawesome6-6.7.2/latex-fontsize.css" rel="stylesheet">
 <script id="quarto-search-options" type="application/json">{
@@ -76,15 +78,40 @@ ul.task-list li input[type="checkbox"] {
   }
 }</script>
 <style>html{ scroll-behavior: smooth; }</style>
-<script src="../site_libs/kePrint-0.0.1/kePrint.js"></script>
 
-<link href="../site_libs/lightable-0.0.1/lightable.css" rel="stylesheet">
+  <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
+  <script defer="" src="https://cdn.jsdelivr.net/npm/mathjax@4/tex-chtml.js" type="text/javascript"></script>
 
-
+<script type="text/javascript">
+const typesetMath = (el) => {
+  if (window.MathJax) {
+    // MathJax Typeset
+    window.MathJax.typeset([el]);
+  } else if (window.katex) {
+    // KaTeX Render
+    var mathElements = el.getElementsByClassName("math");
+    var macros = [];
+    for (var i = 0; i < mathElements.length; i++) {
+      var texText = mathElements[i].firstChild;
+      if (mathElements[i].tagName == "SPAN" && texText && texText.data) {
+        window.katex.render(texText.data, mathElements[i], {
+          displayMode: mathElements[i].classList.contains('display'),
+          throwOnError: false,
+          macros: macros,
+          fleqn: false
+        });
+      }
+    }
+  }
+}
+window.Quarto = {
+  typesetMath
+};
+</script>
 
 </head>
 
-<body class="nav-fixed quarto-light">
+<body class="nav-sidebar docked nav-fixed quarto-light">
 
 <div id="quarto-search-results"></div>
   <header id="quarto-header" class="headroom fixed-top">
@@ -106,7 +133,7 @@ ul.task-list li input[type="checkbox"] {
           <div class="collapse navbar-collapse" id="navbarCollapse">
             <ul class="navbar-nav navbar-nav-scroll ms-auto">
   <li class="nav-item">
-    <a class="nav-link active" href="../overview/index.html" aria-current="page"> 
+    <a class="nav-link" href="../overview/index.html"> 
 <span class="menu-text">Overview</span></a>
   </li>  
   <li class="nav-item">
@@ -114,7 +141,7 @@ ul.task-list li input[type="checkbox"] {
 <span class="menu-text">Schedule</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="../content/index.html"> 
+    <a class="nav-link active" href="../content/index.html" aria-current="page"> 
 <span class="menu-text">Content</span></a>
   </li>  
   <li class="nav-item dropdown ">
@@ -134,41 +161,92 @@ ul.task-list li input[type="checkbox"] {
 </div>
       </div> <!-- /container-fluid -->
     </nav>
+  <nav class="quarto-secondary-nav">
+    <div class="container-fluid d-flex">
+      <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+        <i class="bi bi-layout-text-sidebar-reverse"></i>
+      </button>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../content/content_03.html">Categorical data analysis I</a></li></ol></nav>
+        <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
+        </a>
+    </div>
+  </nav>
   <div id="quarto-announcement" data-announcement-id="364de601620d4f1d0c1c406194c4c7ba" class="alert alert-danger hidden"><i class="bi bi-info-circle quarto-announcement-icon"></i><div class="quarto-announcement-content">
 <p>Please sign up to tutorials before <strong>30th September</strong></p>
 </div></div>
 </header>
 <!-- content -->
-<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-full page-navbar">
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
 <!-- sidebar -->
+  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation docked overflow-auto">
+    <div class="sidebar-menu-container"> 
+    <ul class="list-unstyled mt-1">
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../content/index.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Lecture overview</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../content/content_01.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">The foundations of data</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../content/content_02.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Numerical data</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../content/content_03.html" class="sidebar-item-text sidebar-link active">
+ <span class="menu-text">Categorical data analysis I</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../content/content_04.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Categorical data analysis II</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../content/content_05.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Categorical data analysis III</span></a>
+  </div>
+</li>
+    </ul>
+    </div>
+</nav>
+<div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
 <!-- margin-sidebar -->
     <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
         <nav id="TOC" role="doc-toc" class="toc-active">
     <h2 id="toc-title">On this page</h2>
    
   <ul>
-  <li><a href="#module-overview" id="toc-module-overview" class="nav-link active" data-scroll-target="#module-overview">Module overview</a>
+  <li><a href="#learning-objectives" id="toc-learning-objectives" class="nav-link active" data-scroll-target="#learning-objectives">Learning objectives</a></li>
+  <li><a href="#readings" id="toc-readings" class="nav-link" data-scroll-target="#readings">Readings</a>
   <ul class="collapse">
-  <li><a href="#learning-outcomes" id="toc-learning-outcomes" class="nav-link" data-scroll-target="#learning-outcomes">Learning outcomes</a></li>
-  <li><a href="#assessment" id="toc-assessment" class="nav-link" data-scroll-target="#assessment">Assessment</a></li>
-  <li><a href="#timetable" id="toc-timetable" class="nav-link" data-scroll-target="#timetable">Timetable</a></li>
-  <li><a href="#tutorials" id="toc-tutorials" class="nav-link" data-scroll-target="#tutorials">Tutorials</a></li>
+  <li><a href="#suggested-readings" id="toc-suggested-readings" class="nav-link" data-scroll-target="#suggested-readings">Suggested readings</a></li>
   </ul></li>
   <li><a href="#slides" id="toc-slides" class="nav-link" data-scroll-target="#slides">Slides</a></li>
   </ul>
 </nav>
     </div>
 <!-- main -->
-<main class="content column-page-left" id="quarto-document-content">
+<main class="content" id="quarto-document-content">
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title">Welcome to ST201</h1>
+<h1 class="title">Categorical data analysis (I)</h1>
 </div>
 
 
 
-<div class="quarto-title-meta column-page-left">
+<div class="quarto-title-meta">
 
     
   
@@ -180,92 +258,40 @@ ul.task-list li input[type="checkbox"] {
 </header>
 
 
-<section id="module-overview" class="level2">
-<h2 class="anchored" data-anchor-id="module-overview">Module overview</h2>
-<p>Welcome to second year and welcome to ST201!</p>
-<p>We will be covering lots of things data related. This will range from the different types of data, how to summarise and visualise data, perform hypothesis tests, and interpret simple linear regression models</p>
-<section id="learning-outcomes" class="level3">
-<h3 class="anchored" data-anchor-id="learning-outcomes">Learning outcomes</h3>
-<p>On successful completion of the module, you should be able to</p>
+<section id="learning-objectives" class="level2">
+<h2 class="anchored" data-anchor-id="learning-objectives">Learning objectives</h2>
 <ul>
-<li>Calculate probabilities in R.</li>
-<li>Analyse one and two samples using standard parametric methods.</li>
-<li>Display data using graphical methods.</li>
-<li>Fit, interpret and predict from simple linear regression models.</li>
+<li>Understand how to analyse categorical data</li>
+<li>Learn about observed versus expected counts</li>
+<li>Understand what the <span class="math inline">\(\chi^2\)</span> distribution is</li>
+<li>Learn how to perform a basic hypothesis test</li>
 </ul>
 </section>
-<section id="assessment" class="level3">
-<h3 class="anchored" data-anchor-id="assessment">Assessment</h3>
-<p>This module is 100% continuous assessment which is broken down into three parts</p>
+<section id="readings" class="level2">
+<h2 class="anchored" data-anchor-id="readings">Readings</h2>
+<section id="suggested-readings" class="level3">
+<h3 class="anchored" data-anchor-id="suggested-readings">Suggested readings</h3>
 <ul>
-<li>4 assignments in the form of a <strong>Moodle quiz</strong> (worth 15%)</li>
-<li>1 mid-term exam, which will be held on <strong>November 10th <span class="citation" data-cites="3pm">@3pm</span></strong> (worth 10%)</li>
-<li>1 final exam, which will be held on <strong>January 7th <span class="citation" data-cites="10am">@10am</span></strong> (worth 75%)</li>
-</ul>
-<div class="callout callout-style-default callout-important callout-titled" title="Details for Erasmus students">
-<div class="callout-header d-flex align-content-center">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
-</div>
-<div class="callout-title-container flex-fill">
-<span class="screen-reader-only">Important</span>Details for Erasmus students
-</div>
-</div>
-<div class="callout-body-container callout-body">
-<p>If you are an Erasmus student here for <strong>Semester 1 only</strong> (September - December), you will not be here for the final exam. With that in mind, your assignments and mid-term will be worth more marks.</p>
-<p>If you are here for the full academic year (semester 1 <strong>AND</strong> semester 2), then your grades will follow the same breakdown as listed above.</p>
-</div>
-</div>
-</section>
-<section id="timetable" class="level3">
-<h3 class="anchored" data-anchor-id="timetable">Timetable</h3>
-<table class="schedule-table table caption-top">
-<thead>
-<tr class="header">
-<th style="text-align: left;" data-quarto-table-cell-role="th">Time</th>
-<th style="text-align: left;" data-quarto-table-cell-role="th">Location</th>
-<th style="text-align: center;" data-quarto-table-cell-role="th">Class Details</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td style="text-align: left; width: 40%; padding-right: 20px;">Tuesday (3pm - 4pm)</td>
-<td style="text-align: left; width: 30%;">Physics Hall</td>
-<td style="text-align: center; width: 30%;">Standard format (slides)</td>
-</tr>
-<tr class="even">
-<td style="text-align: left; width: 40%; padding-right: 20px;">Thursday (12pm - 1pm)</td>
-<td style="text-align: left; width: 30%;">Physics Hall</td>
-<td style="text-align: center; width: 30%;">Practical class (R code)</td>
-</tr>
-</tbody>
-</table>
-</section>
-<section id="tutorials" class="level3">
-<h3 class="anchored" data-anchor-id="tutorials">Tutorials</h3>
-<ul>
-<li>There will be 4 tutorials for this module, <strong>one every two weeks</strong>.</li>
-<li>These tutorials will start the <strong>week of the 12th October (week 4)</strong>.</li>
-<li>A sign up sheet will be available for Moodle to pick a time slot. To allow adequate time for the department to organise everything, <strong>please ensure you fill out this sheet before 30th September</strong></li>
+<li><i class="fa-solid fa-book" aria-label="book"></i> <a href="https://www.academia.edu/42933729/Introduction_to_Statistics_and_Data_Analysis_With_Exercises_Solutions_and_Applications_in_R#outer_page_77">Chapter 4</a> of Introduction to Statistics and Data Analysis</li>
+<li><i class="fa-solid fa-book" aria-label="book"></i> <a href="https://learningstatisticswithr.com/12-chisquare.html">Chapter 12</a> of Learning Statistics with R</li>
+<li><i class="fa-brands fa-youtube" aria-label="youtube"></i> <a href="https://www.youtube.com/watch?v=BV9iaJceoHo">Statistical Tests for Categorical Data using R</a></li>
 </ul>
 </section>
 </section>
 <section id="slides" class="level2">
 <h2 class="anchored" data-anchor-id="slides">Slides</h2>
-<p>All the slides for this module are created using <a href="https://quarto.org/">Quarto</a>. In fact, this entire module website is built using Quarto. Personally, I love Quarto. I do just about everything with it! If you every get a chance, do check it out (ok … mini rant over!)</p>
-<hr>
-<p>There are many <strong>little hidden things</strong> you can do with these slides.</p>
-<p>You can click in the slides and navigate through them with <kbd>←</kbd> and <kbd>→</kbd>.</p>
-<p>If you type <kbd>?</kbd> (or <kbd>shift</kbd> + <kbd>/</kbd>) while viewing the slides you can see a list of slide-specific commands (such as like <kbd>f</kbd> for fullscreen mode or additionally <kbd>s</kbd> for presenter mode if you want to see my notes).</p>
-<p>Finally, if you want to make a PDF of these slides you can press <kbd>e</kbd>, followed by <kbd>ctrl</kbd> + <kbd>p</kbd>.</p>
-<div class="slides-container">
-  <div class="slide-options">
-    <a class="btn btn-primary" href="../slides/output/slides_0.html" target="_blank">
-      <i class="fa-solid fa-arrow-up-right-from-square"></i> Open slides in New Window
-    </a>
-  </div>
-  <iframe src="../slides/output/slides_0.html" class="slide-frame" width="100%" height="600px" style="border: 2px solid #dee2e6; border-radius: 8px;">
-  </iframe>
+<div class="callout callout-style-default callout-caution callout-empty-content callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Caution</span>Slides will be available on Tuesday 6th October
+</div>
+</div>
+<div class="callout-body-container callout-body">
+
+</div>
 </div>
 
 
@@ -672,6 +698,18 @@ ul.task-list li input[type="checkbox"] {
     }
   });
   </script>
+<nav class="page-navigation">
+  <div class="nav-page nav-page-previous">
+      <a href="../content/content_02.html" class="pagination-link" aria-label="Numerical data">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text">Numerical data</span>
+      </a>          
+  </div>
+  <div class="nav-page nav-page-next">
+      <a href="../content/content_04.html" class="pagination-link" aria-label="Categorical data analysis II">
+        <span class="nav-page-text">Categorical data analysis II</span> <i class="bi bi-arrow-right-short"></i>
+      </a>
+  </div>
+</nav>
 </div> <!-- /content -->
 <footer class="footer">
   <div class="nav-footer">

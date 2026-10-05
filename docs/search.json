@@ -7,11 +7,62 @@
     "text": "Here’s your roadmap for the semester!"
   },
   {
+    "objectID": "schedule/index.html#class-schedule",
+    "href": "schedule/index.html#class-schedule",
+    "title": "Schedule",
+    "section": "Class schedule",
+    "text": "Class schedule\n\n\n\n\nDate\n\n\nTopic\n\n\nSlides\n\n\nCoding\n\n\nTutorial\n\n\nAssignment\n\n\n\n\n\n\nWeek 1\n\n\nFoundations of Data\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nWeek 2\n\n\nNumerical data\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nWeek 3\n\n\nCategorical data analysis (i)\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nWeek 4\n\n\nCategorical data analysis (ii)\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nWeek 4\n\n\nTutorial 1\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nWeek 4\n\n\nMoodle Quiz 1    (due Oct 16th @4pm)\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nWeek 5\n\n\nCategorical data analysis (iii)\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n \n\n\nStudy week\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nWeek 6\n\n\nDiscrete probability distributions\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nWeek 6\n\n\nTutorial 2\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nWeek 6\n\n\nMoodle Quiz 2    (due Nov 6th @4pm)\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nTuesday Nov 10\n\n\n Mid term exam\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nWeek 8\n\n\nContinous probability distributions\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nWeek 8\n\n\nTutorial 3\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nWeek 8\n\n\nMoodle Quiz 3    (due Nov 20th @4pm)\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nWeek 9\n\n\nSingle sample data\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nWeek 10\n\n\nInference for means\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nWeek 10\n\n\nTutorial 4\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nWeek 10\n\n\nMoodle Quiz 4    (due Dec 4th @4pm)\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nWeek 11\n\n\nRegression\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nWeek 12\n\n\nRevision\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nThursday Jan 7th\n\n\n Final exam"
+  },
+  {
     "objectID": "index.html",
     "href": "index.html",
     "title": "\n            Data Analysis\n        ",
     "section": "",
     "text": "Learning the fundamental principles of data and data  analysis using R\n        \n        \n            ST201 - Data analysis  Department of Mathematics and Statistics  Maynooth University\n        \n    \n    \n      \n        \n        \n        \n      \n    \n\n\n\n\n\n\nInstructor\n\n Cormac Monaghan\n cormac.monaghan@mu.ie\n Room 223 Logic House\n Bluesky\n\n\n\nCourse details\n\n Tuesday & Thursday\n September - December 2026\n Tuesdays 3pm & Thursdays 12pm\n Physics Hall\n\n\n\nContacting me\nE-mail is the best way to get in contact with me. I usually try to respond to all e-mails within 24 hours (really), but also remember that life can be busy and chaotic for everyone (including me!), so if I don’t respond right away, don’t worry!"
+  },
+  {
+    "objectID": "content/content_02.html",
+    "href": "content/content_02.html",
+    "title": "Numerical data",
+    "section": "",
+    "text": "Understand how to summarise numerical data\nMeans, medians, ranges, variability, and standard deviations\nLearn how to interpret box plots",
+    "crumbs": [
+      "Content",
+      "Numerical data"
+    ]
+  },
+  {
+    "objectID": "content/content_02.html#learning-objectives",
+    "href": "content/content_02.html#learning-objectives",
+    "title": "Numerical data",
+    "section": "",
+    "text": "Understand how to summarise numerical data\nMeans, medians, ranges, variability, and standard deviations\nLearn how to interpret box plots",
+    "crumbs": [
+      "Content",
+      "Numerical data"
+    ]
+  },
+  {
+    "objectID": "content/content_02.html#readings",
+    "href": "content/content_02.html#readings",
+    "title": "Numerical data",
+    "section": "Readings",
+    "text": "Readings\n\nSuggested readings\n\n Chapter 3 of Introduction to Statistics and Data Analysis\n Descriptive statistics in R\n Beginner’s Guide to R : Easy Ways to do basic data analysis",
+    "crumbs": [
+      "Content",
+      "Numerical data"
+    ]
+  },
+  {
+    "objectID": "content/content_02.html#slides",
+    "href": "content/content_02.html#slides",
+    "title": "Numerical data",
+    "section": "Slides",
+    "text": "Slides\n\n  \n    \n       Open slides in New Window",
+    "crumbs": [
+      "Content",
+      "Numerical data"
+    ]
   },
   {
     "objectID": "content/content_01.html",
@@ -21,7 +72,6 @@
     "text": "Understand the structure of data\nUnderstand the different types of data\nKnow how to visualise different types of data",
     "crumbs": [
       "Content",
-      "Week 1",
       "The foundations of data"
     ]
   },
@@ -33,7 +83,6 @@
     "text": "Understand the structure of data\nUnderstand the different types of data\nKnow how to visualise different types of data",
     "crumbs": [
       "Content",
-      "Week 1",
       "The foundations of data"
     ]
   },
@@ -45,7 +94,6 @@
     "text": "Readings\n\nSuggested readings\n\n Chapter 1 and Chapter 2 of Introduction to Statistics and Data Analysis\n Chapters 1 and 2 of OpenIntro Statistics. This is a slightly more advanced reading, but I would highly recommend!",
     "crumbs": [
       "Content",
-      "Week 1",
       "The foundations of data"
     ]
   },
@@ -57,7 +105,6 @@
     "text": "Slides\n\n  \n    \n       Open slides in New Window",
     "crumbs": [
       "Content",
-      "Week 1",
       "The foundations of data"
     ]
   },
@@ -69,7 +116,6 @@
     "text": "Each class has a set of required readings that should be completed in your own time. For the most part, these readings will mirror what we have covered in the lectures. However, there will be times that I find a cool resource that I believe may be helpful for some of you.\nAll the slides for this module are special HTML files made using both Quarto and Clean Revealjs theme by Grant McDermott. Personally, this is my favourite theme to use for presentations, although I have made a couple of minor tweaks to it myself",
     "crumbs": [
       "Content",
-      "Overview",
       "Lecture overview"
     ]
   },
@@ -95,58 +141,135 @@
     "text": "Slides\nAll the slides for this module are created using Quarto. In fact, this entire module website is built using Quarto. Personally, I love Quarto. I do just about everything with it! If you every get a chance, do check it out (ok … mini rant over!)\n\nThere are many little hidden things you can do with these slides.\nYou can click in the slides and navigate through them with ← and →.\nIf you type ? (or shift + /) while viewing the slides you can see a list of slide-specific commands (such as like f for fullscreen mode or additionally s for presenter mode if you want to see my notes).\nFinally, if you want to make a PDF of these slides you can press e, followed by ctrl + p.\n\n  \n    \n       Open slides in New Window"
   },
   {
-    "objectID": "schedule/index.html#class-schedule",
-    "href": "schedule/index.html#class-schedule",
-    "title": "Schedule",
-    "section": "Class schedule",
-    "text": "Class schedule\n\n\n\n\nDate\n\n\nTopic\n\n\nSlides\n\n\nCoding\n\n\nTutorial\n\n\nAssignment\n\n\n\n\n\n\nWeek 1\n\n\nFoundations of Data\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nWeek 2\n\n\nNumerical data\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nWeek 3\n\n\nCategorical data analysis (i)\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nWeek 4\n\n\nCategorical data analysis (ii)\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nWeek 4\n\n\nTutorial 1\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nWeek 4\n\n\nMoodle Quiz 1    (due Oct 16th @4pm)\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nWeek 5\n\n\nCategorical data analysis (iii)\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n \n\n\nStudy week\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nWeek 6\n\n\nDiscrete probability distributions\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nWeek 6\n\n\nTutorial 2\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nWeek 6\n\n\nMoodle Quiz 2    (due Nov 6th @4pm)\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nTuesday Nov 10\n\n\n Mid term exam\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nWeek 8\n\n\nContinous probability distributions\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nWeek 8\n\n\nTutorial 3\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nWeek 8\n\n\nMoodle Quiz 3    (due Nov 20th @4pm)\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nWeek 9\n\n\nSingle sample data\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nWeek 10\n\n\nInference for means\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nWeek 10\n\n\nTutorial 4\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nWeek 10\n\n\nMoodle Quiz 4    (due Dec 4th @4pm)\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nWeek 11\n\n\nRegression\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nWeek 12\n\n\nRevision\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nThursday Jan 7th\n\n\n Final exam"
-  },
-  {
-    "objectID": "content/content_02.html",
-    "href": "content/content_02.html",
-    "title": "Numerical data",
+    "objectID": "content/content_03.html",
+    "href": "content/content_03.html",
+    "title": "Categorical data analysis (I)",
     "section": "",
-    "text": "Understand how to summarise numerical data\nMeans, medians, ranges, variability, and standard deviations\nLearn how to interpret box plots",
+    "text": "Understand how to analyse categorical data\nLearn about observed versus expected counts\nUnderstand what the \\(\\chi^2\\) distribution is\nLearn how to perform a basic hypothesis test",
     "crumbs": [
       "Content",
-      "Week 2",
-      "Numerical data"
+      "Categorical data analysis I"
     ]
   },
   {
-    "objectID": "content/content_02.html#learning-objectives",
-    "href": "content/content_02.html#learning-objectives",
-    "title": "Numerical data",
+    "objectID": "content/content_03.html#learning-objectives",
+    "href": "content/content_03.html#learning-objectives",
+    "title": "Categorical data analysis (I)",
     "section": "",
-    "text": "Understand how to summarise numerical data\nMeans, medians, ranges, variability, and standard deviations\nLearn how to interpret box plots",
+    "text": "Understand how to analyse categorical data\nLearn about observed versus expected counts\nUnderstand what the \\(\\chi^2\\) distribution is\nLearn how to perform a basic hypothesis test",
     "crumbs": [
       "Content",
-      "Week 2",
-      "Numerical data"
+      "Categorical data analysis I"
     ]
   },
   {
-    "objectID": "content/content_02.html#readings",
-    "href": "content/content_02.html#readings",
-    "title": "Numerical data",
+    "objectID": "content/content_03.html#readings",
+    "href": "content/content_03.html#readings",
+    "title": "Categorical data analysis (I)",
     "section": "Readings",
-    "text": "Readings\n\nSuggested readings\n\n Chapter 3 of Introduction to Statistics and Data Analysis\n Descriptive statistics in R\n Beginner’s Guide to R : Easy Ways to do basic data analysis",
+    "text": "Readings\n\nSuggested readings\n\n Chapter 4 of Introduction to Statistics and Data Analysis\n Chapter 12 of Learning Statistics with R\n Statistical Tests for Categorical Data using R",
     "crumbs": [
       "Content",
-      "Week 2",
-      "Numerical data"
+      "Categorical data analysis I"
     ]
   },
   {
-    "objectID": "content/content_02.html#slides",
-    "href": "content/content_02.html#slides",
-    "title": "Numerical data",
+    "objectID": "content/content_03.html#slides",
+    "href": "content/content_03.html#slides",
+    "title": "Categorical data analysis (I)",
     "section": "Slides",
-    "text": "Slides\n\n  \n    \n       Open slides in New Window",
+    "text": "Slides\n\n\n\n\n\n\nCautionSlides will be available on Tuesday 6th October",
     "crumbs": [
       "Content",
-      "Week 2",
-      "Numerical data"
+      "Categorical data analysis I"
+    ]
+  },
+  {
+    "objectID": "content/content_04.html",
+    "href": "content/content_04.html",
+    "title": "Categorical data analysis (II)",
+    "section": "",
+    "text": "Understand how to further analyse a significant \\(\\chi^2\\) result\nLearn about Pearson residuals and Cramér’s V\nUnderstand what to do when our assumptions are violated",
+    "crumbs": [
+      "Content",
+      "Categorical data analysis II"
+    ]
+  },
+  {
+    "objectID": "content/content_04.html#learning-objectives",
+    "href": "content/content_04.html#learning-objectives",
+    "title": "Categorical data analysis (II)",
+    "section": "",
+    "text": "Understand how to further analyse a significant \\(\\chi^2\\) result\nLearn about Pearson residuals and Cramér’s V\nUnderstand what to do when our assumptions are violated",
+    "crumbs": [
+      "Content",
+      "Categorical data analysis II"
+    ]
+  },
+  {
+    "objectID": "content/content_04.html#readings",
+    "href": "content/content_04.html#readings",
+    "title": "Categorical data analysis (II)",
+    "section": "Readings",
+    "text": "Readings\n\nSuggested readings\n\n Chapter 4 of Introduction to Statistics and Data Analysis\n Chapter 12 of Learning Statistics with R\n Statistical Tests for Categorical Data using R",
+    "crumbs": [
+      "Content",
+      "Categorical data analysis II"
+    ]
+  },
+  {
+    "objectID": "content/content_04.html#slides",
+    "href": "content/content_04.html#slides",
+    "title": "Categorical data analysis (II)",
+    "section": "Slides",
+    "text": "Slides\n\n\n\n\n\n\nCautionSlides will be available on Tuesday 13th October",
+    "crumbs": [
+      "Content",
+      "Categorical data analysis II"
+    ]
+  },
+  {
+    "objectID": "content/content_05.html",
+    "href": "content/content_05.html",
+    "title": "Categorical data analysis (III)",
+    "section": "",
+    "text": "How to perform a categorical data analysis when we introduce a third variable\nLearn what Simpsons paradox is\nLearn the difference between odds and odds ratios",
+    "crumbs": [
+      "Content",
+      "Categorical data analysis III"
+    ]
+  },
+  {
+    "objectID": "content/content_05.html#learning-objectives",
+    "href": "content/content_05.html#learning-objectives",
+    "title": "Categorical data analysis (III)",
+    "section": "",
+    "text": "How to perform a categorical data analysis when we introduce a third variable\nLearn what Simpsons paradox is\nLearn the difference between odds and odds ratios",
+    "crumbs": [
+      "Content",
+      "Categorical data analysis III"
+    ]
+  },
+  {
+    "objectID": "content/content_05.html#readings",
+    "href": "content/content_05.html#readings",
+    "title": "Categorical data analysis (III)",
+    "section": "Readings",
+    "text": "Readings\n\nSuggested readings\n\n Chapter 4 of Introduction to Statistics and Data Analysis",
+    "crumbs": [
+      "Content",
+      "Categorical data analysis III"
+    ]
+  },
+  {
+    "objectID": "content/content_05.html#slides",
+    "href": "content/content_05.html#slides",
+    "title": "Categorical data analysis (III)",
+    "section": "Slides",
+    "text": "Slides\n\n\n\n\n\n\nCautionSlides will be available on Tuesday 20th October",
+    "crumbs": [
+      "Content",
+      "Categorical data analysis III"
     ]
   }
 ]
