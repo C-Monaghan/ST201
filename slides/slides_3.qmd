@@ -8,6 +8,8 @@ filters:
 ```{r}
 #| label: setup
 
+set.seed(4321)
+
 # Options ----------------------------------------------------------------------
 knitr::opts_chunk$set(fig.align = "center")
 
@@ -17,7 +19,7 @@ library(ggplot2)
 library(tinytable)
 
 # Data -------------------------------------------------------------------------
-airlines <- readRDS(here::here("data/airline_2.RDS"))
+airlines <- readRDS(here::here("data/airline.RDS"))
 ```
 
 ## Recap
@@ -31,41 +33,88 @@ Last week we covered
 - Scatter plots (briefly)
 
 ::: {.callout-important}
-## Check in: Was there anything that was confusing or not clear from last week?
+## Check in: Was there anything from last week that was confusing or unclear?
 :::
 
-## Association of two categorical variables
+## Plan for today {style="font-size: 80%;"}
+
+Today we will learn how to:
+
+- Represent categorical data using a **contingency table**
+- Describe **marginal** and **conditional** distributions
+- Visualise the relationship between two categorical variables
+- Understand **independence**
+- Calculate **expected counts**
+- Quantify the difference between observed and expected counts using the
+  **$\chi^2$ statistic**
+- Use a $\chi^2$ test to assess **evidence of an association**
+
+## Research question {style="font-size: 80%;"}
 
 Imagine we surveyed **100 airline passengers**.
 
 We recorded:
 
-- **Travel class**: Business or Economy
-- **Satisfaction**: Very poor $\longrightarrow$ Very good
+- **Travel class**
+  - Business
+  - Economy
+- **Satisfaction**
+  - Very poor
+  - Fair
+  - Good
+  - Very good
 
-::: {.callout-note title="Research question"}
-Is satisfaction related to travel class?
+![](assets/airplane.jpg){.absolute width=515.8px height=261.5px left=474.8px top=215.2px}
+
+:::: {.fragment .fade-up}
+::: {.callout-note}
+## Research question: Is satisfaction related to travel class?
+:::
+::::
+
+---
+
+<br>
+<br>
+<br>
+
+:::: {.columns}
+
+::: {.column}
+
+![](assets/numerical-data.png)
+
 :::
 
+::: {.column}
+
+![](assets/categorical-data.jpg)
+
+:::
+
+::::
+
 ## Airline satisfaction data
+
+<br>
 
 ```{r}
 #| label: airline-data
 
 airlines |>
   rename_with(function(x) stringr::str_to_sentence(x)) |>
-  slice_head(n = 6) |>
+  slice_sample(n = 6) |>
   tt() |>
   style_tt(i = 0, bold = TRUE) |>
   style_tt(j = c(1, 2), align = "c")
 ```
 
-Unlike our data from last week, both of these variables are **categorical**.
-
 <br>
 
-::: {.callout-important}
-## How would we analyse such data?
+::: {.callout-important icon="false" appearance="simple"}
+## Both of these variables are categorical
+
+How would we analyse such data?
 :::
 
 ## Contingency tables
@@ -78,7 +127,7 @@ table(airlines)
 ```
 
 ```{r}
-#| label: contingency-table-1
+#| label: contingency-table-1a
 airlines |>
   count(class, satisfaction) |>
   rename(Class = class) |>
@@ -88,13 +137,57 @@ airlines |>
   style_tt(j = c(2:5), align = "c")
 ```
 
+<br>
+
+::: {.callout-note}
+## A contingency table lets us see the joint distribution of two categorical variables.
+:::
+
+## Contingency tables
+
+A contingency table shows the **frequency** of observations for
+**every combination of categorical variables**.
+
+```{.r filename="contingency.r"}
+table(airlines)
+```
+
+```{r}
+#| label: contingency-table-1b
+airlines |>
+  count(class, satisfaction) |>
+  rename(Class = class) |>
+  tidyr::pivot_wider(names_from = "satisfaction", values_from = "n") |>
+  tt() |>
+  style_tt(i = 0, bold = TRUE) |>
+  style_tt(j = c(2:5), align = "c") |>
+  style_tt(i = c(1, 2), j = c(1:5), color = "#99999966") |>
+  style_tt(i = 1, j = 4, color = "#0047AB", bold = TRUE)
+```
+
+<br>
+
+::: {.callout-note}
+## A contingency table lets us see the joint distribution of two categorical variables.
+:::
+
 ## Marginal distributions
 
-::: {.callout-note icon="false"}
+::: {.callout-note icon="false" appearance="simple"}
 ## Marginal distributions tell us:
 
 How common is each category, ignoring the other category?
 :::
+
+::: {.callout-caution icon="false" appearance="simple"}
+## What proportion of all passengers reported "Very Good" satisfaction?
+:::
+
+::: {.callout-caution icon="false" appearance="simple"}
+## What proportion of passengers travelled in Business class?
+:::
+
+::: {.fragment .fade-up}
 
 ```{.r filename="marginal.R"}
 addmargins(table(airlines))
@@ -114,9 +207,7 @@ airlines |>
   count(class, satisfaction) |>
   rename(Class = class) |>
   tidyr::pivot_wider(names_from = "satisfaction", values_from = "n") |>
-  mutate(
-    Sum = rowSums(across(where(is.numeric)))
-  ) |>
+  mutate(Sum = rowSums(across(where(is.numeric)))) |>
   bind_rows(margins) |>
   tt() |>
   style_tt(i = 0, bold = TRUE) |>
@@ -125,43 +216,60 @@ airlines |>
   style_tt(j = 5, line = "r")
 ```
 
-## Conditional distributions {style="font-size: 95%;"}
-
-::: {.callout-note icon="false"}
-## On the other hand
-
-Conditional distributions tell us what proportion of each class gave each
-satisfaction rating?
 :::
 
-- Out of all the people in **Class B**, how many people were **very satisfied**?
-- Out of all the people in **Class E**, how many people were **fairly satisfied**?
+::: {.notes}
+- The row totals tell us the marginal distribution of travel class.
+- The column totals tell us the marginal distribution of satisfaction.
+:::
 
-::: {.callout-tip icon="false"}
+## Conditional distributions {style="font-size: 90%;"}
+
+::: {.callout-note icon="false" appearance="simple"}
+## Conditional distributions tell us:
+
+What proportion of each class gave each satisfaction rating?
+:::
+
+::: {.callout-caution icon="false" appearance="simple"}
+## Out of all the people in Class B, how many people were very satisfied?
+:::
+
+::: {.callout-caution icon="false" appearance="simple"}
+## Out of all the people in Class E, how many people were fairly satisfied?
+:::
+
+::: {.callout-tip icon="false" appearance="simple"}
 ## Essentially, we are ignoring the other group
 :::
 
-<br>
+::::: {.fragment .fade-up}
+:::: {.columns}
 
+::: {.column}
 
-::: {.fragment .fade-up}
+[**Marginal distribution**]{.center}
 
-```{r}
-#| label: conditional-table
-airlines |>
-  count(class, satisfaction) |>
-  group_by(class) |>
-  mutate(n = n / sum(n)) |>
-  rename(Class = class) |>
-  tidyr::pivot_wider(names_from = "satisfaction", values_from = "n") |>
-  tt() |>
-  style_tt(i = 0, bold = TRUE) |>
-  style_tt(j = c(2:5), align = "c")
-```
+$$
+\frac{\text{Very good passengers}}{\text{All passengers}}
+$$
 
 :::
 
-## Conditional distributions
+::: {.column}
+
+[**Conditional distribution**]{.center}
+
+$$
+\frac{\text{Very good business passengers}}{\text{All business passengers}}
+$$
+
+:::
+
+::::
+:::::
+
+## Conditional distributions {style="font-size: 90%;"}
 
 ```{.r filename="conditional.r"}
 # There are two ways to achieve this
@@ -180,6 +288,19 @@ cond_prob_E <- tab[2, ] / sum(tab[2, ])
 # METHOD 2 - LET R DO IT FOR YOU -----------------------------------------------
 tab <- table(airlines)
 prop.table(tab, margin = 1)
+```
+
+```{r}
+#| label: conditional-table
+airlines |>
+  count(class, satisfaction) |>
+  group_by(class) |>
+  mutate(n = n / sum(n)) |>
+  rename(Class = class) |>
+  tidyr::pivot_wider(names_from = "satisfaction", values_from = "n") |>
+  tt() |>
+  style_tt(i = 0, bold = TRUE) |>
+  style_tt(j = c(2:5), align = "c")
 ```
 
 ## Visualising conditional distributions
@@ -222,7 +343,7 @@ fig_2 <- plotting_data |>
 ggpubr::ggarrange(plotlist = c(fig_1, fig_2), common.legend = TRUE)
 ```
 
-::: {.callout-important icon="false"}
+::: {.callout-important appearance="minimal"}
 ## Which plot does a better job of answering the research question
 
 Does satisfaction differs between classes?
@@ -293,10 +414,19 @@ satisfaction should [be the same]{.alert} in Business and Economy.
 :::
 ::::
 
-## Expected counts
+::: {.notes}
+- P(Poor) = 0.15
+- P(Poor | Business) = 0.15
+- P(Poor | Economy) = 0.15
+- **The same idea applies to every satisfaction category**
+:::
+
+## Expected counts {style="font-size: 90%;"}
+
+<br>
 
 ```{r}
-#| label: contingency-table-2
+#| label: observed-counts-1a
 airlines |>
   count(class, satisfaction) |>
   rename(Class = class) |>
@@ -322,7 +452,7 @@ $$
 ::: {.fragment .fade-up}
 
 ```{r}
-#| label: expected-counts
+#| label: expected-counts-1a
 airlines |>
   table() |>
   chisq.test() |>
@@ -337,6 +467,60 @@ airlines |>
 
 :::
 
+::: {.notes}
+- Example: (row_i * col_j) / N = (50 * 24) / 100
+:::
+
+## Observed versus expected counts
+
+:::: {.columns}
+::: {.column}
+
+[**What actually happened**]{.center}
+
+```{r}
+#| label: observed-counts-1b
+airlines |>
+  count(class, satisfaction) |>
+  rename(Class = class) |>
+  tidyr::pivot_wider(names_from = "satisfaction", values_from = "n") |>
+  tt() |>
+  style_tt(i = 0, bold = TRUE) |>
+  style_tt(j = c(2:5), align = "c")
+```
+
+:::
+
+::: {.column}
+
+[**If independence was assumed**]{.center}
+
+```{r}
+#| label: expected-counts-1b
+airlines |>
+  table() |>
+  chisq.test() |>
+  purrr::pluck("expected") |>
+  as_tibble() |>
+  mutate(Class = c("B", "E")) |>
+  relocate(Class) |>
+  tt() |>
+  style_tt(i = 0, bold = TRUE) |>
+  style_tt(j = c(2:5), align = "c")
+```
+
+:::
+::::
+
+::: {.fragment .fade-up}
+
+- For each cell, we can calculate $O_{ij} - E_{ij}$
+- If $O_{ij} = E_{ij}$ then that cell is exactly what independence predicts
+- If $O_{ij} \ne E_{ij}$ then that cell contributes evidence that the variables
+  may not be independent.
+
+:::
+
 ## The $\chi^2$ statistic {style="font-size: 95%;"}
 
 ### How different are observed counts and expected counts?
@@ -348,21 +532,25 @@ $$
 \chi^2 = \sum_i \sum_j \frac{(O_{ij} - E_{ij})^2}{E_{ij}}
 $$
 
-More simply, for every cell:
+- Small $\chi^2$: Observed counts are relatively close to expected counts.
+- Large $\chi^2$: Observed counts are far from expected counts.
 
-- Find the difference between observed and expected.
-- Square it.
-- Divide by the expected count.
-- Add across all cells.
+::: {.callout-tip}
+## Larger $\chi^2$ values indicate greater disagreement between observed and expected counts.
+:::
+
+::: {.callout-note}
+## How do we determine what is a large $\chi^2$ value?
+:::
 
 ## The $\chi^2$ distribution {style="font-size: 80%;"}
 
-The **chi-squared test statistic** has a mathematical distribution called the
-**Chi-squared distribution**.
+The **$\chi^2$ test statistic** has a mathematical distribution called the <br>
+**$\chi^2$ distribution**.
 
-- The important specification to make in describing the chi-squared
-  distribution is something called **degrees of freedom**.
-- Different chi-squared distributions correspond to different degrees of freedom
+- The important specification to make in describing the $\chi^2$ distribution
+  is something called [degrees of freedom]{.alert}.
+- Different $\chi^2$ distributions correspond to different degrees of freedom
 
 ```{r}
 #| label: chi-plot
@@ -389,15 +577,16 @@ chi_data <- tibble(
 # Plot the data ----------------------------------------------------------------
 chi_data |>
   ggplot(aes(x = val, colour = chi)) +
-  geom_density() +
+  geom_density(linewidth = 0.8) +
   ggokabeito::scale_colour_okabe_ito() +
   labs(x = NULL, y = "Density", colour = "Degrees of \nFreedom") +
-  theme_bw()
+  theme_classic() +
+  theme(legend.title = element_text(hjust = 0.5))
 ```
 
 ## Degrees of freedom
 
-[How many cells can we choose freely?]{.center}
+[**How many cells can vary freely once the totals are fixed?**]{.center}
 
 Once you know the row $(R)$ and column $(C)$ totals, not every cell can vary
 independently.
@@ -407,7 +596,7 @@ DF = (R - 1)(C - 1)
 $$
 
 
-::: {.fragment}
+::: {.fragment .fade-up}
 Looking back at our airline example, we had **2 rows and 4 columns**
 
 $$
@@ -484,9 +673,25 @@ chi_data |>
 
 ## So ... Does travel class matter
 
+<br>
+
 We found evidence of an **association** between travel class and satisfaction.
 
-> Satisfaction **differs** between Business and Economy passengers.
+::: {.callout-note}
+## Satisfaction differs between Business and Economy passengers.
+:::
+
+<br>
+
+:::: {.fragment .fade-up}
+::: {.callout-important}
+## Association does not automatically imply causation.
+:::
+
+We have **not demonstrated** that changing someone's travel class would cause
+their satisfaction to change.
+::::
+
 
 ## Wrapping up
 
@@ -494,7 +699,6 @@ We found evidence of an **association** between travel class and satisfaction.
 - We learned the difference between **marginal** and **conditional** frequencies.
 - **Expected** versus **observed** counts
 - $\chi^2$ statistic
-
 
 ::: {.callout-tip icon="false"}
 
