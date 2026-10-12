@@ -24,10 +24,10 @@ website:
   page-navigation: true
 
   announcement:
-    icon: pencil
+    icon: calendar
     dismissable: false
     content: |
-      **UPDATE:** See the assignment tab for your first practice assignment
+      **Please complete the graded quiz found on Moodle (DEADLINE 2026-10-16)**
     type: danger
     position: below-navbar
 
