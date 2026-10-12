@@ -7,4 +7,5 @@ author:
     affiliations: Department of Mathematics and Statistics, Maynooth University
 
 format:
-  clean-revealjs: default
+  clean-revealjs:
+    transition: fade

@@ -1,0 +1,786 @@
+---
+title: Categorical Data Analysis (II)
+subtitle: ST201 - Data analysis
+filters:
+  - code-window
+---
+
+```{r}
+#| label: setup
+
+# Options ----------------------------------------------------------------------
+knitr::opts_chunk$set(fig.align = "center")
+
+# Packages ---------------------------------------------------------------------
+library(dplyr)
+library(ggplot2)
+library(tinytable)
+
+# Some datasets for the lecture ------------------------------------------------
+airline_data <- readRDS(here::here("data/airline.RDS"))
+smoking_data <- readRDS(here::here("data/smoking_data.RDS"))
+
+# Some stuff for later
+airline_chi <- table(airline_data) |> chisq.test()
+```
+
+## Todays class
+
+By the end of this lecture, we should be able to:
+
+- Use expected counts and residuals to explore an association.
+- Interpret a shaded mosaic plot.
+- Describe the strength of an association using Cramér's V.
+- Explain why Fisher's exact test can be useful for small, sparse tables.
+- Run and report a Fisher's exact test in R.
+
+## Where are we at?
+
+Last week, we investigate whether two categorical variables are associated.
+
+- Contingency tables
+- Expected frequencies
+- The Pearson $\chi^2$ test
+- Hypothesis testing
+
+<br>
+
+::: {.callout-note}
+## Today: What can we learn beyond "significant" or "not significant"?
+:::
+
+## A significant result is only the beginning
+
+Suppose we obtain the following result for travel class and satisfaction
+
+$$
+\chi^2(3) = 43.25; p < 0.001
+$$
+
+[**There is evidence of an association between travel class and satisfaction**]{style="font-size: 90%;"}
+
+<br>
+
+:::: {.fragment .fade-up}
+::: {.callout-note icon="false"}
+
+## {{< fa circle-question >}} But we still need to ask
+
+- **Where** is the association?
+- **How strong** is the association?
+- **Which categories** are driving the difference?
+- What if our **sample is very small**?
+- Does an association mean that one variable **causes** the other?
+:::
+::::
+
+## Lets answer some of these questions
+
+### Where is the association
+
+```{r}
+#| label: airline-observed
+
+airline_data |>
+  count(class, satisfaction) |>
+  rename(Class = class) |>
+  tidyr::pivot_wider(
+    names_from = satisfaction,
+    values_from = n
+  ) |>
+  tt() |>
+  style_tt(i = 0, bold = TRUE) |>
+  style_tt(j = 2:5, align = "c")
+```
+
+:::: {.fragment}
+::: {.callout-important icon="false"}
+## The $\chi^2$ test tells us that the overall table differs from what independence would predict.
+:::
+
+::: {.callout-important icon="false"}
+## Which cells are responsible for that difference?
+:::
+::::
+
+:::: {.fragment}
+```{r}
+#| label: airline-expected
+airline_chi$expected |>
+  as_tibble() |>
+  mutate(Class = c("B", "E"), .before = Poor) |>
+  tt() |>
+  style_tt(i = 0, bold = TRUE) |>
+  style_tt(j = c(2:5), align = "c")
+```
+
+
+::: {.callout-note icon="false"}
+## Some cells are close to what we expected
+:::
+
+::: {.callout-note icon="false"}
+## Others are quite different
+:::
+::::
+
+## The $\chi^2$ statistic
+
+Recall that the $\chi^2$ statistic is represented as
+
+$$
+\chi^2 = \sum_i \sum_j \frac{(O_{ij} - E_{ij})^2}{E_{ij}}
+$$
+
+and the individual deviations in the table itself are represented as
+
+$$
+\frac{(O_{ij} - E_{ij})^2}{E_{ij}}
+$$
+
+
+:::: {.fragment .fade-up}
+::: {.callout-note}
+## But how can we see which cells differ from expectation?
+:::
+::::
+
+## Pearson residuals
+
+We can quantify how unusual each cell is
+
+
+:::: {.columns}
+
+::: {.column}
+
+$$
+r_{ij}^2 = \frac{(O_{ij} - E_{ij})^2}{E_{ij}}
+$$
+
+:::
+
+::: {.column}
+
+$$
+r_{ij} = \frac{O_{ij} - E_{ij}}{\sqrt{E_{ij}}}
+$$
+
+:::
+
+::::
+
+::: {.callout-important}
+## How far is this cell from what we would expect under independence?
+:::
+
+:::: {.fragment .fade-up}
+::: {.callout-tip title="Interpretation"}
+
+- **Positive residual**: More observations than expected.
+- **Negative residual**: Fewer observations than expected
+- **Residual close to 0:** Observed and expected counts are quite similar
+
+:::
+::::
+
+## Pearson residuals {style="font-size: 80%;"}
+
+### Let's check them out
+
+```{.r filename="pearson-residual.R"}
+# We can calculate these one of two ways
+## METHOD 1: Manual calulation (after fitting a chisq test)
+(airline_chi$observed - airline_chi$expected) / sqrt(airline_chi$expected)
+
+## METHOD 2: Realise R has done all the hard work
+airline_chi$residuals
+```
+
+:::: {.columns}
+
+::: {.column}
+
+```{r}
+#| label: observed-1a
+airline_data |>
+  count(class, satisfaction) |>
+  rename(Class = class) |>
+  tidyr::pivot_wider(
+    names_from = satisfaction,
+    values_from = n
+  ) |>
+  tt() |>
+  style_tt(i = 0, bold = TRUE) |>
+  style_tt(j = 2:5, align = "c")
+```
+
+:::
+
+::: {.column}
+
+```{r}
+#| label: expected-1a
+airline_chi$expected |>
+  as_tibble() |>
+  mutate(Class = c("B", "E"), .before = Poor) |>
+  tt() |>
+  style_tt(i = 0, bold = TRUE) |>
+  style_tt(j = c(2:5), align = "c")
+```
+
+:::
+
+::::
+
+<br>
+
+```{r}
+#| label: residual-1a
+airline_chi$residuals |>
+  as_tibble() |>
+  tidyr::pivot_wider(names_from = "satisfaction", values_from = "n") |>
+  rename(Class = class) |>
+  tt(digits = 3) |>
+  style_tt(i = 0, bold = TRUE) |>
+  style_tt(j = c(2:5), align = "c")
+```
+
+## Pearson residuals {style="font-size: 80%;"}
+
+### Let's check them out
+
+```{.r filename="pearson-residual.R"}
+# We can calculate these one of two ways
+## METHOD 1: Manual calulation (after fitting a chisq test)
+(airline_chi$observed - airline_chi$expected) / sqrt(airline_chi$expected)
+
+## METHOD 2: Realise R has done all the hard work
+airline_chi$residuals
+```
+
+:::: {.columns}
+
+::: {.column}
+
+```{r}
+#| label: observed-1b
+airline_data |>
+  count(class, satisfaction) |>
+  rename(Class = class) |>
+  tidyr::pivot_wider(
+    names_from = satisfaction,
+    values_from = n
+  ) |>
+  tt() |>
+  style_tt(i = 0, bold = TRUE) |>
+  style_tt(j = 2:5, align = "c")
+```
+
+:::
+
+::: {.column}
+
+```{r}
+#| label: expected-1b
+airline_chi$expected |>
+  as_tibble() |>
+  mutate(Class = c("B", "E"), .before = Poor) |>
+  tt() |>
+  style_tt(i = 0, bold = TRUE) |>
+  style_tt(j = c(2:5), align = "c")
+```
+
+:::
+
+::::
+
+<br>
+
+```{r}
+#| label: residual-1b
+airline_chi$residuals |>
+  as_tibble() |>
+  tidyr::pivot_wider(names_from = "satisfaction", values_from = "n") |>
+  rename(Class = class) |>
+  tt(digits = 3) |>
+  style_tt(i = 0, bold = TRUE) |>
+  style_tt(j = c(2:5), align = "c") |>
+  style_tt(i = 1, j = c(2, 3), color = "#950606", bold = TRUE) |>
+  style_tt(i = 2, j = c(4, 5), color = "#950606", bold = TRUE) |>
+  style_tt(i = 1, j = c(4, 5), color = "#06402B", bold = TRUE) |>
+  style_tt(i = 2, j = c(2, 3), color = "#06402B", bold = TRUE)
+
+```
+
+## Pearson residuals
+
+### Mosaic plots
+
+```{.r filename="mosaic-plot.R"}
+vcd::mosaic(~ class + satisfaction, data = airline_data, shade = TRUE, legend = TRUE)
+```
+
+```{r}
+#| label: mosaic-plot
+#| echo: false
+vcd::mosaic(
+  ~ class + satisfaction,
+  data = airline_data,
+  shade = TRUE,
+  legend = TRUE,
+  spacing = vcd::spacing_equal(sp = unit(1, "lines"))
+)
+```
+
+::: {.notes}
+- The area of each rectangle represents the number of observations in that cell.
+- Shading indicates departures from independence.
+- The direction of shading indicates whether the observed count is above or
+  below expectation.
+- Stronger shading indicates a larger discrepancy.
+:::
+
+## Pearson residuals
+
+### Correlation plot
+
+```{r}
+#| label: correlation-plot
+#| echo: true
+corrplot::corrplot(airline_chi$residuals, is.corr = FALSE)
+```
+
+## Pearson residuals
+
+### Pop quiz
+
+[**Suppose a cell has a positive Pearson residual**]{.center}
+
+What does that tell us?
+
+1. The observed count is **lower than expected**
+2. The observed count is **higher than expected**
+3. The two variables must be **causally related**
+4. The **association** must be **strong** overall
+
+:::: {.fragment .fade-up}
+::: {.callout-tip appearance="minimal"}
+## Answer B
+
+A positive residual means that the cell contains more observations than
+expected under independence.
+:::
+::::
+
+## Lets answer some of these questions
+
+### How strong is the association
+
+$$
+\chi^2(3) = 43.25; p < 0.001
+$$
+
+This result tells us that there is a **significant association**, but nothing
+about the **strength of that association**
+
+A very large sample can produce a statistically significant result even when
+the association is quite weak.
+
+<br>
+
+:::: {.fragment}
+::: {.callout-note appearance="minimal"}
+## Statistical significance and strength are different questions
+
+- **Statistical significance**: How incompatible are the data with the null
+  hypothesis?
+- **Association strength**: How large is the observed association?
+:::
+::::
+
+## Cramér's V {style="font-size: 85%;"}
+
+One way to describe the strength of association between two categorical
+variables is **Cramér's V**.
+
+$$
+V = \sqrt{\frac{\chi^2}{n \times (k - 1)}} \qquad k = \text{min}(R, C)
+$$
+
+- $\chi^2$ is the Pearson $\chi^2$ statistic
+- $n$ is the sample size
+- $R$ and $C$ are the number of rows and columns from our table
+- $k$ is the minimum number of rows or columns
+
+$V$ ranges from 0 - 1 where values near 0 indicate little association, while
+values closer to 1 indicate a stronger association
+
+## Cramér's V
+
+```{.r filename="cramer-v.r"}
+n <- nrow(airline_data)
+k <- min(dim(table(airline_data)))
+sqrt(airline_chi$statistic / (n * (k - 1)))
+```
+
+<br>
+
+$$
+V = 0.656
+$$
+
+
+<br>
+
+::: {.callout-important}
+## Context matters
+
+Avoid interpreting an effect size using universal cut-offs without
+considering the research context.
+:::
+
+## Cramér's V
+
+:::: {.columns}
+
+::: {.column}
+
+[**Study A**]{.center}
+
+$$
+p < 0.001; V = 0.08
+$$
+
+:::
+
+::: {.column}
+
+[**Study B**]{.center}
+
+$$
+p < 0.001; V = 0.65
+$$
+
+:::
+
+::::
+
+- Both provide evidence of an association.
+- But the strength of the association is different.
+
+::: {.callout-note icon="false"}
+## A small p-value does not tell us how large an association is
+:::
+
+## Lets answer some of these questions {style="font-size: 90%;"}
+
+### What if the sample size is small
+
+- We've been using the $\chi^2$ test for all these examples.
+- But this test relies on an approximation to the $\chi^2$ distribution.
+- That approximation works well when expected counts are sufficiently large.
+- With sparse tables, it may be inaccurate.
+
+:::: {.fragment .fade-up}
+::: {.callout-important icon="false"}
+## With very small expected counts, the approximation may not be reliable.
+:::
+
+```{r}
+#| label: smoker-table
+smoking_data |>
+  count(athlete, smoker) |>
+  tidyr::pivot_wider(names_from = "smoker", values_from = "n") |>
+  rename(Athlete = athlete) |>
+  tt() |>
+  style_tt(i = 0, bold = TRUE) |>
+  style_tt(j = c(2, 3), align = "c")
+```
+
+::: {.callout-note icon="false"}
+## Is smoking associated with being an athlete?
+:::
+::::
+
+## Fisher's exact test
+
+Rather than using a $\chi^2$ approximation, Fisher's exact test calculates
+a p-value from the probabilities of possible tables, **conditional on the
+observed row and column totals**.
+
+<br>
+
+:::: {.fragment .fade-up}
+
+```{r}
+#| label: fixed-margins-table
+tribble(
+  ~Athlete      , ~`Non-smoker` , ~Smoker , ~Sum ,
+  "Athlete"     ,             7 ,       2 ,    9 ,
+  "Non-athlete" ,             2 ,       3 ,    5 ,
+  "Sum"         ,             9 ,       5 ,   14
+) |>
+  tt() |>
+  style_tt(i = 0, bold = TRUE) |>
+  style_tt(j = 2:4, align = "c") |>
+  style_tt(i = 3, line = "t") |>
+  style_tt(j = 4, line = "l") |>
+  style_tt(i = 3, j = 1, bold = TRUE)
+```
+
+<br>
+
+::: {.callout-note}
+## There are 6 possible tables we can derive from this table
+:::
+::::
+
+## Fisher's exact test {style="font-size: 60%;"}
+
+<br>
+
+:::: {.columns}
+
+::: {.column width="33%"}
+
+```{r}
+#| label: possible-table-1
+tribble(
+  ~Athlete      , ~`Non-smoker` , ~Smoker , ~Sum ,
+  "Athlete"     ,             4 ,       5 ,    9 ,
+  "Non-athlete" ,             5 ,       0 ,    5 ,
+  "Sum"         ,             9 ,       5 ,   14
+) |>
+  tt() |>
+  style_tt(i = 0, bold = TRUE) |>
+  style_tt(j = 2:4, align = "c") |>
+  style_tt(i = 3, line = "t") |>
+  style_tt(j = 4, line = "l") |>
+  style_tt(i = 3, j = 1, bold = TRUE)
+```
+
+:::
+
+::: {.column width="33%"}
+
+```{r}
+#| label: possible-table-2
+tribble(
+  ~Athlete      , ~`Non-smoker` , ~Smoker , ~Sum ,
+  "Athlete"     ,             5 ,       4 ,    9 ,
+  "Non-athlete" ,             4 ,       1 ,    5 ,
+  "Sum"         ,             9 ,       5 ,   14
+) |>
+  tt() |>
+  style_tt(i = 0, bold = TRUE) |>
+  style_tt(j = 2:4, align = "c") |>
+  style_tt(i = 3, line = "t") |>
+  style_tt(j = 4, line = "l") |>
+  style_tt(i = 3, j = 1, bold = TRUE)
+```
+
+:::
+
+::: {.column width="33%"}
+
+```{r}
+#| label: possible-table-3
+tribble(
+  ~Athlete      , ~`Non-smoker` , ~Smoker , ~Sum ,
+  "Athlete"     ,             6 ,       3 ,    9 ,
+  "Non-athlete" ,             3 ,       2 ,    5 ,
+  "Sum"         ,             9 ,       5 ,   14
+) |>
+  tt() |>
+  style_tt(i = 0, bold = TRUE) |>
+  style_tt(j = 2:4, align = "c") |>
+  style_tt(i = 3, line = "t") |>
+  style_tt(j = 4, line = "l") |>
+  style_tt(i = 3, j = 1, bold = TRUE)
+```
+
+:::
+::::
+
+<br>
+
+:::: {.columns}
+::: {.column width="33%"}
+
+```{r}
+#| label: possible-table-4
+tribble(
+  ~Athlete      , ~`Non-smoker` , ~Smoker , ~Sum ,
+  "Athlete"     ,             7 ,       2 ,    9 ,
+  "Non-athlete" ,             2 ,       3 ,    5 ,
+  "Sum"         ,             9 ,       5 ,   14
+) |>
+  tt() |>
+  style_tt(i = 0, bold = TRUE) |>
+  style_tt(j = 2:4, align = "c") |>
+  style_tt(i = 3, line = "t") |>
+  style_tt(j = 4, line = "l") |>
+  style_tt(i = 3, j = 1, bold = TRUE)
+```
+
+:::
+
+::: {.column width="33%"}
+
+```{r}
+#| label: possible-table-5
+tribble(
+  ~Athlete      , ~`Non-smoker` , ~Smoker , ~Sum ,
+  "Athlete"     ,             8 ,       1 ,    9 ,
+  "Non-athlete" ,             1 ,       4 ,    5 ,
+  "Sum"         ,             9 ,       5 ,   14
+) |>
+  tt() |>
+  style_tt(i = 0, bold = TRUE) |>
+  style_tt(j = 2:4, align = "c") |>
+  style_tt(i = 3, line = "t") |>
+  style_tt(j = 4, line = "l") |>
+  style_tt(i = 3, j = 1, bold = TRUE)
+```
+
+:::
+
+::: {.column width="33%"}
+
+```{r}
+#| label: possible-table-6
+tribble(
+  ~Athlete      , ~`Non-smoker` , ~Smoker , ~Sum ,
+  "Athlete"     ,             9 ,       0 ,    9 ,
+  "Non-athlete" ,             0 ,       5 ,    5 ,
+  "Sum"         ,             9 ,       5 ,   14
+) |>
+  tt() |>
+  style_tt(i = 0, bold = TRUE) |>
+  style_tt(j = 2:4, align = "c") |>
+  style_tt(i = 3, line = "t") |>
+  style_tt(j = 4, line = "l") |>
+  style_tt(i = 3, j = 1, bold = TRUE)
+```
+
+:::
+::::
+
+<br>
+
+[**Each possible table has a probability under the conditional null model**]{.center}
+
+## Fisher's exact test {style="font-size: 75%;"}
+
+We can represent these probabilities as
+
+$$
+P(\text{table}) = \frac{(a+b)!(c+d)!(a+c)!(b+d)!}{N!a!b!c!d!}
+$$
+
+
+::: {.fragment .fade-up}
+
+The probability of obtaining the observed table under the conditional null
+model is:
+
+$$
+\begin{align*}
+P(\text{table}) &= \frac{(9)!(5)!(9)!(5)!}{14! \; 7! \; 2!\; 2!\; 3!} \\
+P(\text{table}) &= 0.1798 \dots \\
+&\approx 0.18
+\end{align*}
+$$
+
+:::
+
+
+::: {.fragment .fade-up}
+
+We repeat this procedure for all possible tables
+
+```{r}
+tribble(
+  ~Table    , ~prob  ,
+  "Table 1" , 0.0629 ,
+  "Table 2" , 0.3147 ,
+  "Table 3" , 0.4196 ,
+  "Table 4" , 0.1798 ,
+  "Table 5" , 0.0225 ,
+  "Table 6" , 0.0005
+) |>
+  tidyr::pivot_wider(names_from = Table, values_from = "prob") |>
+  tt(width = 0.75, digits = 4) |>
+  style_tt(i = 0, bold = TRUE, align = "c") |>
+  style_tt(i = 1, align = "c") |>
+  style_tt(j = 4, color = "blue")
+```
+
+We sum up all the probabilities less than or equal to our observed table
+
+$$
+0.0629 + 0.1798 + 0.0225 + 0.0005 = 0.2657
+$$
+
+:::
+
+
+
+:::{.notes}
+- a = athletes who don't smoke
+- b = athletes who smoke
+- c = non-athletes who don't smoke
+- d = non-athletes who smoke
+- N = a + b + c + d
+:::
+
+## Fisher's exact test
+
+```{.r filename="fisher.r"}
+smoker_table <- table(smoking_data$athlete, smoking_data$smoker)
+
+fisher.test(smoker_table)
+```
+
+```{r}
+#| label: fisher-test
+smoker_table <- table(smoking_data$athlete, smoking_data$smoker)
+
+fisher.test(smoker_table)
+```
+
+## Fisher's exact test {style="font-size: 80%;"}
+
+### Reporting results
+
+::: {.callout-tip icon="false" title="How do I report these results"}
+Of the 9 athletes, 2 were smokers $(22\%)$ and of the 5 Non-athletes, 3 were
+smokers $(60\%)$, indicating that non-athletes are almost 3 times more likely
+than athletes to be smokers. However, given the small sample size,
+Fisher’s exact test was conducted to test whether being an athlete influenced
+smoking habits.
+
+The results were not significant $(p > 0.05)$ and we concluded there is no
+evidence of a relationship between smoking and being an athlete
+based on these data.
+
+:::
+
+
+::: {.fragment}
+
+**Tips on reporting results**
+
+- Some descriptives statistics should be presented before the actual
+  inferential statistics.
+- Describe the hypothesis you are testing and how you are testing it
+- Provide some results from the statistical test
+- Interpret the results $\rightarrow$ **always be careful with your language here**
+:::
+
+:::: {.fragment}
+::: {.callout-warning icon="false"}
+## Breaking news: Being an athlete reduces your chances of smoking
+:::
+::::
