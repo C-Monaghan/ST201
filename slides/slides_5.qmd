@@ -1,0 +1,717 @@
+---
+title: Categorical Data Analysis (III)
+subtitle: ST201 - Data analysis
+filters:
+  - code-window
+---
+
+```{r}
+#| label: setup
+
+set.seed(4321)
+
+# Options ----------------------------------------------------------------------
+knitr::opts_chunk$set(fig.align = "center")
+
+# Packages ---------------------------------------------------------------------
+library(dplyr)
+library(ggplot2)
+library(tinytable)
+
+# Functions --------------------------------------------------------------------
+calculate_or <- function(data) {
+  a <- data$Successes[data$Treatment == "A"]
+  b <- data$Patients[data$Treatment == "A"] - a
+  c <- data$Successes[data$Treatment == "B"]
+  d <- data$Patients[data$Treatment == "B"] - c
+
+  (a / b) / (c / d)
+}
+
+# Data -------------------------------------------------------------------------
+# Simpson's paradox example
+hospital_data <- tibble(
+  Hospital = c("X", "X", "Y", "Y"),
+  Treatment = c("A", "B", "A", "B"),
+  Patients = c(90, 10, 10, 90),
+  Successes = c(80, 9, 1, 30)
+)
+
+# UC Berkly admissions data
+admissions <- readRDS(here::here("data/ucbadmit.rds"))
+
+# Animal data
+animal_data <- readRDS(here::here("data/animal_data.RDS")) |>
+  mutate(animal = factor(animal, levels = c("chicken", "rabbit", "cat", "dog")))
+```
+
+## Today's question {style="font-size:80%;"}
+
+Can a treatment appear more successful overall, even when it performs worse in
+every hospital?
+
+
+::::: {.fragment .fade-up}
+:::: {.columns}
+::: {.column width="55%"}
+
+By the end of this lecture, you should be able to:
+
+- Describe relationships involving three categorical variables.
+- Distinguish overall from conditional proportions.
+- Explain Simpson's paradox.
+- Calculate and interpret odds ratios.
+- Explain why accounting for a third variable can change a comparison.
+
+:::
+
+::: {.column width="45%"}
+
+![](assets/homer-simpson.png){.absolute width=251.2px height=348.1px left=668.6px top=38.8px}
+
+:::
+
+::::
+:::::
+
+## Recap: two categorical variables {style="font-size: 90%;"}
+
+So far, we have considered the relationship between **two categorical variables**.
+
+- Construct contingency tables
+- Compare conditional distributions
+- Test independence using the chi-squared test
+- Examine residuals and measure association strength
+
+:::: {.fragment .fade-up}
+::: {.callout-important}
+## What happens when we introduce a third categorical variable?
+:::
+::::
+
+## Let's introduce a third variable {style="font-size:95%;"}
+
+[Suppose we want to compare two medical treatments]{.center}
+
+We start with the initial question
+
+::: {.callout-note}
+## Is Treatment A more successful than Treatment B?
+:::
+
+<br>
+
+:::: {.fragment .fade-up}
+Now suppose we also know [which hospital]{.alert} treated each patient.
+
+Our question becomes:
+
+::: {.callout-note}
+## Does the treatment comparison look the same within each hospital?
+:::
+::::
+
+<br>
+
+:::: {.fragment .fade-up}
+::: {.callout-note appearance="minimal"}
+The relationship between two variables can look different when we examine it
+[within levels of a third variable]{.alert}.
+:::
+::::
+
+---
+
+## Let's run our example {style="font-size:90%;"}
+
+### The research question
+
+We observe patients receiving [Treatment A]{.alert} or [Treatment B]{.alert}
+in two hospitals.
+
+Each patient either experiences [treatment success]{.alert} or
+[treatment failure]{.alert}.
+
+We record:
+
+- Hospital
+- Treatment
+- Number of patients
+- Number of successes
+
+We will compare success rates first overall and then within each hospital.
+
+## Let's run our example
+
+### The data
+
+<br>
+
+```{r}
+#| label: hospital-data
+
+hospital_data |>
+  mutate(
+    Failures = Patients - Successes,
+    Success_Rate = Successes / Patients
+  ) |>
+  select(
+    Hospital,
+    Treatment,
+    Patients,
+    Successes,
+    Failures,
+    `Success rate` = Success_Rate
+  ) |>
+  tt(digits = 3) |>
+  style_tt(i = 0, bold = TRUE)
+```
+
+A success rate is the proportion of patients who experienced success:
+
+$$
+\text{Success rate} = \frac{\text{Number of successes}}{\text{Number of patients}}
+$$
+
+---
+
+## First we will ignore the hospital
+
+What happens if we combine all patients receiving each treatment?
+
+<br>
+
+```{r}
+#| label: ignoring-hospital
+# Group by tratment and ignore hospital
+overall_rates <- hospital_data |>
+  group_by(Treatment) |>
+  summarise(
+    Patients = sum(Patients),
+    Successes = sum(Successes),
+    `Success rate` = Successes / Patients,
+    .groups = "drop"
+  )
+
+# Let's look at the success rate
+overall_rates |>
+  mutate(`Success rate` = scales::percent(`Success rate`, accuracy = 0.1)) |>
+  tt() |>
+  style_tt(i = 0, bold = TRUE)
+```
+
+<br>
+
+:::: {.fragment .fade-up}
+::: {.callout-note}
+## Treatment A has an overall success rate of 81%, compared with 39% for Treatment B.
+:::
+::::
+
+## But what about the hospital
+
+<br>
+
+```{r}
+#| label: patient-dsitribution-1a
+hospital_data |>
+  ggplot(aes(x = Treatment, y = Patients, fill = Hospital)) +
+  geom_col(position = "stack", colour = "black", width = 0.65) +
+  ggokabeito::scale_fill_okabe_ito() +
+  labs(
+    x = "Treatment",
+    y = "Number of patients",
+    fill = "Hospital"
+  ) +
+  theme_classic() +
+  theme(legend.position = "bottom")
+```
+
+<br>
+
+:::: {.fragment .fade-up}
+::: {.callout-tip}
+## Treatment A is used mainly in Hospital X. Treatment B is used mainly in Hospital Y
+:::
+::::
+
+## Let's consider this in our research question
+
+<br>
+
+```{r}
+#| label: hospital-specific-rates
+hospital_rates <- hospital_data |>
+  mutate(Success_Rate = Successes / Patients) |>
+  select(
+    Hospital,
+    Treatment,
+    Patients,
+    Successes,
+    `Success rate` = Success_Rate
+  )
+
+hospital_rates |>
+  mutate(
+    `Success rate` = scales::percent(
+      `Success rate`,
+      accuracy = 0.1
+    )
+  ) |>
+  tt() |>
+  style_tt(i = 0, bold = TRUE)
+```
+
+## Let's consider this in our research question
+
+```{r}
+#| label: success-rate
+hospital_rates |>
+  ggplot(aes(
+    x = Treatment,
+    y = `Success rate`,
+    colour = Treatment
+  )) +
+  geom_point(size = 5) +
+  ggokabeito::scale_colour_okabe_ito() +
+  scale_y_continuous(
+    labels = scales::label_percent(),
+    limits = c(0, 1)
+  ) +
+  labs(
+    x = "Treatment",
+    y = "Success rate",
+    colour = "Treatment"
+  ) +
+  facet_wrap(
+    ~Hospital,
+    labeller = labeller(
+      Hospital = function(x) paste("Hospital", x)
+    )
+  ) +
+  theme_classic() +
+  theme(legend.position = "bottom")
+```
+
+:::: {.fragment .fade-up}
+::: {.callout-important}
+## Treatment B has a higher success rate in **both hospitals**.
+:::
+::::
+
+## A surprising result {style="font-size:80%;"}
+
+We have found two different conclusions:
+
+:::: {.columns}
+::: {.column}
+
+### Overall
+
+- Treatment A: 81%
+- Treatment B: 39%
+
+[**Treatment A appears better**]{.center}
+
+:::
+
+::: {.column}
+
+### Within each hospital
+
+- Hospital X: B has the higher rate
+- Hospital Y: B has the higher rate
+
+[**Treatment B performs better in both**]{.center}
+
+:::
+::::
+
+:::: {.fragment .fade-up}
+::: {.callout-warning}
+## The overall comparison reverses the comparison observed within each hospital.
+:::
+
+![](assets/homer-simpson.png)
+
+::::
+
+
+## Simpsons paradox
+
+**Simpson's paradox** occurs when an association between two variables reverses
+direction, or otherwise changes substantially, after considering a third
+variable.
+
+In our example:
+
+- Treatment A has the higher overall success rate.
+- Treatment B has the higher success rate in Hospital X.
+- Treatment B also has the higher success rate in Hospital Y.
+
+[The third variable is hospital]{.center}
+
+## Why does this reversal happen
+
+The two treatments are used in different proportions across the hospitals.
+
+- Hospital X has high success rates for both treatments.
+- Hospital Y has lower success rates overall.
+- Most patients receiving Treatment A are treated in Hospital X.
+- Most patients receiving Treatment B are treated in Hospital Y.
+
+The overall success rate therefore reflects both:
+
+1. The treatment-specific success rates.
+2. The distribution of patients across hospitals.
+
+## The role of the third variable
+
+<br>
+
+```{r}
+#| label: patient-distribution-1b
+hospital_data |>
+  ggplot(aes(x = Treatment, y = Patients / 100, fill = Hospital)) +
+  geom_col(position = "stack", colour = "black", width = 0.65) +
+  ggokabeito::scale_fill_okabe_ito() +
+  scale_y_continuous(labels = scales::percent_format()) +
+  labs(
+    x = "Treatment",
+    y = "Number of patients",
+    fill = "Hospital"
+  ) +
+  theme_classic() +
+  theme(legend.position = "bottom")
+```
+
+:::: {.fragment .fade-up}
+::: {.callout-tip}
+## The patients receiving the two treatments are not distributed equally across hospitals
+:::
+::::
+
+---
+
+<br>
+
+```{r}
+#| label: animal-plot-1a
+animal_data |>
+  ggplot(aes(x = size, y = life_expectancy)) +
+  geom_jitter(width = 1.5, size = 2) +
+  labs(
+    x = "Average adult male body mass (kg)",
+    y = "Average life expectancy (years)"
+  ) +
+  theme_classic()
+```
+
+---
+
+<br>
+
+```{r}
+#| label: animal-plot-1b
+animal_data |>
+  ggplot(aes(x = size, y = life_expectancy, colour = animal)) +
+  geom_jitter(width = 1.5, size = 2) +
+  ggokabeito::scale_colour_okabe_ito() +
+  labs(
+    x = "Average adult male body mass (kg)",
+    y = "Average life expectancy (years)",
+    colour = "Animal"
+  ) +
+  theme_classic()
+```
+
+
+## Lurking variable {style="font-size:90%;"}
+
+A **lurking variable** is a variable omitted from an initial comparison that
+can help explain the observed relationship.
+
+For example:
+
+- Treatment and success are the variables of interest.
+- Hospital is a third variable that changes the comparison.
+
+Other examples might include:
+
+- Age when comparing disease rates.
+- Department when comparing university admission rates.
+- Baseline severity when comparing medical treatments.
+
+:::: {.fragment .fade-up}
+::: {.callout-important}
+## A third variable can exaggerate, weaken, hide or reverse an observed association.
+:::
+::::
+
+## Now let's talk about odds {style="font-size:95%;"}
+
+Sometimes we want to compare outcomes using odds rather than proportions.
+
+If the probability of success is $p$, the odds of success are
+
+$$
+\text{Odds} = \frac{p}{1 - p}
+$$
+
+For example, if the probability of success is 0.75:
+
+$$
+\text{Odds} = \frac{0.75}{1 - 0.75} = 3
+$$
+
+[Or more simply the odds are 3:1]{.center}
+
+## Probability versus odds
+
+<br>
+
+```{r}
+#| label: odds-table-1a
+tribble(
+  ~Probability , ~Odds                  ,
+  0.20         , "0.20 / 0.80 = 0.25:1" ,
+  0.50         , "0.50 / 0.50 = 1:1"    ,
+  0.75         , "0.75 / 0.25 = 3:1"    ,
+  0.90         , "0.90 / 0.10 = 9:1"
+) |>
+  tt() |>
+  style_tt(i = 0, align = "c", bold = TRUE)
+```
+
+<br>
+
+:::: {.fragment .fade-up}
+::: {.callout-tip}
+## When an event is common, its odds can be substantially larger than its probability.
+:::
+::::
+
+## Odds ratio {style="font-size:85%;"}
+
+An **odds ratio (OR)** compares the odds between two groups
+
+$$
+\text{OR} = \frac{\text{Odds in Group 1}}{\text{Odds in Group 2}}
+$$
+
+
+::: {.callout-tip appearance="simple"}
+
+## Interpretation
+
+- OR = 1 = Equal odds
+- OR > 1 = Higher odds in Group 1
+- OR < 1 = Lower odds in Group 1
+
+:::
+
+An odds ratio of 2 means that the odds in Group 1 are [twice]{.alert} those in Group 2.
+
+It does **not** necessarily mean that the probability is twice as high.
+
+## Calculating an odds ratio from a table
+
+Suppose we compare two treatments
+
+```{r}
+#| label: odds-table-1b
+tribble(
+  ~""           , ~Success , ~Failure ,
+  "Treatment A" , "(A)"    , "(B)"    ,
+  "Treatment B" , "(C)"    , "(D)"
+) |>
+  tt() |>
+  style_tt(i = 0, bold = TRUE) |>
+  style_tt(j = 2:3, align = "c")
+```
+
+The odds ratio is
+
+$$
+OR = \frac{a/b}{c/d} = \frac{ad}{bc}
+$$
+
+We call this a [cross-product ratio]{.alert}
+
+## Let's calculate an odds ratio {style="font-size:90%;"}
+
+```{r}
+#| label: odds-table-1c
+tribble(
+  ~""           , ~Success , ~Failure ,
+  "Treatment A" ,       80 ,       10 ,
+  "Treatment B" ,       60 ,       40
+) |>
+  tt() |>
+  style_tt(i = 0, bold = TRUE) |>
+  style_tt(j = 2:3, align = "c")
+```
+
+
+:::: {.columns}
+::: {.column}
+
+$$
+\text{Odds}_A = \frac{80}{10}=8
+$$
+
+:::
+
+::: {.column}
+
+$$
+\text{Odds}_B = \frac{60}{40}=1.5
+$$
+
+:::
+::::
+
+
+:::: {.fragment .fade-up}
+
+
+$$
+OR = \frac{8}{1.5} \approx 5.33
+$$
+
+
+::: {.callout-note appearance="minimal"}
+## The odds of success are approximately 5.33 times as high for Treatment A as for Treatment B in this example.
+:::
+::::
+
+## How are these useful
+
+We can calculate:
+
+- An overall odds ratio, ignoring hospital.
+- An odds ratio within Hospital X.
+- An odds ratio within Hospital Y.
+
+These are different summaries of the association between treatment and success.
+
+The key question becomes:
+
+::: {.callout-note}
+## Do the treatment odds ratios tell the same story before and after stratification?
+:::
+
+## Overall and hospital-specific odds ratios
+
+<br>
+
+```{r}
+# Overall odds ratio
+overall_or <- hospital_data |>
+  reframe(
+    Treatment = c("A", "B"),
+    Patients = c(
+      sum(Patients[Treatment == "A"]),
+      sum(Patients[Treatment == "B"])
+    ),
+    Successes = c(
+      sum(Successes[Treatment == "A"]),
+      sum(Successes[Treatment == "B"])
+    )
+  ) |>
+  calculate_or()
+
+# Hospital odds ratio
+hospital_ors <- hospital_data |>
+  group_by(Hospital) |>
+  group_modify(~ tibble(OR = calculate_or(.x))) |>
+  ungroup()
+
+# Comparison table
+tibble(
+  Comparison = c("Overall", hospital_ors$Hospital),
+  `Odds Ratio` = c(overall_or, hospital_ors$OR)
+) |>
+  tt(digits = 3) |>
+  style_tt(i = 0, bold = TRUE)
+```
+
+<br>
+
+:::: {.fragment .fade-up}
+::: {.callout-tip appearance="minimal"}
+The odds ratios also reverse direction: the overall comparison favours A,
+whereas both hospital-specific comparisons favour B.
+:::
+::::
+
+## Marginal versus conditional associations {style="font-size: 80%;"}
+
+We can describe the two approaches using statistical terminology.
+
+**Marginal association**
+
+- The relationship between treatment and success when hospital is ignored.
+
+**Conditional association**
+
+- The relationship between treatment and success when we compare patients within
+  the same hospital.
+
+:::: {.columns}
+
+::: {.column}
+
+### Marginal
+
+All patients are combined.
+
+$$
+P(\text{Success}\mid \text{Treatment})
+$$
+
+:::
+
+::: {.column}
+
+### Conditional
+
+Patients are compared within hospital.
+
+$$
+P(\text{Success}\mid \text{Treatment, Hospital})
+$$
+
+:::
+
+::::
+
+## Final takeaway
+
+- A relationship between two categorical variables can change when we
+  account for a third variable.
+- Simpson's paradox describes a reversal in an association between marginal
+  and conditional comparisons.
+- Odds ratios provide another way to quantify associations in $2 \times 2$ tables.
+- Stratification helps us understand whether an observed relationship
+  persists within groups.
+
+::: {.callout-important}
+## Next time you compare two groups, ask: could a third variable change the conclusion?
+:::
+
+## Introducing the UC Berkeley admissions data
+
+We now move to a real example.
+
+The UC Berkeley admissions data record university applications by:
+
+- Admission outcome
+- Gender
+- Department
+
+Our initial question is:
+
+**Were male and female applicants admitted at different rates?**
+
+We will then consider whether the department applied to changes our interpretation.

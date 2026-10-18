@@ -72,6 +72,9 @@ website:
         href: content\content_04.qmd
       - text: Categorical data analysis III
         href: content\content_05.qmd
+      # - text: Study week
+      #   href: content\study_week.qmd
+
 
 
   page-footer:

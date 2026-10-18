@@ -20,17 +20,14 @@ purrr::map(list.files(here::here("R"), full.names = TRUE), source)
 ### Suggested readings
 
 - {{< fa book >}} [Chapter 4](https://www.academia.edu/42933729/Introduction_to_Statistics_and_Data_Analysis_With_Exercises_Solutions_and_Applications_in_R#outer_page_77) of Introduction to Statistics and Data Analysis
+- {{< fa brands youtube >}} [Simpsons paradox](https://youtu.be/ebEkn-BiW5k?si=C7UeN18yHJCIyfri)
 
 ## Slides
-
-::: {.callout-caution}
-## Slides will be available on Tuesday 20th October
-:::
 
 ```{r}
 #| label: add-slides
 #| echo: false
-#| eval: false
+#| eval: true
 #| results: asis
 
 add_slides(slide_id = "/slides/output/slides_5.html")
