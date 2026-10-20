@@ -299,7 +299,7 @@ hospital_rates |>
 :::
 ::::
 
-## A surprising result {style="font-size:80%;"}
+## A surprising result {style="font-size:75%;"}
 
 We have found two different conclusions:
 
@@ -327,15 +327,24 @@ We have found two different conclusions:
 :::
 ::::
 
-:::: {.fragment .fade-up}
-::: {.callout-warning}
-## The overall comparison reverses the comparison observed within each hospital.
+::::: {.fragment .fade-up}
+:::: {.columns}
+::: {.column}
+
+<br>
+<br>
+
+[**Simspons Paradox**]{.center}
+
 :::
 
-![](assets/homer-simpson.png)
+::: {.column}
 
+![](assets/homer-simpson.png){fig-align="center"}
+
+:::
 ::::
-
+:::::
 
 ## Simpsons paradox
 
@@ -399,7 +408,8 @@ hospital_data |>
 #| label: animal-plot-1a
 animal_data |>
   ggplot(aes(x = size, y = life_expectancy)) +
-  geom_jitter(width = 1.5, size = 2) +
+  geom_jitter(width = 1.5, size = 0.8) +
+  geom_smooth(method = "lm", se = FALSE) +
   labs(
     x = "Average adult male body mass (kg)",
     y = "Average life expectancy (years)"
@@ -415,7 +425,8 @@ animal_data |>
 #| label: animal-plot-1b
 animal_data |>
   ggplot(aes(x = size, y = life_expectancy, colour = animal)) +
-  geom_jitter(width = 1.5, size = 2) +
+  geom_jitter(width = 1.5, size = 0.8) +
+  geom_smooth(method = "lm", se = FALSE) +
   ggokabeito::scale_colour_okabe_ito() +
   labs(
     x = "Average adult male body mass (kg)",
