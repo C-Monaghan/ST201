@@ -21,136 +21,159 @@
     "text": "Learning the fundamental principles of data and data  analysis using R\n        \n        \n            ST201 - Data analysis  Department of Mathematics and Statistics  Maynooth University\n        \n    \n    \n      \n        \n        \n        \n      \n    \n\n\n\n\n\n\nInstructor\n\n Cormac Monaghan\n cormac.monaghan@mu.ie\n Room 223 Logic House\n Bluesky\n\n\n\nCourse details\n\n Tuesday & Thursday\n September - December 2026\n Tuesdays 3pm & Thursdays 12pm\n Physics Hall\n\n\n\nContacting me\nE-mail is the best way to get in contact with me. I usually try to respond to all e-mails within 24 hours (really), but also remember that life can be busy and chaotic for everyone (including me!), so if I don’t respond right away, don’t worry!"
   },
   {
-    "objectID": "content/content_05.html",
-    "href": "content/content_05.html",
-    "title": "Categorical data analysis (III)",
+    "objectID": "content/index.html",
+    "href": "content/index.html",
+    "title": "Lecture overview",
     "section": "",
-    "text": "How to perform a categorical data analysis when we introduce a third variable\nLearn what Simpsons paradox is\nLearn the difference between odds and odds ratios",
+    "text": "Each class has a set of required readings that should be completed in your own time. For the most part, these readings will mirror what we have covered in the lectures. However, there will be times that I find a cool resource that I believe may be helpful for some of you.\nAll the slides for this module are special HTML files made using both Quarto and Clean Revealjs theme by Grant McDermott. Personally, this is my favourite theme to use for presentations, although I have made a couple of minor tweaks to it myself",
     "crumbs": [
       "Content",
-      "Categorical data analysis III"
+      "Lecture overview"
     ]
   },
   {
-    "objectID": "content/content_05.html#learning-objectives",
-    "href": "content/content_05.html#learning-objectives",
-    "title": "Categorical data analysis (III)",
+    "objectID": "content/content_04.html",
+    "href": "content/content_04.html",
+    "title": "Categorical data analysis (II)",
     "section": "",
-    "text": "How to perform a categorical data analysis when we introduce a third variable\nLearn what Simpsons paradox is\nLearn the difference between odds and odds ratios",
+    "text": "Understand how to further analyse a significant \\(\\chi^2\\) result\nLearn about Pearson residuals and Cramér’s V\nUnderstand what to do when our assumptions are violated",
     "crumbs": [
       "Content",
-      "Categorical data analysis III"
+      "Categorical data analysis II"
     ]
   },
   {
-    "objectID": "content/content_05.html#readings",
-    "href": "content/content_05.html#readings",
-    "title": "Categorical data analysis (III)",
-    "section": "Readings",
-    "text": "Readings\n\nSuggested readings\n\n Chapter 4 of Introduction to Statistics and Data Analysis\n Simpsons paradox",
-    "crumbs": [
-      "Content",
-      "Categorical data analysis III"
-    ]
-  },
-  {
-    "objectID": "content/content_05.html#slides",
-    "href": "content/content_05.html#slides",
-    "title": "Categorical data analysis (III)",
-    "section": "Slides",
-    "text": "Slides\n\n  \n    \n       Open slides in New Window",
-    "crumbs": [
-      "Content",
-      "Categorical data analysis III"
-    ]
-  },
-  {
-    "objectID": "content/content_03.html",
-    "href": "content/content_03.html",
-    "title": "Categorical data analysis (I)",
+    "objectID": "content/content_04.html#learning-objectives",
+    "href": "content/content_04.html#learning-objectives",
+    "title": "Categorical data analysis (II)",
     "section": "",
-    "text": "Understand how to analyse categorical data\nLearn about observed versus expected counts\nUnderstand what the \\(\\chi^2\\) distribution is\nLearn how to perform a basic hypothesis test",
+    "text": "Understand how to further analyse a significant \\(\\chi^2\\) result\nLearn about Pearson residuals and Cramér’s V\nUnderstand what to do when our assumptions are violated",
     "crumbs": [
       "Content",
-      "Categorical data analysis I"
+      "Categorical data analysis II"
     ]
   },
   {
-    "objectID": "content/content_03.html#learning-objectives",
-    "href": "content/content_03.html#learning-objectives",
-    "title": "Categorical data analysis (I)",
-    "section": "",
-    "text": "Understand how to analyse categorical data\nLearn about observed versus expected counts\nUnderstand what the \\(\\chi^2\\) distribution is\nLearn how to perform a basic hypothesis test",
-    "crumbs": [
-      "Content",
-      "Categorical data analysis I"
-    ]
-  },
-  {
-    "objectID": "content/content_03.html#readings",
-    "href": "content/content_03.html#readings",
-    "title": "Categorical data analysis (I)",
+    "objectID": "content/content_04.html#readings",
+    "href": "content/content_04.html#readings",
+    "title": "Categorical data analysis (II)",
     "section": "Readings",
     "text": "Readings\n\nSuggested readings\n\n Chapter 4 of Introduction to Statistics and Data Analysis\n Chapter 12 of Learning Statistics with R\n Statistical Tests for Categorical Data using R",
     "crumbs": [
       "Content",
-      "Categorical data analysis I"
+      "Categorical data analysis II"
     ]
   },
   {
-    "objectID": "content/content_03.html#slides",
-    "href": "content/content_03.html#slides",
-    "title": "Categorical data analysis (I)",
+    "objectID": "content/content_04.html#slides",
+    "href": "content/content_04.html#slides",
+    "title": "Categorical data analysis (II)",
     "section": "Slides",
     "text": "Slides\n\n  \n    \n       Open slides in New Window",
     "crumbs": [
       "Content",
-      "Categorical data analysis I"
+      "Categorical data analysis II"
     ]
   },
   {
-    "objectID": "content/content_01.html",
-    "href": "content/content_01.html",
-    "title": "The Foundations of Data",
+    "objectID": "content/content_02.html",
+    "href": "content/content_02.html",
+    "title": "Numerical data",
     "section": "",
-    "text": "Understand the structure of data\nUnderstand the different types of data\nKnow how to visualise different types of data",
+    "text": "Understand how to summarise numerical data\nMeans, medians, ranges, variability, and standard deviations\nLearn how to interpret box plots",
     "crumbs": [
       "Content",
-      "The foundations of data"
+      "Numerical data"
     ]
   },
   {
-    "objectID": "content/content_01.html#learning-objectives",
-    "href": "content/content_01.html#learning-objectives",
-    "title": "The Foundations of Data",
+    "objectID": "content/content_02.html#learning-objectives",
+    "href": "content/content_02.html#learning-objectives",
+    "title": "Numerical data",
     "section": "",
-    "text": "Understand the structure of data\nUnderstand the different types of data\nKnow how to visualise different types of data",
+    "text": "Understand how to summarise numerical data\nMeans, medians, ranges, variability, and standard deviations\nLearn how to interpret box plots",
     "crumbs": [
       "Content",
-      "The foundations of data"
+      "Numerical data"
     ]
   },
   {
-    "objectID": "content/content_01.html#readings",
-    "href": "content/content_01.html#readings",
-    "title": "The Foundations of Data",
+    "objectID": "content/content_02.html#readings",
+    "href": "content/content_02.html#readings",
+    "title": "Numerical data",
     "section": "Readings",
-    "text": "Readings\n\nSuggested readings\n\n Chapter 1 and Chapter 2 of Introduction to Statistics and Data Analysis\n Chapters 1 and 2 of OpenIntro Statistics. This is a slightly more advanced reading, but I would highly recommend!",
+    "text": "Readings\n\nSuggested readings\n\n Chapter 3 of Introduction to Statistics and Data Analysis\n Descriptive statistics in R\n Beginner’s Guide to R : Easy Ways to do basic data analysis",
     "crumbs": [
       "Content",
-      "The foundations of data"
+      "Numerical data"
     ]
   },
   {
-    "objectID": "content/content_01.html#slides",
-    "href": "content/content_01.html#slides",
-    "title": "The Foundations of Data",
+    "objectID": "content/content_02.html#slides",
+    "href": "content/content_02.html#slides",
+    "title": "Numerical data",
     "section": "Slides",
     "text": "Slides\n\n  \n    \n       Open slides in New Window",
     "crumbs": [
       "Content",
-      "The foundations of data"
+      "Numerical data"
     ]
+  },
+  {
+    "objectID": "assignments/assignment_02.html",
+    "href": "assignments/assignment_02.html",
+    "title": "\n    Practice Questions Sheet 2\n  ",
+    "section": "",
+    "text": "ST201 · DATA ANALYSIS\n  \n\n  \n\n    \n    ST201 - Data Analysis\n  \n  \n    \n    Lecturer: Cormac Monaghan\n  \n  \n    \n    This tutorial introduces contingency tables and ways to analyse and visualise categorical data. Please attempt all questions before your tutorial You should work through the questions in a new R script.\n    For questions asking you to interpret a result, aim for one or two clear sentences. You should use the context of the insurance data when explaining your answers."
+  },
+  {
+    "objectID": "assignments/assignment_02.html#exercise-1",
+    "href": "assignments/assignment_02.html#exercise-1",
+    "title": "\n    Practice Questions Sheet 2\n  ",
+    "section": "Exercise 1",
+    "text": "Exercise 1\n\nHow many observations are in the dataset\nWhat are the two categorical variables?\nHow many categories does each variable contain?\nWhat is the observational unit in this dataset?"
+  },
+  {
+    "objectID": "assignments/assignment_02.html#exercise-2",
+    "href": "assignments/assignment_02.html#exercise-2",
+    "title": "\n    Practice Questions Sheet 2\n  ",
+    "section": "Exercise 2",
+    "text": "Exercise 2\n\nCreate a contingency table (similar to the above) of the insurance data.\n\n\n\n\n\n\n\nTipHint\n\n\n\n\n\nYou can use either the table() or xtabs() function\n\n\n\n\nUse the addmargins() function to add the marginal frequencies to the table.\nHow many customers\n\nown petrol cars?\nown diesel cars?\nown motorbikes?\nare satisfied with their insurance?\nare unsatisfied with their insurance?\n\nWhich vehicle type has the largest number of customers in the sample?"
+  },
+  {
+    "objectID": "assignments/assignment_02.html#exercise-3",
+    "href": "assignments/assignment_02.html#exercise-3",
+    "title": "\n    Practice Questions Sheet 2\n  ",
+    "section": "Exercise 3",
+    "text": "Exercise 3\n\nTurn the contingency table you made in exercise 2 into a proportions table.\nAgain, use the addmargins() function to add the marginal proportions to the table.\nWhat proportion of customers were satisfied with their insurance?\nWhat proportion of customers owned a petrol car?\nExplain the difference between the proportion in the cell\n\n“petrol car and satisfied” and “marginal proportion satisfied”"
+  },
+  {
+    "objectID": "assignments/assignment_02.html#exercise-4",
+    "href": "assignments/assignment_02.html#exercise-4",
+    "title": "\n    Practice Questions Sheet 2\n  ",
+    "section": "Exercise 4",
+    "text": "Exercise 4\n\nUpdate the proportion table from exercise 3 to now show the conditional proportions.\n\n\n\n\n\n\n\nTipHint\n\n\n\n\n\n\n# What goes in the blank?\nprop.table(insurance_table, ___ = 2)\n\n# Note - we are using 2 here because we are interested in the conditional\n# distributions of the columns (i.e.,vehicle type).\n\n\n\n\n\nWhat proportion of petrol-car customers were satisfied?\nWhat proportion of diesel-car customers were satisfied?\nWhat proportion of motorbike customers were satisfied?\nWhich vehicle type has the highest proportion of satisfied customers?\nBased on these conditional proportions, describe the relationship between vehicle type and satisfaction."
+  },
+  {
+    "objectID": "assignments/assignment_02.html#exercise-5",
+    "href": "assignments/assignment_02.html#exercise-5",
+    "title": "\n    Practice Questions Sheet 2\n  ",
+    "section": "Exercise 5",
+    "text": "Exercise 5\n\nInstead of a stacked bar plot, modify the above code to create a side-by-side bar plot. You may also modify the ylim argument to improve the resulting figure\nProduce a stacked bar plot in which each bar represents 100% of the customers in that vehicle group.\n\n\n\n\n\n\n\nTipHint\n\n\n\n\n\nYou will need to use the conditional proportions from Exercise 4."
+  },
+  {
+    "objectID": "assignments/assignment_02.html#exercise-6",
+    "href": "assignments/assignment_02.html#exercise-6",
+    "title": "\n    Practice Questions Sheet 2\n  ",
+    "section": "Exercise 6",
+    "text": "Exercise 6\n\nCalculate the odds of satisfaction for\n\npetrol-car customers\ndiesel-car customers\nmotorbike customers\n\nCalculate the odds ratio comparing petrol-car customers with diesel-car customers\nInterpret the odds ratio in the context of this study"
+  },
+  {
+    "objectID": "assignments/assignment_02.html#exercise-7",
+    "href": "assignments/assignment_02.html#exercise-7",
+    "title": "\n    Practice Questions Sheet 2\n  ",
+    "section": "Exercise 7",
+    "text": "Exercise 7\n\nState what your null and alternative hypotheses are.\nWrite R code to perform a \\(\\chi^2\\) test\n\nWhat is the value of the chi-squared test statistic?\nWhat are the degrees of freedom?\nWhat is the p-value?\nUsing a 5% significance level, what decision would you make about the null hypothesis?\nWrite a conclusion for the test in the context of insurance satisfaction."
   },
   {
     "objectID": "assignments/assignment_01.html",
@@ -209,158 +232,135 @@
     "text": "Exercise 7\n\nUsing the new dataset, calculate the mean order_amount for Saturday deliveries.\nCreate a dataset containing Monday deliveries only.\nCalculate the mean order_amount for Monday deliveries.\nWhich day has the larger mean order amount?\n\n\n\n\n\n\n\n\nNoteBonus question\n\n\n\n\n\nCreating a bunch of new datasets with different delivery days can be quite inefficient and tedious.\nImagine doing it 7 times and running seven different analyses!\nInstead, a neat thing we can do is compare all the deliveries at once\nCopy and paste the below code which outputs Figure 3\n\nboxplot(tip ~ day, data = pizza, ylab = \"Tip amount\")\n\n\n\n\n\n\n\nFigure 3: Overview of pizza tips across all delivery days\n\n\n\n\n\nThe ~ tells R to “Plot tips separately for each value of day”.\n\nWhich day appears to have the lowest variation in tips?\nAre there any potential outliers?"
   },
   {
-    "objectID": "assignments/assignment_02.html",
-    "href": "assignments/assignment_02.html",
-    "title": "\n    Practice Questions Sheet 2\n  ",
+    "objectID": "content/content_01.html",
+    "href": "content/content_01.html",
+    "title": "The Foundations of Data",
     "section": "",
-    "text": "ST201 · DATA ANALYSIS\n  \n\n  \n\n    \n    ST201 - Data Analysis\n  \n  \n    \n    Lecturer: Cormac Monaghan\n  \n  \n    \n    This tutorial introduces contingency tables and ways to analyse and visualise categorical data. Please attempt all questions before your tutorial You should work through the questions in a new R script.\n    For questions asking you to interpret a result, aim for one or two clear sentences. You should use the context of the insurance data when explaining your answers."
-  },
-  {
-    "objectID": "assignments/assignment_02.html#exercise-1",
-    "href": "assignments/assignment_02.html#exercise-1",
-    "title": "\n    Practice Questions Sheet 2\n  ",
-    "section": "Exercise 1",
-    "text": "Exercise 1\n\nHow many observations are in the dataset\nWhat are the two categorical variables?\nHow many categories does each variable contain?\nWhat is the observational unit in this dataset?"
-  },
-  {
-    "objectID": "assignments/assignment_02.html#exercise-2",
-    "href": "assignments/assignment_02.html#exercise-2",
-    "title": "\n    Practice Questions Sheet 2\n  ",
-    "section": "Exercise 2",
-    "text": "Exercise 2\n\nCreate a contingency table (similar to the above) of the insurance data.\n\n\n\n\n\n\n\nTipHint\n\n\n\n\n\nYou can use either the table() or xtabs() function\n\n\n\n\nUse the addmargins() function to add the marginal frequencies to the table.\nHow many customers\n\nown petrol cars?\nown diesel cars?\nown motorbikes?\nare satisfied with their insurance?\nare unsatisfied with their insurance?\n\nWhich vehicle type has the largest number of customers in the sample?"
-  },
-  {
-    "objectID": "assignments/assignment_02.html#exercise-3",
-    "href": "assignments/assignment_02.html#exercise-3",
-    "title": "\n    Practice Questions Sheet 2\n  ",
-    "section": "Exercise 3",
-    "text": "Exercise 3\n\nTurn the contingency table you made in exercise 2 into a proportions table.\nAgain, use the addmargins() function to add the marginal proportions to the table.\nWhat proportion of customers were satisfied with their insurance?\nWhat proportion of customers owned a petrol car?\nExplain the difference between the proportion in the cell\n\n“petrol car and satisfied” and “marginal proportion satisfied”"
-  },
-  {
-    "objectID": "assignments/assignment_02.html#exercise-4",
-    "href": "assignments/assignment_02.html#exercise-4",
-    "title": "\n    Practice Questions Sheet 2\n  ",
-    "section": "Exercise 4",
-    "text": "Exercise 4\n\nUpdate the proportion table from exercise 3 to now show the conditional proportions.\n\n\n\n\n\n\n\nTipHint\n\n\n\n\n\n\n# What goes in the blank?\nprop.table(insurance_table, ___ = 1)\n\n\n\n\n\nWhat proportion of petrol-car customers were satisfied?\nWhat proportion of diesel-car customers were satisfied?\nWhat proportion of motorbike customers were satisfied?\nWhich vehicle type has the highest proportion of satisfied customers?\nBased on these conditional proportions, describe the relationship between vehicle type and satisfaction."
-  },
-  {
-    "objectID": "assignments/assignment_02.html#exercise-5",
-    "href": "assignments/assignment_02.html#exercise-5",
-    "title": "\n    Practice Questions Sheet 2\n  ",
-    "section": "Exercise 5",
-    "text": "Exercise 5\n\nInstead of a stacked bar plot, modify the above code to create a side-by-side bar plot. You may also modify the ylim argument to improve the resulting figure\nProduce a stacked bar plot in which each bar represents 100% of the customers in that vehicle group.\n\n\n\n\n\n\n\nTipHint\n\n\n\n\n\nYou will need to use the conditional proportions from Exercise 4."
-  },
-  {
-    "objectID": "assignments/assignment_02.html#exercise-6",
-    "href": "assignments/assignment_02.html#exercise-6",
-    "title": "\n    Practice Questions Sheet 2\n  ",
-    "section": "Exercise 6",
-    "text": "Exercise 6\n\nCalculate the odds of satisfaction for\n\npetrol-car customers\ndiesel-car customers\nmotorbike customers\n\nCalculate the odds ratio comparing petrol-car customers with diesel-car customers\nInterpret the odds ratio in the context of this study"
-  },
-  {
-    "objectID": "assignments/assignment_02.html#exercise-7",
-    "href": "assignments/assignment_02.html#exercise-7",
-    "title": "\n    Practice Questions Sheet 2\n  ",
-    "section": "Exercise 7",
-    "text": "Exercise 7\n\nState what your null and alternative hypotheses are.\nWrite R code to perform a \\(\\chi^2\\) test\n\nWhat is the value of the chi-squared test statistic?\nWhat are the degrees of freedom?\nWhat is the p-value?\nUsing a 5% significance level, what decision would you make about the null hypothesis?\nWrite a conclusion for the test in the context of insurance satisfaction."
-  },
-  {
-    "objectID": "content/content_02.html",
-    "href": "content/content_02.html",
-    "title": "Numerical data",
-    "section": "",
-    "text": "Understand how to summarise numerical data\nMeans, medians, ranges, variability, and standard deviations\nLearn how to interpret box plots",
+    "text": "Understand the structure of data\nUnderstand the different types of data\nKnow how to visualise different types of data",
     "crumbs": [
       "Content",
-      "Numerical data"
+      "The foundations of data"
     ]
   },
   {
-    "objectID": "content/content_02.html#learning-objectives",
-    "href": "content/content_02.html#learning-objectives",
-    "title": "Numerical data",
+    "objectID": "content/content_01.html#learning-objectives",
+    "href": "content/content_01.html#learning-objectives",
+    "title": "The Foundations of Data",
     "section": "",
-    "text": "Understand how to summarise numerical data\nMeans, medians, ranges, variability, and standard deviations\nLearn how to interpret box plots",
+    "text": "Understand the structure of data\nUnderstand the different types of data\nKnow how to visualise different types of data",
     "crumbs": [
       "Content",
-      "Numerical data"
+      "The foundations of data"
     ]
   },
   {
-    "objectID": "content/content_02.html#readings",
-    "href": "content/content_02.html#readings",
-    "title": "Numerical data",
+    "objectID": "content/content_01.html#readings",
+    "href": "content/content_01.html#readings",
+    "title": "The Foundations of Data",
     "section": "Readings",
-    "text": "Readings\n\nSuggested readings\n\n Chapter 3 of Introduction to Statistics and Data Analysis\n Descriptive statistics in R\n Beginner’s Guide to R : Easy Ways to do basic data analysis",
+    "text": "Readings\n\nSuggested readings\n\n Chapter 1 and Chapter 2 of Introduction to Statistics and Data Analysis\n Chapters 1 and 2 of OpenIntro Statistics. This is a slightly more advanced reading, but I would highly recommend!",
     "crumbs": [
       "Content",
-      "Numerical data"
+      "The foundations of data"
     ]
   },
   {
-    "objectID": "content/content_02.html#slides",
-    "href": "content/content_02.html#slides",
-    "title": "Numerical data",
+    "objectID": "content/content_01.html#slides",
+    "href": "content/content_01.html#slides",
+    "title": "The Foundations of Data",
     "section": "Slides",
     "text": "Slides\n\n  \n    \n       Open slides in New Window",
     "crumbs": [
       "Content",
-      "Numerical data"
+      "The foundations of data"
     ]
   },
   {
-    "objectID": "content/content_04.html",
-    "href": "content/content_04.html",
-    "title": "Categorical data analysis (II)",
+    "objectID": "content/content_03.html",
+    "href": "content/content_03.html",
+    "title": "Categorical data analysis (I)",
     "section": "",
-    "text": "Understand how to further analyse a significant \\(\\chi^2\\) result\nLearn about Pearson residuals and Cramér’s V\nUnderstand what to do when our assumptions are violated",
+    "text": "Understand how to analyse categorical data\nLearn about observed versus expected counts\nUnderstand what the \\(\\chi^2\\) distribution is\nLearn how to perform a basic hypothesis test",
     "crumbs": [
       "Content",
-      "Categorical data analysis II"
+      "Categorical data analysis I"
     ]
   },
   {
-    "objectID": "content/content_04.html#learning-objectives",
-    "href": "content/content_04.html#learning-objectives",
-    "title": "Categorical data analysis (II)",
+    "objectID": "content/content_03.html#learning-objectives",
+    "href": "content/content_03.html#learning-objectives",
+    "title": "Categorical data analysis (I)",
     "section": "",
-    "text": "Understand how to further analyse a significant \\(\\chi^2\\) result\nLearn about Pearson residuals and Cramér’s V\nUnderstand what to do when our assumptions are violated",
+    "text": "Understand how to analyse categorical data\nLearn about observed versus expected counts\nUnderstand what the \\(\\chi^2\\) distribution is\nLearn how to perform a basic hypothesis test",
     "crumbs": [
       "Content",
-      "Categorical data analysis II"
+      "Categorical data analysis I"
     ]
   },
   {
-    "objectID": "content/content_04.html#readings",
-    "href": "content/content_04.html#readings",
-    "title": "Categorical data analysis (II)",
+    "objectID": "content/content_03.html#readings",
+    "href": "content/content_03.html#readings",
+    "title": "Categorical data analysis (I)",
     "section": "Readings",
     "text": "Readings\n\nSuggested readings\n\n Chapter 4 of Introduction to Statistics and Data Analysis\n Chapter 12 of Learning Statistics with R\n Statistical Tests for Categorical Data using R",
     "crumbs": [
       "Content",
-      "Categorical data analysis II"
+      "Categorical data analysis I"
     ]
   },
   {
-    "objectID": "content/content_04.html#slides",
-    "href": "content/content_04.html#slides",
-    "title": "Categorical data analysis (II)",
+    "objectID": "content/content_03.html#slides",
+    "href": "content/content_03.html#slides",
+    "title": "Categorical data analysis (I)",
     "section": "Slides",
     "text": "Slides\n\n  \n    \n       Open slides in New Window",
     "crumbs": [
       "Content",
-      "Categorical data analysis II"
+      "Categorical data analysis I"
     ]
   },
   {
-    "objectID": "content/index.html",
-    "href": "content/index.html",
-    "title": "Lecture overview",
+    "objectID": "content/content_05.html",
+    "href": "content/content_05.html",
+    "title": "Categorical data analysis (III)",
     "section": "",
-    "text": "Each class has a set of required readings that should be completed in your own time. For the most part, these readings will mirror what we have covered in the lectures. However, there will be times that I find a cool resource that I believe may be helpful for some of you.\nAll the slides for this module are special HTML files made using both Quarto and Clean Revealjs theme by Grant McDermott. Personally, this is my favourite theme to use for presentations, although I have made a couple of minor tweaks to it myself",
+    "text": "How to perform a categorical data analysis when we introduce a third variable\nLearn what Simpsons paradox is\nLearn the difference between odds and odds ratios",
     "crumbs": [
       "Content",
-      "Lecture overview"
+      "Categorical data analysis III"
+    ]
+  },
+  {
+    "objectID": "content/content_05.html#learning-objectives",
+    "href": "content/content_05.html#learning-objectives",
+    "title": "Categorical data analysis (III)",
+    "section": "",
+    "text": "How to perform a categorical data analysis when we introduce a third variable\nLearn what Simpsons paradox is\nLearn the difference between odds and odds ratios",
+    "crumbs": [
+      "Content",
+      "Categorical data analysis III"
+    ]
+  },
+  {
+    "objectID": "content/content_05.html#readings",
+    "href": "content/content_05.html#readings",
+    "title": "Categorical data analysis (III)",
+    "section": "Readings",
+    "text": "Readings\n\nSuggested readings\n\n Chapter 4 of Introduction to Statistics and Data Analysis\n Simpsons paradox",
+    "crumbs": [
+      "Content",
+      "Categorical data analysis III"
+    ]
+  },
+  {
+    "objectID": "content/content_05.html#slides",
+    "href": "content/content_05.html#slides",
+    "title": "Categorical data analysis (III)",
+    "section": "Slides",
+    "text": "Slides\n\n  \n    \n       Open slides in New Window",
+    "crumbs": [
+      "Content",
+      "Categorical data analysis III"
     ]
   },
   {

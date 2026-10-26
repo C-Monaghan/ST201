@@ -107,7 +107,8 @@ head(insurance)
 
 # Contingency tables
 
-A contingency table allows us to examine the relationship between two categorical variables.
+A contingency table allows us to examine the relationship between two
+categorical variables.
 
 ```{r}
 #| label: tbl-insurance
@@ -186,7 +187,10 @@ $$
 #| eval: false
 
 # What goes in the blank?
-prop.table(insurance_table, ___ = 1)
+prop.table(insurance_table, ___ = 2)
+
+# Note - we are using 2 here because we are interested in the conditional
+# distributions of the columns (i.e.,vehicle type).
 ```
 
 :::
@@ -212,12 +216,14 @@ across vehicle types.
 #| echo: true
 
 # args.legend: Changes the legend position
+# names.arg: Change the text on the x-axis
 # ylim: Changes the y-axis limits
 
 barplot(
   insurance_table,
   legend = TRUE,
   args.legend = list(x = "topleft"),
+  names.arg = c("Diesel car", "Motorbike", "Petrol car"),
   ylim = c(0, 110)
 )
 ```
