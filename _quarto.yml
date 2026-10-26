@@ -24,10 +24,10 @@ website:
   page-navigation: true
 
   announcement:
-    icon: calendar
+    icon: pencil
     dismissable: false
     content: |
-      **Please complete the graded quiz found on Moodle (DEADLINE 2026-10-16)**
+      **Please complete the next assignment before your next tutorial**
     type: danger
     position: below-navbar
 
