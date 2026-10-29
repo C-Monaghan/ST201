@@ -1,0 +1,40 @@
+---
+title: Discrete probability distributions
+---
+
+```{r}
+#| label: setup
+#| include: false
+
+purrr::map(list.files(here::here("R"), full.names = TRUE), source)
+```
+
+## Learning objectives
+
+- Learn about discrete random variables.
+- Learn about PDFs, CDFs, expected values and variances.
+- Understand and explain different discrete probability distributions
+
+## Readings
+
+### Suggested readings
+
+- {{< fa link >}} [Discrete probability distributions](https://stats.libretexts.org/Bookshelves/Introductory_Statistics/Introductory_Statistics_(Shafer_and_Zhang)/04%3A_Discrete_Random_Variables/4.02%3A_Probability_Distributions_for_Discrete_Random_Variables)
+
+## Slides
+
+::: {.callout-warning}
+
+## Slides will be available on 3rd November
+
+:::
+
+
+```{r}
+#| label: add-slides
+#| echo: false
+#| eval: false
+#| results: asis
+
+add_slides(slide_id = "/slides/output/slides_6.html")
+```

@@ -1,0 +1,1494 @@
+<!DOCTYPE html>
+<html lang="en"><head>
+<script src="slides_6_files/libs/clipboard/clipboard.min.js"></script>
+<script src="slides_6_files/libs/quarto-html/tabby.min.js"></script>
+<script src="slides_6_files/libs/quarto-html/popper.min.js"></script>
+<script src="slides_6_files/libs/quarto-html/tippy.umd.min.js"></script>
+<link href="slides_6_files/libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="slides_6_files/libs/quarto-html/light-border.css" rel="stylesheet">
+<link href="slides_6_files/libs/quarto-html/quarto-syntax-highlighting-64a204ab8560d761af7679ceaba22944.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<link href="slides_6_files/libs/quarto-contrib/code-window-0.1.0/style.css" rel="stylesheet">
+<script>document.addEventListener("DOMContentLoaded",function(){
+  var DEFAULT_COLLAPSE=null;
+  document.querySelectorAll("pre.cw-auto").forEach(function(pre){
+    var fn=pre.closest("[data-filename]");
+    if(!fn)return;
+    var name=fn.getAttribute("data-filename");
+    if(!name)return;
+    var scaffold=pre.closest(".code-copy-outer-scaffold")||pre.closest(".sourceCode");
+    if(!scaffold)return;
+    var w=document.createElement("div");
+    w.className="code-with-filename code-window-auto";
+    var tb=document.createElement("div");
+    tb.className="code-with-filename-file";
+    var tp=document.createElement("pre");
+    var ts=document.createElement("strong");
+    ts.textContent=name;
+    tp.appendChild(ts);tb.appendChild(tp);
+    scaffold.parentNode.insertBefore(w,scaffold);
+    w.appendChild(tb);w.appendChild(scaffold);
+    pre.classList.remove("cw-auto");
+  });
+  function findMarkerSource(el){
+    return el.querySelector('pre[class*="cw-style-"],pre[class*="cw-collapse-"],pre[data-code-window-lines-label]')
+      ||el.querySelector('[class*="cw-style-"],[class*="cw-collapse-"],[data-code-window-lines-label]');
+  }
+  document.querySelectorAll(".code-with-filename").forEach(function(el){
+    var marker=findMarkerSource(el);
+    var styleApplied=/\bcode-window-(macos|windows|default)\b/.test(el.className);
+    if(!styleApplied){
+      var sm=marker&&marker.className.match(/cw-style-(\w+)/);
+      if(sm){el.classList.add("code-window-"+sm[1]);marker.classList.remove(sm[0]);}
+      else{el.classList.add("code-window-macos");}
+    }
+    var collapse=null;
+    if(marker){
+      var cm=marker.className.match(/cw-collapse-(open|closed)/);
+      if(cm){collapse=cm[1];marker.classList.remove(cm[0]);}
+    }
+    if(collapse===null&&DEFAULT_COLLAPSE){collapse=DEFAULT_COLLAPSE;}
+    if(marker&&marker.hasAttribute("data-code-window-lines-label")){
+      var spec=marker.getAttribute("data-code-window-lines-label");
+      marker.removeAttribute("data-code-window-lines-label");
+      var titleBar=el.querySelector(".code-with-filename-file");
+      if(titleBar&&!titleBar.querySelector(".code-with-filename-lines")){
+        var chip=document.createElement("span");
+        chip.className="code-with-filename-lines";
+        chip.textContent="L"+spec;
+        titleBar.appendChild(chip);
+      }
+    }
+    if(collapse&&!el.classList.contains("code-window-collapsible")){
+      var titleBar=el.querySelector(".code-with-filename-file");
+      if(titleBar){
+        var details=document.createElement("details");
+        details.className=el.className+" code-window-collapsible";
+        if(collapse==="open"){details.open=true;}
+        var summaryEl=document.createElement("summary");
+        summaryEl.className="code-with-filename-file";
+        while(titleBar.firstChild){summaryEl.appendChild(titleBar.firstChild);}
+        titleBar.parentNode.removeChild(titleBar);
+        details.appendChild(summaryEl);
+        while(el.firstChild){details.appendChild(el.firstChild);}
+        el.parentNode.replaceChild(details,el);
+      }
+    }
+  });
+});</script><meta charset="utf-8">
+  <meta name="generator" content="quarto-1.10.18">
+
+  <meta name="author" content="Cormac Monaghan">
+  <title>Discrete random variables</title>
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui">
+  <link rel="stylesheet" href="slides_6_files/libs/revealjs/dist/reset.css">
+  <link rel="stylesheet" href="slides_6_files/libs/revealjs/dist/reveal.css">
+  <style>
+    /* Default styles provided by pandoc.
+    ** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
+    */
+    span.smallcaps{font-variant: small-caps;}
+    div.columns{display: flex; gap: 1.5em;}
+    div.column{flex: auto;}
+    @media screen {
+    div.columns{gap: min(4vw, 1.5em);}
+    div.column{overflow-x: auto;}
+    }
+    div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+    ul.task-list{list-style: none;}
+    ul.task-list li input[type="checkbox"] {
+      width: 0.8em;
+      margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+      vertical-align: middle;
+    }
+    /* CSS for syntax highlighting */
+    html { -webkit-text-size-adjust: 100%; }
+    pre > code.sourceCode { white-space: pre; position: relative; }
+    pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+    pre > code.sourceCode > span:empty { height: 1.2em; }
+    .sourceCode { overflow: visible; }
+    code.sourceCode > span { color: inherit; text-decoration: inherit; }
+    div.sourceCode { margin: 1em 0; }
+    pre.sourceCode { margin: 0; }
+    @media screen {
+    div.sourceCode { overflow: auto; }
+    }
+    @media print {
+    pre > code.sourceCode { white-space: pre-wrap; }
+    pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+    }
+    pre.numberSource code
+      { counter-reset: source-line 0; }
+    pre.numberSource code > span
+      { position: relative; left: -4em; counter-increment: source-line; }
+    pre.numberSource code > span > a:first-child::before
+      { content: counter(source-line);
+        position: relative; left: -1em; text-align: right; vertical-align: baseline;
+        border: none; display: inline-block;
+        -webkit-touch-callout: none; -webkit-user-select: none;
+        -khtml-user-select: none; -moz-user-select: none;
+        -ms-user-select: none; user-select: none;
+        padding: 0 4px; width: 4em;
+        color: #aaaaaa;
+      }
+    pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+    div.sourceCode
+      { color: #003b4f; background-color: #f1f3f5; }
+    @media screen {
+    pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+    }
+    code span { color: #003b4f; } /* Normal */
+    code span.al { color: #ad0000; } /* Alert */
+    code span.an { color: #5e5e5e; } /* Annotation */
+    code span.at { color: #657422; } /* Attribute */
+    code span.bn { color: #ad0000; } /* BaseN */
+    code span.bu { } /* BuiltIn */
+    code span.cf { color: #003b4f; font-weight: bold; } /* ControlFlow */
+    code span.ch { color: #20794d; } /* Char */
+    code span.cn { color: #8f5902; } /* Constant */
+    code span.co { color: #5e5e5e; } /* Comment */
+    code span.cv { color: #5e5e5e; font-style: italic; } /* CommentVar */
+    code span.do { color: #5e5e5e; font-style: italic; } /* Documentation */
+    code span.dt { color: #ad0000; } /* DataType */
+    code span.dv { color: #ad0000; } /* DecVal */
+    code span.er { color: #ad0000; } /* Error */
+    code span.ex { } /* Extension */
+    code span.fl { color: #ad0000; } /* Float */
+    code span.fu { color: #4758ab; } /* Function */
+    code span.im { color: #00769e; } /* Import */
+    code span.in { color: #5e5e5e; } /* Information */
+    code span.kw { color: #003b4f; font-weight: bold; } /* Keyword */
+    code span.op { color: #5e5e5e; } /* Operator */
+    code span.ot { color: #003b4f; } /* Other */
+    code span.pp { color: #ad0000; } /* Preprocessor */
+    code span.sc { color: #5e5e5e; } /* SpecialChar */
+    code span.ss { color: #20794d; } /* SpecialString */
+    code span.st { color: #20794d; } /* String */
+    code span.va { color: #111111; } /* Variable */
+    code span.vs { color: #20794d; } /* VerbatimString */
+    code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
+  </style>
+  <link rel="stylesheet" href="slides_6_files/libs/revealjs/dist/theme/quarto-c7806ff3e638929925e7bb6c2c002062.css">
+  <link href="slides_6_files/libs/revealjs/plugin/quarto-line-highlight/line-highlight.css" rel="stylesheet">
+  <link href="slides_6_files/libs/revealjs/plugin/reveal-menu/menu.css" rel="stylesheet">
+  <link href="slides_6_files/libs/revealjs/plugin/reveal-menu/quarto-menu.css" rel="stylesheet">
+  <link href="slides_6_files/libs/revealjs/plugin/quarto-support/footer.css" rel="stylesheet">
+  <style type="text/css">
+    .reveal div.sourceCode {
+      margin: 0;
+      overflow: auto;
+    }
+    .reveal div.hanging-indent {
+      margin-left: 1em;
+      text-indent: -1em;
+    }
+    .reveal .slide:not(.center) {
+      height: 100%;
+    }
+    .reveal .slide.scrollable {
+      overflow-y: auto;
+    }
+    .reveal .footnotes {
+      height: 100%;
+      overflow-y: auto;
+    }
+    .reveal .slide .absolute {
+      position: absolute;
+      display: block;
+    }
+    .reveal .footnotes ol {
+      counter-reset: ol;
+      list-style-type: none; 
+      margin-left: 0;
+    }
+    .reveal .footnotes ol li:before {
+      counter-increment: ol;
+      content: counter(ol) ". "; 
+    }
+    .reveal .footnotes ol li > p:first-child {
+      display: inline-block;
+    }
+    .reveal .slide ul,
+    .reveal .slide ol {
+      margin-bottom: 0.5em;
+    }
+    .reveal .slide ul li,
+    .reveal .slide ol li {
+      margin-top: 0.4em;
+      margin-bottom: 0.2em;
+    }
+    .reveal .slide ul[role="tablist"] li {
+      margin-bottom: 0;
+    }
+    .reveal .slide ul li > *:first-child,
+    .reveal .slide ol li > *:first-child {
+      margin-block-start: 0;
+    }
+    .reveal .slide ul li > *:last-child,
+    .reveal .slide ol li > *:last-child {
+      margin-block-end: 0;
+    }
+    .reveal .slide .columns:nth-child(3) {
+      margin-block-start: 0.8em;
+    }
+    .reveal blockquote {
+      box-shadow: none;
+    }
+    .reveal .tippy-content>* {
+      margin-top: 0.2em;
+      margin-bottom: 0.7em;
+    }
+    .reveal .tippy-content>*:last-child {
+      margin-bottom: 0.2em;
+    }
+    .reveal .slide > img.stretch.quarto-figure-center,
+    .reveal .slide > img.r-stretch.quarto-figure-center {
+      display: block;
+      margin-left: auto;
+      margin-right: auto; 
+    }
+    .reveal .slide > img.stretch.quarto-figure-left,
+    .reveal .slide > img.r-stretch.quarto-figure-left  {
+      display: block;
+      margin-left: 0;
+      margin-right: auto; 
+    }
+    .reveal .slide > img.stretch.quarto-figure-right,
+    .reveal .slide > img.r-stretch.quarto-figure-right  {
+      display: block;
+      margin-left: auto;
+      margin-right: 0; 
+    }
+  </style>
+</head>
+<body class="quarto-light">
+<script src="mathjax-config.js"></script>
+  <div class="reveal">
+    <div class="slides">
+
+<section id="title-slide" class="quarto-title-block center">
+  <h1 class="title">Discrete random variables</h1>
+  <p class="subtitle">ST201 - Data analysis</p>
+
+<div class="quarto-title-authors">
+<div class="quarto-title-author">
+<div class="quarto-title-author-name">
+Cormac Monaghan
+</div>
+<div class="quarto-title-author-email">
+<a href="mailto:cormac.monaghan@mu.ie">cormac.monaghan@mu.ie</a>
+</div>
+        <p class="quarto-title-affiliation">
+            Department of Mathematics and Statistics, Maynooth University
+          </p>
+    </div>
+</div>
+
+</section>
+<section id="from-data-to-probability" class="slide level2">
+<h2>From data to probability</h2>
+<p>So far, we have mainly described data that we have observed.</p>
+<p>Probability lets us describe <strong>uncertainty</strong> about outcomes <strong>that could occur</strong>.</p>
+<div class="fragment fade-up">
+<ul>
+<li>How many heads will appear in three coin tosses?</li>
+<li>How many patients will recover?</li>
+<li>How many calls will arrive in the next hour?</li>
+</ul>
+<p>We represent the outcome of interest using a <strong>random variable</strong>.</p>
+</div>
+</section>
+<section id="discrete-random-variables" class="slide level2">
+<h2>Discrete random variables</h2>
+<h3 id="what-is-a-random-variable">What is a random variable?</h3>
+<p>A <strong>random variable</strong> assigns a numerical value to the outcome of a random process.</p>
+<ul>
+<li>Number of heads in three coin tosses: <span class="math inline">\(X \in {0, 1, 2, 3}\)</span></li>
+<li>Number of patients who recover: <span class="math inline">\(X \in {0, 1, \ldots, n}\)</span></li>
+<li>Number of emails received in an hour: <span class="math inline">\(X \in {0, 1, 2,\ldots \infty}\)</span></li>
+</ul>
+<div class="fragment fade-up">
+<div class="callout callout-note callout-titled callout-style-default">
+<div class="callout-body">
+<div class="callout-title">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<p><strong>A random variable is written using a capital letter, such as <span class="math inline">\(X\)</span>.</strong></p>
+</div>
+<div class="callout-content">
+
+</div>
+</div>
+</div>
+<div class="callout callout-note callout-titled callout-style-default">
+<div class="callout-body">
+<div class="callout-title">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<p><strong>A possible value is written using a lowercase letter, such as <span class="math inline">\(x\)</span></strong></p>
+</div>
+<div class="callout-content">
+
+</div>
+</div>
+</div>
+</div>
+</section>
+<section id="discrete-random-variables-1" class="slide level2">
+<h2>Discrete random variables</h2>
+<h3 id="tossing-a-coin">Tossing a coin</h3>
+<p>Imagine tossing a fair coin three times.</p>
+<div class="fragment fade-up">
+<p>There are <span class="math inline">\(2^3 = 8\)</span> equally likely outcomes:</p>
+<p><span class="center">HHH,&nbsp;HHT,&nbsp;HTH,&nbsp;THH,&nbsp;HTT,&nbsp;THT,&nbsp;TTH,&nbsp;TTT</span></p>
+</div>
+<div class="fragment fade-up">
+<p>Let <span class="math inline">\(X\)</span> be the number of heads.</p>
+<p><span class="math display">\[
+X \in \{0, 1, 2, 3\}
+\]</span></p>
+</div>
+</section>
+<section id="discrete-random-variables-2" class="slide level2">
+<h2>Discrete random variables</h2>
+<h3 id="probability-mass-functions">Probability mass functions</h3>
+<p>We can represent the probability that our random variable will take a certain value.</p>
+<p><span class="math display">\[
+P(X = x) = f(x)
+\]</span></p>
+<div class="callout callout-important no-icon callout-titled callout-style-simple">
+<div class="callout-body">
+<div class="callout-title">
+<p><strong>Each probability is between 0 and 1</strong></p>
+</div>
+<div class="callout-content">
+
+</div>
+</div>
+</div>
+<div class="callout callout-important no-icon callout-titled callout-style-simple">
+<div class="callout-body">
+<div class="callout-title">
+<p><strong>The probabilities across all possible values add up to 1</strong></p>
+</div>
+<div class="callout-content">
+
+</div>
+</div>
+</div>
+<p><span class="math display">\[
+0 \leq P(X = x) \leq 1 \qquad \text{and} \qquad \sum_x P(X = x) = 1
+\]</span></p>
+</section>
+<section id="discrete-random-variables-3" class="slide level2" style="font-size: 80%;">
+<h2>Discrete random variables</h2>
+<h3 id="probability-mass-functions-1">Probability mass functions</h3>
+<p>Let’s look at the probability mass function for the fair coin toss</p>
+<p><br></p>
+<div class="columns">
+<div class="column" style="width:40%;">
+<p><br></p>
+<div class="cell" data-layout-align="center">
+<div class="cell-output-display">
+<!-- preamble start -->
+
+    <script src="https://cdn.jsdelivr.net/gh/vincentarelbundock/tinytable@main/inst/tinytable.js"></script>
+
+    <script>
+      // Create table-specific functions using external factory
+      const tableFns_mm4y3wob2t7kh6jy03xf = TinyTable.createTableFunctions("tinytable_mm4y3wob2t7kh6jy03xf");
+      // tinytable span after
+      window.addEventListener('load', function () {
+          var cellsToStyle = [
+            // tinytable style arrays after
+          { positions: [ { i: '4', j: 1 }, { i: '4', j: 2 } ], css_id: 'tinytable_css_dwivq7zk3l3ys7930lv1',}, 
+          { positions: [ { i: '1', j: 1 }, { i: '2', j: 1 }, { i: '3', j: 1 }, { i: '1', j: 2 }, { i: '2', j: 2 }, { i: '3', j: 2 } ], css_id: 'tinytable_css_nuwocgrfvitmbflrvgfu',}, 
+          { positions: [ { i: '0', j: 1 }, { i: '0', j: 2 } ], css_id: 'tinytable_css_nmq2lar3zy33c9q7h3gx',}, 
+          ];
+
+          // Loop over the arrays to style the cells
+          cellsToStyle.forEach(function (group) {
+              group.positions.forEach(function (cell) {
+                  tableFns_mm4y3wob2t7kh6jy03xf.styleCell(cell.i, cell.j, group.css_id);
+              });
+          });
+      });
+    </script>
+
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/vincentarelbundock/tinytable@main/inst/tinytable.css">
+    <style>
+    /* tinytable css entries after */
+    #tinytable_mm4y3wob2t7kh6jy03xf td.tinytable_css_dwivq7zk3l3ys7930lv1, #tinytable_mm4y3wob2t7kh6jy03xf th.tinytable_css_dwivq7zk3l3ys7930lv1 {  position: relative; --border-bottom: 1; --border-left: 0; --border-right: 0; --border-top: 0; --line-color-bottom: var(--tt-line-color); --line-color-left: var(--tt-line-color); --line-color-right: var(--tt-line-color); --line-color-top: var(--tt-line-color); --line-width-bottom: 0.08em; --line-width-left: 0.1em; --line-width-right: 0.1em; --line-width-top: 0.1em; --trim-bottom-left: 0%; --trim-bottom-right: 0%; --trim-left-bottom: 0%; --trim-left-top: 0%; --trim-right-bottom: 0%; --trim-right-top: 0%; --trim-top-left: 0%; --trim-top-right: 0%; ; text-align: center }
+    #tinytable_mm4y3wob2t7kh6jy03xf td.tinytable_css_nuwocgrfvitmbflrvgfu, #tinytable_mm4y3wob2t7kh6jy03xf th.tinytable_css_nuwocgrfvitmbflrvgfu { text-align: center }
+    #tinytable_mm4y3wob2t7kh6jy03xf td.tinytable_css_nmq2lar3zy33c9q7h3gx, #tinytable_mm4y3wob2t7kh6jy03xf th.tinytable_css_nmq2lar3zy33c9q7h3gx {  position: relative; --border-bottom: 1; --border-left: 0; --border-right: 0; --border-top: 1; --line-color-bottom: var(--tt-line-color); --line-color-left: var(--tt-line-color); --line-color-right: var(--tt-line-color); --line-color-top: var(--tt-line-color); --line-width-bottom: 0.05em; --line-width-left: 0.1em; --line-width-right: 0.1em; --line-width-top: 0.08em; --trim-bottom-left: 0%; --trim-bottom-right: 0%; --trim-left-bottom: 0%; --trim-left-top: 0%; --trim-right-bottom: 0%; --trim-right-top: 0%; --trim-top-left: 0%; --trim-top-right: 0%; ; font-weight: bold; text-align: center }
+    </style>
+    <div class="container">
+      <table class="tinytable" id="tinytable_mm4y3wob2t7kh6jy03xf" style="width: auto; margin-left: auto; margin-right: auto;" data-quarto-disable-processing="true">
+        
+        <thead>
+              <tr>
+                <th scope="col" data-row="0" data-col="1">Number of heads</th>
+                <th scope="col" data-row="0" data-col="2">Probability</th>
+              </tr>
+        </thead>
+        
+        <tbody>
+                <tr>
+                  <td data-row="1" data-col="1">0</td>
+                  <td data-row="1" data-col="2">1/8</td>
+                </tr>
+                <tr>
+                  <td data-row="2" data-col="1">1</td>
+                  <td data-row="2" data-col="2">3/8</td>
+                </tr>
+                <tr>
+                  <td data-row="3" data-col="1">2</td>
+                  <td data-row="3" data-col="2">3/8</td>
+                </tr>
+                <tr>
+                  <td data-row="4" data-col="1">3</td>
+                  <td data-row="4" data-col="2">4/8</td>
+                </tr>
+        </tbody>
+      </table>
+    </div>
+<!-- hack to avoid NA insertion in last line -->
+</div>
+</div>
+</div><div class="column" style="width:60%;">
+<div class="cell" data-layout-align="center">
+<div class="cell-output-display">
+<div class="quarto-figure quarto-figure-center">
+<figure>
+<p><img data-src="slides_6_files/figure-revealjs/pmf-visualise-1.png" class="quarto-figure quarto-figure-center" width="960"></p>
+</figure>
+</div>
+</div>
+</div>
+</div></div>
+<p><span class="math display">\[
+\frac18 + \frac38 + \frac38 + \frac18 = 1
+\]</span></p>
+</section>
+<section id="expected-value" class="slide level2" style="font-size: 80%;">
+<h2>Expected value</h2>
+<p>The <strong>expected value</strong> is the long-run average value of a random variable over many repetitions of the same process.</p>
+<p>For a discrete random variable:</p>
+<p><span class="math display">\[
+E[X]=\sum_x x \;P(X=x)
+\]</span></p>
+<div class="callout callout-tip callout-titled callout-style-default">
+<div class="callout-body">
+<div class="callout-title">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<p><strong>The expected value is a weighted average, with more likely values receiving more weight.</strong></p>
+</div>
+<div class="callout-content">
+
+</div>
+</div>
+</div>
+<div class="fragment fade-up">
+<p><span class="math display">\[
+E[X] =0\left(\frac18\right) +1\left(\frac38\right) +2\left(\frac38\right) +3\left(\frac18\right) =1.5
+\]</span></p>
+<div class="callout callout-note callout-titled callout-style-default">
+<div class="callout-body">
+<div class="callout-title">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<p><strong>We expect an average of 1.5 heads per set of three tosses in the long run</strong></p>
+</div>
+<div class="callout-content">
+
+</div>
+</div>
+</div>
+</div>
+</section>
+<section id="variance-and-standard-deviation" class="slide level2">
+<h2>Variance and standard deviation</h2>
+<p>The <strong>variance</strong> describes how spread out the values of a random variable are around its expected value.</p>
+<p><span class="math display">\[
+\operatorname{Var}(X)=E[X^2]-{E[X]}^2
+\]</span></p>
+<div class="fragment fade-up">
+<p>The <strong>standard deviation</strong> is the square root of the variance</p>
+<p><span class="math display">\[
+SD(X)=\sqrt{\operatorname{Var}(X)}
+\]</span></p>
+<div class="callout callout-note no-icon callout-titled callout-style-simple">
+<div class="callout-body">
+<div class="callout-title">
+<p><strong>Variance is measured in squared units</strong></p>
+</div>
+<div class="callout-content">
+
+</div>
+</div>
+</div>
+<div class="callout callout-note no-icon callout-titled callout-style-simple">
+<div class="callout-body">
+<div class="callout-title">
+<p><strong>Standard deviation is in the original units</strong></p>
+</div>
+<div class="callout-content">
+
+</div>
+</div>
+</div>
+</div>
+</section>
+<section id="three-distributions-to-know" class="slide level2">
+<h2>Three distributions to know</h2>
+<p>We will focus on three common discrete probability distributions.</p>
+<p><br></p>
+<table class="caption-top">
+<colgroup>
+<col style="width: 33%">
+<col style="width: 33%">
+<col style="width: 33%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>Distribution</th>
+<th>What does it model?</th>
+<th>Parameters</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><strong>Bernoulli</strong></td>
+<td>One trial with two outcomes</td>
+<td><span class="math inline">\(p\)</span></td>
+</tr>
+<tr class="even">
+<td><strong>Binomial</strong></td>
+<td>Number of successes in a fixed number of trials</td>
+<td><span class="math inline">\(n,p\)</span></td>
+</tr>
+<tr class="odd">
+<td><strong>Poisson</strong></td>
+<td>Number of events in a fixed interval</td>
+<td><span class="math inline">\(\lambda\)</span></td>
+</tr>
+</tbody>
+</table>
+<p><br></p>
+<p>These distributions are related, but they answer different questions.</p>
+</section>
+<section id="the-bernoulli-distribution" class="slide level2" style="font-size: 85%;">
+<h2>The Bernoulli distribution</h2>
+<h3 id="overview">Overview</h3>
+<p>A <strong>Bernoulli random variable</strong> represents one trial with two possible outcomes.</p>
+<p>We usually code the outcomes as:</p>
+<ul>
+<li><strong>Success</strong>: <span class="math inline">\(X = 1\)</span>, with probability <span class="math inline">\(p\)</span></li>
+<li><strong>Failure</strong>: <span class="math inline">\(X = 0\)</span>, with probability <span class="math inline">\(1 - p\)</span></li>
+</ul>
+<p>Examples:</p>
+<ul>
+<li>A product is defective or not defective.</li>
+<li>A patient recovers or does not recover.</li>
+<li>A customer clicks or does not click.</li>
+</ul>
+</section>
+<section id="the-bernoulli-distribution-1" class="slide level2" style="font-size: 85%;">
+<h2>The Bernoulli distribution</h2>
+<h3 id="probability-mass-function">Probability mass function</h3>
+<p>For <span class="math inline">\(X \sim \operatorname{Bernoulli}(p)\)</span>:</p>
+<p><span class="math display">\[
+P(X = x) =
+\begin{cases}
+p, &amp; x = 1,\\
+1 - p, &amp; x = 0,\\
+0, &amp; \text{otherwise}.
+\end{cases}
+\]</span></p>
+<p>The only parameter is <span class="math inline">\(p\)</span>, the probability of success.</p>
+<div class="fragment fade-up">
+<p>Because the outcomes are 0 and 1:</p>
+<p><span class="math display">\[
+E[X] = p
+\]</span></p>
+<p>and</p>
+<p><span class="math display">\[
+\operatorname{Var}(X)=p(1-p)
+\]</span></p>
+<p>For a Bernoulli variable, the expected value is simply the probability of success.</p>
+</div>
+</section>
+<section id="the-bernoulli-distribution-2" class="slide level2" style="font-size: 85%;">
+<h2>The Bernoulli distribution</h2>
+<h3 id="an-example">An example</h3>
+<p><span class="center">Suppose 8% of products from a production line are defective.</span></p>
+<p><span class="math display">\[X =
+\begin{cases}
+1, &amp; \text{if the product is defective},\\
+0, &amp; \text{otherwise}.
+\end{cases}
+\]</span></p>
+<div class="fragment fade-up">
+<p>We know that <span class="math inline">\(X \sim \operatorname{Bernoulli}(0.08)\)</span>.</p>
+<ul>
+<li><span class="math inline">\(P(X = 1) = 0.08\)</span></li>
+<li><span class="math inline">\(P(X = 0) = 0.92\)</span></li>
+<li><span class="math inline">\(E[X] = 0.08\)</span></li>
+<li><span class="math inline">\(\operatorname{Var}(X) = 0.08(0.92) = 0.0736\)</span></li>
+</ul>
+</div>
+</section>
+<section id="the-bernoulli-distribution-3" class="slide level2">
+<h2>The Bernoulli distribution</h2>
+<h3 id="from-one-trial-to-many">From one trial to many</h3>
+<p>A Bernoulli variable describes the outcome of <strong>one</strong> trial.</p>
+<p>What if we repeat the trial a fixed number of times and count the successes?</p>
+<p>Examples:</p>
+<ul>
+<li>Number of defective products in a batch of 20</li>
+<li>Number of patients who recover out of 50</li>
+<li>Number of heads in 10 coin tosses</li>
+</ul>
+<p><span class="center"><strong>This leads to the binomial distribution</strong></span></p>
+</section>
+<section id="the-binomial-distribution" class="slide level2" style="font-size: 90%;">
+<h2>The binomial distribution</h2>
+<h3 id="overview-1">Overview</h3>
+<p>A random variable <span class="math inline">\((X)\)</span> has a binomial distribution if it counts the number of successes in <span class="math inline">\((n)\)</span> trials, where:</p>
+<ul>
+<li>Each trial has two possible outcomes.</li>
+<li>Trials are independent.</li>
+<li>The probability of success <span class="math inline">\((p)\)</span> is the same on every trial.</li>
+<li>The number of trials <span class="math inline">\((n)\)</span> is fixed.</li>
+</ul>
+<p>We write:</p>
+<p><span class="math display">\[
+X \sim \operatorname{Binomial}(n, p)
+\]</span></p>
+</section>
+<section id="the-binomial-distribution-1" class="slide level2" style="font-size: 90%;">
+<h2>The binomial distribution</h2>
+<h3 id="probability-mass-function-1">Probability mass function</h3>
+<p>If <span class="math inline">\(X \sim \operatorname{Binomial}(n, p)\)</span>, then:</p>
+<p><span class="math display">\[
+P(X=k)=\binom{n}{k}p^k(1-p)^{n-k}
+\]</span></p>
+<p>Here:</p>
+<ul>
+<li><span class="math inline">\(n\)</span> = number of trials</li>
+<li><span class="math inline">\(k\)</span> = number of successes</li>
+<li><span class="math inline">\(p\)</span> = probability of success on each trial</li>
+<li><span class="math inline">\(\binom{n}{k}\)</span> = number of ways to choose which <span class="math inline">\((k)\)</span> trials are successes</li>
+</ul>
+<div class="callout callout-tip no-icon callout-style-simple">
+<div class="callout-body">
+<div class="callout-content">
+<p>The formula combines the probability of a particular success/failure pattern with the number of patterns that contain <span class="math inline">\((k)\)</span> successes</p>
+</div>
+</div>
+</div>
+</section>
+<section id="the-binomial-distribution-2" class="slide level2" style="font-size: 90%;">
+<h2>The binomial distribution</h2>
+<h3 id="expected-value-and-variance">Expected value and variance</h3>
+<p>For <span class="math inline">\(X \sim \operatorname{Binomial}(n,p)\)</span>:</p>
+<p><span class="math display">\[
+\begin{aligned}
+E[X] &amp;= np \\[4pt]
+\operatorname{Var}(X) &amp;= np(1 - p)
+\end{aligned}
+\]</span></p>
+<p>The expected number of successes is the <strong>number of trials multiplied by the success probability</strong>.</p>
+<div class="fragment fade-up">
+<div class="callout callout-note callout-titled callout-style-default">
+<div class="callout-body">
+<div class="callout-title">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<p><strong>For example, if 50 patients each have a 90% probability of recovery</strong></p>
+</div>
+<div class="callout-content">
+<p><span class="math display">\[
+E[X] = 50(0.9) = 45
+\]</span></p>
+<p>We expect around 45 recoveries on average across repeated groups of 50 similar patients.</p>
+</div>
+</div>
+</div>
+</div>
+</section>
+<section id="the-binomial-distribution-3" class="slide level2">
+<h2>The binomial distribution</h2>
+<h3 id="a-worked-example">A worked example</h3>
+<p>Suppose each of 50 patients has a 90% probability of recovering, and assume outcomes are independent.</p>
+<p>Let <span class="math inline">\((X)\)</span> be the number who recover.</p>
+<p><span class="math display">\[
+X \sim \operatorname{Binomial}(n = 50,p = 0.9)
+\]</span></p>
+<p>We can use this model to answer questions such as:</p>
+<ul>
+<li>What is the probability that <strong>exactly 40 recover</strong>?</li>
+<li>What is the probability that at <strong>least 45 recover</strong>?</li>
+<li>What is the <strong>80th percentile</strong> of the number who recover?</li>
+</ul>
+</section>
+<section id="the-binomial-distribution-4" class="slide level2">
+<h2>The binomial distribution</h2>
+<h3 id="probability-mass-function-in-r">Probability mass function in R</h3>
+<div class="cell" data-layout-align="center">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb1" data-filename="r"><pre class="sourceCode numberSource r cw-auto number-lines code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="" aria-label="1"></a>n <span class="ot">&lt;-</span> <span class="dv">50</span> <span class="co"># Number of patients</span></span>
+<span id="cb1-2"><a href="" aria-label="2"></a>p <span class="ot">&lt;-</span> <span class="fl">0.9</span> <span class="co"># Probability of success</span></span>
+<span id="cb1-3"><a href="" aria-label="3"></a>k <span class="ot">&lt;-</span> <span class="dv">0</span><span class="sc">:</span>n <span class="co"># Number of trials</span></span>
+<span id="cb1-4"><a href="" aria-label="4"></a></span>
+<span id="cb1-5"><a href="" aria-label="5"></a><span class="co"># Calculate the probability mass function</span></span>
+<span id="cb1-6"><a href="" aria-label="6"></a>pmf <span class="ot">&lt;-</span> <span class="fu">dbinom</span>(k, <span class="at">size =</span> n, <span class="at">prob =</span> p)</span>
+<span id="cb1-7"><a href="" aria-label="7"></a></span>
+<span id="cb1-8"><a href="" aria-label="8"></a><span class="co"># Output</span></span>
+<span id="cb1-9"><a href="" aria-label="9"></a><span class="fu">data.frame</span>(<span class="at">recoveries =</span> k, <span class="at">probability =</span> pmf) <span class="sc">|&gt;</span> <span class="fu">head</span>()</span>
+<span id="cb1-10"><a href="" aria-label="10"></a><span class="do">##   recoveries  probability</span></span>
+<span id="cb1-11"><a href="" aria-label="11"></a><span class="do">## 1          0 1.000000e-50</span></span>
+<span id="cb1-12"><a href="" aria-label="12"></a><span class="do">## 2          1 4.500000e-48</span></span>
+<span id="cb1-13"><a href="" aria-label="13"></a><span class="do">## 3          2 9.922500e-46</span></span>
+<span id="cb1-14"><a href="" aria-label="14"></a><span class="do">## 4          3 1.428840e-43</span></span>
+<span id="cb1-15"><a href="" aria-label="15"></a><span class="do">## 5          4 1.510998e-41</span></span>
+<span id="cb1-16"><a href="" aria-label="16"></a><span class="do">## 6          5 1.251107e-39</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+</section>
+<section id="the-binomial-distribution-5" class="slide level2">
+<h2>The binomial distribution</h2>
+<h3 id="probability-mass-function-in-r-1">Probability mass function in R</h3>
+<p><br></p>
+
+<img data-src="slides_6_files/figure-revealjs/binomial-visualise-1.png" class="quarto-figure quarto-figure-center r-stretch" width="960"><div class="callout callout-tip no-icon callout-style-simple">
+<div class="callout-body">
+<div class="callout-content">
+<p>The distribution is concentrated around 45 recoveries, because 45 is the expected value.</p>
+</div>
+</div>
+</div>
+</section>
+<section id="cumulative-distribution-functions" class="slide level2">
+<h2>Cumulative distribution functions</h2>
+<p>A <strong>cumulative distribution function (CDF)</strong> gives the probability that a random variable is <strong>less than or equal to</strong> a value.</p>
+<p><span class="math display">\[
+F(x) = P(X \leq x)
+\]</span></p>
+<p>For example:</p>
+<p><span class="math display">\[
+P(X\leq 40)
+\]</span></p>
+<p>means the probability of observing <strong>40 or fewer</strong> recoveries.</p>
+<p>For discrete random variables, the CDF adds the probabilities up to and including the specified value.</p>
+</section>
+<section id="pmf-vs-cdf" class="slide level2">
+<h2>PMF vs CDF</h2>
+<p>Suppose <span class="math inline">\((X)\)</span> is the number of patients who recover.</p>
+<ul>
+<li><strong>Exact value:</strong> <span class="math inline">\(P(X = 40)\)</span></li>
+<li><strong>At most 40:</strong> <span class="math inline">\(P(X \leq 40)\)</span></li>
+<li><strong>Fewer than 40:</strong> <span class="math inline">\(P(X &lt; 40) = P(X \leq 39)\)</span></li>
+<li><strong>At least 40:</strong> <span class="math inline">\(P(X \geq 40) = 1 - P(X \leq 39)\)</span></li>
+<li><strong>More than 40:</strong> <span class="math inline">\(P( X &gt; 40) = 1 - P(X \leq 40)\)</span></li>
+</ul>
+<p><br></p>
+<div class="callout callout-important callout-titled callout-style-default">
+<div class="callout-body">
+<div class="callout-title">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<p><strong>Be careful with the boundary: “at least 40” includes 40, whereas “more than 40” does not.</strong></p>
+</div>
+<div class="callout-content">
+
+</div>
+</div>
+</div>
+</section>
+<section id="the-three-r-functions-d-p-and-q" class="slide level2">
+<h2>The three R functions: <code>d</code>, <code>p</code>, and <code>q</code></h2>
+<p>For many probability distributions, R uses a consistent naming pattern.</p>
+<p><br></p>
+<table class="caption-top">
+<thead>
+<tr class="header">
+<th>Prefix</th>
+<th>Purpose</th>
+<th>Binomial example</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><code>d</code></td>
+<td>Probability at an exact value</td>
+<td><code>dbinom()</code></td>
+</tr>
+<tr class="even">
+<td><code>p</code></td>
+<td>Cumulative probability, (P(Xx))</td>
+<td><code>pbinom()</code></td>
+</tr>
+<tr class="odd">
+<td><code>q</code></td>
+<td>Quantile / percentile</td>
+<td><code>qbinom()</code></td>
+</tr>
+</tbody>
+</table>
+<p><br></p>
+<p>For the binomial distribution, these functions all use the same parameters: <code>size</code> and <code>prob</code>.</p>
+</section>
+<section id="binomial-questions-in-r" class="slide level2">
+<h2>Binomial questions in R</h2>
+<div class="cell" data-layout-align="center">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb2" data-filename="r"><pre class="sourceCode numberSource r cw-auto number-lines code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="" aria-label="1"></a><span class="co"># Probability of exactly 40 recoveries</span></span>
+<span id="cb2-2"><a href="" aria-label="2"></a><span class="fu">dbinom</span>(<span class="at">x =</span> <span class="dv">40</span>, <span class="at">size =</span> <span class="dv">50</span>, <span class="at">prob =</span> <span class="fl">0.9</span>)</span>
+<span id="cb2-3"><a href="" aria-label="3"></a><span class="do">## [1] 0.01518333</span></span>
+<span id="cb2-4"><a href="" aria-label="4"></a></span>
+<span id="cb2-5"><a href="" aria-label="5"></a><span class="co"># Probability of 40 or fewer recoveries</span></span>
+<span id="cb2-6"><a href="" aria-label="6"></a><span class="fu">pbinom</span>(<span class="at">q =</span> <span class="dv">40</span>, <span class="at">size =</span> <span class="dv">50</span>, <span class="at">prob =</span> <span class="fl">0.9</span>)</span>
+<span id="cb2-7"><a href="" aria-label="7"></a><span class="do">## [1] 0.02453794</span></span>
+<span id="cb2-8"><a href="" aria-label="8"></a></span>
+<span id="cb2-9"><a href="" aria-label="9"></a><span class="co"># Probability of at least 45 recoveries</span></span>
+<span id="cb2-10"><a href="" aria-label="10"></a><span class="dv">1</span> <span class="sc">-</span> <span class="fu">pbinom</span>(<span class="at">q =</span> <span class="dv">44</span>, <span class="at">size =</span> <span class="dv">50</span>, <span class="at">prob =</span> <span class="fl">0.9</span>)</span>
+<span id="cb2-11"><a href="" aria-label="11"></a><span class="do">## [1] 0.616123</span></span>
+<span id="cb2-12"><a href="" aria-label="12"></a></span>
+<span id="cb2-13"><a href="" aria-label="13"></a><span class="co"># 80th percentile</span></span>
+<span id="cb2-14"><a href="" aria-label="14"></a><span class="fu">qbinom</span>(<span class="at">p =</span> <span class="fl">0.8</span>, <span class="at">size =</span> <span class="dv">50</span>, <span class="at">prob =</span> <span class="fl">0.9</span>)</span>
+<span id="cb2-15"><a href="" aria-label="15"></a><span class="do">## [1] 47</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+</section>
+<section id="the-poisson-distribution" class="slide level2" style="font-size:90%;">
+<h2>The Poisson distribution</h2>
+<h3 id="overview-2">Overview</h3>
+<p>The <strong>Poisson distribution</strong> models the number of events in a fixed interval of time, space, or another exposure, when events occur at an average rate.</p>
+<p>Examples:</p>
+<ul>
+<li>Number of calls received in an hour</li>
+<li>Number of typographical errors on a page</li>
+<li>Number of storms in a year</li>
+</ul>
+<p>We write:</p>
+<p><span class="math display">\[
+X\sim\operatorname{Poisson}(\lambda)
+\]</span></p>
+<p>where <span class="math inline">\(\lambda\)</span> is the expected number of events in the interval.</p>
+</section>
+<section id="the-poisson-distribution-1" class="slide level2" style="font-size:90%;">
+<h2>The Poisson distribution</h2>
+<h3 id="probability-mass-function-2">Probability mass function</h3>
+<p>For <span class="math inline">\(X\sim\operatorname{Poisson}(\lambda)\)</span>:</p>
+<p><span class="math display">\[
+P(X=k)=\frac{e^{-\lambda}\lambda^k}{k!}, \qquad k=0,1,2,\ldots
+\]</span></p>
+<p>The parameter <span class="math inline">\(\lambda\)</span> is the average event count for the interval being modelled.</p>
+<p>The mean and variance are:</p>
+<p><span class="math display">\[
+E[X] = \lambda \qquad \text{and} \qquad \operatorname{Var}(X)=\lambda
+\]</span></p>
+<div class="callout callout-important callout-titled callout-style-default">
+<div class="callout-body">
+<div class="callout-title">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<p><strong>The Poisson distribution has the same numerical value for its mean and variance.</strong></p>
+</div>
+<div class="callout-content">
+
+</div>
+</div>
+</div>
+</section>
+<section id="the-poisson-distribution-2" class="slide level2" style="font-size:90%;">
+<h2>The Poisson distribution</h2>
+<h3 id="probability-mass-function-3">Probability mass function</h3>
+<p>Suppose a country experiences an average of <strong>4 tropical storms per year</strong>.</p>
+<p>Let <span class="math inline">\((X)\)</span> be the number of storms in a year.</p>
+<p><span class="math display">\[
+X \sim \operatorname{Poisson}(\lambda=4)
+\]</span></p>
+<p>The model can answer questions such as:</p>
+<ul>
+<li>What is the probability of exactly 6 storms?</li>
+<li>What is the probability of more than 4 storms?</li>
+<li>What is the 80th percentile of the annual storm count?</li>
+</ul>
+<p>We are modelling a count over a specified interval: <strong>one year</strong>.</p>
+</section>
+<section id="the-poisson-distribution-3" class="slide level2" style="font-size:90%;">
+<h2>The Poisson distribution</h2>
+<h3 id="probability-mass-function-in-r-2">Probability mass function (in <code>R</code>)</h3>
+<div class="cell" data-layout-align="center">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb3" data-filename="r"><pre class="sourceCode numberSource r cw-auto number-lines code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="" aria-label="1"></a>lambda <span class="ot">&lt;-</span> <span class="dv">4</span> <span class="co"># Average number of storms per year</span></span>
+<span id="cb3-2"><a href="" aria-label="2"></a>k <span class="ot">&lt;-</span> <span class="dv">0</span><span class="sc">:</span><span class="dv">15</span> <span class="co"># Number of storms</span></span>
+<span id="cb3-3"><a href="" aria-label="3"></a></span>
+<span id="cb3-4"><a href="" aria-label="4"></a><span class="co"># Probability mass function</span></span>
+<span id="cb3-5"><a href="" aria-label="5"></a>pmf <span class="ot">&lt;-</span> <span class="fu">dpois</span>(k, <span class="at">lambda =</span> lambda)</span>
+<span id="cb3-6"><a href="" aria-label="6"></a></span>
+<span id="cb3-7"><a href="" aria-label="7"></a><span class="fu">data.frame</span>(<span class="at">storms =</span> k, <span class="at">probability =</span> <span class="fu">round</span>(pmf, <span class="dv">4</span>)) <span class="sc">|&gt;</span> <span class="fu">head</span>()</span>
+<span id="cb3-8"><a href="" aria-label="8"></a><span class="do">##   storms probability</span></span>
+<span id="cb3-9"><a href="" aria-label="9"></a><span class="do">## 1      0      0.0183</span></span>
+<span id="cb3-10"><a href="" aria-label="10"></a><span class="do">## 2      1      0.0733</span></span>
+<span id="cb3-11"><a href="" aria-label="11"></a><span class="do">## 3      2      0.1465</span></span>
+<span id="cb3-12"><a href="" aria-label="12"></a><span class="do">## 4      3      0.1954</span></span>
+<span id="cb3-13"><a href="" aria-label="13"></a><span class="do">## 5      4      0.1954</span></span>
+<span id="cb3-14"><a href="" aria-label="14"></a><span class="do">## 6      5      0.1563</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+</section>
+<section id="the-poisson-distribution-4" class="slide level2" style="font-size:90%;">
+<h2>The Poisson distribution</h2>
+<h3 id="probability-mass-function-in-r-3">Probability mass function (in <code>R</code>)</h3>
+<p><br></p>
+
+<img data-src="slides_6_files/figure-revealjs/poisson-visualise-1.png" class="quarto-figure quarto-figure-center r-stretch" width="960"></section>
+<section id="the-poisson-distribution-5" class="slide level2" style="font-size:90%;">
+<h2>The Poisson distribution</h2>
+<h3 id="answering-questions">Answering questions</h3>
+<div class="cell" data-layout-align="center">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb4" data-filename="r"><pre class="sourceCode numberSource r cw-auto number-lines code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="" aria-label="1"></a>lambda <span class="ot">&lt;-</span> <span class="dv">4</span></span>
+<span id="cb4-2"><a href="" aria-label="2"></a></span>
+<span id="cb4-3"><a href="" aria-label="3"></a><span class="co"># Probability of exactly 6 storms</span></span>
+<span id="cb4-4"><a href="" aria-label="4"></a><span class="fu">dpois</span>(<span class="at">x =</span> <span class="dv">6</span>, <span class="at">lambda =</span> lambda)</span>
+<span id="cb4-5"><a href="" aria-label="5"></a><span class="do">## [1] 0.1041956</span></span>
+<span id="cb4-6"><a href="" aria-label="6"></a></span>
+<span id="cb4-7"><a href="" aria-label="7"></a><span class="co"># Probability of 4 or fewer storms</span></span>
+<span id="cb4-8"><a href="" aria-label="8"></a><span class="fu">ppois</span>(<span class="at">q =</span> <span class="dv">4</span>, <span class="at">lambda =</span> lambda)</span>
+<span id="cb4-9"><a href="" aria-label="9"></a><span class="do">## [1] 0.6288369</span></span>
+<span id="cb4-10"><a href="" aria-label="10"></a></span>
+<span id="cb4-11"><a href="" aria-label="11"></a><span class="co"># Probability of more than 4 storms</span></span>
+<span id="cb4-12"><a href="" aria-label="12"></a><span class="dv">1</span> <span class="sc">-</span> <span class="fu">ppois</span>(<span class="at">q =</span> <span class="dv">4</span>, <span class="at">lambda =</span> lambda)</span>
+<span id="cb4-13"><a href="" aria-label="13"></a><span class="do">## [1] 0.3711631</span></span>
+<span id="cb4-14"><a href="" aria-label="14"></a></span>
+<span id="cb4-15"><a href="" aria-label="15"></a><span class="co"># 80th percentile</span></span>
+<span id="cb4-16"><a href="" aria-label="16"></a><span class="fu">qpois</span>(<span class="at">p =</span> <span class="fl">0.8</span>, <span class="at">lambda =</span> lambda)</span>
+<span id="cb4-17"><a href="" aria-label="17"></a><span class="do">## [1] 6</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+</section>
+<section id="choosing-a-distribution" class="slide level2" style="font-size: 70%;">
+<h2>Choosing a distribution</h2>
+<p>Use a <strong>Bernoulli distribution</strong> when:</p>
+<ul>
+<li>There is one trial.</li>
+<li>There are two possible outcomes.</li>
+<li>You want to model whether the event occurs.</li>
+</ul>
+<p>Use a <strong>binomial distribution</strong> when:</p>
+<ul>
+<li>There is a fixed number of trials.</li>
+<li>Each trial has two outcomes.</li>
+<li>Trials are independent and the success probability stays constant.</li>
+<li>You want the number of successes.</li>
+</ul>
+<p>Use a <strong>Poisson distribution</strong> when:</p>
+<ul>
+<li>You want to model an event count in a defined interval.</li>
+<li>You have an average event rate for that interval.</li>
+<li>A Poisson model is reasonable for the process.</li>
+</ul>
+</section>
+<section id="summary" class="slide level2" style="font-size: 85%;">
+<h2>Summary</h2>
+<ul>
+<li>A <strong>discrete random variable</strong> takes countable values.</li>
+<li>A <strong>PMF</strong> gives probabilities for exact values.</li>
+<li>The <strong>expected value</strong> is the probability-weighted average.</li>
+<li>The <strong>variance</strong> describes spread around the expected value.</li>
+<li><strong>Bernoulli:</strong> one two-outcome trial.</li>
+<li><strong>Binomial:</strong> number of successes in a fixed number of independent trials.</li>
+<li><strong>Poisson:</strong> number of events in a fixed interval.</li>
+</ul>
+<p><br></p>
+<table class="caption-top">
+<thead>
+<tr class="header">
+<th>Question</th>
+<th>Function pattern</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Probability of exactly (x)</td>
+<td><code>d*()</code></td>
+</tr>
+<tr class="even">
+<td>Probability of at most (x)</td>
+<td><code>p*()</code></td>
+</tr>
+<tr class="odd">
+<td>Quantile / percentile</td>
+<td><code>q*()</code></td>
+</tr>
+</tbody>
+</table>
+
+</section>
+    </div>
+  <div class="quarto-auto-generated-content" style="display: none;">
+<div class="footer footer-default">
+
+</div>
+</div></div>
+
+  <script>window.backupDefine = window.define; window.define = undefined;</script>
+  <script src="slides_6_files/libs/revealjs/dist/reveal.js"></script>
+  <!-- reveal.js plugins -->
+  <script src="slides_6_files/libs/revealjs/plugin/quarto-line-highlight/line-highlight.js"></script>
+  <script src="slides_6_files/libs/revealjs/plugin/pdf-export/pdfexport.js"></script>
+  <script src="slides_6_files/libs/revealjs/plugin/reveal-menu/menu.js"></script>
+  <script src="slides_6_files/libs/revealjs/plugin/reveal-menu/quarto-menu.js"></script>
+  <script src="slides_6_files/libs/revealjs/plugin/quarto-support/support.js"></script>
+  
+
+  <script src="slides_6_files/libs/revealjs/plugin/notes/notes.js"></script>
+  <script src="slides_6_files/libs/revealjs/plugin/search/search.js"></script>
+  <script src="slides_6_files/libs/revealjs/plugin/zoom/zoom.js"></script>
+  <script src="slides_6_files/libs/revealjs/plugin/math/math.js"></script>
+  <script>window.define = window.backupDefine; window.backupDefine = undefined;</script>
+
+  <script>
+
+      // Full list of configuration options available at:
+      // https://revealjs.com/config/
+      Reveal.initialize({
+'controlsAuto': true,
+'previewLinksAuto': false,
+'pdfSeparateFragments': false,
+'autoAnimateEasing': "ease",
+'autoAnimateDuration': 1,
+'autoAnimateUnmatched': true,
+'jumpToSlide': true,
+'menu': {"side":"left","useTextContentForMissingTitles":true,"markers":false,"loadIcons":false,"custom":[{"title":"Tools","icon":"<i class=\"fas fa-gear\"></i>","content":"<ul class=\"slide-menu-items\">\n<li class=\"slide-tool-item active\" data-item=\"0\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.fullscreen(event)\"><kbd>f</kbd> Fullscreen</a></li>\n<li class=\"slide-tool-item\" data-item=\"1\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.speakerMode(event)\"><kbd>s</kbd> Speaker View</a></li>\n<li class=\"slide-tool-item\" data-item=\"2\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.overview(event)\"><kbd>o</kbd> Slide Overview</a></li>\n<li class=\"slide-tool-item\" data-item=\"3\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.togglePdfExport(event)\"><kbd>e</kbd> PDF Export Mode</a></li>\n<li class=\"slide-tool-item\" data-item=\"4\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.toggleScrollView(event)\"><kbd>r</kbd> Scroll View Mode</a></li>\n<li class=\"slide-tool-item\" data-item=\"5\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.keyboardHelp(event)\"><kbd>?</kbd> Keyboard Help</a></li>\n</ul>"}],"openButton":true},
+'smaller': false,
+ 
+        // Display controls in the bottom right corner
+        controls: false,
+
+        // Help the user learn the controls by providing hints, for example by
+        // bouncing the down arrow when they first encounter a vertical slide
+        controlsTutorial: false,
+
+        // Determines where controls appear, "edges" or "bottom-right"
+        controlsLayout: 'edges',
+
+        // Visibility rule for backwards navigation arrows; "faded", "hidden"
+        // or "visible"
+        controlsBackArrows: 'faded',
+
+        // Display a presentation progress bar
+        progress: true,
+
+        // Display the page number of the current slide
+        slideNumber: 'c/t',
+
+        // 'all', 'print', or 'speaker'
+        showSlideNumber: 'all',
+
+        // Add the current slide number to the URL hash so that reloading the
+        // page/copying the URL will return you to the same slide
+        hash: true,
+
+        // Start with 1 for the hash rather than 0
+        hashOneBasedIndex: false,
+
+        // Flags if we should monitor the hash and change slides accordingly
+        respondToHashChanges: true,
+
+        // Push each slide change to the browser history
+        history: true,
+
+        // Enable keyboard shortcuts for navigation
+        keyboard: true,
+
+        // Enable the slide overview mode
+        overview: true,
+
+        // Disables the default reveal.js slide layout (scaling and centering)
+        // so that you can use custom CSS layout
+        disableLayout: false,
+
+        // Vertical centering of slides
+        center: false,
+
+        // Enables touch navigation on devices with touch input
+        touch: true,
+
+        // Loop the presentation
+        loop: false,
+
+        // Change the presentation direction to be RTL
+        rtl: false,
+
+        // see https://revealjs.com/vertical-slides/#navigation-mode
+        navigationMode: 'linear',
+
+        // Randomizes the order of slides each time the presentation loads
+        shuffle: false,
+
+        // Turns fragments on and off globally
+        fragments: true,
+
+        // Flags whether to include the current fragment in the URL,
+        // so that reloading brings you to the same fragment position
+        fragmentInURL: false,
+
+        // Flags if the presentation is running in an embedded mode,
+        // i.e. contained within a limited portion of the screen
+        embedded: false,
+
+        // Flags if we should show a help overlay when the questionmark
+        // key is pressed
+        help: true,
+
+        // Flags if it should be possible to pause the presentation (blackout)
+        pause: true,
+
+        // Flags if speaker notes should be visible to all viewers
+        showNotes: false,
+
+        // Global override for autoplaying embedded media (null/true/false)
+        autoPlayMedia: null,
+
+        // Global override for preloading lazy-loaded iframes (null/true/false)
+        preloadIframes: null,
+
+        // Number of milliseconds between automatically proceeding to the
+        // next slide, disabled when set to 0, this value can be overwritten
+        // by using a data-autoslide attribute on your slides
+        autoSlide: 0,
+
+        // Stop auto-sliding after user input
+        autoSlideStoppable: true,
+
+        // Use this method for navigation when auto-sliding
+        autoSlideMethod: null,
+
+        // Specify the average time in seconds that you think you will spend
+        // presenting each slide. This is used to show a pacing timer in the
+        // speaker view
+        defaultTiming: null,
+
+        // Enable slide navigation via mouse wheel
+        mouseWheel: false,
+
+        // The display mode that will be used to show slides
+        display: 'block',
+
+        // Hide cursor if inactive
+        hideInactiveCursor: true,
+
+        // Time before the cursor is hidden (in ms)
+        hideCursorTime: 5000,
+
+        // Opens links in an iframe preview overlay
+        previewLinks: false,
+
+        // Transition style (none/fade/slide/convex/concave/zoom)
+        transition: 'fade',
+
+        // Transition speed (default/fast/slow)
+        transitionSpeed: 'default',
+
+        // Transition style for full page slide backgrounds
+        // (none/fade/slide/convex/concave/zoom)
+        backgroundTransition: 'none',
+
+        // Number of slides away from the current that are visible
+        viewDistance: 3,
+
+        // Number of slides away from the current that are visible on mobile
+        // devices. It is advisable to set this to a lower number than
+        // viewDistance in order to save resources.
+        mobileViewDistance: 2,
+
+        // The "normal" size of the presentation, aspect ratio will be preserved
+        // when the presentation is scaled to fit different resolutions. Can be
+        // specified using percentage units.
+        width: 1050,
+
+        height: 700,
+
+        // Factor of the display size that should remain empty around the content
+        margin: 0.1,
+
+        math: {
+          mathjax: 'https://cdn.jsdelivr.net/npm/mathjax@4/tex-mml-chtml.js',
+          config: 'TeX-AMS_HTML-full',
+          tex2jax: {
+            inlineMath: [['\\(','\\)']],
+            displayMath: [['\\[','\\]']],
+            balanceBraces: true,
+            processEscapes: false,
+            processRefs: true,
+            processEnvironments: true,
+            preview: 'TeX',
+            skipTags: ['script','noscript','style','textarea','pre','code'],
+            ignoreClass: 'tex2jax_ignore',
+            processClass: 'tex2jax_process'
+          },
+        },
+
+        // reveal.js plugins
+        plugins: [QuartoLineHighlight, PdfExport, RevealMenu, QuartoSupport,
+
+          RevealMath,
+          RevealNotes,
+          RevealSearch,
+          RevealZoom
+        ]
+      });
+    </script>
+    
+
+    <script>
+
+      // htmlwidgets need to know to resize themselves when slides are shown/hidden.
+
+      // Fire the "slideenter" event (handled by htmlwidgets.js) when the current
+
+      // slide changes (different for each slide format).
+
+      (function () {
+
+        // dispatch for htmlwidgets
+
+        function fireSlideEnter() {
+
+          const event = window.document.createEvent("Event");
+
+          event.initEvent("slideenter", true, true);
+
+          window.document.dispatchEvent(event);
+
+        }
+
+    
+
+        function fireSlideChanged(previousSlide, currentSlide) {
+
+          fireSlideEnter();
+
+    
+
+          // dispatch for shiny
+
+          if (window.jQuery) {
+
+            if (previousSlide) {
+
+              window.jQuery(previousSlide).trigger("hidden");
+
+            }
+
+            if (currentSlide) {
+
+              window.jQuery(currentSlide).trigger("shown");
+
+            }
+
+          }
+
+        }
+
+    
+
+        // hookup for slidy
+
+        if (window.w3c_slidy) {
+
+          window.w3c_slidy.add_observer(function (slide_num) {
+
+            // slide_num starts at position 1
+
+            fireSlideChanged(null, w3c_slidy.slides[slide_num - 1]);
+
+          });
+
+        }
+
+    
+
+      })();
+
+    </script>
+
+    
+
+    <script id="quarto-html-after-body" type="application/javascript">
+      window.document.addEventListener("DOMContentLoaded", function (event) {
+        const tabsets =  window.document.querySelectorAll(".panel-tabset-tabby")
+        tabsets.forEach(function(tabset) {
+          const tabby = new Tabby('#' + tabset.id);
+        });
+        const isCodeAnnotation = (el) => {
+          for (const clz of el.classList) {
+            if (clz.startsWith('code-annotation-')) {                     
+              return true;
+            }
+          }
+          return false;
+        }
+        const onCopySuccess = function(e) {
+          // button target
+          const button = e.trigger;
+          // don't keep focus
+          button.blur();
+          // flash "checked"
+          button.classList.add('code-copy-button-checked');
+          var currentTitle = button.getAttribute("title");
+          button.setAttribute("title", "Copied!");
+          let tooltip;
+          if (window.bootstrap) {
+            button.setAttribute("data-bs-toggle", "tooltip");
+            button.setAttribute("data-bs-placement", "left");
+            button.setAttribute("data-bs-title", "Copied!");
+            tooltip = new bootstrap.Tooltip(button, 
+              { trigger: "manual", 
+                customClass: "code-copy-button-tooltip",
+                offset: [0, -8]});
+            tooltip.show();    
+          }
+          setTimeout(function() {
+            if (tooltip) {
+              tooltip.hide();
+              button.removeAttribute("data-bs-title");
+              button.removeAttribute("data-bs-toggle");
+              button.removeAttribute("data-bs-placement");
+            }
+            button.setAttribute("title", currentTitle);
+            button.classList.remove('code-copy-button-checked');
+          }, 1000);
+          // clear code selection
+          e.clearSelection();
+        }
+        const getTextToCopy = function(trigger) {
+          const outerScaffold = trigger.parentElement.cloneNode(true);
+          const codeEl = outerScaffold.querySelector('code');
+          for (const childEl of codeEl.children) {
+            if (isCodeAnnotation(childEl)) {
+              childEl.remove();
+            }
+          }
+          return codeEl.innerText;
+        }
+        const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+          text: getTextToCopy
+        });
+        clipboard.on('success', onCopySuccess);
+        if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+          const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+            text: getTextToCopy,
+            container: window.document.getElementById('quarto-embedded-source-code-modal')
+          });
+          clipboardModal.on('success', onCopySuccess);
+        }
+          var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+          var mailtoRegex = new RegExp(/^mailto:/);
+            var filterRegex = new RegExp('/' + window.location.host + '/');
+          var isInternal = (href) => {
+              return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+          }
+          // Inspect non-navigation links and adorn them if external
+         var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+          for (var i=0; i<links.length; i++) {
+            const link = links[i];
+            if (!isInternal(link.href)) {
+              // undo the damage that might have been done by quarto-nav.js in the case of
+              // links that we want to consider external
+              if (link.dataset.originalHref !== undefined) {
+                link.href = link.dataset.originalHref;
+              }
+            }
+          }
+        function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+          const config = {
+            allowHTML: true,
+            maxWidth: 500,
+            delay: 100,
+            arrow: false,
+            appendTo: function(el) {
+                return el.closest('section.slide') || el.parentElement;
+            },
+            interactive: true,
+            interactiveBorder: 10,
+            theme: 'light-border',
+            placement: 'bottom-start',
+          };
+          if (contentFn) {
+            config.content = contentFn;
+          }
+          if (onTriggerFn) {
+            config.onTrigger = onTriggerFn;
+          }
+          if (onUntriggerFn) {
+            config.onUntrigger = onUntriggerFn;
+          }
+            config['offset'] = [0,0];
+            config['maxWidth'] = 700;
+          window.tippy(el, config); 
+        }
+        const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+        for (var i=0; i<noterefs.length; i++) {
+          const ref = noterefs[i];
+          tippyHover(ref, function() {
+            // use id or data attribute instead here
+            let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+            try { href = new URL(href).hash; } catch {}
+            const id = href.replace(/^#\/?/, "");
+            const note = window.document.getElementById(id);
+            if (note) {
+              return note.innerHTML;
+            } else {
+              return "";
+            }
+          });
+        }
+        const findCites = (el) => {
+          const parentEl = el.parentElement;
+          if (parentEl) {
+            const cites = parentEl.dataset.cites;
+            if (cites) {
+              return {
+                el,
+                cites: cites.split(' ')
+              };
+            } else {
+              return findCites(el.parentElement)
+            }
+          } else {
+            return undefined;
+          }
+        };
+        var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+        for (var i=0; i<bibliorefs.length; i++) {
+          const ref = bibliorefs[i];
+          const citeInfo = findCites(ref);
+          if (citeInfo) {
+            tippyHover(citeInfo.el, function() {
+              var popup = window.document.createElement('div');
+              citeInfo.cites.forEach(function(cite) {
+                var citeDiv = window.document.createElement('div');
+                citeDiv.classList.add('hanging-indent');
+                citeDiv.classList.add('csl-entry');
+                var biblioDiv = window.document.getElementById('ref-' + cite);
+                if (biblioDiv) {
+                  citeDiv.innerHTML = biblioDiv.innerHTML;
+                }
+                popup.appendChild(citeDiv);
+              });
+              return popup.innerHTML;
+            });
+          }
+        }
+      });
+      </script>
+    
+
+</body></html>

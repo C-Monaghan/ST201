@@ -1,0 +1,12 @@
+---
+title: Mid-term exam
+---
+
+::: {.callout-important}
+## Don't forget to come to the mid-term exam
+
+- {{< fa calendar >}} Date: 10th November
+- {{< fa clock >}} Time: 3pm - 4pm
+- {{< fa building-columns >}} Location: Physics Hall
+
+:::

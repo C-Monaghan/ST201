@@ -72,8 +72,12 @@ website:
         href: content\content_04.qmd
       - text: Categorical data analysis III
         href: content\content_05.qmd
-      # - text: Study week
-      #   href: content\study_week.qmd
+      - text: Study week
+        href: content\study_week.qmd
+      - text: Discrete probability distributions
+        href: content\content_06.qmd
+      - text: Mid-term exam
+        href: content\mid-term.qmd
 
 
 

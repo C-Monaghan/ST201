@@ -383,5 +383,60 @@
     "title": "Welcome to ST201",
     "section": "Slides",
     "text": "Slides\nAll the slides for this module are created using Quarto. In fact, this entire module website is built using Quarto. Personally, I love Quarto. I do just about everything with it! If you every get a chance, do check it out (ok … mini rant over!)\n\nThere are many little hidden things you can do with these slides.\nYou can click in the slides and navigate through them with ← and →.\nIf you type ? (or shift + /) while viewing the slides you can see a list of slide-specific commands (such as like f for fullscreen mode or additionally s for presenter mode if you want to see my notes).\nFinally, if you want to make a PDF of these slides you can press e, followed by ctrl + p.\n\n  \n    \n       Open slides in New Window"
+  },
+  {
+    "objectID": "content/content_06.html",
+    "href": "content/content_06.html",
+    "title": "Discrete probability distributions",
+    "section": "",
+    "text": "Learn about discrete random variables.\nLearn about PDFs, CDFs, expected values and variances.\nUnderstand and explain different discrete probability distributions",
+    "crumbs": [
+      "Content",
+      "Discrete probability distributions"
+    ]
+  },
+  {
+    "objectID": "content/content_06.html#learning-objectives",
+    "href": "content/content_06.html#learning-objectives",
+    "title": "Discrete probability distributions",
+    "section": "",
+    "text": "Learn about discrete random variables.\nLearn about PDFs, CDFs, expected values and variances.\nUnderstand and explain different discrete probability distributions",
+    "crumbs": [
+      "Content",
+      "Discrete probability distributions"
+    ]
+  },
+  {
+    "objectID": "content/content_06.html#readings",
+    "href": "content/content_06.html#readings",
+    "title": "Discrete probability distributions",
+    "section": "Readings",
+    "text": "Readings\n\nSuggested readings\n\n Discrete probability distributions",
+    "crumbs": [
+      "Content",
+      "Discrete probability distributions"
+    ]
+  },
+  {
+    "objectID": "content/content_06.html#slides",
+    "href": "content/content_06.html#slides",
+    "title": "Discrete probability distributions",
+    "section": "Slides",
+    "text": "Slides\n\n\n\n\n\n\nWarningSlides will be available on 3rd November",
+    "crumbs": [
+      "Content",
+      "Discrete probability distributions"
+    ]
+  },
+  {
+    "objectID": "content/mid-term.html",
+    "href": "content/mid-term.html",
+    "title": "Mid-term exam",
+    "section": "",
+    "text": "ImportantDon’t forget to come to the mid-term exam\n\n\n\n\n Date: 10th November\n Time: 3pm - 4pm\n Location: Physics Hall",
+    "crumbs": [
+      "Content",
+      "Mid-term exam"
+    ]
   }
 ]
