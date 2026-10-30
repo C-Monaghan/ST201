@@ -1,0 +1,41 @@
+---
+title: Continuous probability distributions
+---
+
+```{r}
+#| label: setup
+#| include: false
+
+purrr::map(list.files(here::here("R"), full.names = TRUE), source)
+```
+
+## Learning objectives
+
+- Learn about continuous random variables.
+- Learn about PDFs, CDFs, expected values and variances.
+- Understand and explain different continuous probability distributions
+
+## Readings
+
+### Suggested readings
+
+- {{< fa book >}} [Continuous random variables (Stanford University)](https://web.stanford.edu/class/archive/cs/cs109/cs109.1218/files/student_drive/4.1.pdf)
+- {{< fa book >}} [Continuous random variables](https://bookdown.org/manuele_leonelli/SimBook/continuous-random-variables.html)
+
+## Slides
+
+::: {.callout-warning}
+
+## Slides will be available on 17th November
+
+:::
+
+
+```{r}
+#| label: add-slides
+#| echo: false
+#| eval: false
+#| results: asis
+
+add_slides(slide_id = "/slides/output/slides_7.html")
+```

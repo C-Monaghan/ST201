@@ -17,8 +17,6 @@ knitr::opts_chunk$set(fig.align = "center")
 library(dplyr)
 library(ggplot2)
 library(tinytable)
-
-# Data -------------------------------------------------------------------------
 ```
 
 ## From data to probability

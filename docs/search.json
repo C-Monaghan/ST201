@@ -411,7 +411,7 @@
     "href": "content/content_06.html#readings",
     "title": "Discrete probability distributions",
     "section": "Readings",
-    "text": "Readings\n\nSuggested readings\n\n Discrete probability distributions",
+    "text": "Readings\n\nSuggested readings\n\n Discrete random variables\n Discrete probability distributions",
     "crumbs": [
       "Content",
       "Discrete probability distributions"
@@ -437,6 +437,50 @@
     "crumbs": [
       "Content",
       "Mid-term exam"
+    ]
+  },
+  {
+    "objectID": "content/content_07.html",
+    "href": "content/content_07.html",
+    "title": "Continuous probability distributions",
+    "section": "",
+    "text": "Learn about continuous random variables.\nLearn about PDFs, CDFs, expected values and variances.\nUnderstand and explain different continuous probability distributions",
+    "crumbs": [
+      "Content",
+      "Continuous probability distributions"
+    ]
+  },
+  {
+    "objectID": "content/content_07.html#learning-objectives",
+    "href": "content/content_07.html#learning-objectives",
+    "title": "Continuous probability distributions",
+    "section": "",
+    "text": "Learn about continuous random variables.\nLearn about PDFs, CDFs, expected values and variances.\nUnderstand and explain different continuous probability distributions",
+    "crumbs": [
+      "Content",
+      "Continuous probability distributions"
+    ]
+  },
+  {
+    "objectID": "content/content_07.html#readings",
+    "href": "content/content_07.html#readings",
+    "title": "Continuous probability distributions",
+    "section": "Readings",
+    "text": "Readings\n\nSuggested readings\n\n Continuous random variables (Stanford University)\n Continuous random variables",
+    "crumbs": [
+      "Content",
+      "Continuous probability distributions"
+    ]
+  },
+  {
+    "objectID": "content/content_07.html#slides",
+    "href": "content/content_07.html#slides",
+    "title": "Continuous probability distributions",
+    "section": "Slides",
+    "text": "Slides\n\n\n\n\n\n\nWarningSlides will be available on 17th November",
+    "crumbs": [
+      "Content",
+      "Continuous probability distributions"
     ]
   }
 ]

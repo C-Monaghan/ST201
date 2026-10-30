@@ -78,6 +78,8 @@ website:
         href: content\content_06.qmd
       - text: Mid-term exam
         href: content\mid-term.qmd
+      - text: Continuous probability distributions
+        href: content\content_07.qmd
 
 
 

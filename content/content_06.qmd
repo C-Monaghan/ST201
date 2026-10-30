@@ -19,6 +19,7 @@ purrr::map(list.files(here::here("R"), full.names = TRUE), source)
 
 ### Suggested readings
 
+- {{< fa book >}} [Discrete random variables](https://bookdown.org/manuele_leonelli/SimBook/discrete-random-variables.html)
 - {{< fa link >}} [Discrete probability distributions](https://stats.libretexts.org/Bookshelves/Introductory_Statistics/Introductory_Statistics_(Shafer_and_Zhang)/04%3A_Discrete_Random_Variables/4.02%3A_Probability_Distributions_for_Discrete_Random_Variables)
 
 ## Slides

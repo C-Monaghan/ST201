@@ -1,0 +1,981 @@
+---
+title: Continuous probability distributions
+subtitle: ST201 - Data analysis
+filters:
+  - code-window
+---
+
+```{r}
+#| label: setup
+
+set.seed(4321)
+
+# Options ----------------------------------------------------------------------
+knitr::opts_chunk$set(fig.align = "center")
+
+# Packages ---------------------------------------------------------------------
+library(dplyr)
+library(ggplot2)
+library(tinytable)
+```
+
+## Continuous random variables {style="font-size: 85%;"}
+
+A continuous random variable can take **any value** within a specified interval.
+
+Unlike a discrete random variable, which takes countable values, a continuous
+random variable can take **infinitely many possible values**.
+
+- The amount of rainfall in a day (mm).
+- The distance covered during a training session (km).
+- The weight of a book (g).
+- The time taken to complete an examination (minutes).
+- A person's height (cm).
+
+::: {.callout-note appearance="minimal"}
+A person's height might be 175 cm, 175.2 cm, 175.23 cm, or any other value
+within the possible range.
+:::
+
+## Discrete versus continuous variables {style="font-size: 85%;"}
+
+:::: {.columns}
+
+::: {.column}
+
+[**Discrete random variable**]{.center}
+
+How many students are attending a lecture?
+
+$$
+0, 1, 2, \dots, \infty
+$$
+
+```{r}
+#| label: discrete-visualise-1
+
+tibble(x = 0:5, p = c(.05, .1, .2, .3, .2, .15)) |>
+  ggplot(aes(x = x, y = p)) +
+  geom_col(fill = "steelblue", colour = "black", width = .65) +
+  scale_x_continuous(breaks = 0:5) +
+  labs(x = "Number of students", y = "Probability") +
+  theme_minimal()
+```
+
+:::
+
+::: {.column}
+
+[**Continuous random variable**]{.center}
+
+How long does a student spend studying?
+
+$$
+2, 2.1, 2.11, \dots, \infty
+$$
+
+```{r}
+#| label: continuous-visualise-1
+
+tibble(x = seq(0, 5, length.out = 200)) |>
+  ggplot(aes(x = x)) +
+  stat_function(
+    fun = dnorm,
+    args = list(3, 1),
+    linewidth = 1,
+    colour = "steelblue"
+  ) +
+  labs(x = "Study time (hours)", y = "Density") +
+  theme_minimal()
+```
+
+:::
+
+::::
+
+## Continuous random variables
+
+### Probability density functions
+
+A continuous probability distribution is described using a probability
+density function (PDF).
+
+We write the PDF as: $f(x)$
+
+The PDF describes the relative density of probability across possible values
+of a continuous random variable.
+
+Unlike a discrete probability distribution, the height of the curve does not
+directly represent the probability of an individual value.
+
+<br>
+
+::: {.callout-important}
+## Probability is represented by the area under the curve.
+:::
+
+## Probability density functions
+
+### Properties
+
+A valid probability density function has two important properties
+
+1. The density cannot be negative
+2. The total area under the curve equals one
+
+$$
+f(x) \geq 0 \quad \text{and} \quad \int_{-\infty}^{\infty}f(x),dx = 1
+$$
+
+## Representing probability
+
+Suppose we want to calculate the probability that a continuous random
+variable falls between two values, $(a)$ and $(b)$
+
+$$
+P(a < X < b) = \int_a^b f(x),dx
+$$
+
+This is the area under the density curve between $(a)$ and $(b)$
+
+```{r}
+#| label: continuous-visualise-2
+
+tibble(x = seq(0, 5, length.out = 200)) |>
+  ggplot(aes(x = x)) +
+  stat_function(
+    fun = dnorm,
+    args = list(3, 1),
+    linewidth = 1,
+    colour = "steelblue"
+  ) +
+  geom_area(
+    data = tibble(x = seq(2, 3, length.out = 200)),
+    aes(x = x, y = dnorm(x, 3, 1)),
+    fill = "skyblue",
+    alpha = .7
+  ) +
+  labs(
+    x = "Value of X",
+    y = "Density"
+  ) +
+  theme_minimal()
+```
+
+---
+
+<br>
+
+
+::: {.callout-important}
+
+## Probability at a single point
+
+For a continuous random variable:
+
+$$
+P(X = x) = 0
+$$
+
+This does not mean that observing a particular value is impossible.
+
+It means that the probability of observing one exact value, with infinitely
+many possible values across a continuous range, is zero.
+
+
+$$
+P(X = 175) = 0 \quad \text{but} \quad P(174.5 < X < 175.5) > 0
+$$
+
+:::
+
+## The cumulative distribution function
+
+The cumulative distribution function, or CDF, gives the probability that a
+random variable takes a value less than or equal to a specified value.
+
+We write this as:
+
+$$
+F(x) = P(X \leq x)
+$$
+
+For a continuous random variable:
+
+$$
+F(x) = \int_{-\infty}^{x}f(u),du
+$$
+
+In other words, the CDF represents the accumulated area under the PDF up to
+a particular value.
+
+---
+
+<br>
+
+```{r}
+#| label: cdf-visualise
+
+pdf_data <- tibble(
+  x = seq(-4, 4, length.out = 500),
+  density = dnorm(x, 0, 1),
+  cumulative = pnorm(x)
+)
+
+pdf_data |>
+  ggplot(aes(x = x, y = cumulative)) +
+  geom_line(linewidth = 1, colour = "steelblue") +
+  labs(
+    x = "Value of X",
+    y = "Cumulative probability"
+  ) +
+  coord_cartesian(ylim = c(0, 1)) +
+  theme_minimal()
+```
+
+## PDFs versus CDFs
+
+<br>
+
+```{r}
+#| label: pdf-cdf-table
+tribble(
+  ~"PDF"                                   , ~"CDF"                                ,
+  "Describes probability density"          , "Describes cumulative probability"    ,
+  "Writen as f(x)"                         , "Written as F(x)"                     ,
+  "Probability is an area under the curve" , "Probability is the accumulated area" ,
+  "Total area equals 1"                    , "Values range from 0 to 1"
+) |>
+  tt() |>
+  style_tt(i = 0, bold = TRUE)
+```
+
+For a continuous random variable:
+
+$$
+P(a < X < b) = F(b) - F(a)
+$$
+
+## Expected value and variance
+
+### Expected value
+
+The expected value describes the long-run average value of a continuous
+random variable.
+
+For a continuous random variable:
+
+$$
+E(X) = \int_{-\infty}^{\infty}xf(x),dx
+$$
+
+This is the continuous equivalent of the expected value formula for
+discrete random variables.
+
+## Expected value and variance
+
+### Variance and standard deviation
+
+The variance describes the spread of a continuous random variable around
+its expected value.
+
+$$
+\operatorname{Var}(X)=E(X^2)-[E(X)]^2
+$$
+
+with a standard deviation of
+
+$$
+SD(X)=\sqrt{\operatorname{Var}(X)}
+$$
+
+## Types of continuous distributions {style="font-size:80%;"}
+
+We will focus on three commonly used continuous probability distributions:
+
+- **Uniform distribution**: All values within an interval are equally likely in
+  terms of density.
+- **Exponential distribution**: Models waiting times between events.
+- **Normal distribution**: Models symmetric, bell-shaped distributions.
+
+```{r}
+#| label: continuous-distributions
+tibble(
+  x = seq(0, 5, length = 250),
+  u = dunif(x, 1, 4),
+  e = dexp(x),
+  n = dnorm(x, 2.5, 1)
+) |>
+  tidyr::pivot_longer(cols = !x, names_to = "dist", values_to = "value") |>
+  mutate(dist = factor(dist, levels = c("u", "e", "n"))) |>
+  ggplot(aes(x = x, y = value)) +
+  geom_line(colour = "steelblue", linewidth = 0.8) +
+  facet_wrap(
+    ~dist,
+    scales = "free",
+    labeller = labeller(
+      dist = function(x) {
+        case_when(
+          x == "u" ~ "Uniform",
+          x == "e" ~ "Exponential",
+          x == "n" ~ "Normal"
+        )
+      }
+    )
+  ) +
+  theme_minimal()
+```
+
+## The uniform distribution
+
+### General overview
+
+A uniform distribution describes a random variable where every value within a
+specified interval has the same probability density.
+
+Suppose we randomly select a number between $a$ and $b$.
+
+We write:
+
+$$
+X \sim \operatorname{Uniform}(a,b)
+$$
+
+The distribution is constant between $a$ and $b$, and zero outside this
+interval.
+
+::: {.callout-tip appearance="minimal"}
+For example, if a number is selected randomly between 0 and 10, all
+intervals of equal length have equal probability.
+:::
+
+## The uniform distribution
+
+### Formulas
+
+:::: {.columns}
+::: {.column}
+
+Probability density function
+
+$$
+f(x)= \begin{cases}
+\frac{1}{b-a}, & a\leq x \leq b\\
+0, & \text{otherwise}
+\end{cases}
+$$
+
+:::
+
+::: {.column}
+
+Cumulative distribution function
+
+$$
+F(x)=
+\begin{cases}
+0, & x<a \\
+\frac{x-a}{b-a}, & a\leq x\leq b \\
+1, & x>b
+\end{cases}
+$$
+
+:::
+::::
+
+<br>
+
+:::: {.columns}
+
+::: {.column}
+
+[Expected value]{.center}
+
+$$
+E(X)=\frac{a+b}{2}
+$$
+
+:::
+
+::: {.column}
+
+[Variance]{.center}
+
+$$
+\operatorname{Var}(X)=\frac{(b-a)^2}{12}
+$$
+
+:::
+
+::::
+
+## The uniform distribution
+
+### A visualisation
+
+<br>
+
+```{r}
+#| label: uniform-plot
+
+tibble(x = seq(-2, 12, length.out = 500)) |>
+  ggplot(aes(x)) +
+  stat_function(
+    fun = dunif,
+    args = list(min = 0, max = 10),
+    linewidth = 1,
+    colour = "steelblue"
+  ) +
+  labs(
+    x = "Value of X",
+    y = "Density"
+  ) +
+  theme_minimal()
+```
+
+## The uniform distribution
+
+### An example
+
+The net weight of a package is uniformly distributed between 980 g and 1030 g.
+
+$$
+X \sim \operatorname{Uniform}(980,1030)
+$$
+
+We can ask and answer the following questions:
+
+1. What is the expected weight of a package?
+2. What is the probability that a package weighs less than 1000 g?
+3. What is the probability that a package weighs between 990 g and 1010 g?
+4. What is the 75th percentile?
+
+## The uniform distribution {style="font-size: 70%;"}
+
+### Calculating probabilities in `R`
+
+The expected weight is:
+
+$$
+E(X)=\frac{980+1030}{2}=1005\text{ g}
+$$
+
+The probability that a package weighs less than 1000 g is:
+
+```{r}
+#| label: uniform-question-2
+#| echo: true
+#| collapse: true
+
+punif(q = 1000, min = 980, max = 1030)
+```
+
+The probability that a package weighs between 990 g and 1010 g is:
+
+```{r}
+#| label: uniform-question-3
+#| echo: true
+#| collapse: true
+
+punif(q = 1010, min = 980, max = 1030) - punif(q = 990, min = 980, max = 1030)
+```
+
+The 75th percentile is:
+
+```{r}
+#| label: uniform-question-4
+#| echo: true
+#| collapse: true
+
+qunif(0.75, min = 980, max = 1030)
+```
+
+## The exponential distribution
+
+### General overview
+
+The exponential distribution is commonly used to model the waiting time
+until an event occurs.
+
+Examples include:
+
+- Time until the next telephone call.
+- Time between customer arrivals.
+- Time until a machine component fails.
+- Time between website visits.
+
+## The exponential distribution
+
+### The rate parameter
+
+Suppose events occur at an average rate of $\lambda$ events per unit of time.
+
+The waiting time until the next event can be modelled as:
+
+$$
+X\sim\operatorname{Exponential}(\lambda)
+$$
+
+
+::: {.callout-tip appearance="minimal"}
+For example, if a website receives an average of $\lambda = 10$ visits per second:
+
+The expected waiting time between visits is:
+
+$$
+E(X) = \frac{1}{\lambda} = \frac{1}{10} = 0.1 \text{ seconds}
+$$
+
+A higher event rate means a shorter expected waiting time.
+:::
+
+## The exponential distribution
+
+### Formulas
+
+:::: {.columns}
+
+::: {.column}
+
+[Probability density function]{.center}
+
+$$
+f(x)=\lambda e^{-\lambda x}, \qquad x\geq0
+$$
+
+:::
+
+::: {.column}
+
+[Cumulative density function]{.center}
+
+$$
+F(x) = 1-e^{-\lambda x}
+$$
+
+:::
+
+::::
+
+<br>
+
+
+:::: {.columns}
+
+::: {.column}
+
+[Expected value]{.center}
+
+$$
+E(X)=\frac{1}{\lambda}
+$$
+
+:::
+
+::: {.column}
+
+[Variance]{.center}
+
+$$
+\operatorname{Var}(X)=\frac{1}{\lambda^2}
+$$
+
+:::
+::::
+
+## The exponential distribution
+
+### A visualisation
+
+<br>
+
+```{r}
+#| label: exponential-visualise
+tibble(x = seq(0, 5, length.out = 200)) |>
+  ggplot(aes(x)) +
+  stat_function(
+    fun = dexp,
+    args = list(rate = 2),
+    linewidth = 0.8,
+    colour = "steelblue"
+  ) +
+  labs(x = "Waiting time (minutes)", y = "Density") +
+  theme_minimal()
+```
+
+## The exponential distribution
+
+### An example
+
+A search engine receives an average of 10 visits per second.
+
+Assume that visits occur according to a Poisson process.
+
+Let $X$ represent the waiting time until the next visit.
+
+$$
+X\sim\operatorname{Exponential}(10)
+$$
+
+We can ask and answer the following questions:
+
+1. What is the expected waiting time?
+2. What is the probability that the next visit occurs within 0.6 seconds?
+3. What is the probability that the waiting time is between 0.05 and 0.2 seconds?
+4. What is the 80th percentile of the waiting time?
+
+## The exponential distribution {style="font-size: 70%;"}
+
+### Calculating probabilities in `R`
+
+The expected waiting time is:
+
+$$
+E(X)=\frac{1}{10}=0.1\text{ seconds}
+$$
+
+The probability that the next visit occurs within 0.6 seconds is:
+
+```{r}
+#| label: exponential-question-2
+#| echo: true
+#| collapse: true
+
+pexp(q = 0.6, rate = 10)
+```
+
+The probability that the waiting time is between 0.05 and 0.2 seconds is:
+
+```{r}
+#| label: exponential-question-3
+#| echo: true
+#| collapse: true
+
+pexp(q = 0.2, rate = 10) - pexp(q = 0.05, rate = 10)
+```
+
+The 80th percentile is:
+
+```{r}
+#| label: exponential-question-4
+#| echo: true
+#| collapse: true
+
+qexp(p = 0.80, rate = 10)
+```
+
+## The normal distribution
+
+### General overview
+
+The normal distribution is one of the most commonly used probability
+distributions in statistics.
+
+It is often used to describe continuous measurements such as:
+
+- Heights of people.
+- Measurement errors in scientific experiments.
+- Test scores.
+- Blood pressure measurements.
+
+::: {.callout-tip}
+## The normal distribution is characterised by its familiar bell-shaped curve.
+:::
+
+## The normal distribution {style="font-size: 80%;"}
+
+### $\mu$ and $\sigma^2$
+
+A normal distribution has two parameters:
+
+- $\mu$: the mean (which determines the centre)
+- $\sigma$: the standard deviation (which determines the spread)
+
+$$
+X \sim \mathcal{N}(\mu,\sigma^2)
+$$
+
+
+::: {.fragment .fade-up}
+
+As an example
+
+$$
+X\sim \mathcal{N}(100,15^2)
+$$
+
+describes a normal distribution with:
+
+- Mean = 100
+- Standard deviation = 15
+- Variance = 225
+
+:::
+
+## The normal distribution
+
+### Formulas
+
+Probability density function
+
+$$
+f(x)= \frac{1}{\sqrt{2\pi\sigma^2}} e^{-\frac{(x-\mu)^2}{2\sigma^2}}
+$$
+
+
+:::: {.columns}
+::: {.column}
+
+Expected value
+
+$$
+E[X] = \mu
+$$
+
+:::
+
+::: {.column}
+
+Variance
+
+$$
+\operatorname{Var}(X) = \sigma^2
+$$
+
+:::
+::::
+
+## The normal distribution
+
+### A visualisation
+
+<br>
+
+```{r}
+#| label: normal-visualisation
+
+tibble(x = seq(-4, 4, length.out = 200)) |>
+  ggplot(aes(x = x)) +
+  stat_function(
+    fun = dnorm,
+    args = list(0, 1),
+    linewidth = 0.8,
+    colour = "steelblue"
+  ) +
+  labs(x = "Value of X", y = "Density") +
+  theme_minimal()
+```
+
+---
+
+<br>
+
+```{r}
+#| label: parameter-changing
+tibble(
+  x = seq(-4, 4, length.out = 200),
+  mu_1 = dnorm(x, mean = 0, sd = 1),
+  mu_2 = dnorm(x, mean = -2, sd = 1),
+  mu_3 = dnorm(x, mean = 2, sd = 1),
+  var_1 = dnorm(x, mean = 0, sd = 1),
+  var_2 = dnorm(x, mean = 0, sd = 2),
+  var_3 = dnorm(x, mean = 0, sd = 3),
+) |>
+  tidyr::pivot_longer(
+    cols = -x,
+    names_to = c("parameter", "value"),
+    names_pattern = "(mu|var)_(.*)",
+    values_to = "density"
+  ) |>
+  mutate(
+    value = case_when(
+      parameter == "mu" & value == 1 ~ glue::glue("Mean = 0; Sd = 1"),
+      parameter == "mu" & value == 2 ~ glue::glue("Mean = -2; Sd = 1"),
+      parameter == "mu" & value == 3 ~ glue::glue("Mean = 2; Sd = 1"),
+      parameter == "var" & value == 1 ~ glue::glue("Mean = 0; Sd = 1"),
+      parameter == "var" & value == 2 ~ glue::glue("Mean = 0; Sd = 2"),
+      parameter == "var" & value == 3 ~ glue::glue("Mean = 0; Sd = 3")
+    )
+  ) |>
+  ggplot(aes(x = x, y = density, colour = value)) +
+  geom_line(linewidth = 0.8) +
+  ggokabeito::scale_colour_okabe_ito() +
+  labs(x = "Value of X", y = "Density", colour = "Parameters") +
+  facet_wrap(
+    ~parameter,
+    labeller = labeller(
+      parameter = function(x) {
+        case_when(
+          x == "mu" ~ "Changing the mean",
+          x == "var" ~ "Changing the variance"
+        )
+      }
+    )
+  ) +
+  theme_minimal()
+```
+
+## The normal distribution
+
+### Some properties
+
+The normal distribution has several important properties:
+
+- It is symmetric around the mean.
+- The mean, median, and mode are equal.
+- Half of the area lies below the mean and half above.
+- The total area under the curve equals 1.
+- The tails extend indefinitely in both directions.
+
+These properties make the normal distribution **particularly useful** for
+statistical modelling.
+
+## The normal distribution
+
+### The 68–95–99.7 rule
+
+For a normal distribution, approximately:
+
+- 68% of observations fall within one standard deviation of the mean.
+- 95% fall within two standard deviations.
+- 99.7% fall within three standard deviations.
+
+$$
+\begin{aligned}
+P(\mu-\sigma<X<\mu+\sigma) &\approx 0.68 \\[4pt]
+P(\mu-2\sigma<X<\mu+2\sigma) &\approx 0.95 \\[4pt]
+P(\mu-3\sigma<X<\mu+3\sigma) &\approx 0.997
+\end{aligned}
+$$
+
+---
+
+<br>
+
+```{r}
+#| label: normal-rule
+
+normal_rule <- tibble(x = seq(-4, 4, length.out = 500), density = dnorm(x))
+
+ggplot(normal_rule, aes(x, density)) +
+  geom_area(
+    data = filter(normal_rule, x >= -1, x <= 1),
+    fill = "skyblue",
+    alpha = .7
+  ) +
+  geom_area(
+    data = filter(normal_rule, x >= -2, x <= 2),
+    aes(x, density),
+    fill = "steelblue",
+    alpha = .35
+  ) +
+  geom_line(linewidth = 1, colour = "black") +
+  geom_vline(xintercept = c(-1, 1), linetype = "dashed") +
+  geom_vline(xintercept = c(-2, 2), linetype = "dotted") +
+  geom_vline(xintercept = c(-3, 3), linetype = "dotted") +
+  scale_x_continuous(breaks = -3:3) +
+  labs(
+    x = "Standard deviations from the mean",
+    y = "Density"
+  ) +
+  theme_minimal()
+```
+
+## The normal distribution
+
+### An example
+
+The weights of the boxes are assumed to be normally distributed, with:
+
+$$
+\mu=15\text{ kg} \quad \text{and} \quad \sigma^2=2.25\text{ kg}^2
+$$
+
+Therefore:
+
+$$
+X \sim \mathcal{N}(15,2.25)
+$$
+
+We can ask and answer the following questions:
+
+1. What is the probability that a box weighs less than 13 kg?
+2. What is the probability that a box weighs between 12 and 14 kg?
+3. What is the 68th percentile?
+
+## The normal distribution {style="font-size: 80%;"}
+
+### Calculating probabilities in `R`
+
+The probability that a box weighs less than 13 kg is:
+
+```{r}
+#| label: normal-question-1
+#| echo: true
+#| collapse: true
+
+pnorm(q = 13, mean = 15, sd = 1.5)
+```
+
+The probability that a box weighs between 12 and 14 kg is:
+
+```{r}
+#| label: normal-question-2
+#| echo: true
+#| collapse: true
+
+pnorm(14, mean = 15, sd = 1.5) - pnorm(12, mean = 15, sd = 1.5)
+```
+
+The 68th percentile is:
+
+```{r}
+#| label: normal-question-3
+#| echo: true
+#| collapse: true
+
+qnorm(p = 0.68, mean = 15, sd = 1.5)
+```
+
+## Comparing probability distributions
+
+<br>
+
+```{r}
+#| label: summary-tbl-1
+tribble(
+  ~"Distribution" , ~`What does it model`                           , ~`Parameters`               ,
+  "Uniform"       , "Values with constant density over an interval" , "Minimum, maximum"          ,
+  "Exponential"   , "Waiting time until an event"                   , "Rate"                      ,
+  "Normal"        , "Symmetric, bell-shaped measurements"           , "Mean & Standard deviation"
+) |>
+  tt() |>
+  style_tt(i = 0, bold = TRUE) |>
+  style_tt(j = 1, bold = TRUE)
+```
+
+<br>
+
+::: {.callout-important}
+## The most important step is to understand what the random variable represents.
+:::
+
+## Discrete versus continuous variables
+
+<br>
+
+```{r}
+#| label: summary-tbl-2
+tribble(
+  ~"Feature"               , ~"Discrete"                     , ~"Continuous"                        ,
+  "Possible values"        , "Countable"                     , "Infinitely many within an interval" ,
+  "Probability"            , "Assigned to individual values" , "Calculated over intervals"          ,
+  "Probability function"   , "PMF"                           , "PDF"                                ,
+  "Cumulative probability" , "CDF"                           , "CDF"                                ,
+  "Total probability"      , "Sum = 1"                       , "Area = 1"                           ,
+  "Example"                , "Number of calls"               , "Time between calls"                 ,
+) |>
+  tt() |>
+  style_tt(i = 0, bold = TRUE) |>
+  style_tt(j = 1, bold = TRUE)
+```
