@@ -50,7 +50,7 @@ website:
           - text: Assignment 2
             href: assignments\assignment_02.qmd
           - text: Assignment 3
-            # href: assignments\assignment_03.qmd
+            href: assignments\assignment_03.qmd
           - text: Assignment 4
             # href: assignments\assignment_04.qmd
 
