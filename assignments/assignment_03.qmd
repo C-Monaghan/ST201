@@ -1,0 +1,140 @@
+---
+title: Practice Questions Sheet 3
+subtitle: ST201 - Data Analysis
+author: Cormac Monaghan
+description: |
+  This tutorial introduces discrete probability distributions
+  (i.e., Bernoulli, Binomial, and Poisson distributions).
+page-layout: full
+format:
+  st201_assignment-html: default
+  st201_assignment-typst: default
+---
+
+```{r}
+#| label: setup
+#| include: false
+
+# Computations & figures -------------------------------------------------------
+knitr::opts_chunk$set(
+  warning = FALSE,
+  message = FALSE,
+
+  fig.align = "center",
+  fig.retina = 3,
+  fig.width = 6,
+  fig.height = 4,
+  out.width = "100%",
+  collapse = TRUE
+)
+```
+
+:::: {.content-visible when-format="html"}
+::: {.callout-important}
+## Please complete this assignment before the tutorial on the week of 16th November
+:::
+::::
+
+:::{.content-visible when-format="typst"}
+```{=typst}
+
+#block(width: 100%, stroke: rgb("#667477"), inset: 1.5em, outset: 0.25em)[
+  #text(size: 10pt, weight: "bold")[
+    Please complete this assignment before the tutorial on the week of 16th November
+]
+]
+```
+:::
+
+\newpage
+
+# Question 1
+
+A multiple choice exam has 8 questions, with four choices given in each
+question. Suppose that a student hasn't studied and guesses the answers by
+choosing an answer at random.
+
+If we say that $X$ is the number of times the student answers the question
+correctly, where
+
+$$X \sim Binomial(n = 8, p = 0.25)$$
+
+then we can find probabilities and quantiles using the
+`dbinom()`, `pbinom()` and `qbinom()` functions.
+
+::::{.content-visible when-format="html"}
+::: {.callout-note collapse="true"}
+## Why are use using a binomial
+
+To think about why we choose these values for $n$ and $p$ in the binomial
+distribution we need to consider the following:
+
+- In terms of answers to the questions, they can either be right or wrong, so
+  for each question we have a binary outcome.
+- The number of "trials" you have is 8 (i.e., 8 questions)
+- The probability of getting a question correct by chance is 1/4 (i.e., for
+  each question there are 4 possible answers with 1 being the correct answer)
+
+:::
+::::
+
+1. Compute the probability that the student answers all questions correctly.
+2. Compute the probability that the student answers all questions incorrectly.
+3. Compute the probability that the student answers 2 or more correctly.
+4. What is the 60th percentile for this distribution?
+5. Suppose the student is able to eliminate one of the answers as incorrect
+   and chooses randomly from the other three choices.
+   What is the probability the student answers 2 or more questions correctly?
+
+\newpage
+
+# Question 2
+
+Assume that users are expected to arrive at an ATM to withdraw cash at a
+rate of 2.5 every 30 minutes.
+
+If we say that the random variable $X$, the number of people that use the ATM
+in a 30 minute interval has a Poisson distribution such that
+
+$$X \sim Poisson(\lambda = 2.5)$$
+
+We can find probabilities and quantiles using the
+`dpois()`, `ppois()` and `qpois()` functions.
+
+::::{.content-visible when-format="html"}
+::: {.callout-note collapse="true"}
+
+## Why the Poisson distribution
+
+To think about how we choose $\lambda$ in the Poisson distribution we need to
+consider the following:
+
+- What is the interval we are assuming when calculating the probability?
+- If we are interested in a 30 minute interval the we use $\lambda = 2.5$
+- If we change the interval then we change $\lambda$, for example, if we are
+  interested in a 15 minute interval the we use $\lambda = 1.25$.
+
+:::
+::::
+
+1. Compute the probability that in a particular 30 minute interval, 1 person
+   uses the machine.
+2. Compute the probability that in a particular 30 minute interval, more than
+   one person uses the machine.
+3. Compute the probability that 3 or more people use the machine in an hour
+   interval.
+4. What is the 90th percentile value for the number of machine users in an hour
+   interval?
+
+
+\newpage
+
+# Question 3
+
+A fisherman catches, on average, 24 fish in a 4 hour time period.
+Let $Y$ be a random variable denoting the number of fish caught per hour hour.
+
+1. What is the $E(Y)$?
+2. What is the probability that the fisherman catches exactly 5 fish in an hour?
+3. What is the probability that the fisherman catches 7 or more fish in a 2 hour
+   period?

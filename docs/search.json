@@ -21,102 +21,190 @@
     "text": "Learning the fundamental principles of data and data  analysis using R\n        \n        \n            ST201 - Data analysis  Department of Mathematics and Statistics  Maynooth University\n        \n    \n    \n      \n        \n        \n        \n      \n    \n\n\n\n\n\n\nInstructor\n\n Cormac Monaghan\n cormac.monaghan@mu.ie\n Room 223 Logic House\n Bluesky\n\n\n\nCourse details\n\n Tuesday & Thursday\n September - December 2026\n Tuesdays 3pm & Thursdays 12pm\n Physics Hall\n\n\n\nContacting me\nE-mail is the best way to get in contact with me. I usually try to respond to all e-mails within 24 hours (really), but also remember that life can be busy and chaotic for everyone (including me!), so if I don’t respond right away, don’t worry!"
   },
   {
-    "objectID": "content/index.html",
-    "href": "content/index.html",
-    "title": "Lecture overview",
+    "objectID": "content/mid-term.html",
+    "href": "content/mid-term.html",
+    "title": "Mid-term exam",
     "section": "",
-    "text": "Each class has a set of required readings that should be completed in your own time. For the most part, these readings will mirror what we have covered in the lectures. However, there will be times that I find a cool resource that I believe may be helpful for some of you.\nAll the slides for this module are special HTML files made using both Quarto and Clean Revealjs theme by Grant McDermott. Personally, this is my favourite theme to use for presentations, although I have made a couple of minor tweaks to it myself",
+    "text": "ImportantDon’t forget to come to the mid-term exam\n\n\n\n\n Date: 10th November\n Time: 3pm - 4pm\n Location: Physics Hall",
     "crumbs": [
       "Content",
-      "Lecture overview"
+      "Mid-term exam"
     ]
   },
   {
-    "objectID": "content/content_04.html",
-    "href": "content/content_04.html",
-    "title": "Categorical data analysis (II)",
+    "objectID": "content/content_07.html",
+    "href": "content/content_07.html",
+    "title": "Continuous probability distributions",
     "section": "",
-    "text": "Understand how to further analyse a significant \\(\\chi^2\\) result\nLearn about Pearson residuals and Cramér’s V\nUnderstand what to do when our assumptions are violated",
+    "text": "Learn about continuous random variables.\nLearn about PDFs, CDFs, expected values and variances.\nUnderstand and explain different continuous probability distributions",
     "crumbs": [
       "Content",
-      "Categorical data analysis II"
+      "Continuous probability distributions"
     ]
   },
   {
-    "objectID": "content/content_04.html#learning-objectives",
-    "href": "content/content_04.html#learning-objectives",
-    "title": "Categorical data analysis (II)",
+    "objectID": "content/content_07.html#learning-objectives",
+    "href": "content/content_07.html#learning-objectives",
+    "title": "Continuous probability distributions",
     "section": "",
-    "text": "Understand how to further analyse a significant \\(\\chi^2\\) result\nLearn about Pearson residuals and Cramér’s V\nUnderstand what to do when our assumptions are violated",
+    "text": "Learn about continuous random variables.\nLearn about PDFs, CDFs, expected values and variances.\nUnderstand and explain different continuous probability distributions",
     "crumbs": [
       "Content",
-      "Categorical data analysis II"
+      "Continuous probability distributions"
     ]
   },
   {
-    "objectID": "content/content_04.html#readings",
-    "href": "content/content_04.html#readings",
-    "title": "Categorical data analysis (II)",
+    "objectID": "content/content_07.html#readings",
+    "href": "content/content_07.html#readings",
+    "title": "Continuous probability distributions",
+    "section": "Readings",
+    "text": "Readings\n\nSuggested readings\n\n Continuous random variables (Stanford University)\n Continuous random variables",
+    "crumbs": [
+      "Content",
+      "Continuous probability distributions"
+    ]
+  },
+  {
+    "objectID": "content/content_07.html#slides",
+    "href": "content/content_07.html#slides",
+    "title": "Continuous probability distributions",
+    "section": "Slides",
+    "text": "Slides\n\n\n\n\n\n\nWarningSlides will be available on 17th November",
+    "crumbs": [
+      "Content",
+      "Continuous probability distributions"
+    ]
+  },
+  {
+    "objectID": "content/content_05.html",
+    "href": "content/content_05.html",
+    "title": "Categorical data analysis (III)",
+    "section": "",
+    "text": "How to perform a categorical data analysis when we introduce a third variable\nLearn what Simpsons paradox is\nLearn the difference between odds and odds ratios",
+    "crumbs": [
+      "Content",
+      "Categorical data analysis III"
+    ]
+  },
+  {
+    "objectID": "content/content_05.html#learning-objectives",
+    "href": "content/content_05.html#learning-objectives",
+    "title": "Categorical data analysis (III)",
+    "section": "",
+    "text": "How to perform a categorical data analysis when we introduce a third variable\nLearn what Simpsons paradox is\nLearn the difference between odds and odds ratios",
+    "crumbs": [
+      "Content",
+      "Categorical data analysis III"
+    ]
+  },
+  {
+    "objectID": "content/content_05.html#readings",
+    "href": "content/content_05.html#readings",
+    "title": "Categorical data analysis (III)",
+    "section": "Readings",
+    "text": "Readings\n\nSuggested readings\n\n Chapter 4 of Introduction to Statistics and Data Analysis\n Simpsons paradox",
+    "crumbs": [
+      "Content",
+      "Categorical data analysis III"
+    ]
+  },
+  {
+    "objectID": "content/content_05.html#slides",
+    "href": "content/content_05.html#slides",
+    "title": "Categorical data analysis (III)",
+    "section": "Slides",
+    "text": "Slides\n\n  \n    \n       Open slides in New Window",
+    "crumbs": [
+      "Content",
+      "Categorical data analysis III"
+    ]
+  },
+  {
+    "objectID": "content/content_03.html",
+    "href": "content/content_03.html",
+    "title": "Categorical data analysis (I)",
+    "section": "",
+    "text": "Understand how to analyse categorical data\nLearn about observed versus expected counts\nUnderstand what the \\(\\chi^2\\) distribution is\nLearn how to perform a basic hypothesis test",
+    "crumbs": [
+      "Content",
+      "Categorical data analysis I"
+    ]
+  },
+  {
+    "objectID": "content/content_03.html#learning-objectives",
+    "href": "content/content_03.html#learning-objectives",
+    "title": "Categorical data analysis (I)",
+    "section": "",
+    "text": "Understand how to analyse categorical data\nLearn about observed versus expected counts\nUnderstand what the \\(\\chi^2\\) distribution is\nLearn how to perform a basic hypothesis test",
+    "crumbs": [
+      "Content",
+      "Categorical data analysis I"
+    ]
+  },
+  {
+    "objectID": "content/content_03.html#readings",
+    "href": "content/content_03.html#readings",
+    "title": "Categorical data analysis (I)",
     "section": "Readings",
     "text": "Readings\n\nSuggested readings\n\n Chapter 4 of Introduction to Statistics and Data Analysis\n Chapter 12 of Learning Statistics with R\n Statistical Tests for Categorical Data using R",
     "crumbs": [
       "Content",
-      "Categorical data analysis II"
+      "Categorical data analysis I"
     ]
   },
   {
-    "objectID": "content/content_04.html#slides",
-    "href": "content/content_04.html#slides",
-    "title": "Categorical data analysis (II)",
+    "objectID": "content/content_03.html#slides",
+    "href": "content/content_03.html#slides",
+    "title": "Categorical data analysis (I)",
     "section": "Slides",
     "text": "Slides\n\n  \n    \n       Open slides in New Window",
     "crumbs": [
       "Content",
-      "Categorical data analysis II"
+      "Categorical data analysis I"
     ]
   },
   {
-    "objectID": "content/content_02.html",
-    "href": "content/content_02.html",
-    "title": "Numerical data",
+    "objectID": "content/content_01.html",
+    "href": "content/content_01.html",
+    "title": "The Foundations of Data",
     "section": "",
-    "text": "Understand how to summarise numerical data\nMeans, medians, ranges, variability, and standard deviations\nLearn how to interpret box plots",
+    "text": "Understand the structure of data\nUnderstand the different types of data\nKnow how to visualise different types of data",
     "crumbs": [
       "Content",
-      "Numerical data"
+      "The foundations of data"
     ]
   },
   {
-    "objectID": "content/content_02.html#learning-objectives",
-    "href": "content/content_02.html#learning-objectives",
-    "title": "Numerical data",
+    "objectID": "content/content_01.html#learning-objectives",
+    "href": "content/content_01.html#learning-objectives",
+    "title": "The Foundations of Data",
     "section": "",
-    "text": "Understand how to summarise numerical data\nMeans, medians, ranges, variability, and standard deviations\nLearn how to interpret box plots",
+    "text": "Understand the structure of data\nUnderstand the different types of data\nKnow how to visualise different types of data",
     "crumbs": [
       "Content",
-      "Numerical data"
+      "The foundations of data"
     ]
   },
   {
-    "objectID": "content/content_02.html#readings",
-    "href": "content/content_02.html#readings",
-    "title": "Numerical data",
+    "objectID": "content/content_01.html#readings",
+    "href": "content/content_01.html#readings",
+    "title": "The Foundations of Data",
     "section": "Readings",
-    "text": "Readings\n\nSuggested readings\n\n Chapter 3 of Introduction to Statistics and Data Analysis\n Descriptive statistics in R\n Beginner’s Guide to R : Easy Ways to do basic data analysis",
+    "text": "Readings\n\nSuggested readings\n\n Chapter 1 and Chapter 2 of Introduction to Statistics and Data Analysis\n Chapters 1 and 2 of OpenIntro Statistics. This is a slightly more advanced reading, but I would highly recommend!",
     "crumbs": [
       "Content",
-      "Numerical data"
+      "The foundations of data"
     ]
   },
   {
-    "objectID": "content/content_02.html#slides",
-    "href": "content/content_02.html#slides",
-    "title": "Numerical data",
+    "objectID": "content/content_01.html#slides",
+    "href": "content/content_01.html#slides",
+    "title": "The Foundations of Data",
     "section": "Slides",
     "text": "Slides\n\n  \n    \n       Open slides in New Window",
     "crumbs": [
       "Content",
-      "Numerical data"
+      "The foundations of data"
     ]
   },
   {
@@ -232,157 +320,99 @@
     "text": "Exercise 7\n\nUsing the new dataset, calculate the mean order_amount for Saturday deliveries.\nCreate a dataset containing Monday deliveries only.\nCalculate the mean order_amount for Monday deliveries.\nWhich day has the larger mean order amount?\n\n\n\n\n\n\n\n\nNoteBonus question\n\n\n\n\n\nCreating a bunch of new datasets with different delivery days can be quite inefficient and tedious.\nImagine doing it 7 times and running seven different analyses!\nInstead, a neat thing we can do is compare all the deliveries at once\nCopy and paste the below code which outputs Figure 3\n\nboxplot(tip ~ day, data = pizza, ylab = \"Tip amount\")\n\n\n\n\n\n\n\nFigure 3: Overview of pizza tips across all delivery days\n\n\n\n\n\nThe ~ tells R to “Plot tips separately for each value of day”.\n\nWhich day appears to have the lowest variation in tips?\nAre there any potential outliers?"
   },
   {
-    "objectID": "content/content_01.html",
-    "href": "content/content_01.html",
-    "title": "The Foundations of Data",
+    "objectID": "assignments/assignment_03.html",
+    "href": "assignments/assignment_03.html",
+    "title": "\n    Practice Questions Sheet 3\n  ",
     "section": "",
-    "text": "Understand the structure of data\nUnderstand the different types of data\nKnow how to visualise different types of data",
+    "text": "ST201 · DATA ANALYSIS\n  \n\n  \n    Practice Questions Sheet 3\n  \n\n    \n    ST201 - Data Analysis\n  \n  \n    \n    Lecturer: Cormac Monaghan\n  \n  \n    \n    This tutorial introduces discrete probability distributions (i.e., Bernoulli, Binomial, and Poisson distributions).\n  \n  \n\n\n\n\n\n\n\n\n\nImportantPlease complete this assignment before the tutorial on the week of 16th November\n\n\n\n\n\n\n\n\nQuestion 1\nA multiple choice exam has 8 questions, with four choices given in each question. Suppose that a student hasn’t studied and guesses the answers by choosing an answer at random.\nIf we say that \\(X\\) is the number of times the student answers the question correctly, where\n\\[X \\sim Binomial(n = 8, p = 0.25)\\]\nthen we can find probabilities and quantiles using the dbinom(), pbinom() and qbinom() functions.\n\n\n\n\n\n\nNoteWhy are use using a binomial\n\n\n\n\n\nTo think about why we choose these values for \\(n\\) and \\(p\\) in the binomial distribution we need to consider the following:\n\nIn terms of answers to the questions, they can either be right or wrong, so for each question we have a binary outcome.\nThe number of “trials” you have is 8 (i.e., 8 questions)\nThe probability of getting a question correct by chance is 1/4 (i.e., for each question there are 4 possible answers with 1 being the correct answer)\n\n\n\n\n\nCompute the probability that the student answers all questions correctly.\nCompute the probability that the student answers all questions incorrectly.\nCompute the probability that the student answers 2 or more correctly.\nWhat is the 60th percentile for this distribution?\nSuppose the student is able to eliminate one of the answers as incorrect and chooses randomly from the other three choices. What is the probability the student answers 2 or more questions correctly?\n\n\n\n\nQuestion 2\nAssume that users are expected to arrive at an ATM to withdraw cash at a rate of 2.5 every 30 minutes.\nIf we say that the random variable \\(X\\), the number of people that use the ATM in a 30 minute interval has a Poisson distribution such that\n\\[X \\sim Poisson(\\lambda = 2.5)\\]\nWe can find probabilities and quantiles using the dpois(), ppois() and qpois() functions.\n\n\n\n\n\n\nNoteWhy the Poisson distribution\n\n\n\n\n\nTo think about how we choose \\(\\lambda\\) in the Poisson distribution we need to consider the following:\n\nWhat is the interval we are assuming when calculating the probability?\nIf we are interested in a 30 minute interval the we use \\(\\lambda = 2.5\\)\nIf we change the interval then we change \\(\\lambda\\), for example, if we are interested in a 15 minute interval the we use \\(\\lambda = 1.25\\).\n\n\n\n\n\nCompute the probability that in a particular 30 minute interval, 1 person uses the machine.\nCompute the probability that in a particular 30 minute interval, more than one person uses the machine.\nCompute the probability that 3 or more people use the machine in an hour interval.\nWhat is the 90th percentile value for the number of machine users in an hour interval?\n\n\n\n\nQuestion 3\nA fisherman catches, on average, 24 fish in a 4 hour time period. Let \\(Y\\) be a random variable denoting the number of fish caught per hour hour.\n\nWhat is the \\(E(Y)\\)?\nWhat is the probability that the fisherman catches exactly 5 fish in an hour?\nWhat is the probability that the fisherman catches 7 or more fish in a 2 hour period?"
+  },
+  {
+    "objectID": "content/content_02.html",
+    "href": "content/content_02.html",
+    "title": "Numerical data",
+    "section": "",
+    "text": "Understand how to summarise numerical data\nMeans, medians, ranges, variability, and standard deviations\nLearn how to interpret box plots",
     "crumbs": [
       "Content",
-      "The foundations of data"
+      "Numerical data"
     ]
   },
   {
-    "objectID": "content/content_01.html#learning-objectives",
-    "href": "content/content_01.html#learning-objectives",
-    "title": "The Foundations of Data",
+    "objectID": "content/content_02.html#learning-objectives",
+    "href": "content/content_02.html#learning-objectives",
+    "title": "Numerical data",
     "section": "",
-    "text": "Understand the structure of data\nUnderstand the different types of data\nKnow how to visualise different types of data",
+    "text": "Understand how to summarise numerical data\nMeans, medians, ranges, variability, and standard deviations\nLearn how to interpret box plots",
     "crumbs": [
       "Content",
-      "The foundations of data"
+      "Numerical data"
     ]
   },
   {
-    "objectID": "content/content_01.html#readings",
-    "href": "content/content_01.html#readings",
-    "title": "The Foundations of Data",
+    "objectID": "content/content_02.html#readings",
+    "href": "content/content_02.html#readings",
+    "title": "Numerical data",
     "section": "Readings",
-    "text": "Readings\n\nSuggested readings\n\n Chapter 1 and Chapter 2 of Introduction to Statistics and Data Analysis\n Chapters 1 and 2 of OpenIntro Statistics. This is a slightly more advanced reading, but I would highly recommend!",
+    "text": "Readings\n\nSuggested readings\n\n Chapter 3 of Introduction to Statistics and Data Analysis\n Descriptive statistics in R\n Beginner’s Guide to R : Easy Ways to do basic data analysis",
     "crumbs": [
       "Content",
-      "The foundations of data"
+      "Numerical data"
     ]
   },
   {
-    "objectID": "content/content_01.html#slides",
-    "href": "content/content_01.html#slides",
-    "title": "The Foundations of Data",
+    "objectID": "content/content_02.html#slides",
+    "href": "content/content_02.html#slides",
+    "title": "Numerical data",
     "section": "Slides",
     "text": "Slides\n\n  \n    \n       Open slides in New Window",
     "crumbs": [
       "Content",
-      "The foundations of data"
+      "Numerical data"
     ]
   },
   {
-    "objectID": "content/content_03.html",
-    "href": "content/content_03.html",
-    "title": "Categorical data analysis (I)",
+    "objectID": "content/content_04.html",
+    "href": "content/content_04.html",
+    "title": "Categorical data analysis (II)",
     "section": "",
-    "text": "Understand how to analyse categorical data\nLearn about observed versus expected counts\nUnderstand what the \\(\\chi^2\\) distribution is\nLearn how to perform a basic hypothesis test",
+    "text": "Understand how to further analyse a significant \\(\\chi^2\\) result\nLearn about Pearson residuals and Cramér’s V\nUnderstand what to do when our assumptions are violated",
     "crumbs": [
       "Content",
-      "Categorical data analysis I"
+      "Categorical data analysis II"
     ]
   },
   {
-    "objectID": "content/content_03.html#learning-objectives",
-    "href": "content/content_03.html#learning-objectives",
-    "title": "Categorical data analysis (I)",
+    "objectID": "content/content_04.html#learning-objectives",
+    "href": "content/content_04.html#learning-objectives",
+    "title": "Categorical data analysis (II)",
     "section": "",
-    "text": "Understand how to analyse categorical data\nLearn about observed versus expected counts\nUnderstand what the \\(\\chi^2\\) distribution is\nLearn how to perform a basic hypothesis test",
+    "text": "Understand how to further analyse a significant \\(\\chi^2\\) result\nLearn about Pearson residuals and Cramér’s V\nUnderstand what to do when our assumptions are violated",
     "crumbs": [
       "Content",
-      "Categorical data analysis I"
+      "Categorical data analysis II"
     ]
   },
   {
-    "objectID": "content/content_03.html#readings",
-    "href": "content/content_03.html#readings",
-    "title": "Categorical data analysis (I)",
+    "objectID": "content/content_04.html#readings",
+    "href": "content/content_04.html#readings",
+    "title": "Categorical data analysis (II)",
     "section": "Readings",
     "text": "Readings\n\nSuggested readings\n\n Chapter 4 of Introduction to Statistics and Data Analysis\n Chapter 12 of Learning Statistics with R\n Statistical Tests for Categorical Data using R",
     "crumbs": [
       "Content",
-      "Categorical data analysis I"
+      "Categorical data analysis II"
     ]
   },
   {
-    "objectID": "content/content_03.html#slides",
-    "href": "content/content_03.html#slides",
-    "title": "Categorical data analysis (I)",
+    "objectID": "content/content_04.html#slides",
+    "href": "content/content_04.html#slides",
+    "title": "Categorical data analysis (II)",
     "section": "Slides",
     "text": "Slides\n\n  \n    \n       Open slides in New Window",
     "crumbs": [
       "Content",
-      "Categorical data analysis I"
+      "Categorical data analysis II"
     ]
-  },
-  {
-    "objectID": "content/content_05.html",
-    "href": "content/content_05.html",
-    "title": "Categorical data analysis (III)",
-    "section": "",
-    "text": "How to perform a categorical data analysis when we introduce a third variable\nLearn what Simpsons paradox is\nLearn the difference between odds and odds ratios",
-    "crumbs": [
-      "Content",
-      "Categorical data analysis III"
-    ]
-  },
-  {
-    "objectID": "content/content_05.html#learning-objectives",
-    "href": "content/content_05.html#learning-objectives",
-    "title": "Categorical data analysis (III)",
-    "section": "",
-    "text": "How to perform a categorical data analysis when we introduce a third variable\nLearn what Simpsons paradox is\nLearn the difference between odds and odds ratios",
-    "crumbs": [
-      "Content",
-      "Categorical data analysis III"
-    ]
-  },
-  {
-    "objectID": "content/content_05.html#readings",
-    "href": "content/content_05.html#readings",
-    "title": "Categorical data analysis (III)",
-    "section": "Readings",
-    "text": "Readings\n\nSuggested readings\n\n Chapter 4 of Introduction to Statistics and Data Analysis\n Simpsons paradox",
-    "crumbs": [
-      "Content",
-      "Categorical data analysis III"
-    ]
-  },
-  {
-    "objectID": "content/content_05.html#slides",
-    "href": "content/content_05.html#slides",
-    "title": "Categorical data analysis (III)",
-    "section": "Slides",
-    "text": "Slides\n\n  \n    \n       Open slides in New Window",
-    "crumbs": [
-      "Content",
-      "Categorical data analysis III"
-    ]
-  },
-  {
-    "objectID": "overview/index.html",
-    "href": "overview/index.html",
-    "title": "Welcome to ST201",
-    "section": "",
-    "text": "Welcome to second year and welcome to ST201!\nWe will be covering lots of things data related. This will range from the different types of data, how to summarise and visualise data, perform hypothesis tests, and interpret simple linear regression models\n\n\nOn successful completion of the module, you should be able to\n\nCalculate probabilities in R.\nAnalyse one and two samples using standard parametric methods.\nDisplay data using graphical methods.\nFit, interpret and predict from simple linear regression models.\n\n\n\n\nThis module is 100% continuous assessment which is broken down into three parts\n\n4 assignments in the form of a Moodle quiz (worth 15%)\n1 mid-term exam, which will be held on November 10th @3pm (worth 10%)\n1 final exam, which will be held on January 7th @10am (worth 75%)\n\n\n\n\n\n\n\nImportantDetails for Erasmus students\n\n\n\nIf you are an Erasmus student here for Semester 1 only (September - December), you will not be here for the final exam. With that in mind, your assignments and mid-term will be worth more marks.\nIf you are here for the full academic year (semester 1 AND semester 2), then your grades will follow the same breakdown as listed above.\n\n\n\n\n\n\n\n\nTime\nLocation\nClass Details\n\n\n\n\nTuesday (3pm - 4pm)\nPhysics Hall\nStandard format (slides)\n\n\nThursday (12pm - 1pm)\nPhysics Hall\nPractical class (R code)\n\n\n\n\n\n\n\nThere will be 4 tutorials for this module, one every two weeks.\nThese tutorials will start the week of the 12th October (week 4).\nA sign up sheet will be available for Moodle to pick a time slot. To allow adequate time for the department to organise everything, please ensure you fill out this sheet before 30th September"
-  },
-  {
-    "objectID": "overview/index.html#module-overview",
-    "href": "overview/index.html#module-overview",
-    "title": "Welcome to ST201",
-    "section": "",
-    "text": "Welcome to second year and welcome to ST201!\nWe will be covering lots of things data related. This will range from the different types of data, how to summarise and visualise data, perform hypothesis tests, and interpret simple linear regression models\n\n\nOn successful completion of the module, you should be able to\n\nCalculate probabilities in R.\nAnalyse one and two samples using standard parametric methods.\nDisplay data using graphical methods.\nFit, interpret and predict from simple linear regression models.\n\n\n\n\nThis module is 100% continuous assessment which is broken down into three parts\n\n4 assignments in the form of a Moodle quiz (worth 15%)\n1 mid-term exam, which will be held on November 10th @3pm (worth 10%)\n1 final exam, which will be held on January 7th @10am (worth 75%)\n\n\n\n\n\n\n\nImportantDetails for Erasmus students\n\n\n\nIf you are an Erasmus student here for Semester 1 only (September - December), you will not be here for the final exam. With that in mind, your assignments and mid-term will be worth more marks.\nIf you are here for the full academic year (semester 1 AND semester 2), then your grades will follow the same breakdown as listed above.\n\n\n\n\n\n\n\n\nTime\nLocation\nClass Details\n\n\n\n\nTuesday (3pm - 4pm)\nPhysics Hall\nStandard format (slides)\n\n\nThursday (12pm - 1pm)\nPhysics Hall\nPractical class (R code)\n\n\n\n\n\n\n\nThere will be 4 tutorials for this module, one every two weeks.\nThese tutorials will start the week of the 12th October (week 4).\nA sign up sheet will be available for Moodle to pick a time slot. To allow adequate time for the department to organise everything, please ensure you fill out this sheet before 30th September"
-  },
-  {
-    "objectID": "overview/index.html#slides",
-    "href": "overview/index.html#slides",
-    "title": "Welcome to ST201",
-    "section": "Slides",
-    "text": "Slides\nAll the slides for this module are created using Quarto. In fact, this entire module website is built using Quarto. Personally, I love Quarto. I do just about everything with it! If you every get a chance, do check it out (ok … mini rant over!)\n\nThere are many little hidden things you can do with these slides.\nYou can click in the slides and navigate through them with ← and →.\nIf you type ? (or shift + /) while viewing the slides you can see a list of slide-specific commands (such as like f for fullscreen mode or additionally s for presenter mode if you want to see my notes).\nFinally, if you want to make a PDF of these slides you can press e, followed by ctrl + p.\n\n  \n    \n       Open slides in New Window"
   },
   {
     "objectID": "content/content_06.html",
@@ -429,58 +459,35 @@
     ]
   },
   {
-    "objectID": "content/mid-term.html",
-    "href": "content/mid-term.html",
-    "title": "Mid-term exam",
+    "objectID": "content/index.html",
+    "href": "content/index.html",
+    "title": "Lecture overview",
     "section": "",
-    "text": "ImportantDon’t forget to come to the mid-term exam\n\n\n\n\n Date: 10th November\n Time: 3pm - 4pm\n Location: Physics Hall",
+    "text": "Each class has a set of required readings that should be completed in your own time. For the most part, these readings will mirror what we have covered in the lectures. However, there will be times that I find a cool resource that I believe may be helpful for some of you.\nAll the slides for this module are special HTML files made using both Quarto and Clean Revealjs theme by Grant McDermott. Personally, this is my favourite theme to use for presentations, although I have made a couple of minor tweaks to it myself",
     "crumbs": [
       "Content",
-      "Mid-term exam"
+      "Lecture overview"
     ]
   },
   {
-    "objectID": "content/content_07.html",
-    "href": "content/content_07.html",
-    "title": "Continuous probability distributions",
+    "objectID": "overview/index.html",
+    "href": "overview/index.html",
+    "title": "Welcome to ST201",
     "section": "",
-    "text": "Learn about continuous random variables.\nLearn about PDFs, CDFs, expected values and variances.\nUnderstand and explain different continuous probability distributions",
-    "crumbs": [
-      "Content",
-      "Continuous probability distributions"
-    ]
+    "text": "Welcome to second year and welcome to ST201!\nWe will be covering lots of things data related. This will range from the different types of data, how to summarise and visualise data, perform hypothesis tests, and interpret simple linear regression models\n\n\nOn successful completion of the module, you should be able to\n\nCalculate probabilities in R.\nAnalyse one and two samples using standard parametric methods.\nDisplay data using graphical methods.\nFit, interpret and predict from simple linear regression models.\n\n\n\n\nThis module is 100% continuous assessment which is broken down into three parts\n\n4 assignments in the form of a Moodle quiz (worth 15%)\n1 mid-term exam, which will be held on November 10th @3pm (worth 10%)\n1 final exam, which will be held on January 7th @10am (worth 75%)\n\n\n\n\n\n\n\nImportantDetails for Erasmus students\n\n\n\nIf you are an Erasmus student here for Semester 1 only (September - December), you will not be here for the final exam. With that in mind, your assignments and mid-term will be worth more marks.\nIf you are here for the full academic year (semester 1 AND semester 2), then your grades will follow the same breakdown as listed above.\n\n\n\n\n\n\n\n\nTime\nLocation\nClass Details\n\n\n\n\nTuesday (3pm - 4pm)\nPhysics Hall\nStandard format (slides)\n\n\nThursday (12pm - 1pm)\nPhysics Hall\nPractical class (R code)\n\n\n\n\n\n\n\nThere will be 4 tutorials for this module, one every two weeks.\nThese tutorials will start the week of the 12th October (week 4).\nA sign up sheet will be available for Moodle to pick a time slot. To allow adequate time for the department to organise everything, please ensure you fill out this sheet before 30th September"
   },
   {
-    "objectID": "content/content_07.html#learning-objectives",
-    "href": "content/content_07.html#learning-objectives",
-    "title": "Continuous probability distributions",
+    "objectID": "overview/index.html#module-overview",
+    "href": "overview/index.html#module-overview",
+    "title": "Welcome to ST201",
     "section": "",
-    "text": "Learn about continuous random variables.\nLearn about PDFs, CDFs, expected values and variances.\nUnderstand and explain different continuous probability distributions",
-    "crumbs": [
-      "Content",
-      "Continuous probability distributions"
-    ]
+    "text": "Welcome to second year and welcome to ST201!\nWe will be covering lots of things data related. This will range from the different types of data, how to summarise and visualise data, perform hypothesis tests, and interpret simple linear regression models\n\n\nOn successful completion of the module, you should be able to\n\nCalculate probabilities in R.\nAnalyse one and two samples using standard parametric methods.\nDisplay data using graphical methods.\nFit, interpret and predict from simple linear regression models.\n\n\n\n\nThis module is 100% continuous assessment which is broken down into three parts\n\n4 assignments in the form of a Moodle quiz (worth 15%)\n1 mid-term exam, which will be held on November 10th @3pm (worth 10%)\n1 final exam, which will be held on January 7th @10am (worth 75%)\n\n\n\n\n\n\n\nImportantDetails for Erasmus students\n\n\n\nIf you are an Erasmus student here for Semester 1 only (September - December), you will not be here for the final exam. With that in mind, your assignments and mid-term will be worth more marks.\nIf you are here for the full academic year (semester 1 AND semester 2), then your grades will follow the same breakdown as listed above.\n\n\n\n\n\n\n\n\nTime\nLocation\nClass Details\n\n\n\n\nTuesday (3pm - 4pm)\nPhysics Hall\nStandard format (slides)\n\n\nThursday (12pm - 1pm)\nPhysics Hall\nPractical class (R code)\n\n\n\n\n\n\n\nThere will be 4 tutorials for this module, one every two weeks.\nThese tutorials will start the week of the 12th October (week 4).\nA sign up sheet will be available for Moodle to pick a time slot. To allow adequate time for the department to organise everything, please ensure you fill out this sheet before 30th September"
   },
   {
-    "objectID": "content/content_07.html#readings",
-    "href": "content/content_07.html#readings",
-    "title": "Continuous probability distributions",
-    "section": "Readings",
-    "text": "Readings\n\nSuggested readings\n\n Continuous random variables (Stanford University)\n Continuous random variables",
-    "crumbs": [
-      "Content",
-      "Continuous probability distributions"
-    ]
-  },
-  {
-    "objectID": "content/content_07.html#slides",
-    "href": "content/content_07.html#slides",
-    "title": "Continuous probability distributions",
+    "objectID": "overview/index.html#slides",
+    "href": "overview/index.html#slides",
+    "title": "Welcome to ST201",
     "section": "Slides",
-    "text": "Slides\n\n\n\n\n\n\nWarningSlides will be available on 17th November",
-    "crumbs": [
-      "Content",
-      "Continuous probability distributions"
-    ]
+    "text": "Slides\nAll the slides for this module are created using Quarto. In fact, this entire module website is built using Quarto. Personally, I love Quarto. I do just about everything with it! If you every get a chance, do check it out (ok … mini rant over!)\n\nThere are many little hidden things you can do with these slides.\nYou can click in the slides and navigate through them with ← and →.\nIf you type ? (or shift + /) while viewing the slides you can see a list of slide-specific commands (such as like f for fullscreen mode or additionally s for presenter mode if you want to see my notes).\nFinally, if you want to make a PDF of these slides you can press e, followed by ctrl + p.\n\n  \n    \n       Open slides in New Window"
   }
 ]
