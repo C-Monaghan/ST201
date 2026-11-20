@@ -1,0 +1,714 @@
+---
+title: Single Samples
+subtitle: ST201 - Data analysis
+filters:
+  - code-window
+---
+
+```{r}
+#| label: setup
+
+set.seed(4321)
+
+# Options ----------------------------------------------------------------------
+knitr::opts_chunk$set(fig.align = "center")
+
+# Colours ----------------------------------------------------------------------
+blue_col <- ggokabeito::palette_okabe_ito(2)
+
+# Packages ---------------------------------------------------------------------
+library(dplyr)
+library(ggplot2)
+library(tinytable)
+```
+
+## Lecture overview
+
+<br>
+
+- Why do sample means tend to follow a normal distribution?
+- How can we use a sample to estimate a population mean?
+- What is a confidence interval?
+- When should we use the normal distribution or the $t$-distribution?
+- Can we estimate uncertainty without relying on theoretical distributions?
+
+## The Central Limit Theorem {style="font-size: 75%;"}
+
+### Why do sample means matter?
+
+Suppose we want to understand the average value of a variable in a population.
+
+For example:
+
+- The average height of adults in Ireland.
+- The average examination score of university students.
+- The average weight of products manufactured by a company.
+
+Usually, we cannot measure the entire population. So we collect a sample
+and calculate its mean:
+
+$$
+\bar{X}=\frac{1}{n}\sum_{i=1}^{n}X_i
+$$
+
+::: {.callout-warning}
+## But how much would this sample mean change if we collected a different sample?
+
+This is where the [Central Limit Theorem]{.alert} becomes useful.
+:::
+
+## The Central Limit Theorem
+
+<br>
+
+::: {.callout-important appearance="minimal"}
+Under appropriate conditions, the distribution of sample means becomes
+approximately normal as the sample size increases.
+:::
+
+Imagine repeatedly:
+
+- Taking a random sample from a population.
+- Calculating the sample mean.
+- Repeating this process many times.
+
+::: {.callout-tip}
+## The resulting collection of sample means forms a sampling distribution.
+
+For sufficiently large sample sizes, this distribution will be approximately
+normal, even if the original population is not normally distributed.
+:::
+
+## The Central Limit Theorem
+
+### Let's take an example
+
+Consider rolling a fair six-sided die.
+
+:::: {.columns}
+::: {.column}
+
+The possible outcomes are
+
+$$
+X\in{1,2,3,4,5,6}
+$$
+
+:::
+::: {.column}
+
+Each outcome is equally likely
+
+$$
+P(X = x) = \frac{1}{6}
+$$
+
+:::
+::::
+
+[The population distribution is therefore uniform]{.center}
+
+## The Central Limit Theorem
+
+### Let's take an example
+
+<br>
+
+```{r}
+#| label: chunk-1
+
+die_data <- tibble(face = 1:6, probability = rep(1 / 6, 6))
+
+die_data |>
+  ggplot(aes(x = face, y = probability)) +
+  geom_col(fill = blue_col, colour = "black", width = 0.7) +
+  scale_x_continuous(breaks = 1:6) +
+  labs(
+    title = "Distribution of a fair die roll",
+    x = "Die face",
+    y = "Probability"
+  ) +
+  theme_minimal()
+```
+
+## {style="font-size: 80%;"}
+
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+
+[**What would happen if we rolled the die 100 times and calculated the average result?**]{.center}
+
+---
+
+<br>
+
+::: {.panel-tabset}
+
+## Figure
+
+```{r}
+#| label: chunk-2a
+
+dice_sample <- sample(1:6, size = 100, replace = TRUE)
+
+barplot(
+  table(factor(dice_sample, levels = 1:6)),
+  main = "One sample of 100 dice rolls",
+  xlab = "Die face",
+  ylab = "Frequency",
+  col = blue_col
+)
+```
+
+## Code
+
+```{r}
+#| label: chunk-2b
+#| echo: true
+#| eval: false
+
+dice_sample <- sample(1:6, size = 100, replace = TRUE)
+
+barplot(
+  table(factor(dice_sample, levels = 1:6)),
+  main = "One sample of 100 dice rolls",
+  xlab = "Die face",
+  ylab = "Frequency",
+  col = blue_col
+)
+
+```
+
+:::
+
+## The sampling distribution of the mean
+
+Now let's repeat the process 1,000 times.
+
+Each time:
+
+- Roll a die 100 times.
+- Calculate the sample mean.
+- Store that mean.
+
+We can then examine the distribution of the 1,000 sample means.
+
+---
+
+<br>
+
+```{r}
+#| label: chunk-3
+
+n_samples <- 1000
+sample_size <- 100
+
+sample_means <- replicate(
+  n_samples,
+  mean(sample(1:6, size = sample_size, replace = TRUE))
+)
+
+hist(
+  sample_means,
+  breaks = 25,
+  col = blue_col,
+  main = "Sampling distribution of the mean",
+  xlab = "Sample mean"
+)
+```
+
+---
+
+<br>
+
+```{r}
+#| label: chunk-4
+
+dice_one <- sample(1:6, 100, replace = TRUE)
+
+dice_means <- replicate(
+  1000,
+  mean(sample(1:6, 100, replace = TRUE))
+)
+
+p1 <- ggplot(tibble(x = 1:6), aes(x)) +
+  geom_bar(fill = blue_col, colour = "black", width = 0.7) +
+  scale_x_continuous(breaks = 1:6) +
+  labs(title = "Population distribution", x = "Die roll", y = "Count") +
+  theme_minimal()
+
+p2 <- ggplot(tibble(x = dice_one), aes(x)) +
+  geom_bar(fill = blue_col, colour = "black", width = 0.7) +
+  scale_x_continuous(breaks = 1:6) +
+  labs(title = "One sample", x = "Die roll", y = NULL) +
+  theme_minimal()
+
+p3 <- ggplot(tibble(x = dice_means), aes(x)) +
+  geom_histogram(bins = 25, fill = blue_col, colour = "black") +
+  labs(title = "Sampling distribution", x = "Sample mean", y = NULL) +
+  theme_minimal()
+
+patchwork::wrap_plots(p1, p2, p3)
+```
+
+:::{.notes}
+The population and individual sample distributions are discrete, while the
+sampling distribution of the means is approximately bell-shaped.
+:::
+
+## The Central Limit Theorem {style="font-size: 60%;"}
+
+### Mathematically
+
+If we take independent observations from a population with:
+
+- Mean $\mu$
+- Standard deviation $\sigma$
+
+Then, for a sufficiently large sample size $n$, the sampling distribution of
+the sample mean is approximately:
+
+$$
+\bar{X}\approx N\left(\mu,\frac{\sigma^2}{n}\right)
+$$
+
+Equivalently, its standard error is:
+
+$$
+SE(\bar{X})=\frac{\sigma}{\sqrt{n}}
+$$
+
+::: {.callout-important}
+## The important properties are:
+
+- The mean of the sample means is $\mu$.
+- The standard error of the sample means is $\sigma/\sqrt{n}$.
+- The distribution becomes approximately normal as $n$ increases, under the CLT conditions.
+:::
+
+## What happens as sample size increases? {style="font-size: 70%;"}
+
+The standard error is:
+
+$$
+SE(\bar{X})=\frac{\sigma}{\sqrt{n}}
+$$
+
+[**As the sample size increases, the standard error decreases.**]{.center}
+
+```{r}
+#| label: chunk-5
+
+sample_sizes <- c(10, 25, 50, 100, 250)
+
+se_data <- tibble(
+  n = sample_sizes,
+  standard_error = sqrt(35 / 12) / sqrt(sample_sizes)
+)
+
+se_data |>
+  ggplot(aes(x = n, y = standard_error)) +
+  geom_line(linewidth = 1, colour = blue_col) +
+  geom_point(size = 3, colour = "steelblue") +
+  labs(
+    title = "Effect of sample size on standard error",
+    x = "Sample size",
+    y = "Standard error"
+  ) +
+  theme_minimal()
+```
+
+## Standard errors and confidence intervals {style="font-size: 75%;"}
+
+### Estimating the standard error
+
+In practice, we usually do not know the population standard deviation $\sigma$.
+
+Instead, we estimate it using the sample standard deviation $s$.
+
+$$
+SE(\bar{X})=\frac{s}{\sqrt{n}}
+$$
+
+where:
+
+- $s$ is the sample standard deviation.
+- $n$ is the sample size.
+
+The standard error tells us how much we would expect the sample mean to
+vary across repeated samples.
+
+::: {.callout-important}
+## Remember the difference
+
+- **Standard deviation**: variability of individual observations.
+- **Standard error**: variability of sample means.
+
+:::
+
+## From the sampling distribution to a confidence interval {style="font-size: 75%;"}
+
+Suppose the sampling distribution of the sample mean is approximately normal.
+
+Approximately 95% of the area under the standard normal curve lies
+between -1.96 and 1.96.
+
+$$
+P(-1.96 < Z < 1.96) \approx 0.95
+$$
+
+Using the standard error:
+
+$$
+P\left(-1.96<\frac{\bar{X}-\mu}{SE(\bar{X})} <1.96 \right)\approx0.95
+$$
+
+
+::: {.fragment .fade-up}
+Rearranging gives:
+
+$$
+P\left(\bar{X}-1.96SE(\bar{X}) < \mu < \bar{X}+1.96SE(\bar{X}) \right) \approx 0.95
+$$
+
+This gives us the familiar 95% confidence interval:
+
+$$
+\boxed{
+\bar{X}\pm1.96\frac{s}{\sqrt{n}}
+}
+$$
+
+:::
+
+## Interpreting a 95% confidence interval {style="font-size: 90%;"}
+
+Suppose we calculate a 95% confidence interval for the average examination score
+where the lower bound is $62$ and the upper bound is $68$
+
+<br>
+
+::: {.callout-note}
+## We are 95% confident that the population mean examination score lies between 62 and 68."
+:::
+
+<br>
+
+::: {.callout-tip}
+## What does 95% confidence actually mean?
+
+If we repeatedly collected samples and calculated a 95% confidence interval
+each time, approximately 95% of those intervals would contain the true
+population mean.
+:::
+
+## What if the sample size is small? {style="font-size: 80%;"}
+
+The normal approximation is **useful for large samples**, but what happens
+when we have a **small sample**?
+
+- Suppose we take a random sample from a population that is approximately
+  normally distributed.
+- We want to estimate the population mean,
+  but we do not know the population standard deviation.
+
+
+::: {.callout-tip}
+## In this situation, we use the Student's $t$-distribution.
+
+The test statistic is:
+
+$$
+T=\frac{\bar{X}-\mu}{s/\sqrt{n}}
+$$
+
+Under the assumption of an independent random sample from a normal population:
+
+$$
+T\sim t_{n-1}
+$$
+
+The (t)-distribution accounts for the additional uncertainty from
+estimating the population standard deviation using the sample
+:::
+
+
+## Comparing the normal and t-distributions
+
+<br>
+
+```{r}
+#| label: chunk-6
+
+x <- seq(-4, 4, length.out = 500)
+
+comparison <- tibble(
+  x = x,
+  normal = dnorm(x),
+  t = dt(x, df = 5)
+) |>
+  tidyr::pivot_longer(
+    cols = c(normal, t),
+    names_to = "distribution",
+    values_to = "density"
+  )
+
+ggplot(comparison, aes(x, density, colour = distribution)) +
+  geom_line(linewidth = 1) +
+  ggokabeito::scale_colour_okabe_ito() +
+  labs(
+    title = "Normal distribution versus t-distribution",
+    x = "Value",
+    y = "Density",
+    colour = "Distribution"
+  ) +
+  theme_minimal()
+```
+
+## Confidence intervals using the t-distribution {style="font-size: 70%;"}
+
+::: {.panel-tabset}
+
+## In theory
+
+For a sample from an approximately normal population with unknown standard deviation, the 95% confidence interval for the population mean is:
+
+$$
+\boxed{
+\bar{X}\pm t_{n-1,0.975}\frac{s}{\sqrt{n}}
+}
+$$
+
+where:
+
+- $\bar{X}$ is the sample mean.
+- $s$ is the sample standard deviation.
+- $n$ is the sample size.
+- $t_{n-1,0.975}$ is the 97.5th percentile of the $t$-distribution with $n-1$
+  degrees of freedom.
+
+## In practice
+
+Suppose we have:
+
+
+:::: {.columns}
+
+::: {.column width="33%"}
+
+$$\bar{X} = 20$$
+
+:::
+
+::: {.column width="33%"}
+
+$$s = 4$$
+
+:::
+
+::: {.column width="33%"}
+
+$$n = 10$$
+
+:::
+::::
+
+First, calculate the standard error:
+
+$$
+SE=\frac{4}{\sqrt{10}}
+$$
+
+Then calculate the critical value:
+
+```{r}
+#| label: chunk-7
+#| echo: true
+#| collapse: true
+
+critical_value <- qt(0.975, df = 9)
+critical_value
+```
+
+$$20 \pm 2.262157 \times 4/\sqrt{10} = (17.14, 22.86)$$
+
+## Code
+
+```{r}
+#| label: chunk-7b
+#| echo: true
+#| collapse: true
+
+critical_value <- qt(0.975, df = 9)
+critical_value
+```
+
+```{r}
+#| label: chunk-8b
+#| echo: true
+#| collapse: true
+
+sample_mean <- 20
+sample_sd <- 4
+n <- 10
+
+se <- sample_sd / sqrt(n)
+
+lower <- sample_mean - critical_value * se
+upper <- sample_mean + critical_value * se
+
+round(c(lower, upper), digits = 2)
+```
+
+:::
+
+## Bootstrapping {style="font-size: 80%;"}
+
+So far, we have relied on theoretical probability distributions to
+estimate uncertainty.
+
+But what if:
+
+- The sample is very small?
+- The population distribution is unknown?
+- We are unsure whether a theoretical distribution is appropriate?
+
+**One alternative is bootstrapping**
+
+::: {.callout-warning appearance="minimal"}
+Bootstrapping is a resampling method that uses the observed sample to
+estimate the sampling distribution of a statistic.
+
+Instead of repeatedly sampling from the original population, we repeatedly
+sample from the data we have collected.
+:::
+
+## Bootstrapping {style="font-size: 80%;"}
+
+### How does it work
+
+Suppose we collect a sample of five used cars and record their selling prices.
+
+We want to estimate the average selling price in the wider population.
+
+$$
+X \in \{18300, \; 20100, \; 9600, \; 10700, \; 27000\}
+$$
+
+::: {.callout-note}
+## How to bootstrap
+
+1. Start with the original sample.
+2. Randomly select observations from that sample, with replacement.
+3. Keep the bootstrap sample the same size as the original sample.
+4. Calculate the statistic of interest, such as the mean.
+5. Repeat many times
+
+[**The resulting statistics form a bootstrap distribution**]{.center}
+
+:::
+
+---
+
+<br>
+
+
+::: {.panel-tabset}
+
+## Figure
+
+```{r}
+#| label: chunk-9a
+
+# The data
+car_data <- c(18300, 20100, 9600, 10700, 27000)
+
+# Number of bootstrap samples
+n_boot <- 1000
+
+# Do bootsrapping
+bootstrap_means <- replicate(
+  n_boot,
+  mean(sample(car_data, replace = TRUE))
+)
+
+# Plot
+hist(
+  bootstrap_means,
+  breaks = 25,
+  col = "steelblue",
+  main = "Bootstrap distribution of the mean",
+  xlab = "Bootstrap sample mean"
+)
+```
+
+## Code
+
+```{r}
+#| label: chunk-9
+#| echo: true
+#| eval: false
+
+# The data
+car_data <- c(18300, 20100, 9600, 10700, 27000)
+
+# Number of bootstrap samples
+n_boot <- 1000
+
+# Do bootsrapping
+bootstrap_means <- replicate(
+  n_boot,
+  mean(sample(car_data, replace = TRUE))
+)
+
+# Plot
+hist(
+  bootstrap_means,
+  breaks = 25,
+  col = "steelblue",
+  main = "Bootstrap distribution of the mean",
+  xlab = "Bootstrap sample mean"
+)
+```
+
+:::
+
+## Bootstrap percentile confidence intervals
+
+A percentile confidence interval uses the quantiles of the
+bootstrap distribution.
+
+```{r}
+#| label: chunk-10
+#| echo: true
+#| collapse: true
+
+quantile(bootstrap_means, probs = c(0.025, 0.975))
+```
+
+---
+
+<br>
+<br>
+
+::: {.callout-important}
+
+## Bootstrapping is useful, but it is not a solution to every problem
+
+Bootstrap samples are generated from the original observed data.
+
+The method assumes the [original sample provides a reasonable
+representation of the population]{.alert}.
+
+- Very small samples may not capture the full variability of the population.
+- Unusual observations can have a substantial influence on bootstrap estimates.
+- In our used-car example, we only have five observations.
+- The bootstrap distribution is therefore based on a very limited representation of the population.
+- A larger, more representative original sample would generally provide a more reliable basis for bootstrapping.
+
+:::

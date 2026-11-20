@@ -80,6 +80,10 @@ website:
         href: content\mid-term.qmd
       - text: Continuous probability distributions
         href: content\content_07.qmd
+      - text: Single samples
+        href: content\content_08.qmd
+      - text: Inference for means
+        href: content\content_09.qmd
 
 
 

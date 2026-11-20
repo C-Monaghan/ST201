@@ -1,0 +1,41 @@
+---
+title: Single Samples
+---
+
+```{r}
+#| label: setup
+#| include: false
+
+purrr::map(list.files(here::here("R"), full.names = TRUE), source)
+```
+
+## Learning objectives
+
+- Learn about the Central Limit Theorem.
+- Understand how to calculate confidence intervals.
+- Learn how bootstrapping works
+
+## Readings
+
+### Suggested readings
+
+- {{< fa file-pdf >}} [Central limit theorem: the cornerstone of modern statistics (Kwak & Kim, 2017)](https://pmc.ncbi.nlm.nih.gov/articles/PMC5370305/)
+- {{< fa brands youtube >}} [The Central Limit Theorem](https://www.youtube.com/watch?v=YAlJCEDH2uY)
+- {{< fa link >}} [Confidence intervals](https://www.mathsisfun.com/data/confidence-interval.html)
+- {{< fa brands youtube >}} [Bootstrapping](https://www.youtube.com/watch?v=Xz0x-8-cgaQ)
+
+
+## Slides
+
+::: {.callout-caution}
+## Slides will be available on 24th November
+:::
+
+```{r}
+#| label: add-slides
+#| echo: false
+#| eval: false
+#| results: asis
+
+add_slides(slide_id = "/slides/output/slides_8.html")
+```

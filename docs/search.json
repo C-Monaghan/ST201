@@ -489,5 +489,93 @@
     "title": "Welcome to ST201",
     "section": "Slides",
     "text": "Slides\nAll the slides for this module are created using Quarto. In fact, this entire module website is built using Quarto. Personally, I love Quarto. I do just about everything with it! If you every get a chance, do check it out (ok … mini rant over!)\n\nThere are many little hidden things you can do with these slides.\nYou can click in the slides and navigate through them with ← and →.\nIf you type ? (or shift + /) while viewing the slides you can see a list of slide-specific commands (such as like f for fullscreen mode or additionally s for presenter mode if you want to see my notes).\nFinally, if you want to make a PDF of these slides you can press e, followed by ctrl + p.\n\n  \n    \n       Open slides in New Window"
+  },
+  {
+    "objectID": "content/content_08.html",
+    "href": "content/content_08.html",
+    "title": "Single Samples",
+    "section": "",
+    "text": "Learn about the Central Limit Theorem.\nUnderstand how to calculate confidence intervals.\nLearn how bootstrapping works",
+    "crumbs": [
+      "Content",
+      "Single samples"
+    ]
+  },
+  {
+    "objectID": "content/content_08.html#learning-objectives",
+    "href": "content/content_08.html#learning-objectives",
+    "title": "Single Samples",
+    "section": "",
+    "text": "Learn about the Central Limit Theorem.\nUnderstand how to calculate confidence intervals.\nLearn how bootstrapping works",
+    "crumbs": [
+      "Content",
+      "Single samples"
+    ]
+  },
+  {
+    "objectID": "content/content_08.html#readings",
+    "href": "content/content_08.html#readings",
+    "title": "Single Samples",
+    "section": "Readings",
+    "text": "Readings\n\nSuggested readings\n\n Central limit theorem: the cornerstone of modern statistics (Kwak & Kim, 2017)\n The Central Limit Theorem\n Confidence intervals\n Bootstrapping",
+    "crumbs": [
+      "Content",
+      "Single samples"
+    ]
+  },
+  {
+    "objectID": "content/content_08.html#slides",
+    "href": "content/content_08.html#slides",
+    "title": "Single Samples",
+    "section": "Slides",
+    "text": "Slides\n\n\n\n\n\n\nCautionSlides will be available on 24th November",
+    "crumbs": [
+      "Content",
+      "Single samples"
+    ]
+  },
+  {
+    "objectID": "content/content_09.html",
+    "href": "content/content_09.html",
+    "title": "Inference for Means",
+    "section": "",
+    "text": "Learn how to perform a hypothesis test\nCarry out a one-sample and independent samples t-test",
+    "crumbs": [
+      "Content",
+      "Inference for means"
+    ]
+  },
+  {
+    "objectID": "content/content_09.html#learning-objectives",
+    "href": "content/content_09.html#learning-objectives",
+    "title": "Inference for Means",
+    "section": "",
+    "text": "Learn how to perform a hypothesis test\nCarry out a one-sample and independent samples t-test",
+    "crumbs": [
+      "Content",
+      "Inference for means"
+    ]
+  },
+  {
+    "objectID": "content/content_09.html#readings",
+    "href": "content/content_09.html#readings",
+    "title": "Inference for Means",
+    "section": "Readings",
+    "text": "Readings\n\nSuggested readings\n\n An introduction to t-tests",
+    "crumbs": [
+      "Content",
+      "Inference for means"
+    ]
+  },
+  {
+    "objectID": "content/content_09.html#slides",
+    "href": "content/content_09.html#slides",
+    "title": "Inference for Means",
+    "section": "Slides",
+    "text": "Slides\n\n\n\n\n\n\nCautionSlides will be available on 1st December",
+    "crumbs": [
+      "Content",
+      "Inference for means"
+    ]
   }
 ]

@@ -1,0 +1,836 @@
+---
+title: Statistical Inference for Means
+subtitle: ST201 - Data analysis
+filters:
+  - code-window
+---
+
+```{r}
+#| label: setup
+
+set.seed(4321)
+
+# Options ----------------------------------------------------------------------
+knitr::opts_chunk$set(fig.align = "center")
+
+# Functions --------------------------------------------------------------------
+plot_tails <- function(type) {
+  x <- seq(-4, 4, length.out = 1000)
+  dat <- data.frame(x = x, y = dt(x, df))
+
+  if (type == "Two-sided") {
+    lower <- qt(alpha / 2, df)
+    upper <- qt(1 - alpha / 2, df)
+
+    dat$reject <- dat$x <= lower | dat$x >= upper
+  } else if (type == "Left-sided") {
+    lower <- qt(alpha, df)
+    dat$reject <- dat$x <= lower
+  } else {
+    upper <- qt(1 - alpha, df)
+    dat$reject <- dat$x >= upper
+  }
+
+  dat |>
+    ggplot(aes(x, y)) +
+    geom_area(
+      data = subset(dat, reject) |> filter(x > 0),
+      fill = "red",
+      alpha = 0.4
+    ) +
+    geom_area(
+      data = subset(dat, reject) |> filter(x < 0),
+      fill = "red",
+      alpha = 0.4
+    ) +
+    geom_line(linewidth = 1) +
+    labs(
+      title = type,
+      x = "Test statistic",
+      y = "Density"
+    ) +
+    theme_minimal()
+}
+
+# Tinytable math
+options(tinytable_html_mathjax = TRUE)
+
+# Packages ---------------------------------------------------------------------
+library(dplyr)
+library(ggplot2)
+library(tinytable)
+library(patchwork)
+
+# Data -------------------------------------------------------------------------
+student_sleep <- tibble(
+  name = "sample_data",
+  y = rnorm(n = 100, mean = 6.75, sd = 2.4)
+)
+```
+
+## Plan for today {style="font-size: 80%;"}
+
+In the previous lecture, we looked at estimating population means using confidence intervals.
+
+Today, we will use sample data to test hypotheses about population means.
+
+- One-sample t-tests.
+- Two-sample t-tests.
+- Comparing means using confidence intervals.
+- Carrying out and interpreting these tests in `R`.
+
+::: {.callout-note}
+## The main question is:
+
+Does the evidence from our sample suggest that a population mean,
+or the difference between two population means, is different from
+a particular value?
+:::
+
+## What is a hypothesis test? {style="font-size: 80%;"}
+
+A hypothesis test is a statistical procedure used to assess whether
+[sample data provide evidence against a statement about
+a population parameter]{.alert}.
+
+For example, we might want to investigate:
+
+- Is the average student sleep duration different from 8 hours?
+- Do babies born to mothers who smoke have a different average birth weight?
+- Does a new drug reduce average blood pressure?
+
+::: {.callout-caution appearance="minimal"}
+We use [sample data to assess these questions]{.alert} because we generally
+cannot observe the entire population.
+:::
+
+## What is a hypothesis test? {style="font-size: 70%;"}
+
+### The two hypotheses
+
+Every hypothesis test involves [two competing statements]{.alert}.
+
+<br>
+
+:::: {.columns}
+
+::: {.column}
+
+### Null hypothesis $H_0$
+
+- Represents the starting assumption.
+- Usually describes no difference or no effect.
+
+:::
+
+::: {.column}
+
+### Alternative hypothesis $H_1$
+
+- Represents the claim we are looking for evidence to support.
+- Describes a difference or a particular direction of difference.
+
+:::
+
+::::
+
+
+<br>
+
+::::: {.fragment .fade-up}
+
+For example, suppose we want to investigate whether average student sleep
+differs from 8 hours.
+
+:::: {.columns}
+::: {.column}
+
+### Null hypothesis $H_0$
+
+$$H_0: \mu = 8$$
+
+:::
+::: {.column}
+
+### Alternative hypothesis $H_1$
+
+$$H_1: \mu \neq 8$$
+
+:::
+::::
+
+Here, $\mu$ represents the population mean number of hours of sleep.
+
+:::::
+
+## One-sided and two-sided tests {style="font-size: 80%;"}
+
+The alternative hypothesis determines the type of test we carry out.
+
+<br>
+
+```{r}
+#| label: chunk-1
+
+tribble(
+  ~Type         , ~`Null Hypothesis`         , ~`Alternative Hypothesis`  ,
+  "Two-sided"   , "$H_0: \\mu = \\mu_0$"     , "$H_1: \\mu \\neq \\mu_0$" ,
+  "Left-sided"  , "$H_0: \\mu \\geq \\mu_0$" , "$H_a: \\mu < \\mu_0$"     ,
+  "Right-sided" , "$H_0: \\mu \\leq \\mu_0$" , "$H_a: \\mu > \\mu_0$"     ,
+) |>
+  tt() |>
+  style_tt(i = 0, bold = TRUE)
+```
+
+<br>
+
+- **Two-sided test**: We are interested in whether the mean is different in
+  either direction.
+- **Left-sided test**: We are interested in whether the mean is smaller.
+- **Right-sided test**: We are interested in whether the mean is larger.
+
+::: {.callout-important}
+## The direction of the test must be chosen before examining the results.
+:::
+
+## One-sample t-test {style="font-size: 60%;"}
+
+We begin with a one-sample problem.
+
+:::: {.columns}
+::: {.column width="33%"}
+One sample
+:::
+::: {.column width="33%"}
+A quantitative variable
+:::
+::: {.column width="33%"}
+A hypothesised population mean $(\mu_0)$
+:::
+::::
+
+```{r}
+#| label: chunk-2
+student_sleep |>
+  ggplot(aes(x = name, y = y)) +
+  gghalves::geom_half_boxplot(colour = "black", side = "r", fill = "#009E73") +
+  geom_hline(yintercept = 8, linetype = "dashed", colour = "#999999") +
+  annotate(
+    geom = "text",
+    x = 0.55,
+    y = 8.75,
+    label = "Hypothesised \nmean",
+    size = rel(5),
+    colour = "red"
+  ) +
+  labs(x = NULL, y = "Sample data") +
+  theme_classic() +
+  theme(axis.text.x = element_blank(), axis.ticks.x = element_blank())
+```
+
+## One-sample t-test {style="font-size: 70%;"}
+
+### The one-sample t-test statistic
+
+The test statistic measures how far the sample mean is from the
+hypothesised population mean, relative to the standard error.
+
+$$
+T_{\text{stat}} = \frac{\bar X-\mu_0}{s/\sqrt n}
+$$
+
+Where:
+
+- $\bar X$ = sample mean.
+- $\mu_0$ = hypothesised population mean.
+- $s$ = sample standard deviation.
+- $n$ = sample size.
+- $s/\sqrt n$ = estimated standard error.
+
+If the null hypothesis is true and the assumptions are satisfied:
+
+$$
+T_{\text{stat}} \sim t_{n-1}
+$$
+
+## Conditions for the one-sample t-test {style="font-size: 90%;"}
+
+Before carrying out the test, we should consider the following conditions:
+
+- **Independence**: Observations should be independent of one another.
+- **Distribution**: The population should be approximately normally
+  distributed.
+  - This is particularly true for small samples.
+
+<br>
+
+For larger samples, the t-test is generally more robust to departures
+from normality, provided there are no extreme outliers or substantial
+problems with the data.
+
+::: {.callout-tip}
+## We can use a histogram, boxplot and Q-Q plot to investigate the distribution.
+:::
+
+## How do we make a decision?
+
+We compare the evidence from our sample against a significance level,
+usually: $\alpha=0.05$
+
+The significance level determines how much evidence we require before
+rejecting the null hypothesis.
+
+There are two common approaches:
+
+::: {.callout-note}
+## Compare the test statistic with a critical value
+:::
+::: {.callout-note}
+## Compare the p-value with the significance level
+:::
+
+[We will mainly use the p-value approach]{.alert .center}
+
+## How do we make a decision?
+
+### The rejection regions
+
+The rejection region depends on the alternative hypothesis.
+
+For a significance level of $\alpha=0.05$:
+
+- Two-sided test: 2.5% of the area is in each tail.
+- Left-sided test: 5% of the area is in the left tail.
+- Right-sided test: 5% of the area is in the right tail.
+
+We reject $H_0$ when the test statistic falls into the relevant rejection
+region.
+
+---
+
+<br>
+
+```{r}
+#| label: chunk-3
+
+alpha <- 0.05
+df <- 19
+
+plot_tails("Two-sided") / plot_tails("Left-sided") / plot_tails("Right-sided")
+```
+
+
+## One sample t-test
+
+### An example - Student sleep
+
+Suppose we want to investigate whether students get an average of 8 hours
+of sleep per night.
+
+We collect a random sample of 20 students and obtain:
+
+- Sample size: $n=20$
+- Sample mean: $\bar{x}=6.75$ hours
+- Sample standard deviation: $s=2.40$ hours
+
+::: {.callout-important}
+## Does the average number of hours of sleep differs from 8.
+:::
+
+## {style="font-size: 70%;"}
+
+<br>
+
+::::: {.columns}
+:::: {.column}
+
+### Set up hypothesis {.center}
+
+$$
+\begin{aligned}
+H_0: \mu &= 8 \\
+H_1: \mu &\neq 8
+\end{aligned}
+$$
+
+::::
+
+:::: {.column}
+::: {.fragment .fade-up}
+
+### Calculate standard error {.center}
+
+$$
+SE=\frac{s}{\sqrt n} =\frac{2.40}{\sqrt{20}} \approx 0.537
+$$
+
+:::
+::::
+:::::
+
+<br>
+
+
+::::: {.columns}
+:::: {.column}
+
+::: {.fragment .fade-up}
+
+### Calculate test statistic {.center}
+
+$$
+T_{\text{stat}}= \frac{6.75-8}{0.537} \approx -2.33
+$$
+
+:::
+::::
+
+:::: {.column}
+
+::: {.fragment .fade-up}
+### Make decision {.center}
+
+$$
+T_{\text{stat}}=-2.33,\qquad df=19
+$$
+
+:::
+::::
+:::::
+
+::: {.fragment .fade-down}
+For a two-sided test with $\alpha=0.05$, the critical values are approximately:
+$\pm 2.093$
+
+Since our test statistic is smaller than $-2.093$ we reject the null hypothesis
+:::
+
+:::: {.fragment .fade-up}
+::: {.callout-important}
+## What does this tell us?
+
+There is statistical evidence that the average number of hours of sleep
+among students differs from 8 hours.
+:::
+::::
+
+## What is a p-value {style="font-size: 80%;"}
+
+The p-value measures how unusual our observed test statistic would be if
+the null hypothesis were true.
+
+> The p-value is the probability of obtaining a test statistic at least as
+> extreme as the one observed, assuming the null hypothesis is true.
+
+For a two-sided test, we consider extreme values in both tails of the
+distribution.
+
+A small p-value indicates that the observed data would be relatively
+unusual if the null hypothesis were true.
+
+:::: {.fragment .fade-up}
+
+```{r}
+#| label: chunk-4
+tribble(
+  ~Result    , ~Decision                 ,
+  "p < 0.05" , "Reject the null"         ,
+  "p >= 0.5" , "Fail to reject the null"
+) |>
+  tt() |>
+  style_tt(i = 0, bold = TRUE)
+```
+
+::: {.callout-important appearance="minimal"}
+
+- A small p-value provides evidence against the null hypothesis.
+- A large p-value does not prove that the null hypothesis is true.
+- We should say [fail to reject]{.alert} rather than accept the null hypothesis.
+
+:::
+::::
+
+## Doing a one-sample t-test in R {style="font-size: 80%;"}
+
+R has a built-in function called `t.test()`.
+
+For a one-sample t-test, we specify:
+
+- The sample observations.
+- The hypothesised population mean using mu.
+- The alternative hypothesis, if it is not two-sided.
+
+```{r}
+#| label: chunk-5
+#| echo: true
+#| collapse: true
+
+# Carry out a one-sample t-test
+t.test(student_sleep$y, mu = 8, alternative = "two.sided")
+```
+
+## Confidence intervals and hypothesis tests {style="font-size: 80%;"}
+
+A hypothesis test and a confidence interval are closely related.
+
+For a two-sided test at the 5% significance level:
+
+- If the hypothesised mean is [outside]{.alert} the 95% confidence interval,
+  we reject $H_0$.
+- If the hypothesised mean is [inside]{.alert} the 95% confidence interval, we
+  fail to reject $H_0$.
+
+For the sleep example, the 95% confidence interval is approximately:
+
+$$
+\begin{aligned}
+& \bar{X} \pm \operatorname{T}(\operatorname{SE}) \\[8pt]
+& 6.75 \pm 2.093(0.537) = (5.63,\ 7.87)
+\end{aligned}
+$$
+
+[Since 8 is outside this interval, we reject the null hypothesis]{.center}
+
+## Comparing the means of two independent samples
+
+So far, we have considered a single sample.
+
+We now want to compare the means of two independent groups.
+
+- Average birth weight for babies born to mothers [who smoke]{.alert} and
+  [do not smoke]{.alert}.
+- Average blood pressure for patients receiving a [treatment]{.alert}
+  or [placebo]{.alert}.
+- Average exam scores for students [taught using two different methods]{.alert}.
+
+[We want to investigate whether the population means differ]{.alert .center}
+
+## Setting up our hypotheses
+
+<br>
+
+```{r}
+#| label: chunk-6
+
+tribble(
+  ~Type         , ~`Null Hypothesis`           , ~`Alternative Hypothesis`    ,
+  "Two-sided"   , "$H_0: \\mu_x = \\mu_y$"     , "$H_1: \\mu_x \\neq \\mu_y$" ,
+  "Left-sided"  , "$H_0: \\mu_x \\geq \\mu_y$" , "$H_a: \\mu_x < \\mu_y$"     ,
+  "Right-sided" , "$H_0: \\mu_x \\leq \\mu_y$" , "$H_a: \\mu_x > \\mu_y$"     ,
+) |>
+  tt() |>
+  style_tt(i = 0, bold = TRUE)
+```
+
+OR
+
+$$
+\begin{aligned}
+H_0 &: \mu_x - \mu_y = 0 \\
+H_a &:\mu_x-\mu_y \neq 0
+\end{aligned}
+$$
+
+---
+
+<br>
+
+```{r}
+#| label: chunk-7
+
+tibble(
+  group = rep(c("Smoke", "Doesn't smoke"), each = 125),
+  y = case_when(
+    group == "Smoke" ~ rnorm(n = 250, mean = 5, sd = 1),
+    group == "Doesn't smoke" ~ rnorm(n = 250, mean = 2, sd = 0.5),
+  )
+) |>
+  ggplot(aes(y)) +
+  geom_histogram(fill = "steelblue4", colour = "black", alpha = 0.5) +
+  labs(x = NULL, y = NULL) +
+  facet_wrap(~group) +
+  theme_classic()
+```
+
+## The two-sample $t$-test {style="font-size: 80%;"}
+
+To compare two independent population means, we calculate:
+
+$$
+T_{\text{stat}}= \frac{(\bar X-\bar Y)-0}{SE}
+$$
+
+The standard error depends on the assumptions we make about the population variances.
+
+There are two common approaches:
+
+- **Pooled two-sample t-test**: Assumes the two population variances are equal
+- **Welch two-sample t-test**: Does not assume the two population variances are equal
+
+## The two-sample $t$-test {style="font-size: 80%;"}
+
+### Pooled two-sample $t$-test
+
+If we assume the two populations have the same variance, we can combine
+the sample variances to calculate a pooled estimate.
+
+This is called the [pooled variance]{.alert}
+
+$$
+s_p^2=\frac{(n-1)s_x^2+(m-1)s_y^2} {n+m-2}
+$$
+
+Where:
+
+- $s_X^2$ = sample variance of group X
+- $s_Y^2$ = sample variance of group Y
+- $n$ = sample size of group X
+- $m$ = sample size of group Y
+
+The pooled variance uses information from both samples
+
+## The two-sample $t$-test {style="font-size: 80%;"}
+
+### Pooled two-sample $t$-test
+
+Once we have calculated the pooled variance, the test statistic is:
+
+$$
+T_{\text{stat}} = \frac{\bar X-\bar Y} {s_p\sqrt{\frac{1}{n}+\frac{1}{m}}}
+$$
+
+
+:::: {.columns}
+
+::: {.column}
+
+$$
+T_{\text{stat}}\sim t_{n+m-2}
+$$
+
+:::
+::: {.column}
+
+$$
+df = n + m - 2
+$$
+
+:::
+::::
+
+::: {.callout-important}
+
+## Conditions:
+
+- The two samples are independent
+- Observations within each sample are independent
+- The populations are approximately normal, particularly for small samples
+
+:::
+
+## The two-sample $t$-test {style="font-size: 80%;"}
+
+### Welch two-sample t-test
+
+In practice, we do not always have good reason to assume that the population
+variances are equal.
+
+Instead, we can use Welch's two-sample t-test.
+
+The test statistic is:
+
+$$
+T_{\text{stat}}= \frac{\bar X-\bar Y} {\sqrt{\frac{s_X^2}{n}+\frac{s_Y^2}{m}}}
+$$
+
+
+::: {.callout-note}
+## The standard error is calculated separately for each group and then combined
+:::
+
+---
+
+<br>
+<br>
+
+In R, `t.test()` uses Welch's test by default.
+
+We can request the pooled test by setting:
+
+```{r}
+#| label: chunk-8
+#| echo: true
+#| eval: false
+
+var.equal <- TRUE
+
+# For example
+t.test(my_data, alternative = "two.sided", var.equal = TRUE)
+```
+
+## Let's do an example {style="font-size: 80%;"}
+
+Every year, the US releases a dataset containing information about births
+recorded across the country.
+
+We will use a sample of 1,000 births from the 2014 dataset.
+
+We are interested in whether babies born to mothers who smoke have a
+different average birth weight from babies born to mothers who do not smoke.
+
+```{r}
+#| echo: true
+#| collapse: true
+openintro::births14
+```
+
+---
+
+<br>
+
+```{r}
+openintro::births14 |>
+  select(habit, weight) |>
+  mutate(
+    habit = factor(
+      habit,
+      levels = c("nonsmoker", "smoker"),
+      labels = c("Non-Smoker", "Smoker")
+    )
+  ) |>
+  tidyr::drop_na() |>
+  ggplot(aes(x = weight, fill = habit)) +
+  geom_density(alpha = 0.5) +
+  ggokabeito::scale_fill_okabe_ito() +
+  labs(x = "Birth weight", y = "Density", fill = "Smoking habit") +
+  theme_classic()
+```
+
+## Setting up the hypothesis
+
+- $\mu_S$ = population mean birth weight for babies born to mothers who smoke.
+- $\mu_N$ = population mean birth weight for babies born to mothers who do not
+  smoke.
+
+We want to investigate whether there is a difference between the two
+population means.
+
+:::: {.columns}
+::: {.column}
+
+### Null hypothesis
+
+$$
+H_0:\mu_S = \mu_N
+$$
+
+:::
+
+::: {.column}
+
+### Alternative hypothesis
+
+$$
+H_a:\mu_S\neq\mu_N
+$$
+
+:::
+::::
+
+::: {.callout-tip}
+## This is a two sided test
+
+We are interested in whether average birth weight differs between the
+two groups.
+:::
+
+---
+
+<br>
+
+```{r}
+openintro::births14 |>
+  tidyr::drop_na() |>
+  ggplot(aes(x = habit, y = weight, fill = habit)) +
+  geom_boxplot() +
+  scale_x_discrete(labels = c("Non-Smoker", "Smoker")) +
+  ggokabeito::scale_fill_okabe_ito() +
+  labs(x = NULL, y = "Baby weight (kg)") +
+  guides(fill = "none") +
+  theme_classic()
+
+```
+
+---
+
+```{r}
+#| echo: true
+#| collapse: true
+t.test(
+  weight ~ habit,
+  data = openintro::births14,
+  alternative = "two.sided",
+  var.equal = FALSE
+)
+```
+
+
+::: {.callout-caution appearance="minimal"}
+The data provide statistical evidence of a difference in average birth weight
+between babies born to mothers who smoked during pregnancy and babies born to
+mothers who did not smoke.
+:::
+
+## Confidence intervals for the difference between two means {style="font-size: 80%;"}
+
+We can also estimate the difference between two population means using a
+confidence interval.
+
+$$
+\mu_d=\mu_X-\mu_Y \qquad \qquad \hat{\mu}_d = \bar{X} - \bar{Y}
+$$
+
+$$
+(\bar X-\bar Y)\pm t_{\nu,1-\alpha/2}\times SE
+$$
+
+- $\bar X-\bar Y$ is the observed difference between sample means
+- $SE$ is the standard error of the difference
+- $t_{\nu,1-\alpha/2}$ is the relevant critical value from the t-distribution
+
+## Summary {style="font-size: 70%;"}
+
+Today we have learned how to carry out hypothesis tests for population means.
+
+:::: {.columns}
+::: {.column}
+
+### One-sample t-test
+
+- Compares one sample mean with a hypothesised population mean.
+- Uses the sample standard deviation to estimate the standard error.
+- Has $n-1$ degrees of freedom.
+
+:::
+::: {.column}
+
+### Two-sample t-test
+
+- Compares the means of two independent groups.
+- Can use a pooled test if equal population variances are assumed.
+- Can use Welch's test if equal population variances are not assumed.
+
+:::
+::::
+
+::: {.callout-important}
+## Remember
+
+- Set up the hypotheses before carrying out the test.
+- Choose the correct direction of the alternative hypothesis.
+- Check the assumptions.
+- Use the p-value to make a decision.
+- Interpret the result in the context of the research question.
+- Use confidence intervals to understand the size and uncertainty of the
+  estimated difference.
+:::
