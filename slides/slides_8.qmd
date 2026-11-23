@@ -1,6 +1,8 @@
 ---
 title: Single Samples
 subtitle: ST201 - Data analysis
+revealjs-plugins:
+  - tabset
 filters:
   - code-window
 ---
@@ -20,6 +22,14 @@ blue_col <- ggokabeito::palette_okabe_ito(2)
 library(dplyr)
 library(ggplot2)
 library(tinytable)
+
+# Some data simulation
+dice_one <- sample(1:6, 100, replace = TRUE)
+
+dice_means <- replicate(
+  1000,
+  mean(sample(1:6, 100, replace = TRUE))
+)
 ```
 
 ## Lecture overview
@@ -227,14 +237,33 @@ hist(
 <br>
 
 ```{r}
+#| label: chunk-sup-1
+p <- dice_means |>
+  as_tibble() |>
+  mutate(id = row_number()) |>
+  tidyr::crossing(frame = seq(1, 1000, by = 10)) |>
+  filter(id <= frame) |>
+  ggplot(aes(x = value)) +
+  geom_histogram(bins = 25, fill = blue_col, colour = "black") +
+  labs(title = "Sampling distribution", x = "Sample mean", y = NULL) +
+  theme_minimal() +
+  gganimate::transition_states(
+    states = frame,
+    transition_length = 2,
+    state_length = 1
+  ) +
+  gganimate::ease_aes("cubic-in-out")
+
+gganimate::animate(p, nframes = 200, fps = 20)
+```
+
+
+---
+
+<br>
+
+```{r}
 #| label: chunk-4
-
-dice_one <- sample(1:6, 100, replace = TRUE)
-
-dice_means <- replicate(
-  1000,
-  mean(sample(1:6, 100, replace = TRUE))
-)
 
 p1 <- ggplot(tibble(x = 1:6), aes(x)) +
   geom_bar(fill = blue_col, colour = "black", width = 0.7) +
@@ -518,12 +547,18 @@ $$n = 10$$
 :::
 ::::
 
+
+::: {.fragment .fade-up}
 First, calculate the standard error:
 
 $$
 SE=\frac{4}{\sqrt{10}}
 $$
 
+:::
+
+
+::: {.fragment .fade-up}
 Then calculate the critical value:
 
 ```{r}
@@ -536,6 +571,7 @@ critical_value
 ```
 
 $$20 \pm 2.262157 \times 4/\sqrt{10} = (17.14, 22.86)$$
+:::
 
 ## Code
 

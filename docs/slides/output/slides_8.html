@@ -437,6 +437,11 @@ P(X = x) = \frac{1}{6}
 
 <p><br></p>
 
+<img data-src="slides_8_files/figure-revealjs/chunk-sup-1-1.gif" class="quarto-figure quarto-figure-center r-stretch"></section>
+<section class="slide level2">
+
+<p><br></p>
+
 <img data-src="slides_8_files/figure-revealjs/chunk-4-1.png" class="quarto-figure quarto-figure-center r-stretch" width="960"><aside class="notes">
 <p>The population and individual sample distributions are discrete, while the sampling distribution of the means is approximately bell-shaped.</p>
 <style type="text/css">
@@ -645,10 +650,13 @@ T\sim t_{n-1}
 </div><div class="column" style="width:33%;">
 <p><span class="math display">\[n = 10\]</span></p>
 </div></div>
+<div class="fragment fade-up">
 <p>First, calculate the standard error:</p>
 <p><span class="math display">\[
 SE=\frac{4}{\sqrt{10}}
 \]</span></p>
+</div>
+<div class="fragment fade-up">
 <p>Then calculate the critical value:</p>
 <div class="cell" data-layout-align="center">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb2" data-filename="r"><pre class="sourceCode numberSource r cw-auto number-lines code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="" aria-label="1"></a>critical_value <span class="ot">&lt;-</span> <span class="fu">qt</span>(<span class="fl">0.975</span>, <span class="at">df =</span> <span class="dv">9</span>)</span>
@@ -656,6 +664,7 @@ SE=\frac{4}{\sqrt{10}}
 <span id="cb2-3"><a href="" aria-label="3"></a><span class="do">## [1] 2.262157</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <p><span class="math display">\[20 \pm 2.262157 \times 4/\sqrt{10} = (17.14, 22.86)\]</span></p>
+</div>
 </div>
 <div id="tabset-2-3">
 <div class="cell" data-layout-align="center">
@@ -821,6 +830,7 @@ X \in \{18300, \; 20100, \; 9600, \; 10700, \; 27000\}
   <script src="slides_8_files/libs/revealjs/plugin/pdf-export/pdfexport.js"></script>
   <script src="slides_8_files/libs/revealjs/plugin/reveal-menu/menu.js"></script>
   <script src="slides_8_files/libs/revealjs/plugin/reveal-menu/quarto-menu.js"></script>
+  <script src="slides_8_files/libs/revealjs/plugin/reveal-js-tabset/tabset.js"></script>
   <script src="slides_8_files/libs/revealjs/plugin/quarto-support/support.js"></script>
   
 
@@ -1013,7 +1023,7 @@ X \in \{18300, \; 20100, \; 9600, \; 10700, \; 27000\}
         },
 
         // reveal.js plugins
-        plugins: [QuartoLineHighlight, PdfExport, RevealMenu, QuartoSupport,
+        plugins: [QuartoLineHighlight, PdfExport, RevealMenu, RevealJsTabset, QuartoSupport,
 
           RevealMath,
           RevealNotes,
