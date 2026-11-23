@@ -1,0 +1,178 @@
+---
+title: Practice Questions Sheet 4
+subtitle: ST201 - Data Analysis
+author: Cormac Monaghan
+description: |
+  This tutorial introduces continuous probability distributions,
+  sampling distributions, and confidence intervals.
+page-layout: full
+format:
+  st201_assignment-html: default
+  st201_assignment-typst: default
+---
+
+```{r}
+#| label: setup
+#| include: false
+
+# Computations & figures -------------------------------------------------------
+knitr::opts_chunk$set(
+  warning = FALSE,
+  message = FALSE,
+
+  fig.align = "center",
+  fig.retina = 3,
+  fig.width = 6,
+  fig.height = 4,
+  out.width = "100%",
+  collapse = TRUE
+)
+```
+
+:::: {.content-visible when-format="html"}
+::: {.callout-important}
+## Please complete this assignment before the tutorial on the week of 30th November
+:::
+::::
+
+:::{.content-visible when-format="typst"}
+```{=typst}
+
+#block(width: 100%, stroke: rgb("#667477"), inset: 1.5em, outset: 0.25em)[
+  #text(size: 10pt, weight: "bold")[
+    Please complete this assignment before the tutorial on the week of 30th November
+]
+]
+```
+:::
+
+\newpage
+
+# Question 1
+
+Suppose the average time between checkouts for a supermarket cashier is
+3 minutes.
+
+Let $X$ represent the time (in minutes) between checkouts.
+Assume that $X$ follows an **exponential distribution**.
+
+Recall that the exponential distribution has probability density function
+
+$$
+f(x)=\lambda e^{-\lambda x}, \quad x\geq 0,
+$$
+
+where $\lambda$ is the rate parameter.
+
+The mean of an exponential distribution is
+
+$$
+E(X)=\frac{1}{\lambda}.
+$$
+
+::::{.content-visible when-format="html"}
+::: {.callout-note collapse="true"}
+## For exponential distributions we can use `dexp()`, `pexp()`, `qexp()` and `rexp()`
+:::
+::::
+
+1. What is the value of the rate parameter, (\lambda)?
+2. Use `rexp()` to simulate 10,000 values from this distribution.
+   Store the results as an object and plot the density curve of your
+   simulated values.
+3. Calculate the probability that the time between checkouts is less than or equal to 2 minutes.
+4. Calculate the probability that the time between checkouts is greater than 5 minutes.
+5. What is the 80th percentile of this distribution? Interpret your answer in the context of the supermarket.
+
+\newpage
+
+# Question 2
+
+Suppose a random variable (X) follows a standard normal distribution:
+
+$$
+X\sim N(0,1).
+$$
+
+1. Use `rnorm()` to simulate 10,000 values from this distribution.
+   Store the results as an object and plot density curve of your
+   simulated values.
+2. Using `pnorm()`, calculate the following probabilities:
+   - The probability that $X$ is below -1.
+   - The probability that $X$ is above 2.
+   - The probability that $X$ is between -1 and 2.
+3. Plot the cumulative distribution function for a sequence of values between
+   -4 and 4, using intervals of 0.1.
+   - *Hint*: Use `seq()` to create the sequence and `pnorm()` to calculate the
+     cumulative probabilities.
+4. Using `qnorm()`, calculate the following percentiles:
+   - The median (50th percentile).
+   - The lower quartile (25th percentile).
+   - The upper quartile (75th percentile).
+   - The 2.5th percentile.
+   - The 97.5th percentile.
+   - What do you notice about the symmetry of these values?
+5. Use `quantile()` to calculate the same five percentiles using your
+   simulated values from part (a).
+   - How do these compare with the theoretical percentiles from part (d)?
+     Explain why they might not be exactly the same.
+
+\newpage
+
+# Question 3
+
+IQ scores are designed to have a population mean of 100 and a population
+standard deviation of 15. Assume that IQ scores follow a normal distribution:
+
+$$
+X\sim N(100,15^2).
+$$
+
+We are interested in understanding how the mean IQ score changes when we
+repeatedly take samples from this population.
+
+1. Use `rnorm()` to randomly sample 5 IQ scores from this population.
+   - Store the results in an object called IQ_sample_1.
+   - Calculate the mean of your sample.
+2. Repeat the experiment by randomly sampling 5 new IQ scores.
+   - Store these values in IQ_sample_2.
+   - Calculate the mean of this second sample.
+3. Are the two sample means identical? Why or why not?
+4. Now repeat this experiment 1,000 times.
+   - Each time, randomly sample 5 IQ scores and calculate the sample mean.
+   - Store the 1,000 sample means in an object called IQ_means.
+   - *Hint*: You can use `replicate()` to repeat an experiment.
+5. Plot a histogram of the 1,000 sample means.
+   - Make sure that the histogram is on the density scale.
+   - Overlay a normal density curve representing the theoretical sampling distribution of the sample mean.
+   - Compare the distribution of sample means with the original population distribution of IQ scores.
+6. The standard error of the sample mean is $SE(\bar X)=\frac{\sigma}{\sqrt{n}}$.
+   - Calculate the standard error when the sample size is 5.
+7. Suppose we increased the sample size from 5 to 100.
+   - What would happen to the standard error?
+   - How would the distribution of sample means change?
+   - Would the distribution become more or less concentrated around the population mean?
+   - Explain your answers
+
+\newpage
+
+# Question 4
+
+Suppose we collect IQ scores from 40 students at Maynooth University.
+
+The results of this study are available in the file `IQ_dat.rds` in the
+ST201 folder on the RStudio Server.
+
+We want to use this sample to estimate the average IQ score of the population.
+
+1. Load the dataset into R and examine its structure.
+   - How many observations are in the dataset?
+2. Calculate the sample mean and sample standard deviation of the IQ scores.
+3. Calculate a 95% confidence interval for the population mean IQ using
+   `t.test()`.
+4. What are the lower and upper limits of your confidence interval?
+5. Interpret the confidence interval in the context of the study.
+6. Explain why we use a t-distribution rather than a standard normal
+   distribution when calculating this confidence interval.
+7. Suppose we increased the sample size from 40 to 100 students.
+   What would you expect to happen to the width of the confidence interval? Explain your answer.
