@@ -32,287 +32,231 @@
     ]
   },
   {
-    "objectID": "content/content_09.html",
-    "href": "content/content_09.html",
-    "title": "Inference for Means",
+    "objectID": "content/content_10.html",
+    "href": "content/content_10.html",
+    "title": "Linear regression",
     "section": "",
-    "text": "Learn how to perform a hypothesis test\nCarry out a one-sample and independent samples t-test",
+    "text": "Distinguish correlation from linear regression\nUnderstand the fundamental properties of linear regression\nLearn how to check the assumptions of a linear model",
     "crumbs": [
       "Content",
-      "Inference for means"
+      "Linear regression"
     ]
   },
   {
-    "objectID": "content/content_09.html#learning-objectives",
-    "href": "content/content_09.html#learning-objectives",
-    "title": "Inference for Means",
+    "objectID": "content/content_10.html#learning-objectives",
+    "href": "content/content_10.html#learning-objectives",
+    "title": "Linear regression",
     "section": "",
-    "text": "Learn how to perform a hypothesis test\nCarry out a one-sample and independent samples t-test",
+    "text": "Distinguish correlation from linear regression\nUnderstand the fundamental properties of linear regression\nLearn how to check the assumptions of a linear model",
     "crumbs": [
       "Content",
-      "Inference for means"
+      "Linear regression"
     ]
   },
   {
-    "objectID": "content/content_09.html#readings",
-    "href": "content/content_09.html#readings",
-    "title": "Inference for Means",
+    "objectID": "content/content_10.html#readings",
+    "href": "content/content_10.html#readings",
+    "title": "Linear regression",
     "section": "Readings",
-    "text": "Readings\n\nSuggested readings\n\n An introduction to t-tests",
+    "text": "Readings\n\nSuggested readings\n\n Linear models in statistics (Chapter 6)\n Simple Linear Regression: An Easy and Clear Beginner’s Guide",
     "crumbs": [
       "Content",
-      "Inference for means"
+      "Linear regression"
     ]
   },
   {
-    "objectID": "content/content_09.html#slides",
-    "href": "content/content_09.html#slides",
-    "title": "Inference for Means",
+    "objectID": "content/content_10.html#slides",
+    "href": "content/content_10.html#slides",
+    "title": "Linear regression",
     "section": "Slides",
-    "text": "Slides\n\n\n\n\n\n\nCautionSlides will be available on 1st December",
+    "text": "Slides\n\n\n\n\n\n\nCautionSlides will be available on 8th December",
     "crumbs": [
       "Content",
-      "Inference for means"
+      "Linear regression"
     ]
   },
   {
-    "objectID": "content/content_07.html",
-    "href": "content/content_07.html",
-    "title": "Continuous probability distributions",
+    "objectID": "content/content_08.html",
+    "href": "content/content_08.html",
+    "title": "Single Samples",
     "section": "",
-    "text": "Learn about continuous random variables.\nLearn about PDFs, CDFs, expected values and variances.\nUnderstand and explain different continuous probability distributions",
+    "text": "Learn about the Central Limit Theorem.\nUnderstand how to calculate confidence intervals.\nLearn how bootstrapping works",
     "crumbs": [
       "Content",
-      "Continuous probability distributions"
+      "Single samples"
     ]
   },
   {
-    "objectID": "content/content_07.html#learning-objectives",
-    "href": "content/content_07.html#learning-objectives",
-    "title": "Continuous probability distributions",
+    "objectID": "content/content_08.html#learning-objectives",
+    "href": "content/content_08.html#learning-objectives",
+    "title": "Single Samples",
     "section": "",
-    "text": "Learn about continuous random variables.\nLearn about PDFs, CDFs, expected values and variances.\nUnderstand and explain different continuous probability distributions",
+    "text": "Learn about the Central Limit Theorem.\nUnderstand how to calculate confidence intervals.\nLearn how bootstrapping works",
     "crumbs": [
       "Content",
-      "Continuous probability distributions"
+      "Single samples"
     ]
   },
   {
-    "objectID": "content/content_07.html#readings",
-    "href": "content/content_07.html#readings",
-    "title": "Continuous probability distributions",
+    "objectID": "content/content_08.html#readings",
+    "href": "content/content_08.html#readings",
+    "title": "Single Samples",
     "section": "Readings",
-    "text": "Readings\n\nSuggested readings\n\n Continuous random variables (Stanford University)\n Continuous random variables",
+    "text": "Readings\n\nSuggested readings\n\n Central limit theorem: the cornerstone of modern statistics (Kwak & Kim, 2017)\n The Central Limit Theorem\n Confidence intervals\n Bootstrapping",
     "crumbs": [
       "Content",
-      "Continuous probability distributions"
+      "Single samples"
     ]
   },
   {
-    "objectID": "content/content_07.html#slides",
-    "href": "content/content_07.html#slides",
-    "title": "Continuous probability distributions",
-    "section": "Slides",
-    "text": "Slides\n\n  \n    \n       Open slides in New Window",
-    "crumbs": [
-      "Content",
-      "Continuous probability distributions"
-    ]
-  },
-  {
-    "objectID": "content/content_05.html",
-    "href": "content/content_05.html",
-    "title": "Categorical data analysis (III)",
-    "section": "",
-    "text": "How to perform a categorical data analysis when we introduce a third variable\nLearn what Simpsons paradox is\nLearn the difference between odds and odds ratios",
-    "crumbs": [
-      "Content",
-      "Categorical data analysis III"
-    ]
-  },
-  {
-    "objectID": "content/content_05.html#learning-objectives",
-    "href": "content/content_05.html#learning-objectives",
-    "title": "Categorical data analysis (III)",
-    "section": "",
-    "text": "How to perform a categorical data analysis when we introduce a third variable\nLearn what Simpsons paradox is\nLearn the difference between odds and odds ratios",
-    "crumbs": [
-      "Content",
-      "Categorical data analysis III"
-    ]
-  },
-  {
-    "objectID": "content/content_05.html#readings",
-    "href": "content/content_05.html#readings",
-    "title": "Categorical data analysis (III)",
-    "section": "Readings",
-    "text": "Readings\n\nSuggested readings\n\n Chapter 4 of Introduction to Statistics and Data Analysis\n Simpsons paradox",
-    "crumbs": [
-      "Content",
-      "Categorical data analysis III"
-    ]
-  },
-  {
-    "objectID": "content/content_05.html#slides",
-    "href": "content/content_05.html#slides",
-    "title": "Categorical data analysis (III)",
+    "objectID": "content/content_08.html#slides",
+    "href": "content/content_08.html#slides",
+    "title": "Single Samples",
     "section": "Slides",
     "text": "Slides\n\n  \n    \n       Open slides in New Window",
     "crumbs": [
       "Content",
-      "Categorical data analysis III"
+      "Single samples"
     ]
   },
   {
-    "objectID": "content/content_03.html",
-    "href": "content/content_03.html",
-    "title": "Categorical data analysis (I)",
+    "objectID": "content/content_06.html",
+    "href": "content/content_06.html",
+    "title": "Discrete probability distributions",
     "section": "",
-    "text": "Understand how to analyse categorical data\nLearn about observed versus expected counts\nUnderstand what the \\(\\chi^2\\) distribution is\nLearn how to perform a basic hypothesis test",
+    "text": "Learn about discrete random variables.\nLearn about PDFs, CDFs, expected values and variances.\nUnderstand and explain different discrete probability distributions",
     "crumbs": [
       "Content",
-      "Categorical data analysis I"
+      "Discrete probability distributions"
     ]
   },
   {
-    "objectID": "content/content_03.html#learning-objectives",
-    "href": "content/content_03.html#learning-objectives",
-    "title": "Categorical data analysis (I)",
+    "objectID": "content/content_06.html#learning-objectives",
+    "href": "content/content_06.html#learning-objectives",
+    "title": "Discrete probability distributions",
     "section": "",
-    "text": "Understand how to analyse categorical data\nLearn about observed versus expected counts\nUnderstand what the \\(\\chi^2\\) distribution is\nLearn how to perform a basic hypothesis test",
+    "text": "Learn about discrete random variables.\nLearn about PDFs, CDFs, expected values and variances.\nUnderstand and explain different discrete probability distributions",
     "crumbs": [
       "Content",
-      "Categorical data analysis I"
+      "Discrete probability distributions"
     ]
   },
   {
-    "objectID": "content/content_03.html#readings",
-    "href": "content/content_03.html#readings",
-    "title": "Categorical data analysis (I)",
+    "objectID": "content/content_06.html#readings",
+    "href": "content/content_06.html#readings",
+    "title": "Discrete probability distributions",
+    "section": "Readings",
+    "text": "Readings\n\nSuggested readings\n\n Discrete random variables\n Discrete probability distributions",
+    "crumbs": [
+      "Content",
+      "Discrete probability distributions"
+    ]
+  },
+  {
+    "objectID": "content/content_06.html#slides",
+    "href": "content/content_06.html#slides",
+    "title": "Discrete probability distributions",
+    "section": "Slides",
+    "text": "Slides\n\n  \n    \n       Open slides in New Window",
+    "crumbs": [
+      "Content",
+      "Discrete probability distributions"
+    ]
+  },
+  {
+    "objectID": "content/content_04.html",
+    "href": "content/content_04.html",
+    "title": "Categorical data analysis (II)",
+    "section": "",
+    "text": "Understand how to further analyse a significant \\(\\chi^2\\) result\nLearn about Pearson residuals and Cramér’s V\nUnderstand what to do when our assumptions are violated",
+    "crumbs": [
+      "Content",
+      "Categorical data analysis II"
+    ]
+  },
+  {
+    "objectID": "content/content_04.html#learning-objectives",
+    "href": "content/content_04.html#learning-objectives",
+    "title": "Categorical data analysis (II)",
+    "section": "",
+    "text": "Understand how to further analyse a significant \\(\\chi^2\\) result\nLearn about Pearson residuals and Cramér’s V\nUnderstand what to do when our assumptions are violated",
+    "crumbs": [
+      "Content",
+      "Categorical data analysis II"
+    ]
+  },
+  {
+    "objectID": "content/content_04.html#readings",
+    "href": "content/content_04.html#readings",
+    "title": "Categorical data analysis (II)",
     "section": "Readings",
     "text": "Readings\n\nSuggested readings\n\n Chapter 4 of Introduction to Statistics and Data Analysis\n Chapter 12 of Learning Statistics with R\n Statistical Tests for Categorical Data using R",
     "crumbs": [
       "Content",
-      "Categorical data analysis I"
+      "Categorical data analysis II"
     ]
   },
   {
-    "objectID": "content/content_03.html#slides",
-    "href": "content/content_03.html#slides",
-    "title": "Categorical data analysis (I)",
+    "objectID": "content/content_04.html#slides",
+    "href": "content/content_04.html#slides",
+    "title": "Categorical data analysis (II)",
     "section": "Slides",
     "text": "Slides\n\n  \n    \n       Open slides in New Window",
     "crumbs": [
       "Content",
-      "Categorical data analysis I"
+      "Categorical data analysis II"
     ]
   },
   {
-    "objectID": "content/content_01.html",
-    "href": "content/content_01.html",
-    "title": "The Foundations of Data",
+    "objectID": "content/content_02.html",
+    "href": "content/content_02.html",
+    "title": "Numerical data",
     "section": "",
-    "text": "Understand the structure of data\nUnderstand the different types of data\nKnow how to visualise different types of data",
+    "text": "Understand how to summarise numerical data\nMeans, medians, ranges, variability, and standard deviations\nLearn how to interpret box plots",
     "crumbs": [
       "Content",
-      "The foundations of data"
+      "Numerical data"
     ]
   },
   {
-    "objectID": "content/content_01.html#learning-objectives",
-    "href": "content/content_01.html#learning-objectives",
-    "title": "The Foundations of Data",
+    "objectID": "content/content_02.html#learning-objectives",
+    "href": "content/content_02.html#learning-objectives",
+    "title": "Numerical data",
     "section": "",
-    "text": "Understand the structure of data\nUnderstand the different types of data\nKnow how to visualise different types of data",
+    "text": "Understand how to summarise numerical data\nMeans, medians, ranges, variability, and standard deviations\nLearn how to interpret box plots",
     "crumbs": [
       "Content",
-      "The foundations of data"
+      "Numerical data"
     ]
   },
   {
-    "objectID": "content/content_01.html#readings",
-    "href": "content/content_01.html#readings",
-    "title": "The Foundations of Data",
+    "objectID": "content/content_02.html#readings",
+    "href": "content/content_02.html#readings",
+    "title": "Numerical data",
     "section": "Readings",
-    "text": "Readings\n\nSuggested readings\n\n Chapter 1 and Chapter 2 of Introduction to Statistics and Data Analysis\n Chapters 1 and 2 of OpenIntro Statistics. This is a slightly more advanced reading, but I would highly recommend!",
+    "text": "Readings\n\nSuggested readings\n\n Chapter 3 of Introduction to Statistics and Data Analysis\n Descriptive statistics in R\n Beginner’s Guide to R : Easy Ways to do basic data analysis",
     "crumbs": [
       "Content",
-      "The foundations of data"
+      "Numerical data"
     ]
   },
   {
-    "objectID": "content/content_01.html#slides",
-    "href": "content/content_01.html#slides",
-    "title": "The Foundations of Data",
+    "objectID": "content/content_02.html#slides",
+    "href": "content/content_02.html#slides",
+    "title": "Numerical data",
     "section": "Slides",
     "text": "Slides\n\n  \n    \n       Open slides in New Window",
     "crumbs": [
       "Content",
-      "The foundations of data"
+      "Numerical data"
     ]
   },
   {
-    "objectID": "assignments/assignment_03.html",
-    "href": "assignments/assignment_03.html",
-    "title": "\n    Practice Questions Sheet 3\n  ",
+    "objectID": "assignments/assignment_04.html",
+    "href": "assignments/assignment_04.html",
+    "title": "\n    Practice Questions Sheet 4\n  ",
     "section": "",
-    "text": "ST201 · DATA ANALYSIS\n  \n\n  \n    Practice Questions Sheet 3\n  \n\n    \n    ST201 - Data Analysis\n  \n  \n    \n    Lecturer: Cormac Monaghan\n  \n  \n    \n    This tutorial introduces discrete probability distributions (i.e., Bernoulli, Binomial, and Poisson distributions).\n  \n  \n\n\n\n\n\n\n\n\n\nImportantPlease complete this assignment before the tutorial on the week of 16th November\n\n\n\n\n\n\n\n\nQuestion 1\nA multiple choice exam has 8 questions, with four choices given in each question. Suppose that a student hasn’t studied and guesses the answers by choosing an answer at random.\nIf we say that \\(X\\) is the number of times the student answers the question correctly, where\n\\[X \\sim Binomial(n = 8, p = 0.25)\\]\nthen we can find probabilities and quantiles using the dbinom(), pbinom() and qbinom() functions.\n\n\n\n\n\n\nNoteWhy are use using a binomial\n\n\n\n\n\nTo think about why we choose these values for \\(n\\) and \\(p\\) in the binomial distribution we need to consider the following:\n\nIn terms of answers to the questions, they can either be right or wrong, so for each question we have a binary outcome.\nThe number of “trials” you have is 8 (i.e., 8 questions)\nThe probability of getting a question correct by chance is 1/4 (i.e., for each question there are 4 possible answers with 1 being the correct answer)\n\n\n\n\n\nCompute the probability that the student answers all questions correctly.\nCompute the probability that the student answers all questions incorrectly.\nCompute the probability that the student answers 2 or more correctly.\nWhat is the 60th percentile for this distribution?\nSuppose the student is able to eliminate one of the answers as incorrect and chooses randomly from the other three choices. What is the probability the student answers 2 or more questions correctly?\n\n\n\n\nQuestion 2\nAssume that users are expected to arrive at an ATM to withdraw cash at a rate of 2.5 every 30 minutes.\nIf we say that the random variable \\(X\\), the number of people that use the ATM in a 30 minute interval has a Poisson distribution such that\n\\[X \\sim Poisson(\\lambda = 2.5)\\]\nWe can find probabilities and quantiles using the dpois(), ppois() and qpois() functions.\n\n\n\n\n\n\nNoteWhy the Poisson distribution\n\n\n\n\n\nTo think about how we choose \\(\\lambda\\) in the Poisson distribution we need to consider the following:\n\nWhat is the interval we are assuming when calculating the probability?\nIf we are interested in a 30 minute interval the we use \\(\\lambda = 2.5\\)\nIf we change the interval then we change \\(\\lambda\\), for example, if we are interested in a 15 minute interval the we use \\(\\lambda = 1.25\\).\n\n\n\n\n\nCompute the probability that in a particular 30 minute interval, 1 person uses the machine.\nCompute the probability that in a particular 30 minute interval, more than one person uses the machine.\nCompute the probability that 3 or more people use the machine in an hour interval.\nWhat is the 90th percentile value for the number of machine users in an hour interval?\n\n\n\n\nQuestion 3\nA fisherman catches, on average, 24 fish in a 4 hour time period. Let \\(Y\\) be a random variable denoting the number of fish caught per hour hour.\n\nWhat is the \\(E(Y)\\)?\nWhat is the probability that the fisherman catches exactly 5 fish in an hour?\nWhat is the probability that the fisherman catches 7 or more fish in a 2 hour period?"
-  },
-  {
-    "objectID": "assignments/assignment_01.html",
-    "href": "assignments/assignment_01.html",
-    "title": "\n    Practice Questions Sheet 1\n  ",
-    "section": "",
-    "text": "ST201 · DATA ANALYSIS\n  \n\n  \n\n    \n    ST201 - Data Analysis\n  \n  \n    \n    Lecturer: Cormac Monaghan\n  \n  \n    \n    This tutorial introduces some basic ways of describing and visualising data in R. Please attempt all questions before your tutorial You should work through the questions in a new R script.\n    For questions asking you to interpret a result, aim for one or two clear sentences. You should use the context of the pizza delivery data when explaining your answers."
-  },
-  {
-    "objectID": "assignments/assignment_01.html#exercise-1",
-    "href": "assignments/assignment_01.html#exercise-1",
-    "title": "\n    Practice Questions Sheet 1\n  ",
-    "section": "Exercise 1",
-    "text": "Exercise 1\n\nHow many observations are in the dataset?\nHow many variables are in the dataset?\nWhich variables are categorical and which are numerical?"
-  },
-  {
-    "objectID": "assignments/assignment_01.html#exercise-2",
-    "href": "assignments/assignment_01.html#exercise-2",
-    "title": "\n    Practice Questions Sheet 1\n  ",
-    "section": "Exercise 2",
-    "text": "Exercise 2\n\nWhat is the value of the 275th observation of distance?\nWhat does this value represent in the context of the dataset?\nWhat is the distance for the 1,000th observation?"
-  },
-  {
-    "objectID": "assignments/assignment_01.html#exercise-3",
-    "href": "assignments/assignment_01.html#exercise-3",
-    "title": "\n    Practice Questions Sheet 1\n  ",
-    "section": "Exercise 3",
-    "text": "Exercise 3\n\nWhat is the mean delivery distance?\nModify the above code and calculate the median delivery distance?\nWrite one or two short sentences comparing the mean and median and then in the context of the data, compare the two values (are they similar, or noticeably different)"
-  },
-  {
-    "objectID": "assignments/assignment_01.html#exercise-4",
-    "href": "assignments/assignment_01.html#exercise-4",
-    "title": "\n    Practice Questions Sheet 1\n  ",
-    "section": "Exercise 4",
-    "text": "Exercise 4\n\nModify the above code to correctly calculate the 25th percentile\nFollowing this, calculate the 75th percentile\nProvide a short interpretation of these two quantiles, in the context of the pizza deliveries"
-  },
-  {
-    "objectID": "assignments/assignment_01.html#exercise-5",
-    "href": "assignments/assignment_01.html#exercise-5",
-    "title": "\n    Practice Questions Sheet 1\n  ",
-    "section": "Exercise 5",
-    "text": "Exercise 5\n\nCalculate the variance of the distance variable\nNow, calculate the standard deviation of the distance variable\nIn general terms, what is the difference between the term variance and the term standard deviation\nWhat is the range of the distance variable"
-  },
-  {
-    "objectID": "assignments/assignment_01.html#exercise-6",
-    "href": "assignments/assignment_01.html#exercise-6",
-    "title": "\n    Practice Questions Sheet 1\n  ",
-    "section": "Exercise 6",
-    "text": "Exercise 6\n\nWrite R code to produce the above plot (remember to add in the y label)\nProvide a short overview of what the boxplot is telling us (what is the median of the tip variable, what is the range, are there any outliers, et.)\nModify the R code you just wrote to produce a histogram of the tip variable"
-  },
-  {
-    "objectID": "assignments/assignment_01.html#exercise-7",
-    "href": "assignments/assignment_01.html#exercise-7",
-    "title": "\n    Practice Questions Sheet 1\n  ",
-    "section": "Exercise 7",
-    "text": "Exercise 7\n\nUsing the new dataset, calculate the mean order_amount for Saturday deliveries.\nCreate a dataset containing Monday deliveries only.\nCalculate the mean order_amount for Monday deliveries.\nWhich day has the larger mean order amount?\n\n\n\n\n\n\n\n\nNoteBonus question\n\n\n\n\n\nCreating a bunch of new datasets with different delivery days can be quite inefficient and tedious.\nImagine doing it 7 times and running seven different analyses!\nInstead, a neat thing we can do is compare all the deliveries at once\nCopy and paste the below code which outputs Figure 3\n\nboxplot(tip ~ day, data = pizza, ylab = \"Tip amount\")\n\n\n\n\n\n\n\nFigure 3: Overview of pizza tips across all delivery days\n\n\n\n\n\nThe ~ tells R to “Plot tips separately for each value of day”.\n\nWhich day appears to have the lowest variation in tips?\nAre there any potential outliers?"
+    "text": "ST201 · DATA ANALYSIS\n  \n\n  \n    Practice Questions Sheet 4\n  \n\n    \n    ST201 - Data Analysis\n  \n  \n    \n    Lecturer: Cormac Monaghan\n  \n  \n    \n    This tutorial introduces continuous probability distributions, sampling distributions, and confidence intervals.\n  \n  \n\n\n\n\n\n\n\n\n\nImportantPlease complete this assignment before the tutorial on the week of 30th November\n\n\n\n\n\n\n\n\nQuestion 1\nSuppose the average time between checkouts for a supermarket cashier is 3 minutes.\nLet \\(X\\) represent the time (in minutes) between checkouts. Assume that \\(X\\) follows an exponential distribution.\nRecall that the exponential distribution has probability density function\n\\[\nf(x)=\\lambda e^{-\\lambda x}, \\quad x\\geq 0,\n\\]\nwhere \\(\\lambda\\) is the rate parameter.\nThe mean of an exponential distribution is\n\\[\nE(X)=\\frac{1}{\\lambda}.\n\\]\n\n\n\n\n\n\nNoteFor exponential distributions we can use dexp(), pexp(), qexp() and rexp()\n\n\n\n\n\n\n\n\n\n\nWhat is the value of the rate parameter, ()?\nUse rexp() to simulate 10,000 values from this distribution. Store the results as an object and plot the density curve of your simulated values.\nCalculate the probability that the time between checkouts is less than or equal to 2 minutes.\nCalculate the probability that the time between checkouts is greater than 5 minutes.\nWhat is the 80th percentile of this distribution? Interpret your answer in the context of the supermarket.\n\n\n\n\nQuestion 2\nSuppose a random variable (X) follows a standard normal distribution:\n\\[\nX\\sim N(0,1).\n\\]\n\nUse rnorm() to simulate 10,000 values from this distribution. Store the results as an object and plot density curve of your simulated values.\nUsing pnorm(), calculate the following probabilities:\n\nThe probability that \\(X\\) is below -1.\nThe probability that \\(X\\) is above 2.\nThe probability that \\(X\\) is between -1 and 2.\n\nPlot the cumulative distribution function for a sequence of values between -4 and 4, using intervals of 0.1.\n\nHint: Use seq() to create the sequence and pnorm() to calculate the cumulative probabilities.\n\nUsing qnorm(), calculate the following percentiles:\n\nThe median (50th percentile).\nThe lower quartile (25th percentile).\nThe upper quartile (75th percentile).\nThe 2.5th percentile.\nThe 97.5th percentile.\nWhat do you notice about the symmetry of these values?\n\nUse quantile() to calculate the same five percentiles using your simulated values from part (a).\n\nHow do these compare with the theoretical percentiles from part (d)? Explain why they might not be exactly the same.\n\n\n\n\n\nQuestion 3\nIQ scores are designed to have a population mean of 100 and a population standard deviation of 15. Assume that IQ scores follow a normal distribution:\n\\[\nX\\sim N(100,15^2).\n\\]\nWe are interested in understanding how the mean IQ score changes when we repeatedly take samples from this population.\n\nUse rnorm() to randomly sample 5 IQ scores from this population.\n\nStore the results in an object called IQ_sample_1.\nCalculate the mean of your sample.\n\nRepeat the experiment by randomly sampling 5 new IQ scores.\n\nStore these values in IQ_sample_2.\nCalculate the mean of this second sample.\n\nAre the two sample means identical? Why or why not?\nNow repeat this experiment 1,000 times.\n\nEach time, randomly sample 5 IQ scores and calculate the sample mean.\nStore the 1,000 sample means in an object called IQ_means.\nHint: You can use replicate() to repeat an experiment.\n\nPlot a histogram of the 1,000 sample means.\n\nMake sure that the histogram is on the density scale.\nOverlay a normal density curve representing the theoretical sampling distribution of the sample mean.\nCompare the distribution of sample means with the original population distribution of IQ scores.\n\nThe standard error of the sample mean is \\(SE(\\bar X)=\\frac{\\sigma}{\\sqrt{n}}\\).\n\nCalculate the standard error when the sample size is 5.\n\nSuppose we increased the sample size from 5 to 100.\n\nWhat would happen to the standard error?\nHow would the distribution of sample means change?\nWould the distribution become more or less concentrated around the population mean?\nExplain your answers\n\n\n\n\n\nQuestion 4\nSuppose we collect IQ scores from 40 students at Maynooth University.\nThe results of this study are available in the file IQ_dat.rds in the ST201 folder on the RStudio Server.\nWe want to use this sample to estimate the average IQ score of the population.\n\nLoad the dataset into R and examine its structure.\n\nHow many observations are in the dataset?\n\nCalculate the sample mean and sample standard deviation of the IQ scores.\nCalculate a 95% confidence interval for the population mean IQ using t.test().\nWhat are the lower and upper limits of your confidence interval?\nInterpret the confidence interval in the context of the study.\nExplain why we use a t-distribution rather than a standard normal distribution when calculating this confidence interval.\nSuppose we increased the sample size from 40 to 100 students. What would you expect to happen to the width of the confidence interval? Explain your answer."
   },
   {
     "objectID": "assignments/assignment_02.html",
@@ -371,186 +315,286 @@
     "text": "Exercise 7\n\nState what your null and alternative hypotheses are.\nWrite R code to perform a \\(\\chi^2\\) test\n\nWhat is the value of the chi-squared test statistic?\nWhat are the degrees of freedom?\nWhat is the p-value?\nUsing a 5% significance level, what decision would you make about the null hypothesis?\nWrite a conclusion for the test in the context of insurance satisfaction."
   },
   {
-    "objectID": "assignments/assignment_04.html",
-    "href": "assignments/assignment_04.html",
-    "title": "\n    Practice Questions Sheet 4\n  ",
+    "objectID": "assignments/assignment_01.html",
+    "href": "assignments/assignment_01.html",
+    "title": "\n    Practice Questions Sheet 1\n  ",
     "section": "",
-    "text": "ST201 · DATA ANALYSIS\n  \n\n  \n    Practice Questions Sheet 4\n  \n\n    \n    ST201 - Data Analysis\n  \n  \n    \n    Lecturer: Cormac Monaghan\n  \n  \n    \n    This tutorial introduces continuous probability distributions, sampling distributions, and confidence intervals.\n  \n  \n\n\n\n\n\n\n\n\n\nImportantPlease complete this assignment before the tutorial on the week of 30th November\n\n\n\n\n\n\n\n\nQuestion 1\nSuppose the average time between checkouts for a supermarket cashier is 3 minutes.\nLet \\(X\\) represent the time (in minutes) between checkouts. Assume that \\(X\\) follows an exponential distribution.\nRecall that the exponential distribution has probability density function\n\\[\nf(x)=\\lambda e^{-\\lambda x}, \\quad x\\geq 0,\n\\]\nwhere \\(\\lambda\\) is the rate parameter.\nThe mean of an exponential distribution is\n\\[\nE(X)=\\frac{1}{\\lambda}.\n\\]\n\n\n\n\n\n\nNoteFor exponential distributions we can use dexp(), pexp(), qexp() and rexp()\n\n\n\n\n\n\n\n\n\n\nWhat is the value of the rate parameter, ()?\nUse rexp() to simulate 10,000 values from this distribution. Store the results as an object and plot the density curve of your simulated values.\nCalculate the probability that the time between checkouts is less than or equal to 2 minutes.\nCalculate the probability that the time between checkouts is greater than 5 minutes.\nWhat is the 80th percentile of this distribution? Interpret your answer in the context of the supermarket.\n\n\n\n\nQuestion 2\nSuppose a random variable (X) follows a standard normal distribution:\n\\[\nX\\sim N(0,1).\n\\]\n\nUse rnorm() to simulate 10,000 values from this distribution. Store the results as an object and plot density curve of your simulated values.\nUsing pnorm(), calculate the following probabilities:\n\nThe probability that \\(X\\) is below -1.\nThe probability that \\(X\\) is above 2.\nThe probability that \\(X\\) is between -1 and 2.\n\nPlot the cumulative distribution function for a sequence of values between -4 and 4, using intervals of 0.1.\n\nHint: Use seq() to create the sequence and pnorm() to calculate the cumulative probabilities.\n\nUsing qnorm(), calculate the following percentiles:\n\nThe median (50th percentile).\nThe lower quartile (25th percentile).\nThe upper quartile (75th percentile).\nThe 2.5th percentile.\nThe 97.5th percentile.\nWhat do you notice about the symmetry of these values?\n\nUse quantile() to calculate the same five percentiles using your simulated values from part (a).\n\nHow do these compare with the theoretical percentiles from part (d)? Explain why they might not be exactly the same.\n\n\n\n\n\nQuestion 3\nIQ scores are designed to have a population mean of 100 and a population standard deviation of 15. Assume that IQ scores follow a normal distribution:\n\\[\nX\\sim N(100,15^2).\n\\]\nWe are interested in understanding how the mean IQ score changes when we repeatedly take samples from this population.\n\nUse rnorm() to randomly sample 5 IQ scores from this population.\n\nStore the results in an object called IQ_sample_1.\nCalculate the mean of your sample.\n\nRepeat the experiment by randomly sampling 5 new IQ scores.\n\nStore these values in IQ_sample_2.\nCalculate the mean of this second sample.\n\nAre the two sample means identical? Why or why not?\nNow repeat this experiment 1,000 times.\n\nEach time, randomly sample 5 IQ scores and calculate the sample mean.\nStore the 1,000 sample means in an object called IQ_means.\nHint: You can use replicate() to repeat an experiment.\n\nPlot a histogram of the 1,000 sample means.\n\nMake sure that the histogram is on the density scale.\nOverlay a normal density curve representing the theoretical sampling distribution of the sample mean.\nCompare the distribution of sample means with the original population distribution of IQ scores.\n\nThe standard error of the sample mean is \\(SE(\\bar X)=\\frac{\\sigma}{\\sqrt{n}}\\).\n\nCalculate the standard error when the sample size is 5.\n\nSuppose we increased the sample size from 5 to 100.\n\nWhat would happen to the standard error?\nHow would the distribution of sample means change?\nWould the distribution become more or less concentrated around the population mean?\nExplain your answers\n\n\n\n\n\nQuestion 4\nSuppose we collect IQ scores from 40 students at Maynooth University.\nThe results of this study are available in the file IQ_dat.rds in the ST201 folder on the RStudio Server.\nWe want to use this sample to estimate the average IQ score of the population.\n\nLoad the dataset into R and examine its structure.\n\nHow many observations are in the dataset?\n\nCalculate the sample mean and sample standard deviation of the IQ scores.\nCalculate a 95% confidence interval for the population mean IQ using t.test().\nWhat are the lower and upper limits of your confidence interval?\nInterpret the confidence interval in the context of the study.\nExplain why we use a t-distribution rather than a standard normal distribution when calculating this confidence interval.\nSuppose we increased the sample size from 40 to 100 students. What would you expect to happen to the width of the confidence interval? Explain your answer."
+    "text": "ST201 · DATA ANALYSIS\n  \n\n  \n\n    \n    ST201 - Data Analysis\n  \n  \n    \n    Lecturer: Cormac Monaghan\n  \n  \n    \n    This tutorial introduces some basic ways of describing and visualising data in R. Please attempt all questions before your tutorial You should work through the questions in a new R script.\n    For questions asking you to interpret a result, aim for one or two clear sentences. You should use the context of the pizza delivery data when explaining your answers."
   },
   {
-    "objectID": "content/content_02.html",
-    "href": "content/content_02.html",
-    "title": "Numerical data",
+    "objectID": "assignments/assignment_01.html#exercise-1",
+    "href": "assignments/assignment_01.html#exercise-1",
+    "title": "\n    Practice Questions Sheet 1\n  ",
+    "section": "Exercise 1",
+    "text": "Exercise 1\n\nHow many observations are in the dataset?\nHow many variables are in the dataset?\nWhich variables are categorical and which are numerical?"
+  },
+  {
+    "objectID": "assignments/assignment_01.html#exercise-2",
+    "href": "assignments/assignment_01.html#exercise-2",
+    "title": "\n    Practice Questions Sheet 1\n  ",
+    "section": "Exercise 2",
+    "text": "Exercise 2\n\nWhat is the value of the 275th observation of distance?\nWhat does this value represent in the context of the dataset?\nWhat is the distance for the 1,000th observation?"
+  },
+  {
+    "objectID": "assignments/assignment_01.html#exercise-3",
+    "href": "assignments/assignment_01.html#exercise-3",
+    "title": "\n    Practice Questions Sheet 1\n  ",
+    "section": "Exercise 3",
+    "text": "Exercise 3\n\nWhat is the mean delivery distance?\nModify the above code and calculate the median delivery distance?\nWrite one or two short sentences comparing the mean and median and then in the context of the data, compare the two values (are they similar, or noticeably different)"
+  },
+  {
+    "objectID": "assignments/assignment_01.html#exercise-4",
+    "href": "assignments/assignment_01.html#exercise-4",
+    "title": "\n    Practice Questions Sheet 1\n  ",
+    "section": "Exercise 4",
+    "text": "Exercise 4\n\nModify the above code to correctly calculate the 25th percentile\nFollowing this, calculate the 75th percentile\nProvide a short interpretation of these two quantiles, in the context of the pizza deliveries"
+  },
+  {
+    "objectID": "assignments/assignment_01.html#exercise-5",
+    "href": "assignments/assignment_01.html#exercise-5",
+    "title": "\n    Practice Questions Sheet 1\n  ",
+    "section": "Exercise 5",
+    "text": "Exercise 5\n\nCalculate the variance of the distance variable\nNow, calculate the standard deviation of the distance variable\nIn general terms, what is the difference between the term variance and the term standard deviation\nWhat is the range of the distance variable"
+  },
+  {
+    "objectID": "assignments/assignment_01.html#exercise-6",
+    "href": "assignments/assignment_01.html#exercise-6",
+    "title": "\n    Practice Questions Sheet 1\n  ",
+    "section": "Exercise 6",
+    "text": "Exercise 6\n\nWrite R code to produce the above plot (remember to add in the y label)\nProvide a short overview of what the boxplot is telling us (what is the median of the tip variable, what is the range, are there any outliers, et.)\nModify the R code you just wrote to produce a histogram of the tip variable"
+  },
+  {
+    "objectID": "assignments/assignment_01.html#exercise-7",
+    "href": "assignments/assignment_01.html#exercise-7",
+    "title": "\n    Practice Questions Sheet 1\n  ",
+    "section": "Exercise 7",
+    "text": "Exercise 7\n\nUsing the new dataset, calculate the mean order_amount for Saturday deliveries.\nCreate a dataset containing Monday deliveries only.\nCalculate the mean order_amount for Monday deliveries.\nWhich day has the larger mean order amount?\n\n\n\n\n\n\n\n\nNoteBonus question\n\n\n\n\n\nCreating a bunch of new datasets with different delivery days can be quite inefficient and tedious.\nImagine doing it 7 times and running seven different analyses!\nInstead, a neat thing we can do is compare all the deliveries at once\nCopy and paste the below code which outputs Figure 3\n\nboxplot(tip ~ day, data = pizza, ylab = \"Tip amount\")\n\n\n\n\n\n\n\nFigure 3: Overview of pizza tips across all delivery days\n\n\n\n\n\nThe ~ tells R to “Plot tips separately for each value of day”.\n\nWhich day appears to have the lowest variation in tips?\nAre there any potential outliers?"
+  },
+  {
+    "objectID": "assignments/assignment_03.html",
+    "href": "assignments/assignment_03.html",
+    "title": "\n    Practice Questions Sheet 3\n  ",
     "section": "",
-    "text": "Understand how to summarise numerical data\nMeans, medians, ranges, variability, and standard deviations\nLearn how to interpret box plots",
+    "text": "ST201 · DATA ANALYSIS\n  \n\n  \n    Practice Questions Sheet 3\n  \n\n    \n    ST201 - Data Analysis\n  \n  \n    \n    Lecturer: Cormac Monaghan\n  \n  \n    \n    This tutorial introduces discrete probability distributions (i.e., Bernoulli, Binomial, and Poisson distributions).\n  \n  \n\n\n\n\n\n\n\n\n\nImportantPlease complete this assignment before the tutorial on the week of 16th November\n\n\n\n\n\n\n\n\nQuestion 1\nA multiple choice exam has 8 questions, with four choices given in each question. Suppose that a student hasn’t studied and guesses the answers by choosing an answer at random.\nIf we say that \\(X\\) is the number of times the student answers the question correctly, where\n\\[X \\sim Binomial(n = 8, p = 0.25)\\]\nthen we can find probabilities and quantiles using the dbinom(), pbinom() and qbinom() functions.\n\n\n\n\n\n\nNoteWhy are use using a binomial\n\n\n\n\n\nTo think about why we choose these values for \\(n\\) and \\(p\\) in the binomial distribution we need to consider the following:\n\nIn terms of answers to the questions, they can either be right or wrong, so for each question we have a binary outcome.\nThe number of “trials” you have is 8 (i.e., 8 questions)\nThe probability of getting a question correct by chance is 1/4 (i.e., for each question there are 4 possible answers with 1 being the correct answer)\n\n\n\n\n\nCompute the probability that the student answers all questions correctly.\nCompute the probability that the student answers all questions incorrectly.\nCompute the probability that the student answers 2 or more correctly.\nWhat is the 60th percentile for this distribution?\nSuppose the student is able to eliminate one of the answers as incorrect and chooses randomly from the other three choices. What is the probability the student answers 2 or more questions correctly?\n\n\n\n\nQuestion 2\nAssume that users are expected to arrive at an ATM to withdraw cash at a rate of 2.5 every 30 minutes.\nIf we say that the random variable \\(X\\), the number of people that use the ATM in a 30 minute interval has a Poisson distribution such that\n\\[X \\sim Poisson(\\lambda = 2.5)\\]\nWe can find probabilities and quantiles using the dpois(), ppois() and qpois() functions.\n\n\n\n\n\n\nNoteWhy the Poisson distribution\n\n\n\n\n\nTo think about how we choose \\(\\lambda\\) in the Poisson distribution we need to consider the following:\n\nWhat is the interval we are assuming when calculating the probability?\nIf we are interested in a 30 minute interval the we use \\(\\lambda = 2.5\\)\nIf we change the interval then we change \\(\\lambda\\), for example, if we are interested in a 15 minute interval the we use \\(\\lambda = 1.25\\).\n\n\n\n\n\nCompute the probability that in a particular 30 minute interval, 1 person uses the machine.\nCompute the probability that in a particular 30 minute interval, more than one person uses the machine.\nCompute the probability that 3 or more people use the machine in an hour interval.\nWhat is the 90th percentile value for the number of machine users in an hour interval?\n\n\n\n\nQuestion 3\nA fisherman catches, on average, 24 fish in a 4 hour time period. Let \\(Y\\) be a random variable denoting the number of fish caught per hour hour.\n\nWhat is the \\(E(Y)\\)?\nWhat is the probability that the fisherman catches exactly 5 fish in an hour?\nWhat is the probability that the fisherman catches 7 or more fish in a 2 hour period?"
+  },
+  {
+    "objectID": "content/content_01.html",
+    "href": "content/content_01.html",
+    "title": "The Foundations of Data",
+    "section": "",
+    "text": "Understand the structure of data\nUnderstand the different types of data\nKnow how to visualise different types of data",
     "crumbs": [
       "Content",
-      "Numerical data"
+      "The foundations of data"
     ]
   },
   {
-    "objectID": "content/content_02.html#learning-objectives",
-    "href": "content/content_02.html#learning-objectives",
-    "title": "Numerical data",
+    "objectID": "content/content_01.html#learning-objectives",
+    "href": "content/content_01.html#learning-objectives",
+    "title": "The Foundations of Data",
     "section": "",
-    "text": "Understand how to summarise numerical data\nMeans, medians, ranges, variability, and standard deviations\nLearn how to interpret box plots",
+    "text": "Understand the structure of data\nUnderstand the different types of data\nKnow how to visualise different types of data",
     "crumbs": [
       "Content",
-      "Numerical data"
+      "The foundations of data"
     ]
   },
   {
-    "objectID": "content/content_02.html#readings",
-    "href": "content/content_02.html#readings",
-    "title": "Numerical data",
+    "objectID": "content/content_01.html#readings",
+    "href": "content/content_01.html#readings",
+    "title": "The Foundations of Data",
     "section": "Readings",
-    "text": "Readings\n\nSuggested readings\n\n Chapter 3 of Introduction to Statistics and Data Analysis\n Descriptive statistics in R\n Beginner’s Guide to R : Easy Ways to do basic data analysis",
+    "text": "Readings\n\nSuggested readings\n\n Chapter 1 and Chapter 2 of Introduction to Statistics and Data Analysis\n Chapters 1 and 2 of OpenIntro Statistics. This is a slightly more advanced reading, but I would highly recommend!",
     "crumbs": [
       "Content",
-      "Numerical data"
+      "The foundations of data"
     ]
   },
   {
-    "objectID": "content/content_02.html#slides",
-    "href": "content/content_02.html#slides",
-    "title": "Numerical data",
+    "objectID": "content/content_01.html#slides",
+    "href": "content/content_01.html#slides",
+    "title": "The Foundations of Data",
     "section": "Slides",
     "text": "Slides\n\n  \n    \n       Open slides in New Window",
     "crumbs": [
       "Content",
-      "Numerical data"
+      "The foundations of data"
     ]
   },
   {
-    "objectID": "content/content_04.html",
-    "href": "content/content_04.html",
-    "title": "Categorical data analysis (II)",
+    "objectID": "content/content_03.html",
+    "href": "content/content_03.html",
+    "title": "Categorical data analysis (I)",
     "section": "",
-    "text": "Understand how to further analyse a significant \\(\\chi^2\\) result\nLearn about Pearson residuals and Cramér’s V\nUnderstand what to do when our assumptions are violated",
+    "text": "Understand how to analyse categorical data\nLearn about observed versus expected counts\nUnderstand what the \\(\\chi^2\\) distribution is\nLearn how to perform a basic hypothesis test",
     "crumbs": [
       "Content",
-      "Categorical data analysis II"
+      "Categorical data analysis I"
     ]
   },
   {
-    "objectID": "content/content_04.html#learning-objectives",
-    "href": "content/content_04.html#learning-objectives",
-    "title": "Categorical data analysis (II)",
+    "objectID": "content/content_03.html#learning-objectives",
+    "href": "content/content_03.html#learning-objectives",
+    "title": "Categorical data analysis (I)",
     "section": "",
-    "text": "Understand how to further analyse a significant \\(\\chi^2\\) result\nLearn about Pearson residuals and Cramér’s V\nUnderstand what to do when our assumptions are violated",
+    "text": "Understand how to analyse categorical data\nLearn about observed versus expected counts\nUnderstand what the \\(\\chi^2\\) distribution is\nLearn how to perform a basic hypothesis test",
     "crumbs": [
       "Content",
-      "Categorical data analysis II"
+      "Categorical data analysis I"
     ]
   },
   {
-    "objectID": "content/content_04.html#readings",
-    "href": "content/content_04.html#readings",
-    "title": "Categorical data analysis (II)",
+    "objectID": "content/content_03.html#readings",
+    "href": "content/content_03.html#readings",
+    "title": "Categorical data analysis (I)",
     "section": "Readings",
     "text": "Readings\n\nSuggested readings\n\n Chapter 4 of Introduction to Statistics and Data Analysis\n Chapter 12 of Learning Statistics with R\n Statistical Tests for Categorical Data using R",
     "crumbs": [
       "Content",
-      "Categorical data analysis II"
+      "Categorical data analysis I"
     ]
   },
   {
-    "objectID": "content/content_04.html#slides",
-    "href": "content/content_04.html#slides",
-    "title": "Categorical data analysis (II)",
+    "objectID": "content/content_03.html#slides",
+    "href": "content/content_03.html#slides",
+    "title": "Categorical data analysis (I)",
     "section": "Slides",
     "text": "Slides\n\n  \n    \n       Open slides in New Window",
     "crumbs": [
       "Content",
-      "Categorical data analysis II"
+      "Categorical data analysis I"
     ]
   },
   {
-    "objectID": "content/content_06.html",
-    "href": "content/content_06.html",
-    "title": "Discrete probability distributions",
+    "objectID": "content/content_05.html",
+    "href": "content/content_05.html",
+    "title": "Categorical data analysis (III)",
     "section": "",
-    "text": "Learn about discrete random variables.\nLearn about PDFs, CDFs, expected values and variances.\nUnderstand and explain different discrete probability distributions",
+    "text": "How to perform a categorical data analysis when we introduce a third variable\nLearn what Simpsons paradox is\nLearn the difference between odds and odds ratios",
     "crumbs": [
       "Content",
-      "Discrete probability distributions"
+      "Categorical data analysis III"
     ]
   },
   {
-    "objectID": "content/content_06.html#learning-objectives",
-    "href": "content/content_06.html#learning-objectives",
-    "title": "Discrete probability distributions",
+    "objectID": "content/content_05.html#learning-objectives",
+    "href": "content/content_05.html#learning-objectives",
+    "title": "Categorical data analysis (III)",
     "section": "",
-    "text": "Learn about discrete random variables.\nLearn about PDFs, CDFs, expected values and variances.\nUnderstand and explain different discrete probability distributions",
+    "text": "How to perform a categorical data analysis when we introduce a third variable\nLearn what Simpsons paradox is\nLearn the difference between odds and odds ratios",
     "crumbs": [
       "Content",
-      "Discrete probability distributions"
+      "Categorical data analysis III"
     ]
   },
   {
-    "objectID": "content/content_06.html#readings",
-    "href": "content/content_06.html#readings",
-    "title": "Discrete probability distributions",
+    "objectID": "content/content_05.html#readings",
+    "href": "content/content_05.html#readings",
+    "title": "Categorical data analysis (III)",
     "section": "Readings",
-    "text": "Readings\n\nSuggested readings\n\n Discrete random variables\n Discrete probability distributions",
+    "text": "Readings\n\nSuggested readings\n\n Chapter 4 of Introduction to Statistics and Data Analysis\n Simpsons paradox",
     "crumbs": [
       "Content",
-      "Discrete probability distributions"
+      "Categorical data analysis III"
     ]
   },
   {
-    "objectID": "content/content_06.html#slides",
-    "href": "content/content_06.html#slides",
-    "title": "Discrete probability distributions",
+    "objectID": "content/content_05.html#slides",
+    "href": "content/content_05.html#slides",
+    "title": "Categorical data analysis (III)",
     "section": "Slides",
     "text": "Slides\n\n  \n    \n       Open slides in New Window",
     "crumbs": [
       "Content",
-      "Discrete probability distributions"
+      "Categorical data analysis III"
     ]
   },
   {
-    "objectID": "content/content_08.html",
-    "href": "content/content_08.html",
-    "title": "Single Samples",
+    "objectID": "content/content_07.html",
+    "href": "content/content_07.html",
+    "title": "Continuous probability distributions",
     "section": "",
-    "text": "Learn about the Central Limit Theorem.\nUnderstand how to calculate confidence intervals.\nLearn how bootstrapping works",
+    "text": "Learn about continuous random variables.\nLearn about PDFs, CDFs, expected values and variances.\nUnderstand and explain different continuous probability distributions",
     "crumbs": [
       "Content",
-      "Single samples"
+      "Continuous probability distributions"
     ]
   },
   {
-    "objectID": "content/content_08.html#learning-objectives",
-    "href": "content/content_08.html#learning-objectives",
-    "title": "Single Samples",
+    "objectID": "content/content_07.html#learning-objectives",
+    "href": "content/content_07.html#learning-objectives",
+    "title": "Continuous probability distributions",
     "section": "",
-    "text": "Learn about the Central Limit Theorem.\nUnderstand how to calculate confidence intervals.\nLearn how bootstrapping works",
+    "text": "Learn about continuous random variables.\nLearn about PDFs, CDFs, expected values and variances.\nUnderstand and explain different continuous probability distributions",
     "crumbs": [
       "Content",
-      "Single samples"
+      "Continuous probability distributions"
     ]
   },
   {
-    "objectID": "content/content_08.html#readings",
-    "href": "content/content_08.html#readings",
-    "title": "Single Samples",
+    "objectID": "content/content_07.html#readings",
+    "href": "content/content_07.html#readings",
+    "title": "Continuous probability distributions",
     "section": "Readings",
-    "text": "Readings\n\nSuggested readings\n\n Central limit theorem: the cornerstone of modern statistics (Kwak & Kim, 2017)\n The Central Limit Theorem\n Confidence intervals\n Bootstrapping",
+    "text": "Readings\n\nSuggested readings\n\n Continuous random variables (Stanford University)\n Continuous random variables",
     "crumbs": [
       "Content",
-      "Single samples"
+      "Continuous probability distributions"
     ]
   },
   {
-    "objectID": "content/content_08.html#slides",
-    "href": "content/content_08.html#slides",
-    "title": "Single Samples",
+    "objectID": "content/content_07.html#slides",
+    "href": "content/content_07.html#slides",
+    "title": "Continuous probability distributions",
     "section": "Slides",
     "text": "Slides\n\n  \n    \n       Open slides in New Window",
     "crumbs": [
       "Content",
-      "Single samples"
+      "Continuous probability distributions"
+    ]
+  },
+  {
+    "objectID": "content/content_09.html",
+    "href": "content/content_09.html",
+    "title": "Inference for Means",
+    "section": "",
+    "text": "Learn how to perform a hypothesis test\nCarry out a one-sample and independent samples t-test",
+    "crumbs": [
+      "Content",
+      "Inference for means"
+    ]
+  },
+  {
+    "objectID": "content/content_09.html#learning-objectives",
+    "href": "content/content_09.html#learning-objectives",
+    "title": "Inference for Means",
+    "section": "",
+    "text": "Learn how to perform a hypothesis test\nCarry out a one-sample and independent samples t-test",
+    "crumbs": [
+      "Content",
+      "Inference for means"
+    ]
+  },
+  {
+    "objectID": "content/content_09.html#readings",
+    "href": "content/content_09.html#readings",
+    "title": "Inference for Means",
+    "section": "Readings",
+    "text": "Readings\n\nSuggested readings\n\n An introduction to t-tests",
+    "crumbs": [
+      "Content",
+      "Inference for means"
+    ]
+  },
+  {
+    "objectID": "content/content_09.html#slides",
+    "href": "content/content_09.html#slides",
+    "title": "Inference for Means",
+    "section": "Slides",
+    "text": "Slides\n\n\n\n\n\n\nCautionSlides will be available on 1st December",
+    "crumbs": [
+      "Content",
+      "Inference for means"
     ]
   },
   {
