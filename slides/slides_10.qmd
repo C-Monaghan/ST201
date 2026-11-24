@@ -1,0 +1,1126 @@
+---
+title: Regression
+subtitle: ST201 - Data analysis
+revealjs-plugins:
+  - tabset
+filters:
+  - code-window
+---
+
+```{r}
+#| label: setup
+
+set.seed(4321)
+
+# Options ----------------------------------------------------------------------
+knitr::opts_chunk$set(fig.align = "center")
+
+# Tinytable math
+options(tinytable_html_mathjax = TRUE)
+
+# Packages ---------------------------------------------------------------------
+library(dplyr)
+library(ggplot2)
+library(tinytable)
+library(patchwork)
+
+# Data -------------------------------------------------------------------------
+advertising <- readr::read_csv(here::here("data/advertising.csv"))
+
+linearity_data <- tibble(
+  x = rnorm(n = 500, mean = 0, sd = 1),
+  linear = 3 + (1.5 * x) + rnorm(n = 500, mean = 0, sd = 1),
+  non_linear = 3 + (1.5 * x^2) + (0.5 * x) + rnorm(n = 500, mean = 0, sd = 1)
+) |>
+  tidyr::pivot_longer(cols = !x, names_to = "direction", values_to = "y")
+```
+
+## Plan for today {style="font-size: 80%;"}
+
+In this lecture, we introduce simple linear regression.
+
+- Correlation and linear relationships.
+- Fitting a regression line.
+- Estimating the regression coefficients.
+- Interpreting regression output.
+- Assessing how well the model fits the data.
+- Checking the assumptions of a linear regression model.
+
+<br>
+
+> Our main aim is to understand how one variable can be used to explain or
+> predict another variable.
+
+## Correlation
+
+Correlation measures the strength and direction of a linear relationship
+between two quantitative variables.
+
+The correlation coefficient is usually represented by $r$.
+
+<br>
+
+$$
+r =
+\frac{
+  \sum_{i=1}^{n}(x_i-\bar{x})(y_i-\bar{y})}{
+    \sqrt{\sum_{i=1}^{n}(x_i-\bar{x})^2}
+    \sqrt{\sum_{i=1}^{n}(y_i-\bar{y})^2}
+}
+$$
+
+<br>
+
+
+::: {.callout-tip}
+## The correlation coefficient always lies between $-1$ and $1$.
+:::
+
+---
+
+<br>
+<br>
+
+```{r}
+#| label: chunk-1
+
+tribble(
+  ~Correlation    , ~Interpretation                        ,
+  "r = 1"         , "Perfect positive linear relationship" ,
+  "r close to 1"  , "Strong positive linear relationship"  ,
+  "r close to 0"  , "Weak linear relationship"             ,
+  "r = 0"         , "No linear relationship"               ,
+  "r close to -1" , "Strong negative linear relationship"  ,
+  "r = -1"        , "Perfect negative linear relationship"
+) |>
+  tt() |>
+  style_tt(i = 0, bold = TRUE)
+
+```
+
+<br>
+
+::: {.callout-important}
+## Correlation describes association, not causation.
+
+A strong correlation **does not mean** that one variable causes the
+other to change.
+:::
+
+## Understanding correlation
+
+<br>
+
+```{r}
+#| label: chunk-2
+
+strong <- tibble(
+  x = seq(-40, 40, length.out = 50),
+  y = 0.8 * x + rnorm(50, sd = 5),
+  relationship = "Strong"
+)
+
+moderate <- tibble(
+  x = seq(500, 1500, length.out = 50),
+  y = 10 * x + rnorm(50, sd = 2000),
+  relationship = "Moderate"
+)
+
+weak <- tibble(
+  x = runif(200, 0, 50),
+  y = rnorm(200, mean = 100, sd = 50),
+  relationship = "Weak"
+)
+
+bind_rows(strong, moderate, weak) |>
+  mutate(
+    relationship = factor(
+      relationship,
+      levels = c("Weak", "Moderate", "Strong")
+    )
+  ) |>
+  ggplot(aes(x, y)) +
+  geom_point(alpha = 0.7, size = 0.8) +
+  facet_wrap(~relationship, scales = "free") +
+  labs(x = "X", y = "Y") +
+  theme_bw() +
+  theme(axis.text = element_blank(), axis.ticks = element_blank())
+```
+
+## Simple linear regression {style="font-size: 70%;"}
+
+Simple linear regression is used to describe the relationship between:
+
+- One quantitative response variable, $Y$.
+- One quantitative predictor variable, $X$.
+
+We assume that the average value of $Y$ changes approximately linearly with $X$.
+
+We can write this relationship as:
+
+$$
+Y = \beta_0 + \beta_1X + \varepsilon
+$$
+
+Where:
+
+- $\beta_0$ is the intercept.
+- $\beta_1$ is the slope.
+- $\varepsilon$ represents random error.
+
+The two coefficients, $\beta_0$ and $\beta_1$, describe the
+relationship between $X$ and $Y$.
+
+## Simple linear regression
+
+### What does the regression line look like?
+
+<br>
+
+```{r}
+#| label: chunk-3
+
+bind_rows(strong, moderate, weak) |>
+  mutate(
+    relationship = factor(
+      relationship,
+      levels = c("Weak", "Moderate", "Strong")
+    )
+  ) |>
+  ggplot(aes(x, y)) +
+  geom_point(alpha = 0.7, size = 0.8) +
+  geom_smooth(method = "lm") +
+  facet_wrap(~relationship, scales = "free") +
+  labs(x = "X", y = "Y") +
+  theme_bw() +
+  theme(axis.text = element_blank(), axis.ticks = element_blank())
+```
+
+---
+
+<br>
+
+
+::: {.callout-note}
+
+## The line represents the fitted regression model.
+
+The shaded region represents a **confidence interval** for the estimated mean
+response along the regression line.
+
+Notice that:
+
+- A strong relationship produces points that tend to lie close to the
+  fitted line.
+- A moderate relationship produces more variation around the line.
+- A weak relationship produces substantial variation around the line.
+
+:::
+
+## Simple linear regression {style="font-size: 70%;"}
+
+### The regression equation
+
+The population regression model is:
+
+$$
+Y = \beta_0 + \beta_1X + \epsilon
+$$
+
+
+::: {.callout-warning}
+## However, we do not know the true values of $\beta_0$ and $\beta_1$
+:::
+
+
+::: {.fragment .fade-up}
+We therefore estimate them using our sample data.
+
+Our fitted regression equation is:
+
+$$
+\widehat{Y} = \widehat{\beta}_0+\widehat{\beta}_1X
+$$
+
+Where:
+
+- $\widehat{\beta}_0$ is the estimated intercept.
+- $\widehat{\beta}_1$ is the estimated slope.
+- $\widehat{Y}$ is the predicted value of $Y$.
+
+Once we have estimated these coefficients, we can use the equation to
+predict $Y$ for a given value of $X$.
+
+:::
+
+## Simple linear regression {style="font-size: 80%;"}
+
+### Understanding the intercept and slope
+
+Consider the following equation
+
+$$
+\widehat{Y}=10+2X
+$$
+
+<br>
+
+:::: {.columns}
+
+::: {.column width="40%"}
+
+### Intercept {.center}
+
+$$
+\widehat{\beta}_0=10
+$$
+
+This is the predicted value of $Y$ when $X = 0$
+
+:::
+
+::: {.column width="60%"}
+
+### Slope {.center}
+
+$$
+\widehat{\beta}_1 = 2
+$$
+
+For every one-unit increase in $X$, the predicted value of $Y$ increases by
+2 units, on average.
+:::
+::::
+
+---
+
+<br>
+
+```{r}
+#| label: chunk-4
+#|
+parameter_data <- tibble(
+  x = seq(0, 10, by = 0.1),
+  intercept_1 = 5 + 0.5 * x,
+  intercept_2 = 7 + 0.5 * x,
+  intercept_3 = 10 + 0.5 * x,
+  slope_1 = 5 + 0.5 * x,
+  slope_2 = 5 + 1.5 * x,
+  slope_3 = 5 + 5.5 * x
+) |>
+  tidyr::pivot_longer(
+    cols = !x,
+    names_to = c(".value", "parameter"),
+    names_pattern = "(intercept|slope)_(\\d+)"
+  )
+
+# Intercept
+p_1 <- parameter_data |>
+  ggplot(aes(x = x, y = intercept, group = parameter)) +
+  geom_line(linewidth = 0.9) +
+  geom_point(data = parameter_data |> filter(x == 0), size = 3) +
+  labs(title = "Intercept = 5, 7.5, and 10", x = "X", y = "Y") +
+  theme_bw()
+
+# Intercept
+p_2 <- parameter_data |>
+  ggplot(aes(x = x, y = slope, group = parameter)) +
+  geom_line(linewidth = 0.9) +
+  geom_point(data = parameter_data |> filter(x == 0), size = 3) +
+  labs(title = "Slope = 0.5, 1.5, and 5.5", x = "X", y = "Y") +
+  theme_bw()
+
+p_1 + p_2
+
+```
+
+## Simple linear regression {style="font-size: 80%;"}
+
+### Let's do an example
+
+::: {.panel-tabset}
+
+## Overview
+
+Suppose we are interested in understanding the relationship between
+TV advertising and product sales.
+
+We have data from 200 different markets.
+
+For each market, we record:
+
+- The amount spent on TV advertising.
+- The resulting product sales.
+
+[**Our aim is to investigate whether TV advertising can help us predict sales.**]{.center}
+
+## The data
+
+```{r}
+#| label: chunk-5
+
+advertising |>
+  ggplot(aes(x = TV, y = sales)) +
+  geom_point() +
+  geom_smooth(method = "lm", se = TRUE) +
+  scale_x_continuous(
+    labels = scales::label_number(prefix = "€", suffix = "k")
+  ) +
+  scale_y_continuous(
+    labels = scales::label_number(prefix = "€", suffix = "k")
+  ) +
+  labs(
+    title = "TV advertising budget and sales",
+    x = "TV advertising budget (thousands)",
+    y = "Sales (thousands)"
+  ) +
+  theme_minimal()
+```
+
+## Model fitting
+
+We want to estimate the following model:
+
+$$
+\text{sales} = \beta_0+\beta_1TV+\epsilon
+$$
+
+The model has two unknown coefficients:
+
+- $\beta_0$: The intercept.
+- $\beta_1$: The slope.
+
+We use the observed data to estimate these coefficients.
+
+Our fitted model will then be:
+
+$$\widehat{\text{sales}} = \widehat{\beta}_0+\widehat{\beta}_1TV
+$$
+
+:::
+
+## Simple linear regression
+
+### Fitting the line
+
+Imagine drawing different straight lines through the scatterplot.
+
+Some lines will fit the data better than others.
+
+- Should we move the line slightly upwards?
+- Should we move it downwards?
+- Should we make the slope steeper?
+- Should we make the slope flatter?
+- We need a way to decide which line is best.
+
+The most common approach is called **least squares estimation**.
+
+## Simple linear regression {style="font-size: 80%;"}
+
+### Residuals
+
+The fitted regression line gives us a predicted value for every observation.
+
+However, the predicted value will not usually be exactly equal to the observed value.
+
+The difference between the observed and predicted values is called a residual.
+
+$$
+e_i=y_i-\widehat{y}_i
+$$
+
+Where:
+
+- $y_i$ is the observed response.
+- $\widehat{y}_i$ is the predicted response.
+- $e_i$ is the residual.
+
+---
+
+<br>
+
+```{r}
+#| label: chunk-6
+
+# Make up some data
+my_data <- tibble(
+  x = 1:10,
+  y = c(2.5, 3.1, 4.2, 4.0, 5.7, 6.1, 6.5, 8.2, 8.0, 9.5)
+)
+
+# Fit a model and get fitted values
+fit <- lm(y ~ x, data = my_data) |> broom::augment() |> janitor::clean_names()
+
+# Plot the residuals
+fit |>
+  ggplot(aes(x = x, y = y)) +
+  geom_point(size = 1.5) +
+  geom_smooth(method = "lm", se = FALSE, linewidth = 0.5, linetype = "dashed") +
+  geom_segment(aes(xend = x, yend = fitted), linewidth = 0.5) +
+  theme_minimal()
+
+```
+
+## Least squares estimation {style="font-size: 70%;"}
+
+- We want to find the regression line that fits the data as closely as possible.
+- One way to measure how well a line fits is to calculate the residuals.
+- However, positive and negative residuals can cancel each other out.
+- Instead, we square each residual and add them together.
+- This gives us the residual sum of squares (RSS)
+
+$$
+RSS=\sum_{i=1}^{n}e_i^2
+$$
+
+The least squares method chooses the intercept and slope that minimise the RSS
+
+> The best-fitting regression line is the line that makes the sum of squared
+> residuals as small as possible.
+
+## Estimating the coefficients
+
+The least squares method gives us the following estimates.
+
+:::: {.columns}
+
+::: {.column}
+
+### Slope {.center}
+
+$$
+\widehat{\beta}_1 = \frac{
+  \sum_{i=1}^{n}(x_i-\bar{x})(y_i-\bar{y})}
+  {\sum_{i=1}^{n}(x_i-\bar{x})^2}
+$$
+
+:::
+
+::: {.column}
+
+### Intercept {.center}
+
+$$
+\widehat{\beta}_0 = \bar{y}-\widehat{\beta}_1\bar{x}
+$$
+
+:::
+::::
+
+[These estimates give us the fitted regression line]{.center}
+
+$$
+\widehat{y}= \widehat{\beta}_0+\widehat{\beta}_1x
+$$
+
+## Simple linear regression in `R` {style="font-size: 70%;"}
+
+```{r}
+#| label: chunk-7
+#| echo: true
+#| collapse: true
+
+my_model <- lm(sales ~ TV, data = advertising)
+
+summary(my_model)
+```
+
+
+::: {.fragment .fade-up}
+
+$$
+\widehat{\text{sales}} = 7.03 + 0.0475 \; TV
+$$
+
+- When TV advertising expenditure is zero, predicted sales are approximately
+  7.03 thousand units.
+- For every additional thousand dollars spent on TV advertising, predicted
+  sales increase by approximately 0.0475 thousand units, on average.
+
+:::
+
+## Making predictions {style="font-size: 70%;"}
+
+Once we have fitted the model, we can use it to predict sales for a
+given advertising budget.
+
+Suppose we want to predict sales when TV advertising expenditure is
+100 thousand dollars.
+
+$$
+\widehat{\text{sales}}=7.03+0.0475(100) = 11.78
+$$
+
+
+:::: {.fragment .fade-up}
+
+```{r}
+#| label: chunk-8
+#| echo: true
+#| collapse: true
+
+# Predicting from a linear model
+predict(object = my_model, newdata = data.frame(TV = 100))
+```
+
+::: {.callout-important}
+## Predictions are most reliable within the range of predictor values observed in the original data.
+
+Using the model far outside this range is called **extrapolation and can be misleading**
+
+:::
+::::
+
+## How accurate are our estimates? {style="font-size: 70%;"}
+
+We have estimated the intercept and slope using our sample data.
+
+- However, these estimates will not necessarily be exactly equal to the
+  true population coefficients.
+- If we collected a different sample, we would probably obtain slightly
+  different estimates.
+- We therefore need to consider the uncertainty associated with our
+  estimated coefficients.
+
+
+:::: {.columns}
+
+::: {.column}
+
+### Slope {.center}
+
+$$
+\widehat{\beta}_1 \pm
+t_{n-2,1-\alpha/2} \; SE(\widehat{\beta}_1)
+$$
+
+:::
+
+::: {.column}
+
+### Intercept {.center}
+
+$$
+\widehat{\beta}_0\pm t_{n-2,1-\alpha/2} \; SE(\widehat{\beta}_0)
+$$
+
+:::
+
+::::
+
+::: {.fragment .fade-up}
+
+[**Confidence intervals**]{.center}
+
+```{r}
+#| label: chunk-9
+#| echo: true
+#| collapse: true
+
+confint(my_model)
+```
+
+:::
+
+## Hypothesis testing for regression coefficients {style="font-size: 80%;"}
+
+We can also use hypothesis tests to investigate whether the regression
+coefficients are significantly different from zero.
+
+<br>
+
+:::: {.columns}
+
+::: {.column}
+
+### Null hypothesis
+
+$$
+H_0: \beta_1 = 0
+$$
+
+:::
+
+::: {.column}
+
+### Alternative hypothesis
+
+$$
+H_0: \beta_1 \neq 0
+$$
+
+:::
+
+::::
+
+- If the slope is zero, there is no linear association between $X$ and the
+  mean response $Y$.
+- If we find evidence against the null hypothesis, this suggests that
+  $X$ is linearly associated with $Y$.
+
+::: {.callout-warning appearance="minimal"}
+A non-significant result does not prove that there is no relationship.
+It means that the data do not provide sufficient evidence of a non-zero
+linear slope.
+:::
+
+---
+
+<br>
+
+```{r}
+#| label: chunk-10
+#| echo: true
+#| collapse: true
+
+summary(my_model)
+```
+
+## How well does the model fit? {style="font-size: 60%;"}
+
+How well does the model explain the variation in the response?
+
+Two common measures are:
+
+
+::: {.columns}
+
+::: {.column}
+
+### Residual standard error (RSE) {.center}
+
+:::
+
+::: {.column}
+
+### The coefficient of determination ($R^2$) {.center}
+
+:::
+
+:::
+
+::::: {.columns}
+:::: {.column width="50%"}
+::: {.fragment .fade-up}
+
+The residual standard error measures the typical size of the residuals.
+
+$$
+RSE=\sqrt{\frac{RSS}{n-2}}
+$$
+
+where $RSS$ is the residual sum of squares and $n$ is the sample size.
+
+- A smaller RSE indicates that observations tend to lie closer to the fitted
+  regression line.
+- A larger RSE indicates more variation around the fitted line.
+
+:::
+::::
+
+:::: {.column width="50%"}
+::: {.fragment .fade-up}
+
+The $R^2$ statistic measures the proportion of variation in the response
+variable that is explained by the regression model.
+
+$$
+R^2=\frac{TSS-RSS}{TSS}
+$$
+
+- $TSS=\sum_{i=1}^{n}(y_i-\bar{y})^2$
+- $RSS=\sum_{i=1}^{n}(y_i-\widehat{y}_i)^2$
+
+
+::: {.callout-caution appearance="minimal"}
+$R^2 = 0.20$: The model explains 20% of the variation in $Y$
+:::
+
+:::
+::::
+:::::
+
+## Assumption 1: Linearity {style="font-size: 80%;"}
+
+We assume that the expected response changes linearly with the predictor:
+
+$$
+E(Y_i \mid X_i = x_i) = \beta_0+\beta_1 x_i
+$$
+
+This means that a one-unit increase in $X$ corresponds to the same change in
+the expected response, regardless of the starting value of $X$
+
+```{r}
+#| label: linear-1a
+linearity_data |>
+  ggplot(aes(x = x, y = y)) +
+  geom_point() +
+  labs(x = "X value", y = "Y value") +
+  facet_wrap(
+    ~direction,
+    scales = "free",
+    labeller = labeller(
+      direction = function(x) {
+        x |> stringr::str_replace("_", " ") |> stringr::str_to_sentence()
+      }
+    )
+  ) +
+  theme_bw()
+```
+
+## Assumption 1: Linearity {style="font-size: 80%;"}
+
+We assume that the expected response changes linearly with the predictor:
+
+$$
+E(Y_i \mid X_i = x_i) = \beta_0+\beta_1 x_i
+$$
+
+This means that a one-unit increase in $X$ corresponds to the same change in
+the expected response, regardless of the starting value of $X$
+
+```{r}
+#| label: linear-1b
+linearity_data |>
+  ggplot(aes(x = x, y = y)) +
+  geom_point() +
+  geom_smooth(method = "lm", se = FALSE) +
+  labs(x = "X value", y = "Y value") +
+  facet_wrap(
+    ~direction,
+    scales = "free",
+    labeller = labeller(
+      direction = function(x) {
+        x |> stringr::str_replace("_", " ") |> stringr::str_to_sentence()
+      }
+    )
+  ) +
+  theme_bw()
+```
+
+## Assumption 1: Linearity {style="font-size: 70%;"}
+
+### What should we look for
+
+<br>
+<br>
+
+::::: {.columns}
+
+:::: {.column width="40%"}
+- Is a straight line a reasonable summary of the relationship?
+::::
+
+:::: {.column width="60%"}
+
+```{r}
+#| label: linear-1c
+linearity_data |>
+  filter(direction == "linear") |>
+  ggplot(aes(x = x, y = y)) +
+  geom_point() +
+  geom_smooth(method = "lm", se = FALSE) +
+  labs(x = "X value", y = "Y value") +
+  theme_bw()
+```
+
+::::
+
+:::::
+
+## Assumption 1: Linearity {style="font-size: 70%;"}
+
+### What should we look for
+
+<br>
+<br>
+
+::::: {.columns}
+
+:::: {.column width="40%"}
+
+- Is a straight line a reasonable summary of the relationship?
+- Is there evidence of curvature?
+
+::::
+
+:::: {.column width="60%"}
+
+```{r}
+#| label: linear-1d
+linearity_data |>
+  filter(direction == "non_linear") |>
+  ggplot(aes(x = x, y = y)) +
+  geom_point() +
+  labs(x = "X value", y = "Y value") +
+  theme_bw()
+```
+
+::::
+
+:::::
+
+## Assumption 1: Linearity {style="font-size: 70%;"}
+
+### What should we look for
+
+<br>
+<br>
+
+::::: {.columns}
+
+:::: {.column width="40%"}
+- Is a straight line a reasonable summary of the relationship?
+- Is there evidence of curvature?
+- Are there observations that look unusual?
+::::
+
+:::: {.column width="60%"}
+
+```{r}
+#| label: linear-1e
+linearity_data |>
+  filter(direction == "linear") |>
+  bind_rows(tibble(x = 2, y = -1)) |>
+  mutate(
+    outlier = case_when(
+      x == 2 & y == -1 ~ TRUE,
+      TRUE ~ FALSE
+    )
+  ) |>
+  ggplot(aes(x = x, y = y, colour = outlier, size = outlier)) +
+  geom_point() +
+  ggokabeito::scale_colour_okabe_ito() +
+  labs(x = "X value", y = "Y value") +
+  guides(colour = "none", size = "none") +
+  theme_bw()
+```
+
+::::
+
+:::::
+
+## Assumption 1: Linearity {style="font-size: 70%;"}
+
+### What should we look for
+
+<br>
+<br>
+
+::::: {.columns}
+
+:::: {.column width="40%"}
+- Is a straight line a reasonable summary of the relationship?
+- Is there evidence of curvature?
+- Are there observations that look unusual?
+- Is the spread of the observations reasonably similar across the range of $X$?
+::::
+
+:::: {.column width="60%"}
+
+```{r}
+#| label: linear-1f
+linearity_data |>
+  filter(direction == "linear") |>
+  ggplot(aes(x = x, y = y)) +
+  geom_point() +
+  geom_abline(
+    intercept = -0.75,
+    slope = 1.75,
+    colour = "#009E73",
+    linewidth = 1,
+    linetype = "dashed"
+  ) +
+  geom_abline(
+    intercept = 6.5,
+    slope = 1.75,
+    colour = "#009E73",
+    linewidth = 1,
+    linetype = "dashed"
+  ) +
+  labs(x = "X value", y = "Y value") +
+  theme_bw()
+```
+
+::::
+
+:::::
+
+## Assumption 2: Constant variance
+
+We assume that the errors have the same variance for all predictor values:
+
+$$
+\operatorname{Var}(\varepsilon_i \mid X_i = x_i) = \sigma^2
+$$
+
+This is also called [homoscedasticity]{.alert}
+
+:::: {.fragment .fade-up}
+::: {.callout-note appearance="simple"}
+## What does this mean
+
+The spread of observations around the regression line should be approximately
+constant across the range of the predictor
+:::
+
+::: {.callout-warning appearance="simple"}
+## What if we violate it?
+
+If the variance changes with the predictor, out estimates can still be
+unbiased under suitable conditions, but the usual standard errors and
+inference may be unreliable.
+:::
+::::
+
+## Assumption 3: Independence
+
+We assume that the errors from different observations are independent.
+
+For distinct observations $i$ and $j$
+
+$$
+\operatorname{Cov}(\varepsilon_i,\varepsilon_j) = 0
+$$
+
+:::: {.fragment .fade-up}
+::: {.callout-caution appearance="simple"}
+## Independence can be questionable when observations are collected:
+
+- Repeatedly over time.
+- From the same individual or household.
+- From individuals within the same group or organisation.
+- In a spatial or otherwise clustered structure.
+
+:::
+::::
+
+## Assumption 4: Normality
+
+For the exact small-sample inference, we assume
+
+$$
+\varepsilon_i\mid X_i = x_i \sim N(0,\sigma^2).
+$$
+
+
+<br>
+
+::: {.callout-tip}
+## Moderate departures from normality may be less concerning in larger samples
+:::
+
+---
+
+<br>
+
+```{r}
+#| label: chunk-11
+
+par(mfrow = c(2, 2))
+
+plot(my_model)
+
+par(mfrow = c(1, 1))
+
+```
+
+
+## What to look for {style="font-size: 60%;"}
+
+<br>
+
+:::: {.columns}
+
+::: {.column}
+
+### Residuals vs Fitted
+
+- We want residuals scattered randomly around zero.
+- A curved pattern may suggest non-linearity.
+- A funnel shape may suggest non-constant variance.
+
+:::
+
+::: {.column}
+
+### Normal Q-Q plot
+
+- We want points to lie approximately along the straight reference line.
+- Large departures may indicate non-normality.
+
+:::
+
+::::
+
+<br>
+
+:::: {.columns}
+
+::: {.column}
+
+### Scale-Location
+
+- We want a reasonably even spread of points.
+- A clear increase or decrease in spread may indicate non-constant variance.
+
+:::
+
+::: {.column}
+
+### Residuals vs Leverage
+
+- We look for observations that may have an unusually large influence on the
+  fitted model
+
+:::
+::::
+
+## Summary {style="font-size: 65%;"}
+
+<br>
+
+:::: {.columns}
+::: {.column}
+
+### Correlation
+
+- Measures the strength and direction of a linear relationship.
+- Takes values between -1 and 1.
+- Does not establish causation.
+
+:::
+::: {.column}
+
+### Simple linear regression
+
+- Describes the relationship between one predictor and one response.
+- Uses an intercept and slope to describe the fitted line.
+- Uses least squares to minimise the residual sum of squares.
+
+:::
+::::
+
+:::: {.columns}
+::: {.column}
+
+### Assessing the model
+
+- Standard errors and confidence intervals describe uncertainty in the coefficients.
+- Hypothesis tests assess whether the slope differs from zero.
+- RSE measures the typical size of residuals.
+- $R^2$ measures the proportion of variation explained by the model.
+
+:::
+::: {.column}
+
+### Checking assumptions
+
+- Linearity.
+- Independence.
+- Constant variance.
+- Normality of errors.
+
+:::
+::::

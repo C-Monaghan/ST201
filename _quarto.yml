@@ -27,7 +27,7 @@ website:
     icon: pencil
     dismissable: false
     content: |
-      **Please complete the next assignment before your next tutorial**
+      **Please complete assignment 4 before your next tutorial**
     type: danger
     position: below-navbar
 
@@ -84,6 +84,8 @@ website:
         href: content\content_08.qmd
       - text: Inference for means
         href: content\content_09.qmd
+      - text: Linear regression
+        href: content\content_10.qmd
 
 
 
