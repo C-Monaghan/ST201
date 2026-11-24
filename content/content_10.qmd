@@ -1,0 +1,39 @@
+---
+title: Linear regression
+---
+
+```{r}
+#| label: setup
+#| include: false
+
+purrr::map(list.files(here::here("R"), full.names = TRUE), source)
+```
+
+## Learning objectives
+
+- Distinguish correlation from linear regression
+- Understand the fundamental properties of linear regression
+- Learn how to check the assumptions of a linear model
+
+## Readings
+
+### Suggested readings
+
+- {{< fa file-pdf >}} [Linear models in statistics (Chapter 6)](https://utstat.utoronto.ca/~brunner/books/LinearModelsInStatistics.pdf)
+- {{< fa brands youtube >}} [Simple Linear Regression: An Easy and Clear Beginner’s Guide](https://www.youtube.com/watch?v=gPfgB4ew3RY)
+
+
+## Slides
+
+::: {.callout-caution}
+## Slides will be available on 8th December
+:::
+
+```{r}
+#| label: add-slides
+#| echo: false
+#| eval: false
+#| results: asis
+
+add_slides(slide_id = "/slides/output/slides_10.html")
+```
